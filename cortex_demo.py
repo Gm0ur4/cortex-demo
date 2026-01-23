@@ -80,7 +80,7 @@ with c_main:
 
 with c_tools:
     st.markdown("---")
-    st.subheader("📝 Teste o Bloco de Notas")
+    st.subheader("📝 Teste o bloco de notas")
     st.caption("No curso completo, suas anotações ficam salvas.")
     notas_input = st.text_area("Exercícios do dia:", placeholder="Escreva suas ideias aqui...", height=300)
     
