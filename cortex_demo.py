@@ -73,7 +73,7 @@ with c_main:
     st.markdown("---")
     
     # Call to Action no final da leitura
-    st.success("Gostou do conteúdo? Tenha acesso aos outros 21 dias agora mesmo.")
+    st.success("Gostou do conteúdo? Tenha acesso à continuação do dia 13 agora mesmo.")
     if st.button("QUERO APRENDER TUDO"):
         st.markdown("[Clique aqui para se inscrever](https://seu-link-de-compra.com)")
         st.balloons()
