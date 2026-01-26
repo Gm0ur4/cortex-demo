@@ -71,7 +71,7 @@ Temos a total certeza que nosso método fez você entender a diferença entre ag
 
 Vamos continuar falando agora sobre como prosperar no caos. Vamos aprender com **Nassim Taleb** o conceito de **Antifragilidade**.
 
-**A sua mente é um labirinto; aprenda a ser o fio de Ariadne (Uma metáfora mitológica que representa um guia, solução ou método lógico para superar problemas complexos e intrincados. Originado na lenda grega de Teseu e o Minotauro, o fio dado por Ariadne permitiu ao herói encontrar o caminho de saída do Labirinto de Creta.**
+**A sua mente é um labirinto; aprenda a ser o fio de Ariadne (Originado na lenda grega de Teseu e o Minotauro, o fio dado por Ariadne permitiu ao herói encontrar o caminho de saída do Labirinto de Creta).**
 
 ---
 **Referências**
