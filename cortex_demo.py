@@ -681,22 +681,5 @@ cta_html = """
 st.markdown(cta_html, unsafe_allow_html=True)
 
 # ==================== FOOTER ====================
-st.markdown("""
-<div class="footer">
-    <div class="footer-links">
-        <a href="#" class="footer-link">Privacy Policy</a>
-        <a href="#" class="footer-link">Terms of Service</a>
-        <a href="#" class="footer-link">Contact</a>
-        <a href="#" class="footer-link">Blog</a>
-    </div>
-    
-    <div class="footer-contact">
-        <div class="footer-contact-item">📧 contact@yourapp.com</div>
-        <div class="footer-contact-item">📱 +1 (555) 123-4567</div>
-    </div>
-    
-    <div class="footer-copyright">
-        © 2025 YourApp. All rights reserved. Made with ❤️
-    </div>
-</div>
-""", unsafe_allow_html=True)
+footer_html = '<div class="footer"><div class="footer-links"><a href="#" class="footer-link">Privacy Policy</a><a href="#" class="footer-link">Terms of Service</a><a href="#" class="footer-link">Contact</a><a href="#" class="footer-link">Blog</a></div><div class="footer-contact"><div class="footer-contact-item">📧 contact@yourapp.com</div><div class="footer-contact-item">📱 +1 (555) 123-4567</div></div><div class="footer-copyright">© 2025 YourApp. All rights reserved. Made with ❤️</div></div>'
+st.markdown(footer_html, unsafe_allow_html=True)
