@@ -220,7 +220,7 @@ with col_u1:
 with col_u2:
     st.markdown("""
     <div class="target-card" style="background: var(--accent); color: white; box-shadow: 15px 15px 0px white;">
-        <h3>Infoprodutores e prestadores de serviço</h3>
+        <h3>Infoprodutores/ prestadores de serviço</h3>
         <p>Temos estruturas otimizadas para converter visitantes em compradores reais.</p>
     </div>
     """, unsafe_allow_html=True)
@@ -228,7 +228,7 @@ with col_u2:
 with col_u3:
     st.markdown("""
     <div class="target-card">
-        <h3>Renda extra/ freelancer</h3>
+        <h3>Freelancer</h3>
         <p>Venda nossos sites para seus clientes sem precisar programar do zero e fature com isso.</p>
     </div>
     """, unsafe_allow_html=True)
