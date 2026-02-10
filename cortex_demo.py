@@ -2,223 +2,210 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Memphis Zoo | Experience the Wild",
-    page_icon="🦁",
+    page_title="Glam | O maior clube de beleza da América Latina",
+    page_icon="💖",
     layout="wide"
 )
 
-# --- CSS PERSONALIZADO (MEMPHIS ZOO STYLE) ---
+# --- CSS PERSONALIZADO (GLAM AESTHETIC) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
     html, body, [class*="css"] {
         font-family: 'Montserrat', sans-serif;
+        color: #333;
     }
 
-    /* Remove padding padrão do Streamlit */
-    .block-container {
-        padding: 0 !important;
-        max-width: 100% !important;
-    }
+    /* Remover espaçamentos padrão */
+    .block-container { padding: 0 !important; }
 
-    /* Overlay Header */
-    .zoo-header {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        padding: 20px 50px;
+    /* Nav Bar Estilo Glam */
+    .nav-glam {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: rgba(0,0,0,0.2);
-    }
-    
-    .logo-zoo {
-        color: white;
-        font-weight: 900;
-        font-size: 32px;
-        letter-spacing: -1px;
-    }
-
-    /* Hero Banner */
-    .hero-video-bg {
-        height: 100vh;
-        background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1600&q=80');
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        text-align: center;
-    }
-
-    /* Floating Action Buttons */
-    .action-bar {
-        display: flex;
-        gap: 10px;
-        margin-top: 30px;
-    }
-    
-    /* Estilo dos Botões do Zoo */
-    div.stButton > button {
-        border-radius: 0px;
-        font-weight: 700;
-        text-transform: uppercase;
-        padding: 15px 30px;
-        border: none;
-        letter-spacing: 1px;
-    }
-    
-    /* Botão Laranja (Tickets) */
-    .ticket-btn > div > button {
-        background-color: #f37021 !important;
-        color: white !important;
-    }
-    
-    /* Seções de Conteúdo */
-    .info-section {
-        padding: 80px 10%;
-        text-align: center;
-    }
-    
-    .green-bg { background-color: #004a26; color: white; }
-    .sand-bg { background-color: #f9f7f2; color: #333; }
-
-    /* Cards de Animais */
-    .animal-card {
+        padding: 15px 5%;
         background: white;
-        border-radius: 0px;
-        overflow: hidden;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-bottom: 1px solid #f0f0f0;
+        position: sticky;
+        top: 0;
+        z-index: 999;
     }
-    .animal-card img { width: 100%; height: 250px; object-fit: cover; }
-    .animal-info { padding: 20px; text-align: left; }
-    
-    /* Footer */
-    .footer-zoo {
-        background-color: #1a1a1a;
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        font-size: 13px;
+        margin-right: 20px;
+    }
+
+    /* Hero Banner Principal */
+    .hero-glam {
+        background-color: #fce4ec; /* Rosa bem clarinho */
+        padding: 80px 8%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+    .hero-title {
+        font-size: 45px;
+        font-weight: 700;
+        color: #d81b60; /* Rosa Glam */
+        line-height: 1.2;
+    }
+
+    /* Botões Arredondados */
+    div.stButton > button {
+        border-radius: 50px;
+        padding: 12px 35px;
+        background-color: #d81b60;
         color: white;
-        padding: 60px 10%;
+        border: none;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+    div.stButton > button:hover {
+        background-color: #ad1457;
+        transform: scale(1.02);
+    }
+
+    /* Seção de Planos */
+    .plan-card {
+        background: white;
+        border: 2px solid #fce4ec;
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        transition: 0.3s;
+    }
+    .plan-card:hover {
+        border-color: #d81b60;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .price-tag {
+        font-size: 32px;
+        font-weight: 700;
+        color: #d81b60;
+    }
+
+    /* Footer */
+    .footer-glam {
+        background-color: #fafafa;
+        padding: 80px 8%;
+        border-top: 1px solid #eee;
+        margin-top: 50px;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# --- 1. HEADER & HERO ---
+# --- 1. HEADER ---
 st.markdown("""
-<div class="zoo-header">
-    <div class="logo-zoo">MEMPHIS ZOO</div>
-    <div style="display: flex; gap: 20px; color: white; font-weight: 700; font-size: 14px;">
-        <span>ANIMALS</span>
-        <span>EXHIBITS</span>
-        <span>EDUCATION</span>
-        <span>CONSERVATION</span>
+<div class="nav-glam">
+    <div style="font-size: 24px; font-weight: 700; letter-spacing: 2px; color: #d81b60;">GLAM</div>
+    <div class="nav-links">
+        <a href="#">GLAMBOX</a>
+        <a href="#">GLAMSHOP</a>
+        <a href="#">GLAMPASS</a>
+        <a href="#">BLOG</a>
     </div>
-</div>
-<div class="hero-video-bg">
-    <h1 style="font-size: 80px; font-weight: 900; margin-bottom: 0;">ADVENTURE AWAITS</h1>
-    <p style="font-size: 24px; font-weight: 400;">Explore o mundo selvagem no coração de Memphis.</p>
+    <div style="font-size: 12px; font-weight: 600;">ENTRAR / CADASTRE-SE</div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 2. BARRA DE BOTÕES RÁPIDOS ---
-c_btn1, c_btn2, c_btn3 = st.columns(3)
-with c_btn1:
-    st.markdown('<div class="ticket-btn">', unsafe_allow_html=True)
-    st.button("BUY TICKETS", use_container_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-with c_btn2:
-    st.button("BECOME A MEMBER", use_container_width=True)
-with c_btn3:
-    st.button("DONATE TODAY", use_container_width=True)
+# --- 2. HERO SECTION ---
+with st.container():
+    col_h1, col_h2 = st.columns([1, 1])
+    with col_h1:
+        st.markdown('<div style="padding: 100px 0 0 100px;">', unsafe_allow_html=True)
+        st.markdown('<h1 class="hero-title">Sua jornada de beleza começa aqui.</h1>', unsafe_allow_html=True)
+        st.write("Receba mensalmente uma curadoria de produtos de beleza escolhidos para o seu perfil.")
+        st.write("")
+        st.button("ASSINE AGORA")
+        st.markdown('</div>', unsafe_allow_html=True)
+    with col_h2:
+        st.image("https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&w=800&q=80")
 
-# --- 3. SEÇÃO: PROGRAME SUA VISITA ---
-st.markdown('<div class="info-section sand-bg">', unsafe_allow_html=True)
-st.markdown("<h2 style='font-weight:900; color:#004a26;'>PLANEJE SUA VISITA</h2>", unsafe_allow_html=True)
-st.write("Estamos abertos diariamente das 9h às 17h. Venha ver nossos novos filhotes!")
+# --- 3. COMO FUNCIONA ---
+st.markdown("<br><br><h2 style='text-align:center;'>Como funciona a experiência Glam</h2>", unsafe_allow_html=True)
+c1, c2, c3 = st.columns(3)
+with c1:
+    st.markdown("<div style='text-align:center;'><h3>1. Perfil de Beleza</h3><p>Conte-nos seus gostos, tipo de pele e cabelo.</p></div>", unsafe_allow_html=True)
+with c2:
+    st.markdown("<div style='text-align:center;'><h3>2. Curadoria</h3><p>Nossos experts selecionam 5 a 7 produtos para você.</p></div>", unsafe_allow_html=True)
+with c3:
+    st.markdown("<div style='text-align:center;'><h3>3. Glam Box</h3><p>Receba em casa e descubra novos favoritos.</p></div>", unsafe_allow_html=True)
 
-col_v1, col_v2, col_v3 = st.columns(3)
-with col_v1:
-    st.markdown("### 🕒 Horários")
-    st.write("Seg - Dom: 09:00 - 17:00")
-with col_v2:
-    st.markdown("### 📍 Localização")
-    st.write("2000 Prentiss Pl, Memphis, TN")
-with col_v3:
-    st.markdown("### 🗺️ Mapa do Zoo")
-    st.button("BAIXAR MAPA")
-st.markdown('</div>', unsafe_allow_html=True)
+# --- 4. PLANOS (CARDS) ---
+st.write("---")
+st.markdown("<h2 style='text-align:center; margin-bottom:40px;'>Escolha o seu plano</h2>", unsafe_allow_html=True)
 
-# --- 4. SEÇÃO: NOSSOS ANIMAIS (CARDS) ---
-st.markdown('<div class="info-section">', unsafe_allow_html=True)
-st.markdown("<h2 style='font-weight:900; margin-bottom:40px;'>CONHEÇA OS RESIDENTES</h2>", unsafe_allow_html=True)
+p1, p2, p3 = st.columns(3)
 
-def animal_card(col, img, name, category):
+def plan_box(col, title, price, benefit):
     with col:
         st.markdown(f"""
-        <div class="animal-card">
-            <img src="{img}">
-            <div class="animal-info">
-                <span style="color:#f37021; font-weight:700; font-size:12px;">{category}</span>
-                <h3 style="margin:5px 0;">{name}</h3>
-            </div>
+        <div class="plan-card">
+            <h4 style="color:#666;">{title}</h4>
+            <div class="price-tag">R$ {price}</div>
+            <p style="font-size:14px; color:#888;">por mês</p>
+            <hr style="border: 0.5px solid #fce4ec;">
+            <p style="font-weight:500;">{benefit}</p>
         </div>
         """, unsafe_allow_html=True)
-        st.button(f"Saber mais sobre {name}", key=name)
+        st.button(f"Assinar {title}", use_container_width=True)
 
-ca1, ca2, ca3 = st.columns(3)
-animal_card(ca1, "https://images.unsplash.com/photo-1517685352821-92cf88aee5a5?w=500", "Leão Africano", "FELINOS")
-animal_card(ca2, "https://images.unsplash.com/photo-1544860707-c352cc5a92e3?w=500", "Panda Gigante", "ÁSIA")
-animal_card(ca3, "https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd?w=500", "Girafa Reticulada", "SAVANA")
-st.markdown('</div>', unsafe_allow_html=True)
+plan_box(p1, "PLANO MENSAL", "82,90", "Flexibilidade total")
+plan_box(p2, "PLANO SEMESTRAL", "72,90", "Descontos na Glam Shop")
+plan_box(p3, "PLANO ANUAL", "62,90", "Brinde exclusivo + Frete Grátis")
 
-# --- 5. SEÇÃO: CONSERVAÇÃO (GREEN BG) ---
-st.markdown('<div class="info-section green-bg">', unsafe_allow_html=True)
+# --- 5. MARCAS PARCEIRAS (PROVA SOCIAL) ---
+st.write("")
+st.markdown("<p style='text-align:center; color:#999; text-transform:uppercase; letter-spacing:2px; font-size:12px;'>Marcas que você pode receber</p>", unsafe_allow_html=True)
 st.markdown("""
-    <h2 style='font-weight:900;'>SALVANDO ESPÉCIES NO MUNDO TODO</h2>
-    <p style='max-width:800px; margin: 20px auto; font-size:18px;'>
-        O Memphis Zoo é líder em pesquisa e conservação. Desde a reintrodução de sapos raros até a proteção de habitats na África, seu ingresso faz a diferença.
-    </p>
+<div style="display:flex; justify-content:center; gap:50px; opacity:0.4; font-weight:700; font-size:18px; padding: 20px 0;">
+    <span>L'ORÉAL</span> <span>VICHY</span> <span>EUDORA</span> <span>NIVEA</span> <span>PANTENE</span>
+</div>
 """, unsafe_allow_html=True)
-st.button("VEJA NOSSO IMPACTO", key="impact")
-st.markdown('</div>', unsafe_allow_html=True)
 
-# --- 6. EVENTOS E NOTÍCIAS ---
-st.markdown('<div class="info-section sand-bg">', unsafe_allow_html=True)
-col_e1, col_e2 = st.columns(2)
-with col_e1:
-    st.image("https://images.unsplash.com/photo-1502675135487-e971002a6adb?w=600")
-with col_e2:
-    st.markdown("<div style='text-align:left; padding-top:20px;'>", unsafe_allow_html=True)
-    st.markdown("<h2 style='font-weight:900;'>NOITE NO ZOO</h2>", unsafe_allow_html=True)
-    st.write("Participe de nossos eventos noturnos exclusivos para famílias. Jantares temáticos, tours guiados sob o luar e muito mais.")
-    st.button("VER CALENDÁRIO DE EVENTOS")
-    st.markdown("</div>", unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+# --- 6. SEÇÃO GLAM SHOP (E-COMMERCE) ---
+st.write("---")
+st.markdown("<h2 style='text-align:center;'>Ofertas da Glam Shop</h2>", unsafe_allow_html=True)
+
+ps1, ps2, ps3, ps4 = st.columns(4)
+
+def shop_item(col, img, name, price):
+    with col:
+        st.image(img)
+        st.markdown(f"**{name}**")
+        st.markdown(f"<span style='color:#d81b60; font-weight:700;'>R$ {price}</span>", unsafe_allow_html=True)
+        st.button("Comprar", key=name)
+
+shop_item(ps1, "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=300", "Batom Matte Rose", "29,90")
+shop_item(ps2, "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=300", "Sérum Facial Vit C", "89,00")
+shop_item(ps3, "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=300", "Hidratante Corporal", "45,00")
+shop_item(ps4, "https://images.unsplash.com/photo-1590156191108-33002f58ca40?w=300", "Máscara de Cílios", "34,90")
 
 # --- 7. FOOTER ---
 st.markdown("""
-<div class="footer-zoo">
-    <div style="display:grid; grid-template-columns: 2fr 1fr 1fr; gap:50px;">
+<div class="footer-glam">
+    <div style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:30px;">
         <div>
-            <h2 style="font-weight:900;">MEMPHIS ZOO</h2>
-            <p>Conectando pessoas aos animais através de experiências memoráveis.</p>
+            <div style="font-size: 20px; font-weight: 700; color: #d81b60; margin-bottom:20px;">GLAM</div>
+            <p style="font-size:12px;">A maior comunidade de beleza do país. Conectamos marcas e consumidoras através de experiências reais.</p>
         </div>
         <div>
-            <h4>EXPLORE</h4>
-            <p style="font-size:13px; line-height:2;">Animais<br>Experiências<br>Membros</p>
+            <h4 style="font-size:14px;">INSTITUCIONAL</h4>
+            <p style="font-size:12px; line-height:2;">Sobre a Glam<br>Trabalhe Conosco<br>Seja um parceiro</p>
         </div>
         <div>
-            <h4>SUPORTE</h4>
-            <p style="font-size:13px; line-height:2;">Doar<br>Voluntários<br>Trabalhe Conosco</p>
+            <h4 style="font-size:14px;">DÚVIDAS</h4>
+            <p style="font-size:12px; line-height:2;">Central de Ajuda<br>Trocas e Devoluções<br>Prazos de Entrega</p>
         </div>
-    </div>
-    <div style="text-align:center; margin-top:50px; border-top: 1px solid #444; padding-top:20px; font-size:12px; color:#888;">
-        © 2024 Memphis Zoo. Todos os direitos reservados.
+        <div>
+            <h4 style="font-size:14px;">REDES SOCIAIS</h4>
+            <p style="font-size:12px; line-height:2;">Instagram<br>TikTok<br>YouTube</p>
+        </div>
     </div>
 </div>
 """, unsafe_allow_html=True)
