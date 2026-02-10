@@ -2,159 +2,196 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Pura Vida Brackets | Estilo de Vida",
-    page_icon="🌸",
+    page_title="Crehana Clone | Cursos Online",
+    page_icon="🎓",
     layout="wide"
 )
 
-# --- CSS PARA ESTILO LIFESTYLE ---
+# --- CSS PARA ESTILO EDTECH (CREHANA STYLE) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Pacifico&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
-    /* Barra de Anúncio no Topo */
-    .announcement-bar {
-        background-color: #ffb6c1; /* Rosa claro */
-        color: white;
-        text-align: center;
-        padding: 8px;
-        font-size: 13px;
-        font-weight: bold;
-        letter-spacing: 1px;
-        margin: -5rem -5rem 2rem -5rem;
+    html, body, [class*="css"] {
+        font-family: 'Inter', sans-serif;
+        color: #1b1c1e;
     }
 
-    /* Logo Centralizada */
-    .logo-container {
-        text-align: center;
-        font-family: 'Pacifico', cursive;
-        font-size: 45px;
-        color: #333;
+    /* Header Estilo App */
+    .header-crehana {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0px;
+        background-color: white;
+        border-bottom: 1px solid #e0e0e0;
+        margin-bottom: 30px;
+    }
+    .logo {
+        font-size: 24px;
+        font-weight: 800;
+        color: #4b22b4; /* Roxo Crehana */
+    }
+
+    /* Hero Section */
+    .hero-title {
+        font-size: 42px;
+        font-weight: 800;
+        line-height: 1.1;
         margin-bottom: 20px;
     }
-
-    /* Menu de Navegação */
-    .nav-links {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 15px;
-        margin-bottom: 30px;
+    .highlight {
+        color: #4b22b4;
     }
-    .nav-links a {
-        text-decoration: none;
-        color: #555;
+
+    /* Botões de Ação */
+    .stButton > button {
+        border-radius: 8px;
         font-weight: 600;
-        font-size: 14px;
-        text-transform: uppercase;
+        transition: all 0.2s;
+        border: none;
     }
-
-    /* Hero Section - Imagem de fundo com texto */
-    .hero-box {
-        position: relative;
-        text-align: center;
+    /* Botão Principal (Roxo) */
+    div.stButton > button:first-child {
+        background-color: #4b22b4;
         color: white;
-        margin-bottom: 40px;
-    }
-    .hero-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(255, 255, 255, 0.8);
-        padding: 30px;
-        border-radius: 5px;
-        color: #333;
-    }
-
-    /* Grid de Produtos */
-    .product-box {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    .product-price {
-        color: #ff69b4;
-        font-weight: bold;
     }
     
-    /* Botões */
-    div.stButton > button {
-        background-color: #333;
-        color: white;
-        border-radius: 0px;
-        padding: 10px 20px;
-        width: 100%;
-        border: none;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+    /* Card de Curso */
+    .course-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #efefef;
+        transition: transform 0.3s;
+        margin-bottom: 20px;
     }
-    div.stButton > button:hover {
-        background-color: #ffb6c1;
-        color: white;
+    .course-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .category-tag {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 5px;
+    }
+    .course-title {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    .rating {
+        color: #ffb400;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    /* Barra de busca simulada */
+    .search-bar {
+        background-color: #f4f4f7;
+        padding: 10px 20px;
+        border-radius: 25px;
+        border: 1px solid #e0e0e0;
+        color: #777;
+        width: 300px;
+        font-size: 14px;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# --- 1. BARRA DE ANÚNCIO ---
-st.markdown('<div class="announcement-bar">FRETE GRÁTIS EM PEDIDOS ACIMA DE R$ 150! 🌴</div>', unsafe_allow_html=True)
-
-# --- 2. LOGO E MENU ---
-st.markdown('<div class="logo-container">pura vida</div>', unsafe_allow_html=True)
-st.markdown("""
-<div class="nav-links">
-    <a href="#">Pulseiras</a>
-    <a href="#">Joias</a>
-    <a href="#">Coleções</a>
-    <a href="#">Sale</a>
-</div>
-""", unsafe_allow_html=True)
-
-# --- 3. HERO BANNER ---
-# Usando imagem de estilo lifestyle praiano
-hero_img = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1500&q=80"
-st.image(hero_img, use_container_width=True)
-st.markdown("""
-<div style="text-align: center; padding: 40px 0;">
-    <h1 style="font-family: 'Montserrat'; font-weight: 300;">VIVA O MOMENTO</h1>
-    <p style="color: #777; max-width: 600px; margin: auto;">
-        Nossas peças são feitas à mão por artesãos ao redor do mundo, espalhando a energia "Pura Vida".
-    </p>
-</div>
-""", unsafe_allow_html=True)
-
-# --- 4. GRID DE PRODUTOS ---
-st.subheader("Novidades")
-col1, col2, col3, col4 = st.columns(4)
-
-def product_item(col, name, price, img_url):
-    with col:
-        st.image(img_url, use_container_width=True)
-        st.markdown(f"**{name}**")
-        st.markdown(f'<p class="product-price">R$ {price}</p>', unsafe_allow_html=True)
-        st.button("Adicionar", key=name)
-
-# Imagens simulando as pulseiras coloridas
-product_item(col1, "Pack Shoreline", "45,00", "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=400&q=80")
-product_item(col2, "Ocean Blue", "32,00", "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=400&q=80")
-product_item(col3, "Sunset Vibes", "38,00", "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=400&q=80")
-product_item(col4, "Sand & Salt", "29,00", "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=400&q=80")
+# --- 1. HEADER ---
+col_l, col_m, col_r = st.columns([1, 2, 2])
+with col_l:
+    st.markdown('<div class="logo">crehana</div>', unsafe_allow_html=True)
+with col_m:
+    # Simulando links de categoria
+    st.markdown("""
+    <div style="display: flex; gap: 20px; padding-top: 10px;">
+        <span style="font-weight:600; font-size:14px;">Categorias</span>
+        <span style="font-weight:600; font-size:14px;">Para Empresas</span>
+    </div>
+    """, unsafe_allow_html=True)
+with col_r:
+    # Botões de Login
+    c1, c2, c3 = st.columns([2, 1, 1])
+    with c1: st.markdown('<div class="search-bar">O que você quer aprender?</div>', unsafe_allow_html=True)
+    with c2: st.button("Entrar", key="login")
+    with c3: st.button("Criar conta", key="signup")
 
 st.write("---")
 
-# --- 5. SEÇÃO DE IMPACTO SOCIAL ---
-c1, c2 = st.columns([1, 1])
-with c1:
-    st.image("https://images.unsplash.com/photo-1484820540004-14229fe36ca4?auto=format&fit=crop&w=800&q=80")
-with c2:
-    st.markdown("### Retribuindo ao Planeta")
-    st.write("Cada compra ajuda a apoiar causas ambientais e artesãos locais. Já doamos mais de R$ 4 milhões para instituições de caridade através de vocês.")
-    st.button("Saiba Mais", key="impacto")
+# --- 2. HERO SECTION ---
+c_hero1, c_hero2 = st.columns([1, 1])
 
-# --- 6. RODAPÉ ---
+with c_hero1:
+    st.markdown('<p style="color:#4b22b4; font-weight:700;">MAIS DE 1000 CURSOS ONLINE</p>', unsafe_allow_html=True)
+    st.markdown('<h1 class="hero-title">Aumente suas <span class="highlight">oportunidades</span> profissionais</h1>', unsafe_allow_html=True)
+    st.write("Aprenda com especialistas as habilidades mais demandadas no mercado digital. Do zero ao avançado.")
+    st.write("")
+    st.button("🎯 Explorar cursos agora", use_container_width=False)
+
+with c_hero2:
+    # Imagem de uma pessoa estudando (estilo clean)
+    st.image("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80", use_container_width=True)
+
+st.write("### O que você quer estudar hoje?")
+
+# --- 3. CURSOS (GRID) ---
+def course_item(col, img, category, title, rating, students):
+    with col:
+        st.markdown(f"""
+        <div class="course-card">
+            <img src="{img}" style="width:100%; height:150px; object-fit:cover;">
+            <div style="padding: 15px;">
+                <div class="category-tag">{category}</div>
+                <div class="course-title">{title}</div>
+                <div class="rating">★ {rating} <span style="color:#888; font-weight:400; font-size:12px;">({students})</span></div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        st.button("Ver detalhes", key=title)
+
+col1, col2, col3, col4 = st.columns(4)
+
+course_item(col1, 
+            "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=400&q=80",
+            "Marketing Digital", "Facebook Ads: Domine o Gerenciador", "4.8", "12k alunos")
+
+course_item(col2, 
+            "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=400&q=80",
+            "Design", "Adobe Illustrator: Ilustração Vetorial", "4.9", "45k alunos")
+
+course_item(col3, 
+            "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80",
+            "Tecnologia", "Introdução ao Desenvolvimento Web", "4.7", "30k alunos")
+
+course_item(col4, 
+            "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=400&q=80",
+            "Dados", "Excel para Negócios: Avançado", "4.9", "18k alunos")
+
+# --- 4. SEÇÃO "CREHANA PARA EMPRESAS" ---
+st.write("")
+st.write("---")
+with st.container():
+    ce1, ce2 = st.columns([1, 1])
+    with ce1:
+        st.image("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80", use_container_width=True)
+    with ce2:
+        st.markdown("## Treine sua equipe com a Crehana")
+        st.write("Soluções de SaaS e conteúdo para fechar a lacuna de habilidades na sua empresa.")
+        st.write("✅ Planos de aprendizado personalizados")
+        st.write("✅ Painel de controle para o RH")
+        st.button("🚀 Solicitar Demo", key="demo")
+
+# --- FOOTER ---
 st.markdown("""
-<div style="background-color: #f9f9f9; padding: 50px; margin-top: 50px; text-align: center; border-top: 1px solid #eee;">
-    <div style="font-family: 'Pacifico'; font-size: 24px; color: #333; margin-bottom: 20px;">pura vida</div>
-    <p style="color: #999; font-size: 12px;">© 2024 Pura Vida Brackets. Siga-nos no Instagram @puravida</p>
+<div style="background-color: #1b1c1e; color: white; padding: 60px 20px; margin-top: 50px; text-align: center;">
+    <div style="font-size: 24px; font-weight: 800; margin-bottom: 20px;">crehana</div>
+    <div style="color: #888; font-size: 14px;">
+        Transformando o futuro através da educação. <br>
+        © 2024 Crehana Inc. Todos os direitos reservados.
+    </div>
 </div>
 """, unsafe_allow_html=True)
