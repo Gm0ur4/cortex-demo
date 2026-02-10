@@ -221,7 +221,7 @@ with col_u2:
     st.markdown("""
     <div class="target-card" style="background: var(--accent); color: white; box-shadow: 15px 15px 0px white;">
         <h3>Infoprodutores/ prestadores de serviço</h3>
-        <p>Temos estruturas otimizadas para converter visitantes em compradores reais.</p>
+        <p>Temos estruturas otimizadas para converter visitantes em compradores reais. Destaque seus serviços com um design que transmite autoridade e confiança.</p>
     </div>
     """, unsafe_allow_html=True)
 
