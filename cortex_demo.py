@@ -2,228 +2,238 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Qudrix | Soluções Digitais de Alta Performance",
-    page_icon="⚡",
+    page_title="Roeeby | Iluminação & Design de Interiores",
+    page_icon="💡",
     layout="wide"
 )
 
-# --- CSS DE ALTA FIDELIDADE (QUDRIX TECH STYLE) ---
+# --- CSS DE ALTA FIDELIDADE (ESTILO ROEEBY) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Inter:wght@300;400;600&display=swap');
 
-    /* Reset Geral */
+    /* Cores e Fundo */
     .stApp {
         background-color: #ffffff;
-        color: #111111;
+        color: #1a1a1a;
     }
-    
-    [data-testid="stHeader"] { display: none; }
     .block-container { padding: 0 !important; max-width: 100% !important; }
 
-    /* Tipografia de Precisão */
+    /* Tipografia Editorial */
     html, body, [class*="css"] {
         font-family: 'Inter', sans-serif;
-        -webkit-font-smoothing: antialiased;
     }
 
-    /* Header Corporativo Moderno */
-    .nav-qudrix {
+    h1, h2, .serif-roeeby {
+        font-family: 'Crimson Pro', serif;
+        font-weight: 300;
+        letter-spacing: -0.5px;
+    }
+
+    /* Navegação Superior */
+    .nav-roeeby {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 25px 8%;
-        border-bottom: 1px solid #f0f0f0;
+        padding: 20px 5%;
+        border-bottom: 1px solid #f2f2f2;
+        background: white;
         position: sticky;
         top: 0;
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(10px);
         z-index: 1000;
     }
-    
-    .logo-qudrix {
-        font-weight: 800;
-        font-size: 22px;
-        letter-spacing: -1px;
-    }
-
-    /* Hero Section - Impacto e Engenharia */
-    .hero-qudrix {
-        padding: 120px 8% 80px 8%;
-        text-align: left;
-    }
-    
-    .hero-h1 {
-        font-size: clamp(40px, 6vw, 80px);
-        font-weight: 800;
-        line-height: 1;
-        letter-spacing: -0.04em;
-        margin-bottom: 30px;
-        color: #000;
-    }
-
-    /* Grid de Serviços/Cards */
-    .service-grid {
-        padding: 40px 8%;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-    }
-
-    .card-qudrix {
-        background: #f9f9f9;
-        border: 1px solid #eee;
-        padding: 40px;
-        border-radius: 12px;
-        transition: all 0.3s ease;
-    }
-    
-    .card-qudrix:hover {
-        background: #ffffff;
-        border-color: #000;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        transform: translateY(-5px);
-    }
-
-    .card-icon {
-        width: 40px;
-        height: 40px;
-        background: #000;
-        border-radius: 8px;
-        margin-bottom: 25px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-    }
-
-    /* Botão de Ação Direta */
-    div.stButton > button {
-        background-color: #111111;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        padding: 12px 30px;
+    .logo-roeeby {
+        font-family: 'Crimson Pro', serif;
+        font-size: 32px;
         font-weight: 600;
-        font-size: 15px;
-        transition: 0.2s;
+        letter-spacing: 2px;
+    }
+
+    /* Banner Promocional */
+    .promo-banner {
+        background-color: #1a1a1a;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    /* Grid de Produtos */
+    .product-grid {
+        padding: 60px 5%;
+    }
+
+    .product-item {
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+    .product-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: opacity 0.3s ease;
+    }
+
+    .product-item:hover .product-img {
+        opacity: 0.85;
+    }
+
+    .label-new {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: white;
+        color: black;
+        padding: 4px 12px;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        border: 1px solid #eee;
+    }
+
+    .product-info {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .product-name {
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 5px;
+    }
+
+    .product-price {
+        font-weight: 600;
+        color: #555;
+    }
+
+    /* Botão Roeeby */
+    div.stButton > button {
+        background-color: white;
+        color: #1a1a1a;
+        border: 1px solid #1a1a1a;
+        border-radius: 0;
+        padding: 10px 30px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        width: 100%;
+        transition: 0.3s;
     }
     div.stButton > button:hover {
-        background-color: #333;
-        transform: scale(1.02);
+        background-color: #1a1a1a;
+        color: white;
     }
 
-    /* Footer Estruturado */
-    .footer-qudrix {
-        background: #111111;
-        color: #ffffff;
-        padding: 80px 8%;
-        margin-top: 120px;
-    }
-
-    .footer-link {
-        color: #888;
-        text-decoration: none;
-        font-size: 14px;
-        margin-bottom: 10px;
-        display: block;
-    }
+    [data-testid="stHeader"] { display: none; }
 </style>
 """, unsafe_allow_html=True)
 
-# --- 1. NAVEGAÇÃO ---
+# --- 1. BANNER E NAVEGAÇÃO ---
+st.markdown('<div class="promo-banner">Frete Grátis em Pedidos acima de R$ 500 — Compre Agora</div>', unsafe_allow_html=True)
 st.markdown("""
-<div class="nav-qudrix">
-    <div class="logo-qudrix">QUDRIX</div>
-    <div style="display: flex; gap: 35px; font-size: 14px; font-weight: 500;">
-        <span>Serviços</span>
-        <span>Tecnologias</span>
-        <span>Casos</span>
-        <span>Sobre</span>
+<div class="nav-roeeby">
+    <div style="display: flex; gap: 30px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">
+        <span>Iluminação</span>
+        <span>Móveis</span>
+        <span>Decoração</span>
     </div>
-    <div style="font-weight: 600; font-size: 14px; border: 1px solid #111; padding: 8px 20px; border-radius: 6px;">
-        Contato
+    <div class="logo-roeeby">ROEEBY</div>
+    <div style="display: flex; gap: 30px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">
+        <span>Busca</span>
+        <span>Carrinho (0)</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 2. HERO ---
-st.markdown('<div class="hero-qudrix">', unsafe_allow_html=True)
-st.markdown('<p style="color: #666; font-weight: 600; margin-bottom: 20px;">TECNOLOGIA DE PONTA</p>', unsafe_allow_html=True)
-st.markdown('<h1 class="hero-h1">Engenharia de software<br>para líderes de mercado.</h1>', unsafe_allow_html=True)
-st.markdown('<p style="max-width: 600px; font-size: 18px; color: #555; line-height: 1.6; margin-bottom: 40px;">Ajudamos empresas a escalar através de infraestrutura robusta, design centrado no usuário e soluções digitais sob medida.</p>', unsafe_allow_html=True)
-st.button("Vamos conversar")
-st.markdown('</div>', unsafe_allow_html=True)
+# --- 2. HERO SECTION ---
+st.markdown("""
+<div style="width: 100%; height: 70vh; background-image: url('https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=1600'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center;">
+    <div style="background: rgba(255,255,255,0.9); padding: 50px 80px; text-align: center; border: 1px solid #eee;">
+        <h2 class="serif-roeeby" style="font-size: 40px; margin-bottom: 10px;">Coleção de Inverno</h2>
+        <p style="font-size: 14px; letter-spacing: 2px; color: #666; text-transform: uppercase; margin-bottom: 25px;">Ilumine sua casa com sofisticação</p>
+        <div style="border-bottom: 2px solid #1a1a1a; display: inline-block; padding-bottom: 5px; font-weight: 600; font-size: 12px; letter-spacing: 1px;">VER COLEÇÃO</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
-# --- 3. SERVIÇOS (GRID TÉCNICO) ---
-st.markdown('<div class="service-grid">', unsafe_allow_html=True)
+# --- 3. GRID DE PRODUTOS ---
+st.markdown('<div class="product-grid">', unsafe_allow_html=True)
+st.markdown('<h2 class="serif-roeeby" style="font-size: 32px; text-align: center; margin-bottom: 50px;">Produtos em Destaque</h2>', unsafe_allow_html=True)
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 
-def render_card(col, title, desc, icon="</>"):
+def render_roeeby_item(col, title, price, img_url, label=None):
     with col:
+        label_html = f'<div class="label-new">{label}</div>' if label else ""
         st.markdown(f"""
-        <div class="card-qudrix">
-            <div class="card-icon">{icon}</div>
-            <h3 style="font-weight: 700; margin-bottom: 15px;">{title}</h3>
-            <p style="color: #666; font-size: 14px; line-height: 1.6;">{desc}</p>
+        <div class="product-item">
+            {label_html}
+            <img src="{img_url}" class="product-img">
+            <div class="product-info">
+                <div class="product-name">{title}</div>
+                <div class="product-price">R$ {price}</div>
+            </div>
         </div>
         """, unsafe_allow_html=True)
+        st.button(f"Comprar {title.split()[0]}", key=title)
 
-render_card(col1, "Web Development", "Aplicações escaláveis utilizando React, Next.js e infraestruturas em nuvem modernas.")
-render_card(col2, "Mobile First", "Experiências nativas e híbridas com foco total em performance e retenção de usuários.")
-render_card(col3, "Cloud & DevOps", "Arquitetura de sistemas resilientes, automação de CI/CD e segurança de dados.")
+render_roeeby_item(col1, "Luminária de Mesa Aura", "890,00", "https://images.unsplash.com/photo-1534073828943-f801091bb18c?w=600", "New")
+render_roeeby_item(col2, "Pendente Minimalista Black", "1.250,00", "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600")
+render_roeeby_item(col3, "Lustre Nórdico Wood", "2.100,00", "https://images.unsplash.com/photo-1543198126-a8ad8e47fb21?w=600", "Sale")
+render_roeeby_item(col4, "Arandela Industrial Copper", "640,00", "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600")
 
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- 4. SEÇÃO DE PROVA SOCIAL / STATS ---
+# --- 4. SEÇÃO INSTITUCIONAL ---
 st.markdown("""
-<div style="padding: 100px 8%; background-color: #000; color: #fff; display: flex; justify-content: space-between; align-items: center; margin-top: 50px;">
-    <div>
-        <h2 style="font-size: 40px; font-weight: 800; letter-spacing: -2px;">ENTREGA REAL.</h2>
-        <p style="color: #888;">Resultados mensuráveis para negócios globais.</p>
+<div style="background-color: #f9f9f9; padding: 100px 5%; display: flex; align-items: center; gap: 80px;">
+    <div style="flex: 1;">
+        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=800" style="width: 100%;">
     </div>
-    <div style="display: flex; gap: 60px;">
-        <div style="text-align: center;">
-            <div style="font-size: 48px; font-weight: 800;">150+</div>
-            <div style="color: #888; font-size: 12px; text-transform: uppercase;">Projetos</div>
-        </div>
-        <div style="text-align: center;">
-            <div style="font-size: 48px; font-weight: 800;">12</div>
-            <div style="color: #888; font-size: 12px; text-transform: uppercase;">Países</div>
-        </div>
+    <div style="flex: 1;">
+        <h2 class="serif-roeeby" style="font-size: 48px; margin-bottom: 30px;">Qualidade que brilha.</h2>
+        <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 30px;">
+            Cada peça na Roeeby é selecionada para oferecer não apenas luz, mas uma experiência estética única. 
+            Colaboramos com designers internacionais para trazer o que há de mais moderno em tecnologia LED 
+            e materiais sustentáveis.
+        </p>
+        <div style="border-bottom: 2px solid #1a1a1a; display: inline-block; padding-bottom: 5px; font-weight: 600; font-size: 12px; letter-spacing: 1px;">NOSSA HISTÓRIA</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
 # --- 5. FOOTER ---
 st.markdown("""
-<div class="footer-qudrix">
-    <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;">
+<div style="padding: 80px 5% 40px 5%; border-top: 1px solid #eee;">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;">
         <div>
-            <div class="logo-qudrix" style="color: white; margin-bottom: 20px;">QUDRIX</div>
-            <p style="color: #666; font-size: 14px;">Elevando o padrão do desenvolvimento de software através de metodologias ágeis e talento sênior.</p>
+            <h4 class="serif-roeeby" style="font-size: 24px; margin-bottom: 20px;">ROEEBY</h4>
+            <p style="font-size: 13px; color: #888; line-height: 1.6;">Design de iluminação para lares que respiram arte e conforto.</p>
         </div>
         <div>
-            <h4 style="font-size: 14px; margin-bottom: 20px;">EMPRESA</h4>
-            <a class="footer-link">Sobre nós</a>
-            <a class="footer-link">Carreiras</a>
-            <a class="footer-link">Blog</a>
+            <h5 style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Menu</h5>
+            <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Início</p>
+            <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Coleções</p>
+            <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Outlet</p>
         </div>
         <div>
-            <h4 style="font-size: 14px; margin-bottom: 20px;">LEGAL</h4>
-            <a class="footer-link">Privacidade</a>
-            <a class="footer-link">Termos</a>
+            <h5 style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Suporte</h5>
+            <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Envio</p>
+            <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Trocas</p>
+            <p style="font-size: 13px; color: #555; margin-bottom: 10px;">FAQ</p>
         </div>
         <div>
-            <h4 style="font-size: 14px; margin-bottom: 20px;">SOCIAL</h4>
-            <a class="footer-link">LinkedIn</a>
-            <a class="footer-link">GitHub</a>
-            <a class="footer-link">Twitter</a>
+            <h5 style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Novidades</h5>
+            <input type="text" placeholder="Seu e-mail" style="width: 100%; padding: 10px; border: 1px solid #eee; margin-bottom: 10px;">
+            <div style="background: black; color: white; text-align: center; padding: 10px; font-size: 12px; letter-spacing: 1px;">ASSINAR</div>
         </div>
     </div>
-    <div style="margin-top: 80px; padding-top: 20px; border-top: 1px solid #222; font-size: 12px; color: #444;">
-        © 2026 QUDRIX DIGITAL SOLUTIONS. ALL RIGHTS RESERVED.
+    <div style="margin-top: 60px; padding-top: 20px; border-top: 1px solid #f2f2f2; text-align: center; font-size: 10px; color: #aaa; letter-spacing: 1px;">
+        © 2026 ROEEBY INTERIORS. TODOS OS DIREITOS RESERVADOS.
     </div>
 </div>
 """, unsafe_allow_html=True)
