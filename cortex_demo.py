@@ -2,203 +2,210 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Fundable | Plataforma de Equity Crowdfunding",
-    page_icon="💰",
+    page_title="Klabin | Valor que se renova",
+    page_icon="🌲",
     layout="wide"
 )
 
-# --- CSS AVANÇADO (FUNDABLE DESIGN SYSTEM) ---
+# --- CSS PERSONALIZADO (KLABIN IDENTITY) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
 
     html, body, [class*="css"] {
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         color: #333;
     }
 
-    /* Header Superior */
-    .main-header {
-        background-color: #1a2b3c;
-        padding: 15px 8%;
+    /* Header */
+    .header-klabin {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 20px 8%;
+        background-color: white;
+        border-bottom: 2px solid #005a31; /* Verde Klabin */
         margin: -5rem -5rem 0rem -5rem;
     }
-    .nav-links a {
-        color: #99abbd;
-        text-decoration: none;
-        margin-left: 25px;
-        font-size: 13px;
-        font-weight: 600;
-        text-transform: uppercase;
-    }
-    .nav-links a:hover { color: white; }
 
-    /* Hero Section Gigante */
-    .hero-bg {
-        background: linear-gradient(135deg, #1e3a5f 0%, #2c3e50 100%);
-        padding: 100px 10%;
-        text-align: center;
+    /* Hero Section */
+    .hero-section {
+        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80');
+        background-size: cover;
+        background-position: center;
+        height: 550px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         color: white;
-        margin: 0rem -5rem 40px -5rem;
-    }
-    .hero-title { font-size: 52px; font-weight: 800; margin-bottom: 15px; }
-    .hero-subtitle { font-size: 22px; font-weight: 300; opacity: 0.9; margin-bottom: 40px; }
-
-    /* Seção de Logos (Prova Social) */
-    .trust-bar {
         text-align: center;
-        padding: 20px 0;
-        background-color: #f4f7f9;
-        margin-top: -40px;
-        margin-bottom: 50px;
-        border-bottom: 1px solid #e1e8ed;
+        margin: 0 -5rem 50px -5rem;
     }
+    .hero-title { font-size: 56px; font-weight: 800; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
 
-    /* Cards de Startups */
-    .st_card {
-        background: white;
-        border: 1px solid #e1e8ed;
-        border-radius: 6px;
+    /* Seções de Conteúdo */
+    .section-padding { padding: 80px 10%; }
+    .section-title { color: #005a31; font-weight: 800; font-size: 32px; margin-bottom: 30px; border-left: 5px solid #005a31; padding-left: 15px; }
+
+    /* Card de Negócios */
+    .business-card {
+        background: #f8f9fa;
+        border-radius: 10px;
+        overflow: hidden;
+        border-bottom: 4px solid #005a31;
         transition: 0.3s;
-        margin-bottom: 30px;
     }
-    .st_card:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-    .card-img { width: 100%; height: 220px; object-fit: cover; border-radius: 6px 6px 0 0; }
-    .card-body { padding: 25px; }
-    .card-tag { color: #00a8ff; font-weight: 700; font-size: 11px; text-transform: uppercase; }
-    .card-title { font-size: 20px; font-weight: 700; margin: 10px 0; }
-    
-    /* Barra de Progresso */
-    .p-bar-bg { background: #eee; height: 10px; border-radius: 5px; margin: 20px 0 10px 0; }
-    .p-bar-fill { background: #00a8ff; height: 10px; border-radius: 5px; }
+    .business-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    .card-label { padding: 25px; }
 
-    /* Footer Multinível */
-    .footer-container {
-        background-color: #1a2b3c;
-        color: #99abbd;
-        padding: 60px 10% 30px 10%;
+    /* Stats Section */
+    .stats-bg { background-color: #005a31; color: white; padding: 60px 10%; text-align: center; margin: 50px -5rem; }
+    .stat-number { font-size: 48px; font-weight: 800; color: #8ec641; } /* Verde limão Klabin */
+    .stat-desc { font-size: 14px; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Rodapé Industrial */
+    .footer-klabin {
+        background-color: #222;
+        color: #ccc;
+        padding: 80px 10% 40px 10%;
         margin: 50px -5rem -5rem -5rem;
     }
-    .footer-col h4 { color: white; margin-bottom: 20px; font-size: 16px; }
-    .footer-col p { font-size: 13px; line-height: 1.8; }
 </style>
 """, unsafe_allow_html=True)
 
-# --- 1. NAV BAR ---
+# --- 1. BARRA DE NAVEGAÇÃO ---
 st.markdown("""
-<div class="main-header">
-    <div style="font-size: 24px; font-weight: 800; color: white;">FUND<span style="color:#00a8ff">ABLE</span></div>
-    <div class="nav-links">
-        <a href="#">Como Funciona</a>
-        <a href="#">Explorar Startups</a>
-        <a href="#">Sucesso</a>
-        <a href="#">Entrar</a>
+<div class="header-klabin">
+    <div style="font-size: 30px; font-weight: 800; color: #005a31; letter-spacing: -1px;">KLABIN</div>
+    <div style="display: flex; gap: 30px; font-size: 13px; font-weight: 700; color: #555;">
+        <span>A KLABIN</span>
+        <span>NOSSOS NEGÓCIOS</span>
+        <span>SUSTENTABILIDADE</span>
+        <span>INVESTIDORES</span>
+        <span>PRODUTOS</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 2. HERO SECTION ---
+# --- 2. HERO BANNER ---
 st.markdown("""
-<div class="hero-bg">
-    <div class="hero-title">Onde as Startups Arrecadam Capital</div>
-    <div class="hero-subtitle">Junte-se a maior rede de financiamento do mundo para lançar e crescer seu negócio.</div>
+<div class="hero-section">
+    <div class="hero-title">O FUTURO É RENOVÁVEL</div>
+    <p style="font-size: 20px; font-weight: 400; max-width: 800px; margin-top: 20px;">
+        Líder na produção de papéis e cartões para embalagens, embalagens de papelão ondulado e sacos industriais.
+    </p>
 </div>
 """, unsafe_allow_html=True)
 
-# Botões de Chamada (Call to Action)
-c_cta1, c_cta2 = st.columns(2)
-with c_cta1:
-    st.markdown('<div style="text-align:right">', unsafe_allow_html=True)
-    if st.button("QUERO CAPTAR PARA MINHA EMPRESA", key="main_fund"):
-        st.info("Iniciando processo de captação...")
-    st.markdown('</div>', unsafe_allow_html=True)
+# --- 3. QUEM SOMOS ---
+st.markdown('<div class="section-padding">', unsafe_allow_html=True)
+c_text, c_img = st.columns([1, 1], gap="large")
 
-with c_cta2:
-    st.markdown('<style>div.stButton > button { background-color: #00a8ff !important; color: white !important; border: none; padding: 15px 30px; font-weight: 700; }</style>', unsafe_allow_html=True)
-    if st.button("QUERO INVESTIR EM STARTUPS", key="main_invest"):
-        st.balloons()
+with c_text:
+    st.markdown('<div class="section-title">Sobre a Klabin</div>', unsafe_allow_html=True)
+    st.write("""
+    Com 125 anos de história, somos a maior produtora e exportadora de papéis para embalagens e soluções sustentáveis do Brasil. 
+    Nossa atuação é baseada no desenvolvimento sustentável, com florestas 100% plantadas e certificadas.
+    """)
+    st.button("CONHEÇA NOSSA HISTÓRIA")
 
-# --- 3. PROVA SOCIAL ---
-st.markdown("""
-<div class="trust-bar">
-    <p style="color:#7f8c8d; font-size:12px; font-weight:700; margin-bottom:15px;">VISTO EM</p>
-    <div style="display:flex; justify-content:center; gap:50px; opacity:0.5; font-weight:800; font-size:20px; color:#2c3e50;">
-        <span>Forbes</span> <span>Wired</span> <span>TechCrunch</span> <span>The Wall Street Journal</span>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+with c_img:
+    st.image("https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80", caption="Gestão Florestal Responsável")
+st.markdown('</div>', unsafe_allow_html=True)
 
-# --- 4. SEÇÃO "DUAS ESCOLHAS" ---
-st.write("")
-col_a, col_b = st.columns(2, gap="large")
+# --- 4. NÚMEROS DE IMPACTO (STATS) ---
+st.markdown('<div class="stats-bg">', unsafe_allow_html=True)
+s1, s2, s3, s4 = st.columns(4)
+with s1:
+    st.markdown('<div class="stat-number">22</div><div class="stat-desc">Fábricas no Brasil e Argentina</div>', unsafe_allow_html=True)
+with s2:
+    st.markdown('<div class="stat-number">125</div><div class="stat-desc">Anos de Inovação</div>', unsafe_allow_html=True)
+with s3:
+    st.markdown('<div class="stat-number">719k</div><div class="stat-desc">Hectares de Florestas</div>', unsafe_allow_html=True)
+with s4:
+    st.markdown('<div class="stat-number">25k</div><div class="stat-desc">Colaboradores</div>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
 
-with col_a:
-    st.image("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=600&q=80", caption="Para Empreendedores")
-    st.subheader("Levante Capital")
-    st.write("Criamos perfis de captação que atraem investidores anjos e fundos de VC. Ferramentas completas para gerenciar sua rodada de investimentos.")
-    st.button("Saiba mais sobre Captação", key="info_fund")
+# --- 5. NOSSOS NEGÓCIOS (GRID DE CARDS) ---
+st.markdown('<div class="section-padding" style="padding-top: 20px;">', unsafe_allow_html=True)
+st.markdown('<div class="section-title" style="text-align: center; border-left: none;">Nossas Frentes de Atuação</div>', unsafe_allow_html=True)
 
-with col_b:
-    st.image("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80", caption="Para Investidores")
-    st.subheader("Invista cedo")
-    st.write("Acesse oportunidades exclusivas em startups pré-filtradas. Invista em empresas com alto potencial de crescimento antes de chegarem ao mercado público.")
-    st.button("Ver Oportunidades de Investimento", key="info_invest")
-
-st.write("---")
-
-# --- 5. GRID DE STARTUPS (BROWSE) ---
-st.header("Startups em Captação")
-
-def draw_card(col, img, tag, title, desc, progress, goal):
+def business_item(col, img, title, desc):
     with col:
         st.markdown(f"""
-        <div class="st_card">
-            <img src="{img}" class="card-img">
-            <div class="card-body">
-                <div class="card-tag">{tag}</div>
-                <div class="card-title">{title}</div>
-                <p style="font-size:14px; color:#555;">{desc}</p>
-                <div class="p-bar-bg"><div class="p-bar-fill" style="width:{progress}%"></div></div>
-                <div style="display:flex; justify-content:space-between; font-size:13px;">
-                    <b>{progress}% Arrecadado</b>
-                    <span style="color:#888">Meta: {goal}</span>
-                </div>
+        <div class="business-card">
+            <img src="{img}" style="width:100%; height:200px; object-fit:cover;">
+            <div class="card-label">
+                <h4 style="color:#005a31; margin-bottom:10px;">{title}</h4>
+                <p style="font-size:14px; color:#666;">{desc}</p>
             </div>
         </div>
         """, unsafe_allow_html=True)
-        st.button(f"Analisar {title}", use_container_width=True)
+        st.button(f"Saber mais sobre {title}", use_container_width=True)
 
-c1, c2, c3 = st.columns(3)
-draw_card(c1, "https://images.unsplash.com/photo-1551288049-bbbda536339a?w=400", "FINTECH", "NeoBank Pro", "A conta digital focada 100% em pequenas empresas e MEI.", 78, "R$ 5M")
-draw_card(c2, "https://images.unsplash.com/photo-1532187878418-9f110f9902de?w=400", "BIOTECH", "GenomeX", "Sequenciamento genético acessível para medicina preventiva.", 45, "R$ 12M")
-draw_card(c3, "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400", "SAAS", "CloudFlow", "Automação de fluxo de trabalho para agências de marketing.", 92, "R$ 1.5M")
+cb1, cb2, cb3 = st.columns(3)
+business_item(cb1, "https://images.unsplash.com/photo-1603484477859-abe6a73f9366?w=500", "Celulose", "Fibra curta, fibra longa e celulose fluff para diversas aplicações.")
+business_item(cb2, "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500", "Embalagens", "Soluções inteligentes em papelão ondulado e sacos industriais.")
+business_item(cb3, "https://images.unsplash.com/photo-1532153322601-045a1d39eb14?w=500", "Papéis", "Papel-cartão e Kraftliner de alta performance para o mercado.")
+st.markdown('</div>', unsafe_allow_html=True)
 
-# --- 6. FOOTER COMPLETO ---
+# --- 6. SUSTENTABILIDADE (FULL WIDTH INFO) ---
+st.write("---")
+with st.container():
+    st.markdown('<div class="section-padding">', unsafe_allow_html=True)
+    sc1, sc2 = st.columns([2, 3])
+    with sc1:
+        st.markdown('<div class="section-title">KODS - Objetivos Klabin para o Desenvolvimento Sustentável</div>', unsafe_allow_html=True)
+        st.write("Nossa agenda de sustentabilidade está alinhada aos ODS da ONU, com metas claras até 2030 para biodiversidade, clima e impacto social.")
+    with sc2:
+        # Simulação de ícones de sustentabilidade
+        st.info("🌳 Conservação da Biodiversidade")
+        st.success("♻️ Economia Circular e Resíduo Zero")
+        st.warning("💧 Gestão Eficiente de Recursos Hídricos")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# --- 7. INVESTIDORES E GOVERNANÇA ---
+st.write("---")
+st.markdown('<div style="background-color:#f4f7f9; padding: 60px 10%;">', unsafe_allow_html=True)
+st.subheader("Relações com Investidores")
+col_ri1, col_ri2, col_ri3 = st.columns(3)
+
+with col_ri1:
+    st.metric(label="KLBN11 (Units)", value="R$ 22,45", delta="+1.20%")
+with col_ri2:
+    st.write("**Central de Resultados**")
+    st.caption("Acesse os relatórios do 4T25 e demonstrações financeiras.")
+    st.button("Acessar Central")
+with col_ri3:
+    st.write("**Governança Corporativa**")
+    st.caption("Transparência e ética em todos os níveis da companhia.")
+    st.button("Ver Diretoria")
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- 8. FOOTER COMPLETO ---
 st.markdown("""
-<div class="footer-container">
-    <div style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:40px;">
-        <div class="footer-col">
-            <div style="font-size: 20px; font-weight: 800; color: white; margin-bottom:20px;">FUNDABLE</div>
-            <p>A Fundable é a plataforma líder para startups levantarem capital, conectando fundadores a uma rede global de investidores.</p>
+<div class="footer-klabin">
+    <div style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:50px;">
+        <div>
+            <div style="font-size:24px; font-weight:800; color:white; margin-bottom:20px;">KLABIN</div>
+            <p style="font-size:13px;">Líder no mercado de papéis e embalagens, focada na inovação e na sustentabilidade do ciclo da floresta ao consumidor final.</p>
         </div>
-        <div class="footer-col">
-            <h4>PLATAFORMA</h4>
-            <p>Como Funciona<br>Explorar<br>Educação<br>Equipe</p>
+        <div>
+            <h4 style="color:white; margin-bottom:15px;">NOSSOS SITES</h4>
+            <p style="font-size:12px; line-height:2;">Relações com Investidores<br>Klabin ForYou<br>Blog Klabin</p>
         </div>
-        <div class="footer-col">
-            <h4>RECURSOS</h4>
-            <p>Blog<br>Ajuda/FAQ<br>Termos de Uso<br>Privacidade</p>
+        <div>
+            <h4 style="color:white; margin-bottom:15px;">CONTATO</h4>
+            <p style="font-size:12px; line-height:2;">Fale Conosco<br>Imprensa<br>Trabalhe Conosco</p>
         </div>
-        <div class="footer-col">
-            <h4>CONTATO</h4>
-            <p>Suporte<br>Imprensa<br>Parcerias</p>
+        <div>
+            <h4 style="color:white; margin-bottom:15px;">REDES SOCIAIS</h4>
+            <p style="font-size:12px; line-height:2;">LinkedIn<br>Instagram<br>YouTube</p>
         </div>
     </div>
-    <div style="text-align:center; border-top:1px solid #2c3e50; margin-top:40px; padding-top:20px; font-size:12px;">
-        © 2024 Fundable LLC - Uma empresa Startups.com
+    <div style="text-align:center; border-top:1px solid #444; margin-top:50px; padding-top:20px; font-size:11px;">
+        © 2024 Klabin S.A. | Todos os direitos reservados.
     </div>
 </div>
 """, unsafe_allow_html=True)
