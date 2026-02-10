@@ -166,7 +166,7 @@ st.markdown("</div></div>", unsafe_allow_html=True)
 
 # --- 3 & 4. SHOWCASE DE TEMPLATES (GRID ASSIMÉTRICO) ---
 st.markdown('<div style="padding: 120px 8%;">', unsafe_allow_html=True)
-st.markdown('<h2>ESCOLHA SUA <span class="serif-heavy">Arma.</span></h2><br><br>', unsafe_allow_html=True)
+st.markdown('<h2>ENCONTRE O DESIGN QUE MELHOR DEFINE <span class="serif-heavy">seu negócio.</span></h2><br><br>', unsafe_allow_html=True)
 
 col_t1, col_t2 = st.columns([2, 1])
 
