@@ -212,24 +212,24 @@ col_u1, col_u2, col_u3 = st.columns(3)
 with col_u1:
     st.markdown("""
     <div class="target-card">
-        <h3>SELF MADE</h3>
-        <p>Você quer o melhor design do mundo no seu site, gastando 90% menos que uma agência comum.</p>
+        <h3>Proprietários de negócios</h3>
+        <p>Que busca colocar sua empresa na internet com o menor custo do mercado, garantindo sua presença digital em minutos.</p>
     </div>
     """, unsafe_allow_html=True)
 
 with col_u2:
     st.markdown("""
     <div class="target-card" style="background: var(--accent); color: white; box-shadow: 15px 15px 0px white;">
-        <h3>VENDEDOR</h3>
-        <p>Trabalhe vendendo esses templates para terceiros por R$ 2.000, R$ 3.000 ou mais por projeto.</p>
+        <h3>Infoprodutores e prestadores de serviço</h3>
+        <p>Temos estruturas otimizadas para converter visitantes em compradores reais.</p>
     </div>
     """, unsafe_allow_html=True)
 
 with col_u3:
     st.markdown("""
     <div class="target-card">
-        <h3>INFOPRODUTOR</h3>
-        <p>Aumente drasticamente a conversão do seu checkout e página de vendas com layout de elite.</p>
+        <h3>Renda extra/ freelancer</h3>
+        <p>Venda nossos sites para seus clientes sem precisar programar do zero e fature com isso.</p>
     </div>
     """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
