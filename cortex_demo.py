@@ -241,7 +241,7 @@ st.markdown('<h2>PROCESSO <span class="serif-heavy">sem falhas.</span></h2><br><
 steps = [
     ("SELECIONE O MODELO IDEAL", "Escolha entre mais de 30 modelos validados o que mais combina com a identidade do seu negócio."),
     ("CUSTOMIZAÇÃO RÁPIDA", "Utilize nosso passo a passo detalhado para implementar o código e personalizar cada detalhe sem complicações."),
-    ("SETUP TÉCNICO GRATUITO", "Aprenda a hospedar seu site, aplicar técnicas de SEO e configurar seu domínio personalizado sem custo adicional e de forma rápida."),
+    ("SETUP TÉCNICO GRATUITO", "Te ensinamos onde hospedar seu site em segundos, como aplicar técnicas de SEO e configurar seu domínio personalizado sem custo adicional e de forma rápida."),
     ("LANÇAMENTO IMEDIATO", "Site no ar, otimizado e pronto para escalar seu negócio com uma estrutura de alta performance.")
 ]
 
