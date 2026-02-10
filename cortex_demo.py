@@ -1,604 +1,570 @@
+# -*- coding: utf-8 -*-
+"""
+Landing Page Premium em Streamlit - Nexus AI
+
+Autor: Manus AI
+Data: 10 de Fevereiro de 2026
+
+Uma landing page profissional e interativa para maximizar conversões.
+Inclui design moderno, animações CSS, componentes interativos e estrutura
+otimizada para vendas.
+"""
+
 import streamlit as st
 
+# --- CONFIGURAÇÕES DA PÁGINA ---
 st.set_page_config(
-    page_title="Sofisticado & Vivo - Premium Design",
+    page_title="Nexus AI - Transforme Seus Dados em Lucro",
     page_icon="✨",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-custom_css = """
+# --- INJETAR CSS CUSTOMIZADO ---
+st.markdown('''
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
-    
+    /* === RESET E ESTILOS GERAIS === */
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
     
-    html, body, [data-testid="stAppViewContainer"] {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-        font-family: 'Montserrat', sans-serif;
-        color: #ffffff;
-        overflow-x: hidden;
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+        color: #e0e0e0;
+        line-height: 1.6;
     }
     
-    [data-testid="stDecoration"] { display: none; }
-    .main { padding: 0 !important; background: transparent; }
-    
-    @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-    
-    @keyframes heroGlow {
-        0%, 100% { text-shadow: 0 0 30px rgba(59, 130, 246, 0.3), 0 0 60px rgba(139, 92, 246, 0.2); }
-        50% { text-shadow: 0 0 50px rgba(59, 130, 246, 0.6), 0 0 100px rgba(139, 92, 246, 0.4); }
-    }
-    
-    @keyframes floatMagic {
-        0%, 100% { transform: translateY(0px) rotateZ(-2deg); }
-        50% { transform: translateY(-40px) rotateZ(2deg); }
-    }
-    
-    @keyframes pulseRich {
-        0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), inset 0 0 20px rgba(59, 130, 246, 0.1); }
-        50% { box-shadow: 0 0 60px rgba(59, 130, 246, 0.6), inset 0 0 40px rgba(59, 130, 246, 0.2); }
-    }
-    
-    @keyframes slideInStagger {
-        0% { transform: translateY(60px) rotateX(20deg); opacity: 0; }
-        100% { transform: translateY(0) rotateX(0deg); opacity: 1; }
-    }
-    
-    @keyframes borderFlow {
-        0% { border-color: rgba(59, 130, 246, 0.2); }
-        50% { border-color: rgba(139, 92, 246, 0.8); }
-        100% { border-color: rgba(59, 130, 246, 0.2); }
-    }
-    
-    @keyframes shimmerFlow {
-        0% { background-position: -1000px 0; }
-        100% { background-position: 1000px 0; }
-    }
-    
-    /* NAVBAR */
-    .navbar {
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
-        backdrop-filter: blur(40px);
-        padding: 25px 100px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 2px solid rgba(59, 130, 246, 0.2);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 8px 40px rgba(59, 130, 246, 0.15);
-    }
-    
-    .navbar-logo {
-        font-size: 28px;
-        font-weight: 900;
-        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-family: 'Playfair Display', serif;
-        letter-spacing: 3px;
-    }
-    
-    .navbar-nav {
-        display: flex;
-        gap: 80px;
-    }
-    
-    .nav-link {
-        color: #a1b4d6;
-        text-decoration: none;
-        font-size: 12px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        transition: all 0.3s ease;
-        position: relative;
-    }
-    
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: -8px;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-        transition: width 0.3s ease;
-    }
-    
-    .nav-link:hover::after { width: 100%; }
-    .nav-link:hover { color: #3b82f6; }
-    
-    /* HERO SECTION */
-    .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 100px 100px;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .hero::before {
-        content: '';
-        position: absolute;
-        width: 1200px;
-        height: 1200px;
-        background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-        border-radius: 50%;
-        top: -400px;
-        right: -400px;
-        animation: floatMagic 8s ease-in-out infinite;
-    }
-    
-    .hero::after {
-        content: '';
-        position: absolute;
-        width: 1000px;
-        height: 1000px;
-        background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
-        border-radius: 50%;
-        bottom: -300px;
-        left: -300px;
-        animation: floatMagic 10s ease-in-out infinite reverse;
-    }
-    
-    .hero-content {
-        max-width: 700px;
-        position: relative;
-        z-index: 2;
-    }
-    
-    .hero-label {
-        font-size: 13px;
-        color: #3b82f6;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-bottom: 25px;
-        font-weight: 800;
-    }
-    
-    .hero-title {
-        font-size: 90px;
-        font-weight: 900;
-        line-height: 1;
-        margin-bottom: 30px;
-        font-family: 'Playfair Display', serif;
-        letter-spacing: -2px;
-        animation: heroGlow 3s ease-in-out infinite;
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6, #3b82f6);
-        background-size: 200% 200%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    
-    .hero-desc {
-        font-size: 18px;
-        color: #a1b4d6;
-        margin-bottom: 60px;
-        line-height: 1.9;
-        font-weight: 400;
-    }
-    
-    .hero-cta {
-        display: flex;
-        gap: 25px;
-        flex-wrap: wrap;
-    }
-    
-    .btn-primary {
-        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-        color: #ffffff;
-        padding: 18px 55px;
-        border: none;
-        border-radius: 8px;
-        font-weight: 800;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 0 40px rgba(59, 130, 246, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
-    }
-    
-    .btn-primary:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 0 80px rgba(59, 130, 246, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.2);
-    }
-    
-    .btn-secondary {
+    .main {
         background: transparent;
-        color: #3b82f6;
-        padding: 18px 55px;
-        border: 2px solid #3b82f6;
-        border-radius: 8px;
-        font-weight: 800;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
     }
     
-    .btn-secondary:hover {
-        background: rgba(59, 130, 246, 0.1);
-        box-shadow: 0 0 50px rgba(59, 130, 246, 0.4);
-    }
-    
-    .hero-visual {
-        position: relative;
-        z-index: 2;
-        width: 500px;
-        height: 600px;
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.08));
-        border: 2px solid rgba(59, 130, 246, 0.3);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 120px;
-        animation: floatMagic 6s ease-in-out infinite;
-        box-shadow: 0 0 60px rgba(59, 130, 246, 0.2), inset 0 0 40px rgba(59, 130, 246, 0.1);
-    }
-    
-    /* RICH ELEMENTS SECTION */
-    .rich-section {
-        padding: 150px 100px;
-        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    }
-    
-    .section-title {
-        font-size: 72px;
-        font-weight: 900;
-        text-align: center;
-        margin-bottom: 120px;
-        font-family: 'Playfair Display', serif;
-        letter-spacing: -2px;
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    
-    .rich-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 60px;
-        max-width: 1600px;
-        margin: 0 auto;
-    }
-    
-    .rich-card {
-        padding: 70px 50px;
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.05));
-        border: 2px solid rgba(59, 130, 246, 0.2);
-        border-radius: 12px;
-        transition: all 0.4s ease;
-        animation: slideInStagger 0.8s ease-out;
-        animation-fill-mode: both;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .rich-card:nth-child(1) { animation-delay: 0.1s; }
-    .rich-card:nth-child(2) { animation-delay: 0.2s; }
-    .rich-card:nth-child(3) { animation-delay: 0.3s; }
-    
-    .rich-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
-        animation: shimmerFlow 3s ease-in-out infinite;
-    }
-    
-    .rich-card:hover {
-        transform: translateY(-20px);
-        border-color: #3b82f6;
-        box-shadow: 0 0 80px rgba(59, 130, 246, 0.4), inset 0 0 40px rgba(59, 130, 246, 0.1);
-    }
-    
-    .rich-icon {
-        font-size: 64px;
-        margin-bottom: 30px;
-        animation: floatMagic 4s ease-in-out infinite;
-    }
-    
-    .rich-title {
-        font-size: 28px;
-        font-weight: 800;
-        margin-bottom: 20px;
-        color: #ffffff;
-        font-family: 'Playfair Display', serif;
-    }
-    
-    .rich-desc {
-        font-size: 15px;
-        color: #a1b4d6;
-        line-height: 1.9;
-    }
-    
-    /* SHOWCASE SECTION */
-    .showcase-section {
-        padding: 150px 100px;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    }
-    
-    .showcase-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 80px;
-        max-width: 1600px;
-        margin: 0 auto;
-    }
-    
-    .showcase-item {
-        padding: 80px 60px;
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.06));
-        border: 2px solid rgba(59, 130, 246, 0.25);
-        border-radius: 12px;
-        transition: all 0.4s ease;
-        animation: slideInStagger 0.8s ease-out;
-        animation-fill-mode: both;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .showcase-item:nth-child(1) { animation-delay: 0.1s; }
-    .showcase-item:nth-child(2) { animation-delay: 0.2s; }
-    .showcase-item:nth-child(3) { animation-delay: 0.3s; }
-    .showcase-item:nth-child(4) { animation-delay: 0.4s; }
-    
-    .showcase-item::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
-        border-radius: 50%;
-    }
-    
-    .showcase-item:hover {
-        transform: translateY(-15px);
-        border-color: #8b5cf6;
-        box-shadow: 0 0 100px rgba(139, 92, 246, 0.3), inset 0 0 50px rgba(59, 130, 246, 0.1);
-    }
-    
-    .showcase-number {
-        font-size: 72px;
-        font-weight: 900;
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 20px;
-        font-family: 'Playfair Display', serif;
-    }
-    
-    .showcase-title {
-        font-size: 32px;
-        font-weight: 800;
-        color: #ffffff;
-        margin-bottom: 15px;
-        font-family: 'Playfair Display', serif;
-    }
-    
-    .showcase-desc {
-        font-size: 16px;
-        color: #a1b4d6;
-        line-height: 1.9;
-    }
-    
-    /* CTA FINAL */
-    .cta-final {
-        padding: 150px 100px;
-        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    /* === SEÇÃO HERO === */
+    .hero-section {
+        background: linear-gradient(135deg, rgba(15, 15, 30, 0.9) 0%, rgba(26, 26, 46, 0.9) 50%, rgba(22, 33, 62, 0.9) 100%);
+        padding: 6rem 2rem;
         text-align: center;
         position: relative;
         overflow: hidden;
+        border-bottom: 2px solid rgba(0, 188, 212, 0.3);
     }
     
-    .cta-final::before {
+    .hero-section::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(15, 23, 42, 0.1);
+        background: radial-gradient(circle at 20% 50%, rgba(0, 188, 212, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(255, 64, 129, 0.1) 0%, transparent 50%);
+        pointer-events: none;
     }
     
-    .cta-final-content {
+    .hero-text {
         position: relative;
-        z-index: 2;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
     }
     
-    .cta-final-title {
-        font-size: 64px;
-        font-weight: 900;
-        color: #ffffff;
-        margin-bottom: 30px;
-        font-family: 'Playfair Display', serif;
-        letter-spacing: -1px;
-    }
-    
-    .cta-final-desc {
-        font-size: 18px;
-        color: rgba(255, 255, 255, 0.95);
-        max-width: 700px;
-        margin: 0 auto 60px;
-    }
-    
-    .cta-final-btn {
-        background: #0f172a;
-        color: #3b82f6;
-        padding: 18px 65px;
-        border: 2px solid #0f172a;
-        border-radius: 8px;
+    .hero-title {
+        font-size: 4rem;
         font-weight: 800;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, #00bcd4 0%, #ff4081 50%, #00bcd4 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradientShift 3s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+        0%, 100% { filter: hue-rotate(0deg); }
+        50% { filter: hue-rotate(10deg); }
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+        color: #b0b0b0;
+        margin-bottom: 2.5rem;
+        line-height: 1.8;
+    }
+    
+    .hero-button {
+        display: inline-block;
+        background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+        color: white;
+        padding: 1.2rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+        border: 2px solid transparent;
+    }
+    
+    .hero-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(0, 188, 212, 0.5);
+        background: linear-gradient(135deg, #0097a7 0%, #00838f 100%);
+    }
+    
+    .hero-subtext {
+        margin-top: 1.5rem;
+        color: #888;
+        font-size: 0.95rem;
+    }
+    
+    /* === SEÇÕES GERAIS === */
+    .section {
+        padding: 5rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .section-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 3rem;
+        color: #00bcd4;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, #00bcd4, #ff4081);
+        border-radius: 2px;
+    }
+    
+    /* === CARDS DE FEATURES === */
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .feature-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 188, 212, 0.05) 100%);
+        border: 1px solid rgba(0, 188, 212, 0.2);
+        border-radius: 15px;
+        padding: 2.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(0, 188, 212, 0.5);
+        box-shadow: 0 20px 40px rgba(0, 188, 212, 0.2);
+        background: linear-gradient(135deg, rgba(0, 188, 212, 0.1) 0%, rgba(255, 64, 129, 0.05) 100%);
+    }
+    
+    .feature-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    .feature-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #00bcd4;
+    }
+    
+    .feature-card p {
+        color: #a0a0a0;
+        line-height: 1.7;
+    }
+    
+    /* === SEÇÃO DE LOGOS === */
+    .logos-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        margin: 3rem 0;
+        opacity: 0.7;
+    }
+    
+    .logo-item {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #666;
+        padding: 1rem 2rem;
+        border: 1px solid rgba(0, 188, 212, 0.2);
+        border-radius: 8px;
+        background: rgba(0, 188, 212, 0.05);
+    }
+    
+    /* === PRICING === */
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .pricing-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 188, 212, 0.05) 100%);
+        border: 2px solid rgba(0, 188, 212, 0.2);
+        border-radius: 15px;
+        padding: 2.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .pricing-card.featured {
+        border-color: rgba(0, 188, 212, 0.8);
+        transform: scale(1.05);
+        box-shadow: 0 20px 50px rgba(0, 188, 212, 0.3);
+    }
+    
+    .pricing-card:hover {
+        border-color: rgba(0, 188, 212, 0.6);
+        box-shadow: 0 15px 40px rgba(0, 188, 212, 0.2);
+    }
+    
+    .pricing-card h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: #00bcd4;
+    }
+    
+    .price {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #00bcd4;
+        margin-bottom: 1.5rem;
+    }
+    
+    .price-period {
+        color: #888;
+        font-size: 0.9rem;
+    }
+    
+    .pricing-features {
+        list-style: none;
+        margin: 2rem 0;
+        text-align: left;
+    }
+    
+    .pricing-features li {
+        padding: 0.8rem 0;
+        color: #a0a0a0;
+        border-bottom: 1px solid rgba(0, 188, 212, 0.1);
+    }
+    
+    .pricing-features li:last-child {
+        border-bottom: none;
+    }
+    
+    .pricing-button {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 1.5rem;
+        background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 700;
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 8px 40px rgba(15, 23, 42, 0.4);
     }
     
-    .cta-final-btn:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 50px rgba(15, 23, 42, 0.6);
+    .pricing-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 188, 212, 0.3);
     }
     
-    /* FOOTER */
-    .footer {
-        background: #0f172a;
-        color: #a1b4d6;
-        padding: 100px 100px;
+    /* === TESTIMONIALS === */
+    .testimonial-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 188, 212, 0.05) 100%);
+        border-left: 5px solid #00bcd4;
+        border-radius: 10px;
+        padding: 2rem;
+        margin: 2rem 0;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .testimonial-text {
+        font-size: 1.1rem;
+        color: #c0c0c0;
+        margin-bottom: 1rem;
+        font-style: italic;
+    }
+    
+    .testimonial-author {
+        color: #00bcd4;
+        font-weight: 700;
+    }
+    
+    /* === CTA SECTION === */
+    .cta-section {
+        background: linear-gradient(135deg, rgba(0, 188, 212, 0.1) 0%, rgba(255, 64, 129, 0.1) 100%);
+        border: 2px solid rgba(0, 188, 212, 0.3);
+        border-radius: 20px;
+        padding: 4rem 2rem;
         text-align: center;
-        border-top: 2px solid rgba(59, 130, 246, 0.2);
+        margin: 4rem 0;
     }
     
-    .footer-text {
-        font-size: 14px;
-        margin-bottom: 15px;
+    .cta-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #00bcd4;
     }
     
-    .footer-copyright {
-        border-top: 1px solid rgba(59, 130, 246, 0.2);
-        padding-top: 40px;
-        margin-top: 40px;
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
+    .cta-subtitle {
+        font-size: 1.2rem;
+        color: #a0a0a0;
+        margin-bottom: 2rem;
     }
     
+    /* === FOOTER === */
+    .footer {
+        text-align: center;
+        padding: 3rem 2rem;
+        border-top: 1px solid rgba(0, 188, 212, 0.2);
+        color: #666;
+        margin-top: 4rem;
+    }
+    
+    /* === RESPONSIVIDADE === */
     @media (max-width: 768px) {
-        .navbar { padding: 15px 20px; flex-direction: column; gap: 15px; }
-        .hero { flex-direction: column; padding: 50px 20px; min-height: auto; }
-        .hero-title { font-size: 52px; }
-        .hero-visual { width: 100%; margin-top: 40px; }
-        .rich-grid { grid-template-columns: 1fr; gap: 30px; }
-        .showcase-grid { grid-template-columns: 1fr; gap: 40px; }
-        .cta-final { padding: 100px 20px; }
-        .cta-final-title { font-size: 42px; }
-        .section-title { font-size: 42px; }
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .pricing-card.featured {
+            transform: scale(1);
+        }
     }
 </style>
-"""
+''', unsafe_allow_html=True)
 
-st.markdown(custom_css, unsafe_allow_html=True)
-
-# NAVBAR
-navbar_html = '''<div class="navbar">
-    <div class="navbar-logo">VIVO</div>
-    <div class="navbar-nav">
-        <a href="#" class="nav-link">Recursos</a>
-        <a href="#" class="nav-link">Sobre</a>
-        <a href="#" class="nav-link">Showcase</a>
-        <a href="#" class="nav-link">Contato</a>
+# --- SEÇÃO HERO ---
+st.markdown('''
+<div class="hero-section">
+    <div class="hero-text">
+        <h1 class="hero-title">Nexus AI: Transforme Seus Dados em Lucro</h1>
+        <p class="hero-subtitle">
+            Plataforma de IA que automatiza análises, prevê tendências e gera insights acionáveis. 
+            Aumente seu faturamento em até 300% com decisões baseadas em dados inteligentes.
+        </p>
+        <a href="#cta" class="hero-button">Comece seu Teste Grátis</a>
+        <p class="hero-subtext">✓ Sem cartão de crédito | ✓ Acesso completo por 14 dias | ✓ Cancele quando quiser</p>
     </div>
-</div>'''
-st.markdown(navbar_html, unsafe_allow_html=True)
+</div>
+''', unsafe_allow_html=True)
 
-# HERO
-hero_html = '''<div class="hero">
-    <div class="hero-content">
-        <div class="hero-label">Bem-vindo</div>
-        <div class="hero-title">Sofisticação com Vida</div>
-        <div class="hero-desc">Design que pulsa de criatividade. Elementos ricos que inspiram, cores vibrantes que envolvem, animações que impressionam.</div>
-        <div class="hero-cta">
-            <button class="btn-primary">Começar Jornada</button>
-            <button class="btn-secondary">Explorar</button>
-        </div>
+# --- SEÇÃO FEATURES ---
+st.markdown('<div class="section">', unsafe_allow_html=True)
+st.markdown('<h2 class="section-title">Funcionalidades que Vendem</h2>', unsafe_allow_html=True)
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.markdown('''
+    <div class="feature-card">
+        <div class="feature-icon">🔮</div>
+        <h3>Análise Preditiva</h3>
+        <p>Modelos de machine learning que antecipam tendências do mercado com 95% de precisão. Saiba o que vai acontecer antes de seus concorrentes.</p>
     </div>
-    <div class="hero-visual">✨</div>
-</div>'''
-st.markdown(hero_html, unsafe_allow_html=True)
+    ''', unsafe_allow_html=True)
 
-# RICH ELEMENTS
-rich_html = '''<div class="rich-section">
-    <div class="section-title">Elementos Ricos</div>
-    <div class="rich-grid">
-        <div class="rich-card">
-            <div class="rich-icon">🎨</div>
-            <div class="rich-title">Design Vibrante</div>
-            <div class="rich-desc">Cores que vivem, elementos que respiram. Cada pixel foi pensado para criar uma experiência extraordinária.</div>
-        </div>
-        <div class="rich-card">
-            <div class="rich-icon">✨</div>
-            <div class="rich-title">Animações Absurdas</div>
-            <div class="rich-desc">Movimento que hipnotiza. Transições suaves que guiam o olhar e criam conexão emocional.</div>
-        </div>
-        <div class="rich-card">
-            <div class="rich-icon">🚀</div>
-            <div class="rich-title">Performance Premium</div>
-            <div class="rich-desc">Velocidade extrema sem sacrificar beleza. Otimizado para impressionar em qualquer dispositivo.</div>
-        </div>
+with col2:
+    st.markdown('''
+    <div class="feature-card">
+        <div class="feature-icon">⚙️</div>
+        <h3>Automação Inteligente</h3>
+        <p>Automatize 80% das suas tarefas repetitivas. Libere seu time para focar em estratégia enquanto a IA trabalha 24/7.</p>
     </div>
-</div>'''
-st.markdown(rich_html, unsafe_allow_html=True)
+    ''', unsafe_allow_html=True)
 
-# SHOWCASE
-showcase_html = '''<div class="showcase-section">
-    <div class="section-title">Resultados Extraordinários</div>
-    <div class="showcase-grid">
-        <div class="showcase-item">
-            <div class="showcase-number">500+</div>
-            <div class="showcase-title">Projetos Criados</div>
-            <div class="showcase-desc">Cada um uma obra-prima de design e funcionalidade que superou expectativas.</div>
-        </div>
-        <div class="showcase-item">
-            <div class="showcase-number">98%</div>
-            <div class="showcase-title">Taxa de Satisfação</div>
-            <div class="showcase-desc">Clientes que voltam porque sabem que vão receber excelência em cada projeto.</div>
-        </div>
-        <div class="showcase-item">
-            <div class="showcase-number">20+</div>
-            <div class="showcase-title">Anos de Experiência</div>
-            <div class="showcase-desc">Duas décadas refinando a arte de criar experiências digitais memoráveis.</div>
-        </div>
-        <div class="showcase-item">
-            <div class="showcase-number">∞</div>
-            <div class="showcase-title">Possibilidades</div>
-            <div class="showcase-desc">Sem limites para criatividade. Cada projeto é uma oportunidade de inovar.</div>
-        </div>
+with col3:
+    st.markdown('''
+    <div class="feature-card">
+        <div class="feature-icon">💡</div>
+        <h3>Insights Acionáveis</h3>
+        <p>Dashboards intuitivos que transformam dados complexos em decisões claras. Veja o que importa em segundos.</p>
     </div>
-</div>'''
-st.markdown(showcase_html, unsafe_allow_html=True)
+    ''', unsafe_allow_html=True)
 
-# CTA
-cta_html = '''<div class="cta-final">
-    <div class="cta-final-content">
-        <div class="cta-final-title">Pronto para Transformar?</div>
-        <div class="cta-final-desc">Junte-se a centenas de marcas que já experimentaram a magia de design sofisticado com vida.</div>
-        <button class="cta-final-btn">Comece Agora</button>
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- SEÇÃO SOCIAL PROOF ---
+st.markdown('<div class="section">', unsafe_allow_html=True)
+st.markdown('<h2 class="section-title">Aprovado pelas Maiores Empresas</h2>', unsafe_allow_html=True)
+
+st.markdown('''
+<div class="logos-container">
+    <div class="logo-item">🏢 Tech Corp</div>
+    <div class="logo-item">🏢 Finance Plus</div>
+    <div class="logo-item">🏢 Retail Max</div>
+    <div class="logo-item">🏢 Cloud Sys</div>
+    <div class="logo-item">🏢 Data Hub</div>
+</div>
+''', unsafe_allow_html=True)
+
+st.markdown('''
+<div style="text-align: center; margin-top: 2rem;">
+    <p style="font-size: 1.2rem; color: #00bcd4; font-weight: 700;">
+        ⭐ 4.9/5 em 2.500+ avaliações
+    </p>
+    <p style="color: #a0a0a0;">
+        "Aumentamos nosso ROI em 250% em 3 meses" - CEO da Tech Corp
+    </p>
+</div>
+''', unsafe_allow_html=True)
+
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- SEÇÃO PRICING ---
+st.markdown('<div class="section">', unsafe_allow_html=True)
+st.markdown('<h2 class="section-title">Escolha o Plano Perfeito</h2>', unsafe_allow_html=True)
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.markdown('''
+    <div class="pricing-card">
+        <h3>Starter</h3>
+        <div class="price">R$ 299<span class="price-period">/mês</span></div>
+        <ul class="pricing-features">
+            <li>✓ Análise Preditiva Básica</li>
+            <li>✓ 10.000 Requisições/mês</li>
+            <li>✓ 1 Dashboard</li>
+            <li>✓ Suporte por Email</li>
+            <li>✗ Automação Avançada</li>
+        </ul>
+        <button class="pricing-button">Começar Agora</button>
     </div>
-</div>'''
-st.markdown(cta_html, unsafe_allow_html=True)
+    ''', unsafe_allow_html=True)
 
-# FOOTER
-footer_html = '''<div class="footer">
-    <div class="footer-text">Email: contato@vivo.com | Telefone: +55 (11) 98765-4321</div>
-    <div class="footer-text">LinkedIn: linkedin.com/company/vivo | Website: vivo.com</div>
-    <div class="footer-copyright">© 2025 Vivo Design. Todos os direitos reservados.</div>
-</div>'''
-st.markdown(footer_html, unsafe_allow_html=True)
+with col2:
+    st.markdown('''
+    <div class="pricing-card featured">
+        <h3>⭐ Pro (Mais Popular)</h3>
+        <div class="price">R$ 899<span class="price-period">/mês</span></div>
+        <ul class="pricing-features">
+            <li>✓ Análise Preditiva Avançada</li>
+            <li>✓ 100.000 Requisições/mês</li>
+            <li>✓ 10 Dashboards</li>
+            <li>✓ Automação Inteligente</li>
+            <li>✓ Suporte Prioritário 24/7</li>
+        </ul>
+        <button class="pricing-button">Começar Agora</button>
+    </div>
+    ''', unsafe_allow_html=True)
+
+with col3:
+    st.markdown('''
+    <div class="pricing-card">
+        <h3>Enterprise</h3>
+        <div class="price">Customizado</div>
+        <ul class="pricing-features">
+            <li>✓ Tudo do Pro</li>
+            <li>✓ Requisições Ilimitadas</li>
+            <li>✓ Dashboards Ilimitados</li>
+            <li>✓ Gerente de Conta Dedicado</li>
+            <li>✓ Integrações Customizadas</li>
+        </ul>
+        <button class="pricing-button">Falar com Vendas</button>
+    </div>
+    ''', unsafe_allow_html=True)
+
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- SEÇÃO TESTIMONIALS ---
+st.markdown('<div class="section">', unsafe_allow_html=True)
+st.markdown('<h2 class="section-title">O Que Nossos Clientes Dizem</h2>', unsafe_allow_html=True)
+
+st.markdown('''
+<div class="testimonial-card">
+    <p class="testimonial-text">
+        "A Nexus AI revolucionou nossa forma de analisar dados. Em apenas 3 meses, aumentamos nosso ROI em 250%. 
+        É simplesmente incrível como a plataforma nos ajuda a tomar decisões mais rápidas e precisas."
+    </p>
+    <p class="testimonial-author">— João Silva, CEO da Tech Corp</p>
+</div>
+
+<div class="testimonial-card">
+    <p class="testimonial-text">
+        "Economizamos 40 horas por semana em tarefas manuais. O time agora foca em estratégia enquanto a IA faz o trabalho pesado. 
+        Recomendo para qualquer empresa que quer crescer rápido."
+    </p>
+    <p class="testimonial-author">— Maria Santos, Diretora de Operações da Finance Plus</p>
+</div>
+''', unsafe_allow_html=True)
+
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- SEÇÃO CTA FINAL ---
+st.markdown('<div class="section">', unsafe_allow_html=True)
+st.markdown('<div id="cta"></div>', unsafe_allow_html=True)
+st.markdown('''
+<div class="cta-section">
+    <h2 class="cta-title">Pronto para Faturar Milhões?</h2>
+    <p class="cta-subtitle">
+        Junte-se a 500+ empresas que já estão transformando seus negócios com a Nexus AI.
+    </p>
+</div>
+''', unsafe_allow_html=True)
+
+# Formulário de inscrição
+col1, col2, col3 = st.columns([1, 2, 1])
+
+with col2:
+    email = st.text_input(
+        "Seu melhor email",
+        placeholder="seu.email@empresa.com",
+        label_visibility="collapsed"
+    )
+    
+    if st.button("🚀 Começar Teste Grátis", use_container_width=True):
+        if email and "@" in email:
+            st.success(f"✅ Ótimo! Enviamos um email de confirmação para {email}. Verifique sua caixa de entrada!")
+        else:
+            st.error("❌ Por favor, insira um email válido.")
+
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- FOOTER ---
+st.markdown('''
+<div class="footer">
+    <p>© 2026 Nexus AI. Todos os direitos reservados.</p>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">
+        Feito com ❤️ por <strong>Manus AI</strong> | 
+        <a href="#" style="color: #00bcd4; text-decoration: none;">Privacidade</a> | 
+        <a href="#" style="color: #00bcd4; text-decoration: none;">Termos</a>
+    </p>
+</div>
+''', unsafe_allow_html=True)
