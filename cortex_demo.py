@@ -2,185 +2,237 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="What Is Missing? | Memorial Global",
-    page_icon="🌏",
+    page_title="Site Pro | Templates de Alta Conversão",
+    page_icon="🚀",
     layout="wide"
 )
 
-# --- CSS DE ALTA FIDELIDADE (ATMOSFERA MAYA LIN) ---
+# --- CSS MASTER (HÍBRIDO DE TODOS OS ESTILOS) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Inter:wght@200;300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Playfair+Display:ital,wght@0,900;1,900&display=swap');
 
-    /* Fundo Escuro Absoluto */
-    .stApp {
-        background-color: #000000;
-        color: #ffffff;
+    :root {
+        --primary: #0066ff; /* Azul Tech de Conversão */
+        --dark: #0a0a0a;
+        --light: #f8f9fa;
     }
 
+    .stApp { background-color: white; color: var(--dark); }
     [data-testid="stHeader"] { display: none; }
-    .block-container { padding: 0 !important; max-width: 100% !important; }
+    .block-container { padding: 0 !important; }
 
-    /* Tipografia Etérea */
-    html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
-        font-weight: 200;
-    }
+    /* Tipografia */
+    html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
+    h1, h2, .impact-text { font-family: 'Inter', sans-serif; font-weight: 800; letter-spacing: -0.04em; }
 
-    h1, h2, .serif-italic {
-        font-family: 'Cormorant Garamond', serif;
-        font-style: italic;
-        font-weight: 300;
-        letter-spacing: 1px;
-    }
-
-    /* Navegação de Cantos */
-    .corner-nav {
-        position: fixed;
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: rgba(255,255,255,0.6);
-        z-index: 1000;
-        padding: 40px;
-    }
-
-    /* Hero Central */
-    .hero-missing {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    /* 1 & 2. HERO SECTION */
+    .hero-container {
+        padding: 120px 8% 80px 8%;
         text-align: center;
-        background: radial-gradient(circle, rgba(40,40,40,1) 0%, rgba(0,0,0,1) 70%);
+        background: radial-gradient(circle at top right, #f0f7ff 0%, white 50%);
     }
+    .hero-h1 { font-size: clamp(45px, 6vw, 85px); line-height: 1; margin-bottom: 30px; color: var(--dark); }
+    .hero-sub { font-size: clamp(18px, 2vw, 24px); color: #555; max-width: 800px; margin: 0 auto 40px auto; line-height: 1.5; }
 
-    /* Pontos de Luz (Partículas) */
-    .particle {
-        position: absolute;
-        background: white;
-        border-radius: 50%;
-        opacity: 0.4;
-        filter: blur(1px);
-    }
-
-    /* Seções de Conteúdo */
-    .content-block {
-        padding: 150px 20%;
-        line-height: 2;
-        font-size: 18px;
-        color: rgba(255,255,255,0.8);
-    }
-
-    .stat-number {
-        font-size: 60px;
-        color: #fff;
+    /* 3 & 4. CARROSSEL DE TEMPLATES */
+    .template-card {
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid #eee;
+        transition: 0.4s;
         margin-bottom: 20px;
     }
+    .template-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--primary); }
+    
+    /* 5. PROVA SOCIAL */
+    .client-avatar {
+        width: 60px; height: 60px; border-radius: 50%; border: 3px solid white; margin-left: -15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
 
-    /* Linha do Tempo de Extinção */
-    .extinction-item {
-        border-left: 1px solid rgba(255,255,255,0.2);
-        padding-left: 30px;
-        margin-bottom: 80px;
-        transition: 0.5s;
+    /* 6. "É PARA VOCÊ QUE" */
+    .for-you-box {
+        background: var(--dark);
+        color: white;
+        padding: 80px 8%;
+        border-radius: 40px;
+        margin: 50px 5%;
     }
-    .extinction-item:hover {
-        border-left: 1px solid #fff;
+    .check-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; font-size: 18px; }
+
+    /* 7. PASSO A PASSO (ROEEBY STYLE) */
+    .step-number { font-size: 60px; font-weight: 800; color: rgba(0,102,255,0.1); position: absolute; top: -20px; left: 0; z-index: -1; }
+    .step-container { position: relative; padding-top: 20px; }
+
+    /* 8. PREÇOS (QUDRIX STYLE) */
+    .price-card {
+        padding: 50px 30px; border-radius: 20px; border: 1px solid #eee; text-align: center; transition: 0.3s;
     }
+    .price-card.featured { background: var(--dark); color: white; border: none; transform: scale(1.05); }
+
+    /* Botão Master */
+    div.stButton > button {
+        background: var(--primary); color: white; border: none; padding: 20px 45px; border-radius: 10px; font-weight: 800; font-size: 18px; width: 100%; transition: 0.3s;
+    }
+    div.stButton > button:hover { background: #0052cc; transform: scale(1.02); }
 </style>
 """, unsafe_allow_html=True)
 
-# --- 1. NAVEGAÇÃO DE CANTOS ---
-st.markdown('<div class="corner-nav" style="top:0; left:0;">What is Missing?</div>', unsafe_allow_html=True)
-st.markdown('<div class="corner-nav" style="top:0; right:0;">Memorial / Mapa / Ação</div>', unsafe_allow_html=True)
-st.markdown('<div class="corner-nav" style="bottom:0; left:0;">Maya Lin Studio</div>', unsafe_allow_html=True)
-st.markdown('<div class="corner-nav" style="bottom:0; right:0;">Contribuir</div>', unsafe_allow_html=True)
-
-# --- 2. HERO (O VAZIO) ---
-st.markdown("""
-<div class="hero-missing">
-    <div class="particle" style="top:20%; left:15%; width:4px; height:4px;"></div>
-    <div class="particle" style="top:60%; left:80%; width:2px; height:2px;"></div>
-    <div class="particle" style="top:40%; left:50%; width:3px; height:3px; opacity:0.8;"></div>
-    <h1 style="font-size: 50px; margin-bottom: 20px;">O que está desaparecendo?</h1>
-    <p class="serif-italic" style="font-size: 24px; color: rgba(255,255,255,0.5);">
-        Um memorial para a sexta extinção em massa.
-    </p>
-    <div style="margin-top: 50px; width: 1px; height: 100px; background: linear-gradient(to bottom, white, transparent);"></div>
+# --- 1 & 2. HERO SECTION ---
+st.markdown(f"""
+<div class="hero-container">
+    <p style="color: var(--primary); font-weight: 700; letter-spacing: 2px; margin-bottom: 20px;">LANÇAMENTO 2026</p>
+    <h1 class="hero-h1">Tenha um site de elite.<br>Sem escrever uma linha de código.</h1>
+    <p class="hero-sub">Escolha entre templates validados por designers internacionais. Customize em minutos, economize milhares de reais e coloque seu negócio no mapa hoje.</p>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 3. MANIFESTO ---
+col_hero_btn, _ = st.columns([1, 2])
+with col_hero_btn:
+    st.button("QUERO MEU SITE AGORA →")
+
+# --- 3 & 4. CARROSSEL DE TEMPLATES ---
 st.markdown("""
-<div class="content-block">
-    <h2 class="serif-italic" style="font-size: 42px; color: #fff; text-align: center; margin-bottom: 60px;">
-        Nós não podemos proteger o que não lembramos.
-    </h2>
-    <p>
-        "What Is Missing?" é um memorial permanente dedicado às espécies e habitats que já perdemos e àqueles que ainda podemos salvar. 
-        Ao contrário de um memorial físico estático, ele vive no espaço digital, conectando histórias de extinção com soluções para o futuro.
-    </p>
+<div style="padding: 100px 8% 50px 8%;">
+    <h2 style="font-size: 42px;">Conheça nossos templates</h2>
+    <p style="color: #666;">Designs de alta performance para cada nicho de mercado.</p>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 4. ESTATÍSTICAS SILENCIOSAS ---
-col1, col2 = st.columns(2)
-with col1:
-    st.markdown("""
-    <div style="padding: 100px 10% 100px 20%;">
-        <div class="stat-number serif-italic">70%</div>
-        <p style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">
-            Da vida selvagem do planeta desapareceu nos últimos 50 anos.
-        </p>
+# Simulando o Carrossel com Colunas (Pode ser expansível)
+t_col1, t_col2, t_col3 = st.columns(3)
+
+def template_item(col, name, category, img_url):
+    with col:
+        st.markdown(f"""
+        <div class="template-card">
+            <img src="{img_url}" style="width:100%; height: 250px; object-fit: cover;">
+            <div style="padding: 20px;">
+                <p style="font-size: 12px; color: var(--primary); font-weight: 700;">{category}</p>
+                <h4 style="margin: 5px 0 15px 0;">{name}</h4>
+                <div style="font-size: 13px; font-weight: 600; border-bottom: 2px solid #eee; display: inline-block;">VER DEMONSTRAÇÃO</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+# INSIRA AS URLs DAS IMAGENS DOS SEUS TEMPLATES AQUI
+template_item(t_col1, "The Rogue Botanical", "EDITORIAL / FLORAL", "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=800")
+template_item(t_col2, "Qudrix Tech Suite", "SAAS / SOFTWARE", "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800")
+template_item(t_col3, "Roeeby Luxury", "E-COMMERCE / DESIGN", "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=800")
+
+# --- 5. CONFIE EM QUEM JÁ USA ---
+st.markdown("""
+<div style="padding: 80px 8%; text-align: center; background: #fafafa; border-radius: 50px; margin: 0 5%;">
+    <h3 style="margin-bottom: 30px;">Centenas de clientes já lançaram seus sites</h3>
+    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+        <img src="https://randomuser.me/api/portraits/women/1.jpg" class="client-avatar">
+        <img src="https://randomuser.me/api/portraits/men/2.jpg" class="client-avatar">
+        <img src="https://randomuser.me/api/portraits/women/3.jpg" class="client-avatar">
+        <img src="https://randomuser.me/api/portraits/men/4.jpg" class="client-avatar">
+        <img src="https://randomuser.me/api/portraits/women/5.jpg" class="client-avatar">
     </div>
-    """, unsafe_allow_html=True)
+    <p style="font-weight: 600; color: #555;">+1.200 projetos publicados com sucesso em todo o Brasil.</p>
+</div>
+""", unsafe_allow_html=True)
 
-with col2:
-    st.markdown("""
-    <div style="padding: 100px 20% 100px 10%;">
-        <div class="stat-number serif-italic">1 Milhão</div>
-        <p style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">
-            De espécies estão atualmente sob risco de extinção.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+# --- 6. É PARA VOCÊ QUE ---
+st.markdown("""
+<div class="for-you-box">
+    <h2 style="font-size: 42px; margin-bottom: 50px;">Este é o seu próximo passo se você:</h2>
+    <div class="check-item">✅ Quer um site profissional em minutos pelo menor preço do mercado.</div>
+    <div class="check-item">✅ Deseja lucrar vendendo sites de alta qualidade para seus clientes.</div>
+    <div class="check-item">✅ Precisa aumentar a conversão do seu produto digital ou serviço imediatamente.</div>
+</div>
+""", unsafe_allow_html=True)
 
-# --- 5. LINHA DO TEMPO DE MEMÓRIAS (EXTINÇÃO) ---
-st.markdown('<div class="content-block" style="padding-top: 50px;">', unsafe_allow_html=True)
-st.markdown('<h3 style="margin-bottom: 100px; font-size: 12px; letter-spacing: 4px; text-align: center;">MEMÓRIAS DO QUE SE FOI</h3>', unsafe_allow_html=True)
+# --- 7. PASSO A PASSO ---
+st.markdown('<div style="padding: 100px 8%;">', unsafe_allow_html=True)
+st.markdown('<h2 style="font-size: 42px; margin-bottom: 80px; text-align: center;">Do zero ao site no ar em 4 passos</h2>', unsafe_allow_html=True)
 
-def render_memory(year, title, desc):
-    st.markdown(f"""
-    <div class="extinction-item">
-        <span style="font-size: 12px; opacity: 0.5;">{year}</span>
-        <h3 class="serif-italic" style="font-size: 28px; margin: 10px 0;">{title}</h3>
-        <p style="font-size: 15px; opacity: 0.7;">{desc}</p>
-    </div>
-    """, unsafe_allow_html=True)
+s_col1, s_col2, s_col3, s_col4 = st.columns(4)
 
-render_memory("1900s", "O Céu Escurecido", "Relatos de quando os bandos de pombos-passageiros eram tão vastos que bloqueavam o sol por horas em sua passagem.")
-render_memory("1950s", "Silêncio nos Rios", "O desaparecimento gradual do esturjão e de outras espécies migratórias que antes fervilhavam nas águas doces.")
-render_memory("2024", "O Canto Solitário", "O último registro sonoro de espécies de pássaros em florestas tropicais que não encontram mais pares para acasalamento.")
+steps = [
+    ("Acesso Instantâneo", "Após a compra, todos os templates são liberados imediatamente."),
+    ("Escolha & Estilo", "Escolha o design que mais combina com seu negócio e copie o código."),
+    ("Configuração Express", "Te ensinamos a configurar sua URL própria em menos de 5 minutos."),
+    ("Pronto para Lucrar", "Seu site está vivo! Edite o que quiser quando quiser de forma simples.")
+]
 
+for i, (col, (title, desc)) in enumerate(zip([s_col1, s_col2, s_col3, s_col4], steps)):
+    with col:
+        st.markdown(f"""
+        <div class="step-container">
+            <div class="step-number">0{i+1}</div>
+            <h4 style="margin-bottom: 15px;">{title}</h4>
+            <p style="font-size: 14px; color: #666; line-height: 1.6;">{desc}</p>
+        </div>
+        """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- 6. CHAMADA PARA AÇÃO (O MAPA DA ESPERANÇA) ---
-st.markdown("""
-<div style="background: white; color: black; padding: 150px 8%; text-align: center;">
-    <h2 class="serif-italic" style="font-size: 50px; margin-bottom: 30px;">Ainda há tempo.</h2>
-    <p style="max-width: 800px; margin: 0 auto 50px auto; font-size: 18px; line-height: 1.8;">
-        O projeto também destaca planos de conservação e visões de um mundo onde a humanidade e a natureza coexistem em equilíbrio. 
-        Proteja um habitat. Restaure uma floresta. Reduza sua pegada.
-    </p>
-</div>
-""", unsafe_allow_html=True)
+# --- 8. PREÇOS ---
+st.markdown('<div style="padding: 100px 8%; background: #fdfdfd;">', unsafe_allow_html=True)
+p_col1, p_col2, p_col3 = st.columns(3, gap="large")
 
-# --- 7. FOOTER ---
+with p_col1:
+    st.markdown("""
+    <div class="price-card">
+        <h3>Starter</h3>
+        <h2 style="font-size: 45px; margin: 20px 0;">R$ 97</h2>
+        <p style="color: #666; margin-bottom: 30px;">Ideal para iniciantes</p>
+        <p>✓ 1 Template à escolha</p>
+        <p>✓ Tutorial de Instalação</p>
+        <p>✓ Suporte via E-mail</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.button("Assinar Starter", key="p1")
+
+with p_col2:
+    st.markdown("""
+    <div class="price-card featured">
+        <p style="color: var(--primary); font-weight: 800; font-size: 12px; margin-bottom: 10px;">MAIS VENDIDO</p>
+        <h3>Pro Bundle</h3>
+        <h2 style="font-size: 45px; margin: 20px 0;">R$ 197</h2>
+        <p style="color: #aaa; margin-bottom: 30px;">Para quem quer escalar</p>
+        <p>✓ Todos os Templates</p>
+        <p>✓ Curso: Venda sites por R$ 2k</p>
+        <p>✓ Suporte VIP WhatsApp</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.button("QUERO O PRO BUNDLE", key="p2")
+
+with p_col3:
+    st.markdown("""
+    <div class="price-card">
+        <h3>Agency</h3>
+        <h2 style="font-size: 45px; margin: 20px 0;">R$ 497</h2>
+        <p style="color: #666; margin-bottom: 30px;">Domine o mercado</p>
+        <p>✓ Acesso Vitalício</p>
+        <p>✓ Templates Exclusivos Mensais</p>
+        <p>✓ Consultoria de Negócios</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.button("Assinar Agency", key="p3")
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- 9. FAQ ---
+st.markdown('<div style="padding: 100px 20%;">', unsafe_allow_html=True)
+st.markdown('<h2 style="text-align: center; margin-bottom: 50px;">Dúvidas Frequentes</h2>', unsafe_allow_html=True)
+
+with st.expander("Preciso saber programar?"):
+    st.write("De jeito nenhum. Nosso método é baseado em copiar e colar o código no lugar certo. Nós te mostramos exatamente onde clicar.")
+
+with st.expander("O site é meu para sempre?"):
+    st.write("Sim! Uma vez adquirido o template e configurado no seu repositório, o site é de sua total propriedade.")
+
+with st.expander("Consigo colocar meu próprio domínio (.com.br)?"):
+    st.write("Com certeza. Te ensinamos a configurar seu domínio personalizado em poucos segundos.")
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- FOOTER ---
 st.markdown("""
-<div style="padding: 100px 8%; text-align: center; color: rgba(255,255,255,0.3); font-size: 11px; letter-spacing: 2px;">
-    WHAT IS MISSING? FOUNDATION © 2026 <br>
-    CIÊNCIA / ARTE / ATIVISMO
+<div style="padding: 80px 8% 40px 8%; background: var(--dark); color: white; text-align: center;">
+    <h2 style="margin-bottom: 20px;">SITE PRO</h2>
+    <p style="opacity: 0.5; font-size: 13px;">A revolução do desenvolvimento sem código.</p>
+    <p style="margin-top: 40px; opacity: 0.3; font-size: 11px;">© 2026 Todos os direitos reservados.</p>
 </div>
 """, unsafe_allow_html=True)
