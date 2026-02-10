@@ -1,530 +1,671 @@
 import streamlit as st
-from streamlit_option_menu import option_menu
-import streamlit.components.v1 as components
+import time
 
 # Configuração da página
 st.set_page_config(
-    page_title="Biscoitos Premium",
-    page_icon="🍪",
+    page_title="Template Premium - Experiência Absurda",
+    page_icon="✨",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# CSS customizado para design premium
-css_code = """
+# CSS ABSURDO COM CORES DINÂMICAS E INTERATIVIDADE MÁXIMA
+custom_css = """
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+    
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
-
-    :root {
-        --primary: #FF3B30;
-        --secondary: #00FF41;
-        --dark: #0a0a0a;
-        --light: #f5f5f5;
-        --accent: #FFD700;
+    
+    html, body, [data-testid="stAppViewContainer"] {
+        background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+        font-family: 'Space Grotesk', sans-serif;
+        color: #ffffff;
+        line-height: 1.6;
+        overflow-x: hidden;
     }
-
-    html, body {
-        background-color: var(--dark);
-        color: var(--light);
-        font-family: 'Poppins', sans-serif;
-    }
-
-    /* Hide streamlit elements */
-    #MainMenu {display: none;}
-    footer {display: none;}
-    header {display: none;}
-
-    /* Custom styling */
+    
+    [data-testid="stDecoration"] { display: none; }
+    
     .main {
-        background-color: var(--dark);
+        padding: 0 !important;
+        background: transparent;
+        position: relative;
+        z-index: 1;
     }
-
-    .stApp {
-        background-color: var(--dark);
+    
+    /* ANIMAÇÕES ABSURDAS */
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
-
-    /* Hero Section */
-    .hero-section {
-        background: linear-gradient(135deg, var(--dark) 0%, #1a1a1a 100%);
-        padding: 100px 40px;
-        text-align: center;
-        min-height: 100vh;
+    
+    @keyframes floatUp {
+        0% { transform: translateY(0px); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateY(-20px); opacity: 0; }
+    }
+    
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+    
+    @keyframes slideIn {
+        from { transform: translateX(-100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 150, 0.5); }
+        50% { box-shadow: 0 0 40px rgba(255, 0, 150, 0.8); }
+    }
+    
+    /* NAVBAR ABSURDA */
+    .navbar {
+        background: rgba(15, 15, 30, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 20px 60px;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        animation: fadeIn 0.8s ease-out;
+        border-bottom: 2px solid;
+        border-image: linear-gradient(90deg, #FF006E, #00D9FF, #FFD60A, #FF006E) 1;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 8px 32px rgba(255, 0, 110, 0.15);
     }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
-    .hero-title {
-        font-size: 72px;
+    
+    .navbar-logo {
+        font-size: 32px;
         font-weight: 900;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        letter-spacing: -2px;
-        line-height: 1.2;
-        animation: slideInDown 0.8s ease-out;
+        background: linear-gradient(135deg, #FF006E, #00D9FF, #FFD60A);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 2px;
+        animation: pulse 2s ease-in-out infinite;
     }
-
-    @keyframes slideInDown {
-        from {
-            opacity: 0;
-            transform: translateY(-50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .hero-highlight {
-        color: var(--primary);
-        display: block;
-    }
-
-    .hero-highlight-secondary {
-        color: var(--secondary);
-        display: block;
-    }
-
-    .hero-subtitle {
-        font-size: 18px;
-        color: #aaa;
-        margin-bottom: 40px;
-        max-width: 500px;
-        line-height: 1.6;
-        animation: fadeInUp 0.8s ease-out 0.3s both;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .cookie-circle {
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(circle at 30% 30%, #FFD700, #FF8C00, #8B4513);
-        border-radius: 50%;
-        margin: 40px auto;
-        box-shadow: 0 20px 60px rgba(255, 59, 48, 0.3), inset -20px -20px 40px rgba(0, 0, 0, 0.3);
-        animation: spin 20s linear infinite;
-    }
-
-    @keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-    /* Section styling */
-    .section {
-        padding: 80px 40px;
-        min-height: 100vh;
+    
+    .navbar-links {
         display: flex;
+        gap: 50px;
         align-items: center;
-        justify-content: center;
-        flex-direction: column;
     }
-
-    .section-title {
-        font-size: 56px;
-        font-weight: 900;
-        text-transform: uppercase;
-        margin-bottom: 60px;
-        text-align: center;
-    }
-
-    .section-title-main {
-        color: var(--light);
-    }
-
-    .section-title-highlight {
-        color: var(--primary);
-        display: block;
-    }
-
-    .section-title-highlight-secondary {
-        color: var(--secondary);
-        display: block;
-    }
-
-    /* Apresentação Section */
-    .apresentacao-section {
-        background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-    }
-
-    /* Produtos Section */
-    .produtos-section {
-        background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-    }
-
-    /* Depoimentos Section */
-    .depoimentos-section {
-        background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-    }
-
-    /* Cards */
-    .card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        padding: 30px;
-        text-align: center;
+    
+    .navbar-link {
+        color: #00D9FF;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 13px;
         transition: all 0.3s ease;
-        cursor: pointer;
-        margin: 20px;
-    }
-
-    .card:hover {
-        transform: translateY(-10px);
-        background: rgba(255, 255, 255, 0.1);
-        border-color: var(--secondary);
-        box-shadow: 0 20px 40px rgba(0, 255, 65, 0.2);
-    }
-
-    .card-icon {
-        font-size: 50px;
-        margin-bottom: 20px;
-    }
-
-    .card-title {
-        font-size: 20px;
-        margin-bottom: 15px;
-        color: var(--light);
         text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+    }
+    
+    .navbar-link::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #FF006E, #00D9FF);
+        transition: width 0.3s ease;
+    }
+    
+    .navbar-link:hover::after {
+        width: 100%;
+    }
+    
+    .navbar-link:hover {
+        color: #FFD60A;
+    }
+    
+    .navbar-cta {
+        background: linear-gradient(135deg, #FF006E, #FF4D6D);
+        color: white;
+        padding: 12px 32px;
+        border-radius: 50px;
+        text-decoration: none;
         font-weight: 700;
+        font-size: 12px;
+        transition: all 0.3s ease;
+        border: 2px solid #FF006E;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(255, 0, 110, 0.4);
     }
-
-    .card-description {
-        font-size: 14px;
-        color: #aaa;
-        line-height: 1.6;
+    
+    .navbar-cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 0, 110, 0.6);
+        border-color: #00D9FF;
+    }
+    
+    /* HERO SECTION ABSURDA */
+    .hero-section {
+        background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1a1a2e 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        min-height: 800px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(255, 0, 110, 0.2) 0%, transparent 70%);
+        border-radius: 50%;
+        top: -100px;
+        right: -100px;
+        animation: pulse 4s ease-in-out infinite;
+    }
+    
+    .hero-section::after {
+        content: '';
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(0, 217, 255, 0.15) 0%, transparent 70%);
+        border-radius: 50%;
+        bottom: -150px;
+        left: -150px;
+        animation: pulse 5s ease-in-out infinite;
+    }
+    
+    .hero-content {
+        text-align: center;
+        z-index: 2;
+        position: relative;
+        max-width: 900px;
+    }
+    
+    .hero-title {
+        font-size: 80px;
+        font-weight: 900;
         margin-bottom: 20px;
+        background: linear-gradient(135deg, #FF006E, #00D9FF, #FFD60A, #FF006E);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradientShift 8s ease infinite;
+        letter-spacing: -2px;
+        line-height: 1.1;
     }
-
-    .card-price {
+    
+    .hero-subtitle {
         font-size: 24px;
-        font-weight: 700;
-        color: var(--secondary);
-        margin-bottom: 20px;
+        font-weight: 300;
+        margin-bottom: 50px;
+        color: #00D9FF;
+        letter-spacing: 1px;
+        animation: slideIn 1s ease-out;
     }
-
-    /* CTA Button */
-    .cta-button {
-        background: var(--primary);
+    
+    .hero-cta-group {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        animation: slideIn 1.2s ease-out;
+    }
+    
+    .hero-cta-primary {
+        background: linear-gradient(135deg, #FF006E, #FF4D6D);
         color: white;
         padding: 18px 50px;
         border-radius: 50px;
-        text-decoration: none;
         font-weight: 700;
         font-size: 14px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 2px solid #FF006E;
+        cursor: pointer;
         text-transform: uppercase;
         letter-spacing: 1px;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 30px rgba(255, 59, 48, 0.3);
-        border: 2px solid var(--primary);
-        display: inline-block;
-        margin-top: 20px;
-        cursor: pointer;
+        box-shadow: 0 8px 25px rgba(255, 0, 110, 0.4);
     }
-
-    .cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(255, 59, 48, 0.5);
+    
+    .hero-cta-primary:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(255, 0, 110, 0.6);
+    }
+    
+    .hero-cta-secondary {
         background: transparent;
-        color: var(--primary);
+        color: #00D9FF;
+        padding: 18px 50px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 2px solid #00D9FF;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
-
-    /* CTA Final Section */
-    .cta-final-section {
-        background: linear-gradient(135deg, var(--primary) 0%, #FF6B5B 100%);
-        min-height: 80vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    
+    .hero-cta-secondary:hover {
+        background: #00D9FF;
+        color: #0f0f1e;
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0, 217, 255, 0.4);
+    }
+    
+    /* FEATURES SECTION */
+    .features-section {
+        padding: 120px 60px;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        position: relative;
+    }
+    
+    .section-header {
         text-align: center;
-        padding: 100px 40px;
+        margin-bottom: 100px;
     }
-
+    
+    .section-title {
+        font-size: 56px;
+        font-weight: 900;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #FFD60A, #FF006E, #00D9FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -1px;
+    }
+    
+    .section-description {
+        font-size: 18px;
+        color: #00D9FF;
+        font-weight: 300;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .feature-card {
+        background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(0, 217, 255, 0.1));
+        border: 2px solid;
+        border-image: linear-gradient(135deg, #FF006E, #00D9FF) 1;
+        padding: 50px 40px;
+        border-radius: 20px;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .feature-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(255, 0, 110, 0.2), rgba(0, 217, 255, 0.2));
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: -1;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-15px);
+        border-image: linear-gradient(135deg, #00D9FF, #FFD60A) 1;
+        box-shadow: 0 20px 50px rgba(255, 0, 110, 0.2);
+    }
+    
+    .feature-card:hover::before {
+        opacity: 1;
+    }
+    
+    .feature-icon {
+        font-size: 48px;
+        margin-bottom: 20px;
+        animation: floatUp 3s ease-in-out infinite;
+    }
+    
+    .feature-title {
+        font-size: 24px;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: #FFD60A;
+        letter-spacing: 1px;
+    }
+    
+    .feature-desc {
+        font-size: 15px;
+        color: #b0b0b0;
+        line-height: 1.8;
+        font-weight: 300;
+    }
+    
+    /* SHOWCASE SECTION */
+    .showcase-section {
+        padding: 120px 60px;
+        background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 50%, #16213e 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 20s ease infinite;
+    }
+    
+    .showcase-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .showcase-card {
+        background: linear-gradient(135deg, rgba(255, 0, 110, 0.15), rgba(0, 217, 255, 0.15));
+        border: 2px solid #FF006E;
+        border-radius: 15px;
+        padding: 40px;
+        text-align: center;
+        transition: all 0.4s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .showcase-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .showcase-card:hover::after {
+        left: 100%;
+    }
+    
+    .showcase-card:hover {
+        transform: translateY(-10px) scale(1.05);
+        border-color: #00D9FF;
+        box-shadow: 0 20px 50px rgba(0, 217, 255, 0.3);
+    }
+    
+    .showcase-number {
+        font-size: 48px;
+        font-weight: 900;
+        background: linear-gradient(135deg, #FF006E, #00D9FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 15px;
+    }
+    
+    .showcase-label {
+        font-size: 18px;
+        font-weight: 700;
+        color: #FFD60A;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    /* CTA FINAL SECTION */
+    .cta-final-section {
+        padding: 150px 60px;
+        background: linear-gradient(135deg, #FF006E 0%, #FF4D6D 25%, #00D9FF 50%, #FFD60A 75%, #FF006E 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 10s ease infinite;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .cta-final-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(15, 15, 30, 0.3);
+    }
+    
+    .cta-final-content {
+        position: relative;
+        z-index: 2;
+    }
+    
     .cta-final-title {
         font-size: 56px;
         font-weight: 900;
-        text-transform: uppercase;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         color: white;
+        letter-spacing: -1px;
     }
-
-    .cta-final-text {
+    
+    .cta-final-desc {
         font-size: 20px;
-        color: rgba(255, 255, 255, 0.9);
         margin-bottom: 50px;
-        max-width: 600px;
+        color: rgba(255, 255, 255, 0.95);
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: 300;
     }
-
+    
     .cta-final-button {
-        background: white;
-        color: var(--primary);
-        padding: 20px 60px;
+        background: rgba(15, 15, 30, 0.9);
+        color: #FFD60A;
+        padding: 18px 60px;
+        border: 3px solid #FFD60A;
         border-radius: 50px;
+        font-weight: 800;
+        font-size: 14px;
         text-decoration: none;
-        font-weight: 700;
-        font-size: 16px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .cta-final-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+        background: #FFD60A;
+        color: #0f0f1e;
+    }
+    
+    /* FOOTER */
+    .footer {
+        background: #0f0f1e;
+        color: #888888;
+        padding: 60px;
+        text-align: center;
+        border-top: 2px solid;
+        border-image: linear-gradient(90deg, #FF006E, #00D9FF) 1;
+    }
+    
+    .footer-text {
+        font-size: 14px;
+        margin-bottom: 10px;
+        font-weight: 300;
+    }
+    
+    .footer-copyright {
+        border-top: 1px solid rgba(255, 0, 110, 0.2);
+        padding-top: 30px;
+        margin-top: 30px;
+        font-size: 12px;
         text-transform: uppercase;
         letter-spacing: 1px;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        border: 2px solid white;
-        display: inline-block;
-        cursor: pointer;
     }
-
-    .cta-final-button:hover {
-        transform: scale(1.05);
-        background: transparent;
-        color: white;
-    }
-
-    /* Footer */
-    .footer {
-        background: var(--dark);
-        padding: 60px 40px;
-        text-align: center;
-        border-top: 2px solid var(--secondary);
-    }
-
-    .footer-text {
-        color: #aaa;
-        font-size: 14px;
-        margin-bottom: 20px;
-    }
-
-    /* Responsive */
+    
+    /* RESPONSIVIDADE */
     @media (max-width: 768px) {
-        .hero-title {
-            font-size: 48px;
+        .navbar {
+            flex-direction: column;
+            gap: 20px;
+            padding: 15px 20px;
         }
-
-        .section-title {
-            font-size: 40px;
+        
+        .navbar-links {
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
         }
-
-        .cookie-circle {
-            width: 200px;
-            height: 200px;
-        }
-
-        .section {
-            padding: 60px 20px;
-        }
-
+        
         .hero-section {
-            padding: 60px 20px;
+            min-height: 500px;
         }
-    }
-
-    /* Streamlit specific overrides */
-    .stButton button {
-        background: var(--primary) !important;
-        color: white !important;
-        border-radius: 50px !important;
-        padding: 12px 30px !important;
-        font-weight: 700 !important;
-        text-transform: uppercase !important;
-        letter-spacing: 1px !important;
-        transition: all 0.3s ease !important;
-        box-shadow: 0 10px 30px rgba(255, 59, 48, 0.3) !important;
-        border: 2px solid var(--primary) !important;
-    }
-
-    .stButton button:hover {
-        background: transparent !important;
-        color: var(--primary) !important;
-        transform: scale(1.05) !important;
-    }
-
-    .stMarkdown {
-        color: var(--light) !important;
-    }
-
-    .stMetric {
-        background: rgba(255, 255, 255, 0.05) !important;
-        border-radius: 20px !important;
-        padding: 20px !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        
+        .hero-title {
+            font-size: 42px;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+        }
+        
+        .hero-cta-group {
+            flex-direction: column;
+        }
+        
+        .features-section,
+        .showcase-section,
+        .cta-final-section {
+            padding: 80px 20px;
+        }
+        
+        .section-title {
+            font-size: 36px;
+        }
+        
+        .cta-final-title {
+            font-size: 36px;
+        }
     }
 </style>
 """
 
 # Injetar CSS
-st.markdown(css_code, unsafe_allow_html=True)
+st.markdown(custom_css, unsafe_allow_html=True)
 
-# HERO SECTION
-st.markdown("""
-<div class="hero-section">
-    <h1 class="hero-title">
-        Aqui Tem<br>
-        <span class="hero-highlight">O Sabor</span><br>
-        <span class="hero-highlight-secondary">Queridinho</span>
-    </h1>
-    <p class="hero-subtitle">
-        Biscoitos premium feitos com ingredientes selecionados e muito amor. 
-        A melhor experiência de sabor que você já teve.
-    </p>
-    <div class="cookie-circle"></div>
-</div>
-""", unsafe_allow_html=True)
+# ==================== NAVBAR ====================
+navbar_html = '<div class="navbar"><div class="navbar-logo">PREMIUM</div><div class="navbar-links"><a href="#" class="navbar-link">Recursos</a><a href="#" class="navbar-link">Galeria</a><a href="#" class="navbar-link">Sobre</a><a href="#" class="navbar-link">Contato</a><a href="#" class="navbar-cta">Começar Agora</a></div></div>'
+st.markdown(navbar_html, unsafe_allow_html=True)
 
-st.markdown("---")
-
-# APRESENTAÇÃO SECTION
-st.markdown("""
-<div class="apresentacao-section section">
-    <h2 class="section-title">
-        <span class="section-title-main">Biscoito,</span><br>
-        <span class="section-title-highlight-secondary">Vamos nos Apresentar</span>
-    </h2>
-</div>
-""", unsafe_allow_html=True)
-
-col1, col2 = st.columns(2)
-
-with col1:
-    st.markdown("""
-    <div style="padding: 40px;">
-        <p style="font-size: 18px; color: #aaa; line-height: 1.8; margin-bottom: 20px;">
-            Somos uma marca que nasceu do amor pela qualidade e pela excelência. 
-            Cada biscoito é feito com ingredientes premium, selecionados com cuidado 
-            para garantir o melhor sabor.
-        </p>
-        <p style="font-size: 18px; color: #aaa; line-height: 1.8;">
-            Nossa missão é transformar cada momento em uma experiência inesquecível. 
-            Porque você merece o melhor.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col2:
-    st.markdown("""
-    <div style="background: linear-gradient(135deg, #FF3B30, #00FF41); 
-                border-radius: 20px; padding: 100px 40px; text-align: center;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);">
-        <p style="color: white; font-size: 16px;">Sua Foto/Vídeo Aqui</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-st.markdown("---")
-
-# PRODUTOS SECTION
-st.markdown("""
-<div class="produtos-section section">
-    <h2 class="section-title">
-        <span class="section-title-main">Nossos</span><br>
-        <span class="section-title-highlight">Sabores Especiais</span>
-    </h2>
-</div>
-""", unsafe_allow_html=True)
-
-produtos = [
-    {"nome": "Chocolate Premium", "icon": "🍫", "desc": "Biscoito com chocolate belga de alta qualidade. Irresistível.", "preco": "R$ 29,90"},
-    {"nome": "Amendoim Crocante", "icon": "🥜", "desc": "Biscoito com amendoim selecionado. Crocância garantida.", "preco": "R$ 27,90"},
-    {"nome": "Morango Delicado", "icon": "🍓", "desc": "Biscoito com morango fresco. Doce e refrescante.", "preco": "R$ 31,90"},
-    {"nome": "Coco Tropical", "icon": "🥥", "desc": "Biscoito com coco ralado. Sabor que transporta.", "preco": "R$ 28,90"},
-    {"nome": "Limão Siciliano", "icon": "🍋", "desc": "Biscoito com limão fresco. Acidez perfeita.", "preco": "R$ 26,90"},
-    {"nome": "Mel e Canela", "icon": "🍯", "desc": "Biscoito com mel puro. Aconchego em cada mordida.", "preco": "R$ 30,90"},
-]
-
-cols = st.columns(3)
-for idx, produto in enumerate(produtos):
-    with cols[idx % 3]:
-        st.markdown(f"""
-        <div class="card">
-            <div class="card-icon">{produto['icon']}</div>
-            <h3 class="card-title">{produto['nome']}</h3>
-            <p class="card-description">{produto['desc']}</p>
-            <div class="card-price">{produto['preco']}</div>
+# ==================== HERO SECTION ====================
+hero_html = '''<div class="hero-section">
+    <div class="hero-content">
+        <div class="hero-title">Experiência Absurda</div>
+        <div class="hero-subtitle">Design que transforma, cores que inspiram</div>
+        <div class="hero-cta-group">
+            <button class="hero-cta-primary">Explorar Agora</button>
+            <button class="hero-cta-secondary">Saiba Mais</button>
         </div>
-        """, unsafe_allow_html=True)
-        st.button("Quero Conhecer", key=f"btn_{idx}")
+    </div>
+</div>'''
+st.markdown(hero_html, unsafe_allow_html=True)
 
-st.markdown("---")
-
-# DEPOIMENTOS SECTION
-st.markdown("""
-<div class="depoimentos-section section">
-    <h2 class="section-title">
-        <span class="section-title-main">O Que Nossos</span><br>
-        <span class="section-title-highlight">Clientes Dizem</span>
-    </h2>
-</div>
-""", unsafe_allow_html=True)
-
-depoimentos = [
-    {"texto": "Melhor biscoito que já comi na vida! A qualidade é incomparável. Recomendo para todos!", "autor": "Maria Silva"},
-    {"texto": "Comprei para presentear e meus amigos amaram! Vão virar clientes também.", "autor": "João Santos"},
-    {"texto": "A experiência de compra foi perfeita. Entrega rápida e produto impecável!", "autor": "Ana Costa"},
-]
-
-cols = st.columns(3)
-for idx, depo in enumerate(depoimentos):
-    with cols[idx]:
-        st.markdown(f"""
-        <div class="card">
-            <div style="color: #FFD700; font-size: 18px; margin-bottom: 15px;">⭐⭐⭐⭐⭐</div>
-            <p style="font-size: 16px; color: #aaa; line-height: 1.8; margin-bottom: 20px; font-style: italic;">
-                "{depo['texto']}"
-            </p>
-            <p style="font-weight: 700; color: var(--light); font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">
-                — {depo['autor']}
-            </p>
+# ==================== FEATURES SECTION ====================
+features_html = '''<div class="features-section">
+    <div class="section-header">
+        <div class="section-title">Recursos Incríveis</div>
+        <div class="section-description">Tudo que você precisa para impressionar seus clientes</div>
+    </div>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-title">Ultra Rápido</div>
+            <div class="feature-desc">Performance otimizada para a melhor experiência do usuário em qualquer dispositivo.</div>
         </div>
-        """, unsafe_allow_html=True)
+        <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <div class="feature-title">Design Moderno</div>
+            <div class="feature-desc">Interface visual impressionante com animações suaves e cores dinâmicas.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔧</div>
+            <div class="feature-title">Totalmente Customizável</div>
+            <div class="feature-desc">Adapte cores, textos e conteúdo facilmente para seu negócio específico.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <div class="feature-title">Responsivo</div>
+            <div class="feature-desc">Funciona perfeitamente em desktop, tablet e mobile com experiência fluida.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <div class="feature-title">Conversão Máxima</div>
+            <div class="feature-desc">Design estratégico focado em converter visitantes em clientes.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">✨</div>
+            <div class="feature-title">Experiência Premium</div>
+            <div class="feature-desc">Cada detalhe foi pensado para criar uma experiência memorável.</div>
+        </div>
+    </div>
+</div>'''
+st.markdown(features_html, unsafe_allow_html=True)
 
-st.markdown("---")
+# ==================== SHOWCASE SECTION ====================
+showcase_html = '''<div class="showcase-section">
+    <div class="section-header">
+        <div class="section-title">Números que Falam</div>
+        <div class="section-description">Resultados comprovados de templates premium</div>
+    </div>
+    <div class="showcase-grid">
+        <div class="showcase-card">
+            <div class="showcase-number">300%</div>
+            <div class="showcase-label">Mais Conversões</div>
+        </div>
+        <div class="showcase-card">
+            <div class="showcase-number">50K+</div>
+            <div class="showcase-label">Clientes Felizes</div>
+        </div>
+        <div class="showcase-card">
+            <div class="showcase-number">99%</div>
+            <div class="showcase-label">Satisfação</div>
+        </div>
+        <div class="showcase-card">
+            <div class="showcase-number">24/7</div>
+            <div class="showcase-label">Suporte</div>
+        </div>
+    </div>
+</div>'''
+st.markdown(showcase_html, unsafe_allow_html=True)
 
-# CTA FINAL SECTION
-st.markdown("""
-<div class="cta-final-section">
-    <h2 class="cta-final-title">Pronto Para Experimentar?</h2>
-    <p class="cta-final-text">
-        Não perca a oportunidade de viver a melhor experiência de sabor. 
-        Peça agora e receba em casa com todo cuidado.
-    </p>
-</div>
-""", unsafe_allow_html=True)
+# ==================== CTA FINAL SECTION ====================
+cta_final_html = '''<div class="cta-final-section">
+    <div class="cta-final-content">
+        <div class="cta-final-title">Pronto para Transformar?</div>
+        <div class="cta-final-desc">Junte-se a milhares de empresas que já estão usando templates premium para crescer exponencialmente.</div>
+        <button class="cta-final-button">Começar Sua Jornada</button>
+    </div>
+</div>'''
+st.markdown(cta_final_html, unsafe_allow_html=True)
 
-st.button("🛒 Fazer Pedido Agora", key="cta_final", use_container_width=True)
-
-st.markdown("---")
-
-# FOOTER
-st.markdown("""
-<div class="footer">
-    <p class="footer-text">&copy; 2024 Biscoitos Premium. Todos os direitos reservados.</p>
-    <p class="footer-text">Feito com ❤️ para você.</p>
-</div>
-""", unsafe_allow_html=True)
+# ==================== FOOTER ====================
+footer_html = '<div class="footer"><div class="footer-text">Email: contato@premium.com.br | Telefone: (11) 98765-4321</div><div class="footer-text">Endereço: Av. Principal, 1000 - São Paulo, SP</div><div class="footer-copyright">© 2025 Premium Templates. Todos os direitos reservados. Transformando negócios com design excepcional.</div></div>'
+st.markdown(footer_html, unsafe_allow_html=True)
