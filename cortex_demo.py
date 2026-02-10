@@ -1,198 +1,294 @@
 import streamlit as st
-from PIL import Image
-import requests
-from io import BytesIO
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Megavale Card - Soluções em Benefícios",
-    page_icon="💳",
+    page_title="Icarus Medical | Custom Knee Braces",
+    page_icon="🧬",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# --- CSS PERSONALIZADO (Para ficar parecido com um site real) ---
+# --- CSS PERSONALIZADO (AESTHETIC MEDICAL TECH) ---
 st.markdown("""
 <style>
-    /* Remover margens padrão do Streamlit para parecer um site full-width */
-    .block-container {
-        padding-top: 2rem;
-        padding-bottom: 0rem;
-        padding-left: 5rem;
-        padding-right: 5rem;
-    }
-    
-    /* Estilo do Header Simulado */
-    .header-style {
-        font-size: 20px;
-        font-weight: bold;
-        color: #003366;
-        text-align: center;
-        padding: 10px;
-    }
-    
-    /* Botões personalizados */
-    div.stButton > button {
-        width: 100%;
-        background-color: #004488;
-        color: white;
-        border-radius: 5px;
-        border: none;
-        height: 50px;
-        font-weight: bold;
-    }
-    div.stButton > button:hover {
-        background-color: #0066cc;
-        color: white;
+    /* Importando fonte Roboto para visual mais clean/tech */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+    html, body, [class*="css"] {
+        font-family: 'Roboto', sans-serif;
     }
 
-    /* Cards de Serviços */
-    .service-card {
+    /* Remover padding excessivo do topo */
+    .block-container {
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
+
+    /* Header Navigation Bar simulada */
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background-color: white;
+        border-bottom: 1px solid #e0e0e0;
+        margin-bottom: 20px;
+    }
+    .logo-text {
+        font-size: 24px;
+        font-weight: 700;
+        color: #2c3e50;
+        letter-spacing: 1px;
+    }
+    .nav-links a {
+        text-decoration: none;
+        color: #555;
+        margin-left: 20px;
+        font-weight: 500;
+        font-size: 14px;
+    }
+    .nav-links a:hover {
+        color: #007bff;
+    }
+
+    /* Hero Section Styles */
+    .hero-container {
         background-color: #f8f9fa;
-        padding: 20px;
+        padding: 60px 40px;
         border-radius: 10px;
-        border-left: 5px solid #004488;
-        box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .hero-title {
+        font-size: 48px;
+        font-weight: 700;
+        color: #1a1a1a;
         margin-bottom: 10px;
     }
+    .hero-subtitle {
+        font-size: 20px;
+        color: #666;
+        margin-bottom: 30px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
     
-    /* Rodapé */
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: #003366;
+    /* Botões customizados estilo "Medical Blue" */
+    .stButton > button {
+        background-color: #0056b3;
         color: white;
+        border-radius: 4px;
+        padding: 10px 24px;
+        font-weight: 600;
+        border: none;
+        transition: all 0.3s;
+    }
+    .stButton > button:hover {
+        background-color: #004494;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Cards de Produtos */
+    .product-card {
+        background: white;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 20px;
         text-align: center;
-        padding: 10px;
+        transition: transform 0.2s;
+        height: 100%;
+    }
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        border-color: #0056b3;
+    }
+    .product-name {
+        font-size: 22px;
+        font-weight: 700;
+        color: #222;
+        margin-top: 15px;
+    }
+    .product-desc {
+        color: #666;
         font-size: 14px;
-        z-index: 999;
+        margin-bottom: 15px;
+        line-height: 1.5;
+    }
+
+    /* Stats Section */
+    .stat-box {
+        text-align: center;
+        padding: 20px;
+    }
+    .stat-number {
+        font-size: 36px;
+        font-weight: bold;
+        color: #0056b3;
+    }
+    .stat-label {
+        font-size: 14px;
+        color: #555;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    /* Footer */
+    .footer-section {
+        background-color: #1a1a1a;
+        color: #aaa;
+        padding: 40px;
+        margin-top: 50px;
+        text-align: center;
+        font-size: 12px;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# --- FUNÇÃO AUXILIAR PARA CARREGAR IMAGENS DA WEB ---
-# Como não tenho os arquivos locais, uso imagens de placeholder da web
-def load_image(url):
-    try:
-        response = requests.get(url)
-        img = Image.open(BytesIO(response.content))
-        return img
-    except:
-        return None
-
-# --- HEADER / MENU ---
-# Simulação de barra de navegação
-col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
-
-with col1:
-    # Logo simulado
-    st.markdown("## **MEGAVALE**") 
-    st.caption("Soluções em cartões")
-
-with col2:
-    st.button("🏠 Início")
-with col3:
-    st.button("🏢 Para Empresas")
-with col4:
-    st.button("👤 Para Usuários")
-with col5:
-    st.button("🔒 Portal Cliente")
-
-st.markdown("---")
-
-# --- SEÇÃO HERO (BANNER PRINCIPAL) ---
-# Usando uma imagem genérica de "negócios/cartão" do Unsplash
-banner_url = "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-st.image(banner_url, use_container_width=True)
-
+# --- HEADER (HTML Puro para controle total do layout) ---
 st.markdown("""
-<div style="text-align: center; padding: 40px;">
-    <h1 style="color: #003366;">A melhor solução em benefícios para sua empresa</h1>
-    <p style="font-size: 18px; color: #666;">Gestão completa, facilidade para o RH e liberdade para o colaborador.</p>
+<div class="nav-container">
+    <div class="logo-text">ICARUS MEDICAL</div>
+    <div class="nav-links">
+        <a href="#">HOME</a>
+        <a href="#">PRODUCTS</a>
+        <a href="#">PATIENTS</a>
+        <a href="#">PROVIDERS</a>
+        <a href="#">CONTACT</a>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- ÁREA DE AÇÃO RÁPIDA (Grid) ---
-c1, c2, c3 = st.columns(3)
+# --- HERO SECTION ---
+# O site original tem uma imagem grande de alguém correndo ou o produto em destaque.
+c1, c2 = st.columns([1, 1])
 
 with c1:
-    st.info("🏢 **SOU EMPRESA**")
-    st.markdown("Contrate agora os melhores benefícios para seus colaboradores com isenção fiscal.")
-    if st.button("Solicitar Proposta", key="btn_empresa"):
-        st.success("Formulário de proposta aberto!")
+    st.markdown('<div style="padding-top: 40px;">', unsafe_allow_html=True)
+    st.markdown("# Relieve Knee Pain.\n# Restore Mobility.")
+    st.markdown("""
+    <p style="font-size: 18px; color: #555; line-height: 1.6;">
+    Custom 3D-printed knee braces engineered to unload weight and reduce pain. 
+    The most advanced conservative treatment for osteoarthritis.
+    </p>
+    """, unsafe_allow_html=True)
+    
+    col_btn1, col_btn2 = st.columns([1, 2])
+    with col_btn1:
+        st.button("AM I A CANDIDATE?")
+    with col_btn2:
+        st.button("VIEW PRODUCTS", type="secondary") # Secondary style logic not native, but visually distinct via CSS if needed
+    st.markdown('</div>', unsafe_allow_html=True)
 
 with c2:
-    st.warning("💳 **CONSULTAR SALDO**")
-    st.markdown("Acesse seu saldo, extrato e rede credenciada de forma rápida e segura.")
-    cpf = st.text_input("Digite seu CPF", placeholder="000.000.000-00")
-    if st.button("Consultar", key="btn_saldo"):
-        if cpf:
-            st.info(f"Buscando saldo para o CPF: {cpf}...")
-        else:
-            st.error("Por favor, digite um CPF.")
-
-with c3:
-    st.success("🏪 **REDE CREDENCIADA**")
-    st.markdown("Aceite Megavale no seu estabelecimento e aumente suas vendas.")
-    if st.button("Quero me Credenciar", key="btn_rede"):
-        st.balloons()
-
-st.markdown("---")
-
-# --- SEÇÃO DE PRODUTOS ---
-st.markdown("<h2 style='text-align: center; color: #004488;'>Nossos Cartões</h2>", unsafe_allow_html=True)
-st.write("") # Espaçamento
-
-col_prod1, col_prod2, col_prod3, col_prod4 = st.columns(4)
-
-def card_template(titulo, icone, desc):
-    st.markdown(f"""
-    <div class="service-card">
-        <h3>{icone} {titulo}</h3>
-        <p>{desc}</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col_prod1:
-    card_template("Alimentação", "🛒", "Para compras em supermercados, açougues e mercearias.")
-    st.image("https://images.unsplash.com/photo-1580913428706-c311ab527eb6?auto=format&fit=crop&w=300&q=80", caption="Vale Alimentação")
-
-with col_prod2:
-    card_template("Refeição", "🍽️", "Aceito em restaurantes, lanchonetes e padarias.")
-    st.image("https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=300&q=80", caption="Vale Refeição")
-
-with col_prod3:
-    card_template("Combustível", "⛽", "Gestão de frota e facilidade no abastecimento.")
-    st.image("https://images.unsplash.com/photo-1632823471565-1ec2a1ad4015?auto=format&fit=crop&w=300&q=80", caption="Vale Combustível")
-
-with col_prod4:
-    card_template("Flex", "🎁", "Multibenefícios em um único cartão para seu time.")
-    st.image("https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=300&q=80", caption="Megavale Flex")
+    # Imagem simulando o produto "Ascender" (High tech brace)
+    st.image("https://images.unsplash.com/photo-1583947581924-860b8ed4007a?auto=format&fit=crop&w=800&q=80", caption="Engineering movement.", use_container_width=True)
 
 st.write("---")
 
-# --- CONTATO / APP ---
-c_app, c_contato = st.columns([1, 1])
+# --- TECH SPECS (ICARUS DIFFERENCE) ---
+st.markdown("<h2 style='text-align: center; margin-bottom: 40px;'>The Science of Unloading</h2>", unsafe_allow_html=True)
 
-with c_app:
-    st.subheader("📱 Baixe nosso App")
-    st.write("Tenha o controle total na palma da sua mão. Disponível para Android e iOS.")
-    st.markdown("👉 **[Google Play Store](#)**")
-    st.markdown("👉 **[Apple App Store](#)**")
+stat1, stat2, stat3, stat4 = st.columns(4)
+with stat1:
+    st.markdown('<div class="stat-box"><div class="stat-number">40 lbs</div><div class="stat-label">Offloading Capacity</div></div>', unsafe_allow_html=True)
+with stat2:
+    st.markdown('<div class="stat-box"><div class="stat-number">3D</div><div class="stat-label">Custom Printed</div></div>', unsafe_allow_html=True)
+with stat3:
+    st.markdown('<div class="stat-box"><div class="stat-number"> < 1lb</div><div class="stat-label">Ultra Lightweight</div></div>', unsafe_allow_html=True)
+with stat4:
+    st.markdown('<div class="stat-box"><div class="stat-number">USA</div><div class="stat-label">Made in America</div></div>', unsafe_allow_html=True)
 
-with c_contato:
-    st.subheader("📞 Fale Conosco")
-    st.text_input("Nome")
-    st.text_input("Email")
-    st.text_area("Mensagem")
-    st.button("Enviar Mensagem")
+st.write("---")
+
+# --- PRODUCTS SECTION ---
+st.markdown("<h3 style='text-align: center; margin-bottom: 30px;'>Our Custom Solutions</h3>", unsafe_allow_html=True)
+
+# Função helper para cards
+def product_card(name, subtitle, desc, img_url):
+    st.markdown(f"""
+    <div class="product-card">
+        <img src="{img_url}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;">
+        <div class="product-name">{name}</div>
+        <div style="color: #0056b3; font-weight: bold; font-size: 12px; margin-bottom: 10px;">{subtitle}</div>
+        <div class="product-desc">{desc}</div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.button(f"Learn about {name}", key=name)
+
+p1, p2, p3 = st.columns(3)
+
+with p1:
+    product_card(
+        "Ascender", 
+        "UNLOADER KNEE BRACE",
+        "Our flagship custom brace designed for maximum offloading of the knee joint. Ideal for Osteoarthritis.",
+        "https://images.unsplash.com/photo-1584515933487-98db75f56f24?auto=format&fit=crop&w=400&q=80" # Placeholder mechanical/tech
+    )
+
+with p2:
+    product_card(
+        "Adonis", 
+        "LIGHTWEIGHT SUPPORT",
+        "Low profile design for active users requiring medial or lateral support without the bulk.",
+        "https://images.unsplash.com/photo-1519311965067-36d3e5f33d39?auto=format&fit=crop&w=400&q=80" # Placeholder active
+    )
+
+with p3:
+    product_card(
+        "Kronos", 
+        "POST-OP RECOVERY",
+        "Adjustable ROM control and protection for patients recovering from ligament reconstruction.",
+        "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=400&q=80" # Placeholder medical
+    )
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+
+# --- HOW IT WORKS (STEPS) ---
+st.markdown("<div style='background-color: #f4f6f9; padding: 40px; border-radius: 10px;'>", unsafe_allow_html=True)
+st.subheader("How to get your Icarus Brace")
+
+step1, step2, step3 = st.columns(3)
+with step1:
+    st.info("1. Scan")
+    st.write("Download our app to take a precise 3D scan of your leg using your smartphone.")
+with step2:
+    st.info("2. Design & Print")
+    st.write("Our engineers design a custom fit brace which is then 3D printed in Charlottesville, VA.")
+with step3:
+    st.info("3. Delivery")
+    st.write("Receive your custom brace and get back to the activities you love, pain-free.")
+st.markdown("</div>", unsafe_allow_html=True)
+
+# --- CONTACT FORM SECTION ---
+st.markdown("<br>", unsafe_allow_html=True)
+col_form, col_info = st.columns([2, 1])
+
+with col_form:
+    st.subheader("Get in Touch")
+    with st.form("contact_form"):
+        c_name, c_email = st.columns(2)
+        c_name.text_input("First Name")
+        c_email.text_input("Email Address")
+        st.selectbox("I am a...", ["Patient", "Physician/Provider", "Distributor"])
+        st.text_area("Message / Condition Description")
+        st.form_submit_button("SEND MESSAGE")
+
+with col_info:
+    st.subheader("Contact Info")
+    st.markdown("""
+    **Icarus Medical** Charlottesville, VA  
+    USA
+    
+    📧 support@icarusmedical.com  
+    📞 (555) 123-4567
+    """)
 
 # --- FOOTER ---
 st.markdown("""
-<br><br><br>
-<div class='footer'>
-    <p>© 2024 Megavale Card. Todos os direitos reservados. | Desenvolvido com Streamlit</p>
+<div class="footer-section">
+    <p>ICARUS MEDICAL © 2024. All Rights Reserved.</p>
+    <p>Privacy Policy | Terms of Use | Returns</p>
 </div>
 """, unsafe_allow_html=True)
