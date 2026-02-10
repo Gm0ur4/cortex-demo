@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Landing Page - Conversão Premium",
+    page_title="Premium Professional Landing",
     page_icon="✨",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -9,7 +9,7 @@ st.set_page_config(
 
 custom_css = """
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700;900&display=swap');
     
     * {
         margin: 0;
@@ -18,99 +18,88 @@ custom_css = """
     }
     
     html, body, [data-testid="stAppViewContainer"] {
-        background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
-        font-family: 'Inter', sans-serif;
-        color: #ffffff;
+        background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
+        font-family: 'Lato', sans-serif;
+        color: #1a1a1a;
         overflow-x: hidden;
     }
     
     [data-testid="stDecoration"] { display: none; }
     .main { padding: 0 !important; background: transparent; }
     
-    @keyframes heroSlide {
-        0% { transform: translateX(-100px); opacity: 0; }
+    @keyframes slideInLeft {
+        0% { transform: translateX(-80px); opacity: 0; }
         100% { transform: translateX(0); opacity: 1; }
     }
     
-    @keyframes counterUp {
-        0% { transform: translateY(30px); opacity: 0; }
+    @keyframes fadeInUp {
+        0% { transform: translateY(40px); opacity: 0; }
         100% { transform: translateY(0); opacity: 1; }
     }
     
-    @keyframes lineExpand {
+    @keyframes floatSoft {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes lineGrow {
         0% { width: 0; }
         100% { width: 100%; }
     }
     
-    @keyframes faqSlide {
-        0% { max-height: 0; opacity: 0; }
-        100% { max-height: 500px; opacity: 1; }
-    }
-    
-    @keyframes featureFloat {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
-    }
-    
-    @keyframes ctaPulse {
-        0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); }
-        50% { box-shadow: 0 0 50px rgba(34, 197, 94, 0.7); }
-    }
-    
     /* NAVBAR */
     .navbar {
-        background: rgba(13, 17, 23, 0.95);
-        backdrop-filter: blur(30px);
-        padding: 20px 80px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        padding: 20px 100px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid rgba(34, 197, 94, 0.15);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         position: sticky;
         top: 0;
         z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
     
     .navbar-logo {
-        font-size: 24px;
-        font-weight: 900;
-        background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-family: 'Syne', sans-serif;
+        font-size: 26px;
+        font-weight: 700;
+        color: #1a1a1a;
+        font-family: 'Cormorant Garamond', serif;
         letter-spacing: 2px;
     }
     
     .navbar-nav {
         display: flex;
-        gap: 60px;
+        gap: 80px;
     }
     
     .nav-link {
-        color: #8b949e;
+        color: #666;
         text-decoration: none;
         font-size: 13px;
-        font-weight: 600;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
         transition: all 0.3s ease;
         position: relative;
+        font-family: 'Lato', sans-serif;
     }
     
     .nav-link::after {
         content: '';
         position: absolute;
-        bottom: -5px;
+        bottom: -8px;
         left: 0;
         width: 0;
         height: 2px;
-        background: #22c55e;
+        background: #1a1a1a;
         transition: width 0.3s ease;
     }
     
     .nav-link:hover::after { width: 100%; }
-    .nav-link:hover { color: #22c55e; }
+    .nav-link:hover { color: #1a1a1a; }
     
     /* HERO SECTION */
     .hero {
@@ -118,7 +107,7 @@ custom_css = """
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 100px 80px;
+        padding: 100px 100px;
         position: relative;
         overflow: hidden;
     }
@@ -126,478 +115,365 @@ custom_css = """
     .hero::before {
         content: '';
         position: absolute;
-        width: 800px;
-        height: 800px;
-        background: radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 70%);
+        width: 1000px;
+        height: 1000px;
+        background: radial-gradient(circle, rgba(0, 0, 0, 0.03) 0%, transparent 70%);
         border-radius: 50%;
-        top: -300px;
-        right: -300px;
+        top: -400px;
+        right: -400px;
     }
     
     .hero::after {
         content: '';
         position: absolute;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, rgba(34, 197, 94, 0.05) 0%, transparent 70%);
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(0, 0, 0, 0.02) 0%, transparent 70%);
         border-radius: 50%;
-        bottom: -200px;
-        left: -200px;
+        bottom: -300px;
+        left: -300px;
     }
     
     .hero-content {
-        max-width: 600px;
+        max-width: 650px;
         position: relative;
         z-index: 2;
-        animation: heroSlide 1s ease-out;
+        animation: slideInLeft 1s ease-out;
     }
     
     .hero-label {
-        font-size: 13px;
-        color: #22c55e;
+        font-size: 12px;
+        color: #999;
         text-transform: uppercase;
         letter-spacing: 2px;
-        margin-bottom: 20px;
-        font-weight: 800;
+        margin-bottom: 25px;
+        font-weight: 700;
     }
     
     .hero-title {
-        font-size: 72px;
-        font-weight: 900;
-        line-height: 1.1;
-        margin-bottom: 25px;
-        font-family: 'Syne', sans-serif;
-        letter-spacing: -1px;
+        font-size: 80px;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 30px;
+        font-family: 'Cormorant Garamond', serif;
+        letter-spacing: -2px;
+        color: #1a1a1a;
     }
     
     .hero-desc {
         font-size: 18px;
-        color: #8b949e;
-        margin-bottom: 50px;
+        color: #666;
+        margin-bottom: 60px;
         line-height: 1.8;
-        font-weight: 400;
+        font-weight: 300;
     }
     
     .hero-cta {
         display: flex;
-        gap: 20px;
+        gap: 25px;
         flex-wrap: wrap;
     }
     
     .btn-primary {
-        background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        background: #1a1a1a;
         color: #ffffff;
         padding: 16px 50px;
         border: none;
-        border-radius: 6px;
-        font-weight: 800;
-        font-size: 14px;
+        border-radius: 2px;
+        font-weight: 700;
+        font-size: 13px;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
-        animation: ctaPulse 2s ease-in-out infinite;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     }
     
     .btn-primary:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 0 60px rgba(34, 197, 94, 0.7);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
     }
     
     .btn-secondary {
         background: transparent;
-        color: #22c55e;
+        color: #1a1a1a;
         padding: 16px 50px;
-        border: 2px solid #22c55e;
-        border-radius: 6px;
-        font-weight: 800;
-        font-size: 14px;
+        border: 2px solid #1a1a1a;
+        border-radius: 2px;
+        font-weight: 700;
+        font-size: 13px;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
         cursor: pointer;
         transition: all 0.3s ease;
     }
     
     .btn-secondary:hover {
-        background: rgba(34, 197, 94, 0.1);
+        background: #1a1a1a;
+        color: #ffffff;
     }
     
     .hero-visual {
         position: relative;
         z-index: 2;
-        width: 400px;
-        height: 500px;
-        background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(22, 163, 74, 0.05));
-        border: 2px solid rgba(34, 197, 94, 0.2);
-        border-radius: 12px;
+        width: 450px;
+        height: 550px;
+        background: linear-gradient(135deg, #f0f2f5 0%, #e8eaed 100%);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 2px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 100px;
+        font-size: 120px;
+        animation: floatSoft 4s ease-in-out infinite;
     }
     
-    /* BENEFITS SECTION - NOVO ELEMENTO */
-    .benefits-section {
-        padding: 120px 80px;
-        background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+    /* SECTION DIVIDER - ELEMENTO NOVO */
+    .section-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+        margin: 120px 100px;
     }
     
-    .benefits-container {
-        max-width: 1400px;
+    /* STATS SECTION - ELEMENTO NOVO */
+    .stats-section {
+        padding: 120px 100px;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 80px;
+        max-width: 1600px;
         margin: 0 auto;
+    }
+    
+    .stat-item {
+        text-align: left;
+        animation: fadeInUp 0.8s ease-out;
+        animation-fill-mode: both;
+        position: relative;
+    }
+    
+    .stat-item:nth-child(1) { animation-delay: 0.1s; }
+    .stat-item:nth-child(2) { animation-delay: 0.2s; }
+    .stat-item:nth-child(3) { animation-delay: 0.3s; }
+    .stat-item:nth-child(4) { animation-delay: 0.4s; }
+    
+    .stat-item::before {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: #1a1a1a;
+        transition: width 0.3s ease;
+    }
+    
+    .stat-item:hover::before { width: 100%; }
+    
+    .stat-number {
+        font-size: 56px;
+        font-weight: 900;
+        color: #1a1a1a;
+        margin-bottom: 15px;
+        font-family: 'Lato', sans-serif;
+    }
+    
+    .stat-label {
+        font-size: 14px;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 700;
+    }
+    
+    /* SERVICES SECTION - ELEMENTO NOVO */
+    .services-section {
+        padding: 120px 100px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
+    }
+    
+    .section-title {
+        font-size: 64px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 100px;
+        font-family: 'Cormorant Garamond', serif;
+        letter-spacing: -1px;
+        color: #1a1a1a;
+    }
+    
+    .services-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 50px;
+        gap: 60px;
+        max-width: 1600px;
+        margin: 0 auto;
     }
     
-    .benefit-item {
-        padding: 50px;
-        background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), rgba(34, 197, 94, 0.02));
-        border-left: 4px solid #22c55e;
-        border-radius: 8px;
+    .service-item {
+        padding: 70px 50px;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 2px;
         transition: all 0.4s ease;
+        animation: fadeInUp 0.8s ease-out;
+        animation-fill-mode: both;
         position: relative;
         overflow: hidden;
-        animation: counterUp 0.8s ease-out;
-        animation-fill-mode: both;
     }
     
-    .benefit-item:nth-child(1) { animation-delay: 0.1s; }
-    .benefit-item:nth-child(2) { animation-delay: 0.2s; }
-    .benefit-item:nth-child(3) { animation-delay: 0.3s; }
+    .service-item:nth-child(1) { animation-delay: 0.1s; }
+    .service-item:nth-child(2) { animation-delay: 0.2s; }
+    .service-item:nth-child(3) { animation-delay: 0.3s; }
     
-    .benefit-item::before {
+    .service-item::before {
         content: '';
         position: absolute;
         top: 0;
         left: -100%;
         width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1), transparent);
+        height: 4px;
+        background: #1a1a1a;
         transition: left 0.6s ease;
     }
     
-    .benefit-item:hover::before { left: 100%; }
+    .service-item:hover::before { left: 100%; }
     
-    .benefit-item:hover {
+    .service-item:hover {
         transform: translateY(-10px);
-        border-left-color: #16a34a;
-        box-shadow: 0 0 40px rgba(34, 197, 94, 0.2);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
     }
     
-    .benefit-number {
+    .service-icon {
         font-size: 48px;
-        font-weight: 900;
-        color: #22c55e;
-        margin-bottom: 20px;
-        font-family: 'Syne', sans-serif;
+        margin-bottom: 30px;
     }
     
-    .benefit-title {
-        font-size: 20px;
-        font-weight: 800;
-        margin-bottom: 15px;
-        color: #ffffff;
-    }
-    
-    .benefit-desc {
-        font-size: 15px;
-        color: #8b949e;
-        line-height: 1.8;
-    }
-    
-    /* FEATURES SECTION - NOVO LAYOUT */
-    .features-section {
-        padding: 120px 80px;
-        background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-    }
-    
-    .section-title {
-        font-size: 56px;
-        font-weight: 900;
-        text-align: center;
-        margin-bottom: 100px;
-        font-family: 'Syne', sans-serif;
-        letter-spacing: -1px;
-    }
-    
-    .features-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 60px;
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-    
-    .feature-block {
-        display: flex;
-        gap: 40px;
-        align-items: flex-start;
-        padding: 50px;
-        border: 1px solid rgba(34, 197, 94, 0.15);
-        border-radius: 8px;
-        background: linear-gradient(135deg, rgba(34, 197, 94, 0.03), transparent);
-        transition: all 0.4s ease;
-        animation: featureFloat 3s ease-in-out infinite;
-    }
-    
-    .feature-block:nth-child(1) { animation-delay: 0s; }
-    .feature-block:nth-child(2) { animation-delay: 0.5s; }
-    .feature-block:nth-child(3) { animation-delay: 1s; }
-    .feature-block:nth-child(4) { animation-delay: 1.5s; }
-    
-    .feature-block:hover {
-        border-color: #22c55e;
-        box-shadow: 0 0 40px rgba(34, 197, 94, 0.2);
-    }
-    
-    .feature-icon {
-        font-size: 48px;
-        min-width: 60px;
-    }
-    
-    .feature-content h3 {
-        font-size: 22px;
-        font-weight: 800;
-        margin-bottom: 12px;
-        color: #ffffff;
-    }
-    
-    .feature-content p {
-        font-size: 15px;
-        color: #8b949e;
-        line-height: 1.8;
-    }
-    
-    /* FAQ SECTION - ELEMENTO NOVO */
-    .faq-section {
-        padding: 120px 80px;
-        background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-    }
-    
-    .faq-container {
-        max-width: 900px;
-        margin: 0 auto;
-    }
-    
-    .faq-item {
-        margin-bottom: 20px;
-        border: 1px solid rgba(34, 197, 94, 0.15);
-        border-radius: 8px;
-        overflow: hidden;
-        background: linear-gradient(135deg, rgba(34, 197, 94, 0.03), transparent);
-        transition: all 0.3s ease;
-    }
-    
-    .faq-item:hover {
-        border-color: #22c55e;
-        box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
-    }
-    
-    .faq-question {
-        padding: 25px 30px;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    .service-title {
+        font-size: 24px;
         font-weight: 700;
-        font-size: 16px;
-        color: #ffffff;
-        transition: all 0.3s ease;
+        margin-bottom: 20px;
+        color: #1a1a1a;
+        font-family: 'Cormorant Garamond', serif;
     }
     
-    .faq-question:hover {
-        color: #22c55e;
-    }
-    
-    .faq-arrow {
-        font-size: 20px;
-        transition: transform 0.3s ease;
-    }
-    
-    .faq-item.active .faq-arrow {
-        transform: rotate(180deg);
-    }
-    
-    .faq-answer {
-        padding: 0 30px;
-        max-height: 0;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        color: #8b949e;
+    .service-desc {
         font-size: 15px;
+        color: #999;
         line-height: 1.8;
+        font-weight: 300;
     }
     
-    .faq-item.active .faq-answer {
-        padding: 0 30px 25px 30px;
-        max-height: 500px;
+    /* TESTIMONIALS SECTION - ELEMENTO NOVO */
+    .testimonials-section {
+        padding: 120px 100px;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     }
     
-    /* PRICING SECTION */
-    .pricing-section {
-        padding: 120px 80px;
-        background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-    }
-    
-    .pricing-grid {
+    .testimonials-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
-        max-width: 1400px;
+        gap: 50px;
+        max-width: 1600px;
         margin: 0 auto;
     }
     
-    .pricing-card {
+    .testimonial-card {
         padding: 50px;
-        border: 2px solid rgba(34, 197, 94, 0.2);
-        border-radius: 8px;
-        background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), rgba(34, 197, 94, 0.02));
+        background: #f8f9fa;
+        border-left: 4px solid #1a1a1a;
+        border-radius: 2px;
         transition: all 0.4s ease;
-        position: relative;
-        animation: counterUp 0.8s ease-out;
+        animation: fadeInUp 0.8s ease-out;
         animation-fill-mode: both;
     }
     
-    .pricing-card:nth-child(1) { animation-delay: 0.1s; }
-    .pricing-card:nth-child(2) { animation-delay: 0.2s; }
-    .pricing-card:nth-child(3) { animation-delay: 0.3s; }
+    .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+    .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+    .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
     
-    .pricing-card:hover {
-        transform: translateY(-15px);
-        border-color: #22c55e;
-        box-shadow: 0 0 50px rgba(34, 197, 94, 0.3);
+    .testimonial-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
     }
     
-    .pricing-name {
-        font-size: 20px;
-        font-weight: 800;
-        margin-bottom: 15px;
-        color: #ffffff;
-    }
-    
-    .pricing-price {
-        font-size: 48px;
-        font-weight: 900;
-        color: #22c55e;
-        margin-bottom: 10px;
-        font-family: 'Syne', sans-serif;
-    }
-    
-    .pricing-period {
-        font-size: 13px;
-        color: #8b949e;
+    .testimonial-text {
+        font-size: 16px;
+        color: #1a1a1a;
         margin-bottom: 30px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+        line-height: 1.8;
+        font-weight: 300;
+        font-style: italic;
     }
     
-    .pricing-features {
-        list-style: none;
-        margin-bottom: 40px;
-    }
-    
-    .pricing-features li {
-        padding: 12px 0;
-        color: #8b949e;
-        font-size: 14px;
-        border-bottom: 1px solid rgba(34, 197, 94, 0.1);
-    }
-    
-    .pricing-features li::before {
-        content: '✓ ';
-        color: #22c55e;
-        font-weight: 800;
-        margin-right: 10px;
-    }
-    
-    .pricing-btn {
-        width: 100%;
-        background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-        color: #ffffff;
-        padding: 14px;
-        border: none;
-        border-radius: 6px;
-        font-weight: 800;
+    .testimonial-author {
         font-size: 13px;
+        font-weight: 700;
+        color: #1a1a1a;
         text-transform: uppercase;
         letter-spacing: 1px;
-        cursor: pointer;
-        transition: all 0.3s ease;
     }
     
-    .pricing-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
+    .testimonial-role {
+        font-size: 12px;
+        color: #999;
+        margin-top: 5px;
     }
     
-    /* CTA FINAL */
-    .cta-final {
-        padding: 150px 80px;
-        background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    /* CTA SECTION */
+    .cta-section {
+        padding: 150px 100px;
+        background: #1a1a1a;
         text-align: center;
         position: relative;
         overflow: hidden;
     }
     
-    .cta-final::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(13, 17, 23, 0.1);
-    }
-    
-    .cta-final-content {
-        position: relative;
-        z-index: 2;
-    }
-    
-    .cta-final-title {
+    .cta-title {
         font-size: 56px;
-        font-weight: 900;
+        font-weight: 700;
         color: #ffffff;
         margin-bottom: 30px;
-        font-family: 'Syne', sans-serif;
+        font-family: 'Cormorant Garamond', serif;
         letter-spacing: -1px;
     }
     
-    .cta-final-desc {
+    .cta-desc {
         font-size: 18px;
-        color: rgba(255, 255, 255, 0.95);
+        color: rgba(255, 255, 255, 0.8);
         max-width: 700px;
-        margin: 0 auto 50px;
+        margin: 0 auto 60px;
+        font-weight: 300;
     }
     
-    .cta-final-btn {
-        background: #0d1117;
-        color: #22c55e;
-        padding: 18px 60px;
-        border: 2px solid #0d1117;
-        border-radius: 6px;
-        font-weight: 800;
-        font-size: 14px;
+    .cta-btn {
+        background: #ffffff;
+        color: #1a1a1a;
+        padding: 16px 60px;
+        border: none;
+        border-radius: 2px;
+        font-weight: 700;
+        font-size: 13px;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
         cursor: pointer;
         transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
     
-    .cta-final-btn:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(13, 17, 23, 0.3);
+    .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
     }
     
     /* FOOTER */
     .footer {
-        background: #0d1117;
-        color: #8b949e;
-        padding: 80px;
+        background: #ffffff;
+        color: #999;
+        padding: 80px 100px;
         text-align: center;
-        border-top: 1px solid rgba(34, 197, 94, 0.15);
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
     }
     
     .footer-text {
@@ -606,50 +482,41 @@ custom_css = """
     }
     
     .footer-copyright {
-        border-top: 1px solid rgba(34, 197, 94, 0.15);
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
         padding-top: 40px;
         margin-top: 40px;
         font-size: 12px;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: 1.5px;
     }
     
     @media (max-width: 768px) {
         .navbar { padding: 15px 20px; flex-direction: column; gap: 15px; }
+        .navbar-nav { gap: 20px; }
         .hero { flex-direction: column; padding: 50px 20px; min-height: auto; }
         .hero-title { font-size: 42px; }
         .hero-visual { width: 100%; margin-top: 40px; }
-        .benefits-container { grid-template-columns: 1fr; gap: 30px; }
-        .features-grid { grid-template-columns: 1fr; gap: 30px; }
-        .pricing-grid { grid-template-columns: 1fr; }
-        .cta-final { padding: 100px 20px; }
-        .cta-final-title { font-size: 36px; }
+        .stats-section { grid-template-columns: repeat(2, 1fr); padding: 80px 20px; gap: 40px; }
+        .services-grid { grid-template-columns: 1fr; gap: 30px; }
+        .testimonials-grid { grid-template-columns: 1fr; }
+        .cta-section { padding: 100px 20px; }
+        .cta-title { font-size: 36px; }
         .section-title { font-size: 36px; }
+        .section-divider { margin: 80px 20px; }
     }
 </style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        item.querySelector('.faq-question').addEventListener('click', function() {
-            item.classList.toggle('active');
-        });
-    });
-});
-</script>
 """
 
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # NAVBAR
 navbar_html = '''<div class="navbar">
-    <div class="navbar-logo">CONVERSÃO</div>
+    <div class="navbar-logo">PREMIUM</div>
     <div class="navbar-nav">
-        <a href="#" class="nav-link">Benefícios</a>
-        <a href="#" class="nav-link">Recursos</a>
-        <a href="#" class="nav-link">Preços</a>
-        <a href="#" class="nav-link">FAQ</a>
+        <a href="#" class="nav-link">Serviços</a>
+        <a href="#" class="nav-link">Sobre</a>
+        <a href="#" class="nav-link">Depoimentos</a>
+        <a href="#" class="nav-link">Contato</a>
     </div>
 </div>'''
 st.markdown(navbar_html, unsafe_allow_html=True)
@@ -658,186 +525,105 @@ st.markdown(navbar_html, unsafe_allow_html=True)
 hero_html = '''<div class="hero">
     <div class="hero-content">
         <div class="hero-label">Bem-vindo</div>
-        <div class="hero-title">Aumente suas Vendas em 300%</div>
-        <div class="hero-desc">Solução completa para transformar visitantes em clientes. Tecnologia comprovada que gera resultados reais.</div>
+        <div class="hero-title">Excelência em Design</div>
+        <div class="hero-desc">Soluções sofisticadas que elevam sua marca a um novo patamar de profissionalismo e elegância.</div>
         <div class="hero-cta">
             <button class="btn-primary">Começar Agora</button>
-            <button class="btn-secondary">Ver Demo</button>
+            <button class="btn-secondary">Saiba Mais</button>
         </div>
     </div>
-    <div class="hero-visual">📈</div>
+    <div class="hero-visual">✨</div>
 </div>'''
 st.markdown(hero_html, unsafe_allow_html=True)
 
-# BENEFITS
-benefits_html = '''<div class="benefits-section">
-    <div class="benefits-container">
-        <div class="benefit-item">
-            <div class="benefit-number">10x</div>
-            <div class="benefit-title">Mais Rápido</div>
-            <div class="benefit-desc">Implementação em minutos, não em meses. Comece a gerar resultados imediatamente.</div>
+# DIVIDER
+st.markdown('<div class="section-divider"></div>', unsafe_allow_html=True)
+
+# STATS
+stats_html = '''<div class="stats-section">
+    <div class="stat-item">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Projetos</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Satisfação</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Anos</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number">50M+</div>
+        <div class="stat-label">Impacto</div>
+    </div>
+</div>'''
+st.markdown(stats_html, unsafe_allow_html=True)
+
+# DIVIDER
+st.markdown('<div class="section-divider"></div>', unsafe_allow_html=True)
+
+# SERVICES
+services_html = '''<div class="services-section">
+    <div class="section-title">Nossos Serviços</div>
+    <div class="services-grid">
+        <div class="service-item">
+            <div class="service-icon">🎨</div>
+            <div class="service-title">Design Estratégico</div>
+            <div class="service-desc">Criação de identidades visuais que comunicam valor e estabelecem conexão com seu público.</div>
         </div>
-        <div class="benefit-item">
-            <div class="benefit-number">99.9%</div>
-            <div class="benefit-title">Uptime</div>
-            <div class="benefit-desc">Infraestrutura robusta garantindo disponibilidade total do seu negócio.</div>
+        <div class="service-item">
+            <div class="service-icon">✨</div>
+            <div class="service-title">Experiência Digital</div>
+            <div class="service-desc">Interfaces sofisticadas que transformam visitantes em clientes leais.</div>
         </div>
-        <div class="benefit-item">
-            <div class="benefit-number">24/7</div>
-            <div class="benefit-title">Suporte</div>
-            <div class="benefit-desc">Equipe dedicada pronta para ajudar em qualquer momento do dia.</div>
+        <div class="service-item">
+            <div class="service-icon">🚀</div>
+            <div class="service-title">Inovação</div>
+            <div class="service-desc">Soluções originais que estabelecem novos padrões no mercado.</div>
         </div>
     </div>
 </div>'''
-st.markdown(benefits_html, unsafe_allow_html=True)
+st.markdown(services_html, unsafe_allow_html=True)
 
-# FEATURES
-features_html = '''<div class="features-section">
-    <div class="section-title">Recursos Poderosos</div>
-    <div class="features-grid">
-        <div class="feature-block">
-            <div class="feature-icon">⚡</div>
-            <div class="feature-content">
-                <h3>Performance</h3>
-                <p>Velocidade de carregamento otimizada para máxima conversão e SEO.</p>
-            </div>
+# DIVIDER
+st.markdown('<div class="section-divider"></div>', unsafe_allow_html=True)
+
+# TESTIMONIALS
+testimonials_html = '''<div class="testimonials-section">
+    <div class="section-title">Depoimentos</div>
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="testimonial-text">"Transformou completamente nossa marca. Profissionalismo impecável em cada detalhe."</div>
+            <div class="testimonial-author">João Silva</div>
+            <div class="testimonial-role">CEO, Tech Ventures</div>
         </div>
-        <div class="feature-block">
-            <div class="feature-icon">🔒</div>
-            <div class="feature-content">
-                <h3>Segurança</h3>
-                <p>Criptografia de ponta a ponta e conformidade com LGPD.</p>
-            </div>
+        <div class="testimonial-card">
+            <div class="testimonial-text">"A melhor decisão que tomamos. Resultados além das expectativas em tempo recorde."</div>
+            <div class="testimonial-author">Maria Santos</div>
+            <div class="testimonial-role">Diretora, Design Studio</div>
         </div>
-        <div class="feature-block">
-            <div class="feature-icon">📊</div>
-            <div class="feature-content">
-                <h3>Analytics</h3>
-                <p>Dados em tempo real para otimizar suas campanhas continuamente.</p>
-            </div>
-        </div>
-        <div class="feature-block">
-            <div class="feature-icon">🎯</div>
-            <div class="feature-content">
-                <h3>Personalização</h3>
-                <p>Customize cada aspecto para sua marca e público-alvo.</p>
-            </div>
+        <div class="testimonial-card">
+            <div class="testimonial-text">"Equipe excepcional. Entenderam nossa visão e a executaram com perfeição."</div>
+            <div class="testimonial-author">Carlos Oliveira</div>
+            <div class="testimonial-role">Fundador, Creative Lab</div>
         </div>
     </div>
 </div>'''
-st.markdown(features_html, unsafe_allow_html=True)
+st.markdown(testimonials_html, unsafe_allow_html=True)
 
-# FAQ
-faq_html = '''<div class="faq-section">
-    <div class="section-title">Perguntas Frequentes</div>
-    <div class="faq-container">
-        <div class="faq-item">
-            <div class="faq-question">
-                Como funciona a integração?
-                <span class="faq-arrow">▼</span>
-            </div>
-            <div class="faq-answer">
-                A integração é simples e rápida. Você recebe um código que adiciona ao seu site em minutos. Nosso time técnico está disponível para ajudar em cada passo.
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">
-                Qual é o tempo de implementação?
-                <span class="faq-arrow">▼</span>
-            </div>
-            <div class="faq-answer">
-                A maioria dos clientes começa a ver resultados em menos de 48 horas. A implementação completa leva entre 1-2 semanas dependendo da complexidade.
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">
-                Posso cancelar a qualquer momento?
-                <span class="faq-arrow">▼</span>
-            </div>
-            <div class="faq-answer">
-                Sim, sem contratos de longo prazo. Você pode cancelar sua assinatura a qualquer momento, sem multas ou taxas adicionais.
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">
-                Qual suporte vocês oferecem?
-                <span class="faq-arrow">▼</span>
-            </div>
-            <div class="faq-answer">
-                Oferecemos suporte 24/7 via chat, email e telefone. Além disso, você tem acesso a documentação completa e webinars de treinamento.
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question">
-                Como vocês garantem a segurança dos dados?
-                <span class="faq-arrow">▼</span>
-            </div>
-            <div class="faq-answer">
-                Utilizamos criptografia de ponta a ponta, servidores em data centers certificados e conformidade total com LGPD e GDPR.
-            </div>
-        </div>
-    </div>
-</div>'''
-st.markdown(faq_html, unsafe_allow_html=True)
-
-# PRICING
-pricing_html = '''<div class="pricing-section">
-    <div class="section-title">Planos Simples</div>
-    <div class="pricing-grid">
-        <div class="pricing-card">
-            <div class="pricing-name">Starter</div>
-            <div class="pricing-price">R$ 99</div>
-            <div class="pricing-period">Por mês</div>
-            <ul class="pricing-features">
-                <li>Até 1.000 visitantes</li>
-                <li>1 formulário</li>
-                <li>Suporte por email</li>
-                <li>Relatórios básicos</li>
-            </ul>
-            <button class="pricing-btn">Começar</button>
-        </div>
-        <div class="pricing-card">
-            <div class="pricing-name">Professional</div>
-            <div class="pricing-price">R$ 299</div>
-            <div class="pricing-period">Por mês</div>
-            <ul class="pricing-features">
-                <li>Até 10.000 visitantes</li>
-                <li>Formulários ilimitados</li>
-                <li>Suporte prioritário</li>
-                <li>Relatórios avançados</li>
-            </ul>
-            <button class="pricing-btn">Começar</button>
-        </div>
-        <div class="pricing-card">
-            <div class="pricing-name">Enterprise</div>
-            <div class="pricing-price">R$ 999</div>
-            <div class="pricing-period">Por mês</div>
-            <ul class="pricing-features">
-                <li>Visitantes ilimitados</li>
-                <li>Tudo ilimitado</li>
-                <li>Suporte 24/7 dedicado</li>
-                <li>Consultoria estratégica</li>
-            </ul>
-            <button class="pricing-btn">Começar</button>
-        </div>
-    </div>
-</div>'''
-st.markdown(pricing_html, unsafe_allow_html=True)
-
-# CTA FINAL
-cta_html = '''<div class="cta-final">
-    <div class="cta-final-content">
-        <div class="cta-final-title">Pronto para Crescer?</div>
-        <div class="cta-final-desc">Junte-se a milhares de empresas que já aumentaram suas vendas com nossa plataforma.</div>
-        <button class="cta-final-btn">Comece Agora Grátis</button>
-    </div>
+# CTA
+cta_html = '''<div class="cta-section">
+    <div class="cta-title">Pronto para Crescer?</div>
+    <div class="cta-desc">Transforme sua visão em uma realidade extraordinária que impacta e inspira.</div>
+    <button class="cta-btn">Comece Agora</button>
 </div>'''
 st.markdown(cta_html, unsafe_allow_html=True)
 
 # FOOTER
 footer_html = '''<div class="footer">
-    <div class="footer-text">Email: contato@conversao.com | Telefone: +55 (11) 98765-4321</div>
-    <div class="footer-text">LinkedIn: linkedin.com/company/conversao | Website: conversao.com</div>
-    <div class="footer-copyright">© 2025 Conversão Premium. Todos os direitos reservados.</div>
+    <div class="footer-text">Email: contato@premium.com | Telefone: +55 (11) 98765-4321</div>
+    <div class="footer-text">LinkedIn: linkedin.com/company/premium | Website: premium.com</div>
+    <div class="footer-copyright">© 2025 Premium Design. Todos os direitos reservados.</div>
 </div>'''
 st.markdown(footer_html, unsafe_allow_html=True)
