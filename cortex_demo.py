@@ -517,13 +517,13 @@ custom_css = """
         font-weight: 400;
     }
     
-    /* PROCESS STEPS - FUNCIONALIDADE 4 */
-    .process-section {
+    /* TESTIMONIALS SECTION - FUNCIONALIDADE 4 */
+    .testimonials-section {
         padding: 120px 80px;
         background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
     }
     
-    .process-title {
+    .testimonials-title {
         font-size: 56px;
         font-weight: 700;
         margin-bottom: 100px;
@@ -535,50 +535,91 @@ custom_css = """
         text-shadow: 0 0 20px rgba(255, 200, 0, 0.5);
     }
     
-    .process-grid {
+    .testimonials-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
         max-width: 1400px;
         margin: 0 auto;
     }
     
-    .process-step {
-        background: linear-gradient(135deg, rgba(255, 200, 0, 0.05), rgba(255, 200, 0, 0.02));
-        border: 2px solid #FFC800;
-        padding: 40px 30px;
+    .testimonial-card {
+        background: linear-gradient(135deg, rgba(255, 200, 0, 0.08), rgba(255, 200, 0, 0.03));
+        border-left: 4px solid #FFC800;
+        padding: 50px 40px;
         border-radius: 12px;
-        text-align: center;
         transition: all 0.4s ease;
         position: relative;
-        animation: dataFlow 0.8s ease-out;
+        overflow: hidden;
+        animation: slideInLeft 0.8s ease-out;
         animation-fill-mode: both;
-        box-shadow: 0 0 20px rgba(255, 200, 0, 0.15);
+        box-shadow: 0 0 30px rgba(255, 200, 0, 0.15);
     }
     
-    .process-step:nth-child(1) { animation-delay: 0.1s; }
-    .process-step:nth-child(2) { animation-delay: 0.2s; }
-    .process-step:nth-child(3) { animation-delay: 0.3s; }
-    .process-step:nth-child(4) { animation-delay: 0.4s; }
+    .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+    .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+    .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
     
-    .process-step:hover {
-        transform: translateY(-15px);
-        border-color: #FFD700;
-        box-shadow: 0 0 50px rgba(255, 200, 0, 0.3);
-    }
-    
-    .step-number {
-        font-size: 48px;
-        font-weight: 700;
-        color: #FFC800;
-        margin-bottom: 15px;
+    .testimonial-card::before {
+        content: '"';
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        font-size: 80px;
+        color: rgba(255, 200, 0, 0.1);
         font-family: 'Space Mono', monospace;
     }
     
-    .step-title {
-        font-size: 18px;
+    .testimonial-card:hover {
+        transform: translateX(10px);
+        border-left-color: #FFD700;
+        box-shadow: 0 0 50px rgba(255, 200, 0, 0.25);
+    }
+    
+    .testimonial-text {
+        font-size: 16px;
+        color: #cccccc;
+        margin-bottom: 25px;
+        line-height: 1.8;
+        font-style: italic;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .testimonial-avatar {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #FFC800, #FFD700);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-weight: 700;
-        color: #ffffff;
+        color: #0a0a0a;
+        font-size: 20px;
+    }
+    
+    .testimonial-info {
+        flex: 1;
+    }
+    
+    .testimonial-name {
+        font-size: 16px;
+        font-weight: 700;
+        color: #FFC800;
+        margin-bottom: 3px;
+        font-family: 'Space Mono', monospace;
+    }
+    
+    .testimonial-role {
+        font-size: 13px;
+        color: #888888;
         text-transform: uppercase;
         letter-spacing: 1px;
     }
@@ -848,29 +889,43 @@ features_html = '''<div class="features-section">
 </div>'''
 st.markdown(features_html, unsafe_allow_html=True)
 
-# ==================== PROCESS SECTION ====================
-process_html = '''<div class="process-section">
-    <div class="process-title">Como Funciona</div>
-    <div class="process-grid">
-        <div class="process-step">
-            <div class="step-number">01</div>
-            <div class="step-title">Cadastro</div>
+# ==================== TESTIMONIALS SECTION ====================
+testimonials_html = '''<div class="testimonials-section">
+    <div class="testimonials-title">O Que Dizem</div>
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="testimonial-text">A plataforma CIMED revolucionou completamente nosso atendimento. Eficiência e qualidade em um só lugar.</div>
+            <div class="testimonial-author">
+                <div class="testimonial-avatar">DR</div>
+                <div class="testimonial-info">
+                    <div class="testimonial-name">Dr. Roberto Silva</div>
+                    <div class="testimonial-role">Clínico Geral</div>
+                </div>
+            </div>
         </div>
-        <div class="process-step">
-            <div class="step-number">02</div>
-            <div class="step-title">Configuração</div>
+        <div class="testimonial-card">
+            <div class="testimonial-text">Implementar CIMED foi a melhor decisão para nosso hospital. Segurança, velocidade e confiabilidade garantidas.</div>
+            <div class="testimonial-author">
+                <div class="testimonial-avatar">AM</div>
+                <div class="testimonial-info">
+                    <div class="testimonial-name">Dra. Ana Martins</div>
+                    <div class="testimonial-role">Diretora Médica</div>
+                </div>
+            </div>
         </div>
-        <div class="process-step">
-            <div class="step-number">03</div>
-            <div class="step-title">Integração</div>
-        </div>
-        <div class="process-step">
-            <div class="step-number">04</div>
-            <div class="step-title">Sucesso</div>
+        <div class="testimonial-card">
+            <div class="testimonial-text">Suporte impecável e tecnologia de ponta. CIMED é o futuro da saúde digital no Brasil.</div>
+            <div class="testimonial-author">
+                <div class="testimonial-avatar">CP</div>
+                <div class="testimonial-info">
+                    <div class="testimonial-name">Carlos Pereira</div>
+                    <div class="testimonial-role">CEO de Clínica</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>'''
-st.markdown(process_html, unsafe_allow_html=True)
+st.markdown(testimonials_html, unsafe_allow_html=True)
 
 # ==================== CTA FINAL ====================
 cta_final_html = '''<div class="cta-final-section">
