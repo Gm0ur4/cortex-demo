@@ -2,17 +2,16 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="TinyTracks | Memórias Felizes para Crianças",
-    page_icon="👶",
+    page_title="TinyTracks | Memórias da Infância",
+    page_icon="🐾",
     layout="wide"
 )
 
-# --- CSS DE ALTA FIDELIDADE (TINYTRACKS STYLE) ---
+# --- CSS EXPANDIDO (TINYTRACKS STYLE) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Quicksand:wght@400;500;700&display=swap');
 
-    /* Cores e Fundo */
     :root {
         --tiny-purple: #9d8df1;
         --tiny-blue: #a0d2eb;
@@ -26,7 +25,6 @@ st.markdown("""
         color: #4a4a4a;
     }
 
-    /* Tipografia Arredondada */
     html, body, [class*="css"] {
         font-family: 'Quicksand', sans-serif;
     }
@@ -36,78 +34,91 @@ st.markdown("""
         color: #2d2d2d;
     }
 
-    /* Navegação Soft */
+    /* Navegação Superior */
     .nav-tiny {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 20px 8%;
+        padding: 30px 8%;
         background: transparent;
     }
     .logo-tiny {
         font-family: 'Fredoka', sans-serif;
-        font-size: 28px;
+        font-size: 32px;
         color: var(--tiny-purple);
         font-weight: 600;
     }
 
-    /* Hero Section - Acolhedor */
+    /* Hero Section */
     .hero-tiny {
-        padding: 60px 8%;
+        padding: 80px 8% 100px 8%;
         text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
-
     .hero-h1 {
-        font-size: clamp(40px, 6vw, 70px);
+        font-size: clamp(45px, 7vw, 85px);
         line-height: 1.1;
         margin-bottom: 25px;
     }
 
-    /* Botão Bolha */
+    /* Cards e Containers Arredondados */
+    .card-base {
+        background: white;
+        border-radius: 40px;
+        padding: 40px;
+        border: 2px solid #f0f0f0;
+        transition: 0.3s;
+    }
+
+    /* Timeline Style */
+    .timeline-item {
+        border-left: 4px dashed var(--tiny-purple);
+        padding-left: 30px;
+        margin-left: 20px;
+        position: relative;
+        padding-bottom: 50px;
+    }
+    .timeline-circle {
+        position: absolute;
+        left: -14px;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        background: var(--tiny-purple);
+        border-radius: 50%;
+        border: 4px solid white;
+    }
+
+    /* Pricing Table */
+    .pricing-card {
+        text-align: center;
+        background: white;
+        border-radius: 40px;
+        padding: 50px 30px;
+        border: 3px solid transparent;
+        transition: 0.4s;
+    }
+    .pricing-card.popular {
+        border-color: var(--tiny-purple);
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(157,141,241,0.15);
+    }
+
+    /* Botões */
     div.stButton > button {
         background-color: var(--tiny-purple);
         color: white;
         border: none;
         border-radius: 50px;
-        padding: 15px 40px;
+        padding: 18px 50px;
         font-family: 'Fredoka', sans-serif;
-        font-size: 18px;
-        box-shadow: 0 4px 15px rgba(157, 141, 241, 0.4);
+        font-size: 20px;
+        font-weight: 500;
+        box-shadow: 0 10px 20px rgba(157, 141, 241, 0.3);
         transition: 0.3s;
     }
     div.stButton > button:hover {
-        transform: scale(1.05);
-        background-color: #8a7ae0;
-        box-shadow: 0 6px 20px rgba(157, 141, 241, 0.6);
-    }
-
-    /* Cards de Recursos */
-    .feature-card {
-        background: white;
-        border-radius: 30px;
-        padding: 30px;
-        text-align: center;
-        border: 2px solid #f0f0f0;
-        transition: 0.3s;
-        height: 100%;
-    }
-    .feature-card:hover {
-        border-color: var(--tiny-blue);
-        transform: translateY(-5px);
-    }
-
-    .icon-box {
-        width: 60px;
-        height: 60px;
-        border-radius: 20px;
-        margin: 0 auto 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 30px;
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(157, 141, 241, 0.5);
     }
 
     [data-testid="stHeader"] { display: none; }
@@ -118,63 +129,181 @@ st.markdown("""
 st.markdown("""
 <div class="nav-tiny">
     <div class="logo-tiny">🐾 tinytracks</div>
-    <div style="display: flex; gap: 30px; font-weight: 700; color: #666; font-size: 14px;">
-        <span>Como funciona</span>
+    <div style="display: flex; gap: 40px; font-weight: 700; color: #666; font-size: 15px;">
+        <span>O App</span>
+        <span>Funcionalidades</span>
         <span>Preços</span>
-        <span>Login</span>
+        <span style="color: var(--tiny-purple);">Login</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 2. HERO ---
+# --- 2. HERO SECTION ---
 st.markdown('<div class="hero-tiny">', unsafe_allow_html=True)
-st.markdown('<h1 class="hero-h1">Capture cada passo <br><span style="color: #9d8df1;">da jornada deles.</span></h1>', unsafe_allow_html=True)
-st.markdown('<p style="max-width: 600px; font-size: 18px; color: #777; margin-bottom: 40px;">O TinyTracks ajuda você a organizar fotos, vídeos e marcos do crescimento dos seus filhos em um diário digital seguro e privado.</p>', unsafe_allow_html=True)
-st.button("Começar Grátis")
+st.markdown('<h1 class="hero-h1">Guardar memórias <br><span style="color: #9d8df1;">nunca foi tão doce.</span></h1>', unsafe_allow_html=True)
+st.markdown('<p style="max-width: 700px; font-size: 20px; color: #777; margin: 0 auto 40px auto; line-height: 1.6;">O diário digital inteligente que organiza os momentos mais preciosos dos seus filhos, para que você possa focar no que realmente importa: viver cada um deles.</p>', unsafe_allow_html=True)
+st.button("Criar Minha Conta Grátis")
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- 3. ILUSTRAÇÃO HERO (SIMULADA COM IMAGEM SOFT) ---
-st.image("https://images.unsplash.com/photo-1510333300262-213217d29407?w=1200", use_container_width=True)
+# --- 3. SEÇÃO DE FUNCIONALIDADES (CARDS) ---
+st.markdown('<div style="padding: 0 8% 100px 8%;">', unsafe_allow_html=True)
+st.markdown('<h2 style="text-align: center; margin-bottom: 60px; font-size: 42px;">Tudo o que você precisa</h2>', unsafe_allow_html=True)
 
-# --- 4. GRID DE RECURSOS ---
-st.markdown('<div style="padding: 100px 8%;">', unsafe_allow_html=True)
-st.markdown('<h2 style="text-align: center; margin-bottom: 60px; font-size: 36px;">Feito para pais ocupados</h2>', unsafe_allow_html=True)
+f_col1, f_col2, f_col3 = st.columns(3, gap="large")
 
-col1, col2, col3 = st.columns(3, gap="large")
+with f_col1:
+    st.markdown("""
+    <div class="card-base">
+        <div style="font-size: 40px; margin-bottom: 20px;">📸</div>
+        <h3>Organização Mágica</h3>
+        <p style="color: #888; font-size: 16px;">Fotos e vídeos são organizados automaticamente por data e fase do crescimento.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
-def render_feature(col, icon, title, desc, color):
-    with col:
-        st.markdown(f"""
-        <div class="feature-card">
-            <div class="icon-box" style="background-color: {color};">{icon}</div>
-            <h3 style="margin-bottom: 15px;">{title}</h3>
-            <p style="color: #888; font-size: 15px; line-height: 1.6;">{desc}</p>
-        </div>
-        """, unsafe_allow_html=True)
+with f_col2:
+    st.markdown("""
+    <div class="card-base">
+        <div style="font-size: 40px; margin-bottom: 20px;">👨‍👩‍👧‍👦</div>
+        <h3>Círculo da Família</h3>
+        <p style="color: #888; font-size: 16px;">Compartilhe momentos com avós e tios em um ambiente privado e seguro.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
-render_feature(col1, "📸", "Upload Inteligente", "Organize fotos automaticamente por idade e data.", "#e0f2fe")
-render_feature(col2, "🔒", "Privacidade Total", "Seu diário é criptografado e só você decide quem pode ver.", "#fef3c7")
-render_feature(col3, "📅", "Marcos Importantes", "Nunca esqueça a primeira palavra ou o primeiro passo.", "#fce7f3")
-
+with f_col3:
+    st.markdown("""
+    <div class="card-base">
+        <div style="font-size: 40px; margin-bottom: 20px;">🎨</div>
+        <h3>Livros de Memórias</h3>
+        <p style="color: #888; font-size: 16px;">Transforme seu diário digital em um álbum físico impresso com apenas um clique.</p>
+    </div>
+    """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- 5. SEÇÃO DE FECHAMENTO ---
+# --- 4. SEÇÃO "TIMELINE" (SIMULAÇÃO DO APP) ---
 st.markdown("""
-<div style="background-color: #9d8df1; padding: 80px 8%; text-align: center; border-radius: 50px; margin: 0 8% 100px 8%; color: white;">
-    <h2 style="color: white; font-size: 40px; margin-bottom: 20px;">Pronto para criar sua primeira trilha?</h2>
-    <p style="margin-bottom: 40px; opacity: 0.9;">Junte-se a mais de 50.000 famílias que guardam suas memórias conosco.</p>
+<div style="background-color: white; padding: 100px 8%; border-radius: 80px 80px 0 0;">
+    <div style="display: flex; align-items: center; gap: 80px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 300px;">
+            <h2 style="font-size: 48px; margin-bottom: 30px;">Uma linha do tempo da vida deles</h2>
+            <div class="timeline-item">
+                <div class="timeline-circle"></div>
+                <h4 style="color: var(--tiny-purple);">Hoje - 2 Anos e 3 Meses</h4>
+                <p>O primeiro dia na escolinha! Nenhuma lágrima (pelo menos não do Leo).</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-circle"></div>
+                <h4 style="color: #666;">Há 6 meses</h4>
+                <p>Primeiros passos no jardim. Foram 4 passos inteiros!</p>
+            </div>
+            <div class="timeline-item" style="border: none;">
+                <div class="timeline-circle"></div>
+                <h4 style="color: #666;">O Nascimento</h4>
+                <p>O começo da trilha mais linda de nossas vidas.</p>
+            </div>
+        </div>
+        <div style="flex: 1; min-width: 300px;">
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800" style="width: 100%; border-radius: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.1);">
+        </div>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 6. FOOTER ---
+# --- 5. SEÇÃO DE DEPOIMENTOS ---
 st.markdown("""
-<div style="padding: 60px 8% 40px 8%; border-top: 2px solid #f0f0f0; text-align: center;">
-    <div style="font-family: 'Fredoka'; font-size: 24px; color: #9d8df1; margin-bottom: 20px;">tinytracks</div>
-    <div style="display: flex; justify-content: center; gap: 40px; font-size: 14px; color: #999;">
-        <span>Instagram</span>
-        <span>Privacidade</span>
-        <span>Suporte</span>
+<div style="background-color: #a0d2eb; padding: 120px 8%; text-align: center;">
+    <h2 style="color: white; font-size: 42px; margin-bottom: 60px;">Amado por mais de 50.000 famílias</h2>
+    <div style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
+        <div style="background: white; padding: 40px; border-radius: 30px; max-width: 350px;">
+            <p style="font-style: italic; color: #555;">"O TinyTracks mudou a forma como guardo as fotos da minha filha. É tão fácil de usar e as sugestões de marcos são incríveis!"</p>
+            <p style="margin-top: 20px; font-weight: 700;">— Mariana S., Mãe da Alice</p>
+        </div>
+        <div style="background: white; padding: 40px; border-radius: 30px; max-width: 350px;">
+            <p style="font-style: italic; color: #555;">"Finalmente um lugar seguro para compartilhar fotos com a família sem precisar das redes sociais abertas."</p>
+            <p style="margin-top: 20px; font-weight: 700;">— Ricardo T., Pai do Bento</p>
+        </div>
     </div>
-    <p style="margin-top: 40px; font-size: 12px; color: #ccc;">© 2026 TinyTracks App. Feito com amor para famílias.</p>
+</div>
+""", unsafe_allow_html=True)
+
+# --- 6. SEÇÃO DE PREÇOS (PRICING) ---
+st.markdown('<div style="padding: 120px 8%;">', unsafe_allow_html=True)
+st.markdown('<h2 style="text-align: center; margin-bottom: 20px; font-size: 42px;">Escolha o seu plano</h2>', unsafe_allow_html=True)
+st.markdown('<p style="text-align: center; color: #888; margin-bottom: 60px;">Sem taxas escondidas. Cancele quando quiser.</p>', unsafe_allow_html=True)
+
+p_col1, p_col2, p_col3 = st.columns(3, gap="large")
+
+with p_col1:
+    st.markdown("""
+    <div class="pricing-card">
+        <h3>Básico</h3>
+        <h2 style="font-size: 48px; margin: 20px 0;">Grátis</h2>
+        <p style="color: #888;">Para começar a trilha</p>
+        <ul style="text-align: left; margin: 30px 0; font-size: 14px; line-height: 2;">
+            <li>✓ Até 500 fotos</li>
+            <li>✓ 1 Perfil de criança</li>
+            <li>✓ Álbum digital básico</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    st.button("Escolher Básico", key="btn_base")
+
+with p_col2:
+    st.markdown("""
+    <div class="pricing-card popular">
+        <span style="background: var(--tiny-purple); color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 700;">MAIS POPULAR</span>
+        <h3 style="margin-top: 20px;">Premium</h3>
+        <h2 style="font-size: 48px; margin: 20px 0;">R$ 19<span style="font-size: 18px;">/mês</span></h2>
+        <p style="color: #888;">Para memórias infinitas</p>
+        <ul style="text-align: left; margin: 30px 0; font-size: 14px; line-height: 2;">
+            <li>✓ Armazenamento Ilimitado</li>
+            <li>✓ Vídeos em 4K</li>
+            <li>✓ Compartilhamento ilimitado</li>
+            <li>✓ Backup automático</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    st.button("Assinar Premium", key="btn_prem")
+
+with p_col3:
+    st.markdown("""
+    <div class="pricing-card">
+        <h3>Família</h3>
+        <h2 style="font-size: 48px; margin: 20px 0;">R$ 35<span style="font-size: 18px;">/mês</span></h2>
+        <p style="color: #888;">Para toda a árvore genealógica</p>
+        <ul style="text-align: left; margin: 30px 0; font-size: 14px; line-height: 2;">
+            <li>✓ Tudo do Premium</li>
+            <li>✓ Até 5 perfis de crianças</li>
+            <li>✓ Acesso de Admin para 4 pessoas</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    st.button("Escolher Família", key="btn_fam")
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- 7. SEÇÃO FAQ ---
+st.markdown('<div style="background: #f0f9ff; padding: 100px 20%;">', unsafe_allow_html=True)
+st.markdown('<h2 style="text-align: center; margin-bottom: 50px;">Dúvidas Frequentes</h2>', unsafe_allow_html=True)
+
+with st.expander("Meus dados estão seguros?"):
+    st.write("Sim! Utilizamos criptografia de nível bancário e seus dados nunca são vendidos para terceiros.")
+
+with st.expander("Posso imprimir os álbuns no Brasil?"):
+    st.write("Sim, temos parceiros de impressão locais que entregam em todo o território nacional com acabamento premium.")
+
+with st.expander("Como convido os avós?"):
+    st.write("Basta enviar um link mágico pelo WhatsApp ou e-mail. Eles não precisam criar senhas complicadas.")
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- 8. FOOTER ---
+st.markdown("""
+<div style="padding: 100px 8% 50px 8%; text-align: center;">
+    <div class="logo-tiny" style="margin-bottom: 30px;">🐾 tinytracks</div>
+    <div style="display: flex; justify-content: center; gap: 50px; margin-bottom: 40px; font-weight: 600; color: #777;">
+        <span>Instagram</span>
+        <span>Facebook</span>
+        <span>Blog</span>
+        <span>Termos de Uso</span>
+    </div>
+    <p style="color: #bbb; font-size: 13px;">© 2026 TinyTracks. Criado com ❤️ para as futuras gerações.</p>
 </div>
 """, unsafe_allow_html=True)
