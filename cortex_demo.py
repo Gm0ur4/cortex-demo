@@ -2,117 +2,130 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Breakfast | Digital Design Studio",
-    page_icon="🍳",
+    page_title="Begg | Creative Portfolio",
+    page_icon="🕊️",
     layout="wide"
 )
 
-# --- CSS DE ALTA FIDELIDADE (BREAKFAST SYSTEM) ---
+# --- CSS DE ALTA FIDELIDADE (BEGG AESTHETIC) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap');
 
-    /* Reset Geral */
-    .stApp { background-color: #ffffff; }
-    [data-testid="stHeader"] { display: none; } /* Esconde o header do Streamlit */
-    .block-container { padding: 0 !important; max-width: 100% !important; }
+    /* Cores e Background */
+    .stApp {
+        background-color: #fcfcfc; /* Off-white característico */
+    }
 
-    /* Tipografia Estilo Breakfast */
     html, body, [class*="css"] {
         font-family: 'Inter', sans-serif;
-        color: #000000;
-        -webkit-font-smoothing: antialiased;
+        color: #2c2c2c;
     }
 
-    /* Linhas de Grade (The Grid) */
-    .grid-line-h { border-bottom: 1px solid #000; width: 100%; }
-    .grid-line-v { border-right: 1px solid #000; height: 100%; }
+    h1, h2, h3, .serif {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 300;
+        font-style: italic;
+    }
 
-    /* Header Fixo/Nav */
-    .nav-container {
+    /* Header Flutuante */
+    .nav-begg {
         display: flex;
         justify-content: space-between;
-        padding: 25px 40px;
-        border-bottom: 1px solid #000;
-        font-weight: 700;
+        padding: 40px 8%;
         font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    /* Hero Section - A tipografia é o centro */
-    .hero-wrap {
-        padding: 120px 40px;
-        border-bottom: 1px solid #000;
-    }
-    .hero-main-text {
-        font-size: clamp(50px, 14vw, 220px);
-        font-weight: 900;
-        line-height: 0.8;
-        letter-spacing: -0.05em;
+        letter-spacing: 1px;
         text-transform: uppercase;
     }
 
-    /* Project Section */
-    .project-block {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* Duas colunas perfeitas */
-        border-bottom: 1px solid #000;
+    /* Hero Section */
+    .hero-begg {
+        padding: 100px 8% 150px 8%;
+        text-align: center;
     }
-    .project-cell {
-        border-right: 1px solid #000;
-        position: relative;
+    .hero-title {
+        font-size: clamp(50px, 8vw, 100px);
+        line-height: 1;
+        margin-bottom: 20px;
+    }
+
+    /* Project Image System */
+    .project-container {
+        padding: 0 8% 100px 8%;
+    }
+    .img-wrap {
+        border-radius: 12px;
         overflow: hidden;
+        margin-bottom: 25px;
+        background-color: #eee;
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .project-cell:last-child { border-right: none; }
-    
-    .project-img {
+    .img-wrap:hover {
+        transform: scale(0.98);
+    }
+    .img-wrap img {
         width: 100%;
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
         display: block;
-        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .project-img:hover { transform: scale(1.05); }
 
     .project-label {
-        padding: 15px 20px;
-        display: flex;
-        justify-content: space-between;
-        font-weight: 700;
-        font-size: 11px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 32px;
+        font-style: italic;
+        margin-bottom: 5px;
+    }
+    .project-category {
+        font-size: 12px;
         text-transform: uppercase;
-        border-top: 1px solid #000;
+        color: #888;
+        letter-spacing: 2px;
     }
 
-    /* Big Text / Philosophy Section */
-    .philosophy-section {
-        padding: 150px 40px;
-        font-size: clamp(24px, 5vw, 64px);
-        font-weight: 800;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-        border-bottom: 1px solid #000;
+    /* Seção de Texto Centralizada */
+    .about-text {
+        max-width: 800px;
+        margin: 150px auto;
+        text-align: center;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 42px;
+        line-height: 1.2;
+        font-style: italic;
     }
 
     /* Footer */
-    .footer-container {
-        padding: 80px 40px;
+    .footer-begg {
+        padding: 100px 8% 50px 8%;
+        border-top: 1px solid #eee;
         display: flex;
         justify-content: space-between;
-        align-items: flex-end;
+        font-size: 12px;
+        color: #999;
     }
-    .footer-logo { font-size: 100px; font-weight: 900; letter-spacing: -5px; }
+
+    /* Botão Customizado */
+    div.stButton > button {
+        background: transparent;
+        border: 1px solid #2c2c2c;
+        border-radius: 50px;
+        padding: 10px 30px;
+        font-size: 12px;
+        text-transform: uppercase;
+        transition: 0.3s;
+    }
+    div.stButton > button:hover {
+        background: #2c2c2c;
+        color: #fff;
+    }
 </style>
 """, unsafe_allow_html=True)
 
-# --- 1. NAVEGAÇÃO ---
+# --- 1. NAV BAR ---
 st.markdown("""
-<div class="nav-container">
-    <div>Breakfast.</div>
-    <div style="display: flex; gap: 40px;">
-        <span>Work</span>
-        <span>Studio</span>
+<div class="nav-begg">
+    <div>Begg. Portfolio</div>
+    <div style="display: flex; gap: 30px;">
+        <span>Works</span>
+        <span>About</span>
         <span>Contact</span>
     </div>
 </div>
@@ -120,86 +133,79 @@ st.markdown("""
 
 # --- 2. HERO ---
 st.markdown("""
-<div class="hero-wrap">
-    <div class="hero-main-text">
-        DIGITAL<br>CRAFT<br>STUDIO
-    </div>
+<div class="hero-begg">
+    <h1 class="hero-title">Selected Works<br>2023 — 2026</h1>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 3. PROJETOS (GRID 2x2) ---
-# Projeto 1 e 2
-st.markdown('<div class="project-block">', unsafe_allow_html=True)
-col1, col2 = st.columns(2, gap="small")
+# --- 3. PROJETOS (LAYOUT ASSIMÉTRICO) ---
+# Projeto 1 (Grande)
+st.markdown("""
+<div class="project-container">
+    <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=1600">
+    </div>
+    <div class="project-label">Velvet Horizon</div>
+    <div class="project-category">Brand Identity</div>
+</div>
+""", unsafe_allow_html=True)
+
+# Projetos 2 e 3 (Lado a Lado)
+col1, col2 = st.columns(2, gap="large")
 with col1:
     st.markdown("""
-    <div class="project-cell">
-        <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=800" class="project-img">
-        <div class="project-label"><span>Nova Identity</span><span>2024</span></div>
+    <div class="project-container" style="padding-left:0; padding-right:0;">
+        <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800">
+        </div>
+        <div class="project-label">The Essentialist</div>
+        <div class="project-category">Product Design</div>
     </div>
     """, unsafe_allow_html=True)
+
 with col2:
     st.markdown("""
-    <div class="project-cell" style="border-right:none;">
-        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800" class="project-img">
-        <div class="project-label"><span>Tech Frontier</span><span>Branding</span></div>
+    <div class="project-container" style="padding-left:0; padding-right:0; margin-top: 80px;">
+        <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800">
+        </div>
+        <div class="project-label">Silent Studio</div>
+        <div class="project-category">Art Direction</div>
     </div>
     """, unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
-
-# Projeto 3 e 4
-st.markdown('<div class="project-block">', unsafe_allow_html=True)
-col3, col4 = st.columns(2, gap="small")
-with col3:
-    st.markdown("""
-    <div class="project-cell">
-        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800" class="project-img">
-        <div class="project-label"><span>Abstract Forms</span><span>CGI</span></div>
-    </div>
-    """, unsafe_allow_html=True)
-with col4:
-    st.markdown("""
-    <div class="project-cell" style="border-right:none;">
-        <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=800" class="project-img">
-        <div class="project-label"><span>L'Aube</span><span>Web Design</span></div>
-    </div>
-    """, unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
 
 # --- 4. PHILOSOPHY SECTION ---
 st.markdown("""
-<div class="philosophy-section">
-    We believe in the power of simple, functional, and unapologetic design. 
-    Creating meaningful connections through digital interfaces that stand out 
-    in a crowded world.
+<div class="about-text">
+    "Design is not just what it looks like and feels like. Design is how it works."
 </div>
 """, unsafe_allow_html=True)
 
-# --- 5. SERVICES (GRID FINO) ---
+# --- 5. PROJETO FINAL ---
 st.markdown("""
-<div class="project-block" style="padding: 60px 40px; font-weight: 700; text-transform: uppercase; font-size: 14px;">
-    <div>
-        <p style="color: #888; margin-bottom: 20px;">Capabilites</p>
-        <p>Strategy / UX Design / UI Design / Web Development / Branding / Motion</p>
+<div class="project-container">
+    <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?w=1600">
     </div>
-    <div style="border-left: 1px solid #000; padding-left: 40px;">
-        <p style="color: #888; margin-bottom: 20px;">Clientele</p>
-        <p>Apple / Nike / Google / Local startups / International Brands</p>
-    </div>
+    <div class="project-label">Nordic Solitude</div>
+    <div class="project-category">Photography</div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 6. FOOTER ---
+# --- 6. CTA ---
+st.markdown("<div style='text-align:center; padding: 100px 0;'>", unsafe_allow_html=True)
+st.markdown("<h2 class='serif' style='font-size: 60px;'>Interested in working together?</h2>", unsafe_allow_html=True)
+st.button("Get in touch")
+st.markdown("</div>", unsafe_allow_html=True)
+
+# --- 7. FOOTER ---
 st.markdown("""
-<div class="footer-container">
-    <div class="footer-logo">B.</div>
-    <div style="text-align: right; font-weight: 700; text-transform: uppercase; font-size: 12px; line-height: 2;">
-        Let's work together<br>
-        <span style="text-decoration: underline;">hello@wearebreakfast.com</span><br><br>
-        Instagram / LinkedIn / Twitter
+<div class="footer-begg">
+    <div>© 2026 BEGG STUDIO</div>
+    <div style="display: flex; gap: 40px;">
+        <span>Instagram</span>
+        <span>Behance</span>
+        <span>LinkedIn</span>
     </div>
-</div>
-<div style="padding: 20px 40px; border-top: 1px solid #000; font-size: 10px; font-weight: 700; text-transform: uppercase;">
-    © 2026 Breakfast Studio — Crafted with precision.
 </div>
 """, unsafe_allow_html=True)
