@@ -2,13 +2,13 @@ import streamlit as st
 
 # Configuração da página
 st.set_page_config(
-    page_title="Agência Digital - Transforme seu Negócio",
-    page_icon="🚀",
+    page_title="TechStore - Celulares Premium",
+    page_icon="📱",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# CSS ULTRA PROFISSIONAL - INSPIRADO EM GREATPAGES
+# CSS ULTRA PROFISSIONAL - INSPIRADO EM TELEPATI
 custom_css = """
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -20,25 +20,11 @@ custom_css = """
     }
     
     html, body, [data-testid="stAppViewContainer"] {
-        background: linear-gradient(180deg, #f8f9ff 0%, #f0f4ff 50%, #f8f9ff 100%);
+        background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
         background-attachment: fixed;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        color: #1a1a1a;
+        color: #ffffff;
         line-height: 1.6;
-    }
-    
-    html::before, body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: 
-            radial-gradient(circle at 20% 50%, rgba(0, 102, 255, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 80% 80%, rgba(0, 102, 255, 0.05) 0%, transparent 50%);
-        pointer-events: none;
-        z-index: 0;
     }
     
     [data-testid="stDecoration"] { display: none; }
@@ -52,23 +38,23 @@ custom_css = """
     
     /* NAVBAR */
     .navbar {
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(15, 15, 15, 0.95);
         backdrop-filter: blur(10px);
         padding: 16px 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid rgba(0, 102, 255, 0.1);
+        border-bottom: 2px solid #00BFA5;
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 2px 10px rgba(0, 102, 255, 0.08);
+        box-shadow: 0 2px 10px rgba(0, 191, 165, 0.15);
     }
     
     .navbar-logo {
         font-size: 24px;
         font-weight: 900;
-        color: #0066FF;
+        color: #00BFA5;
         text-decoration: none;
         letter-spacing: -0.5px;
     }
@@ -80,46 +66,43 @@ custom_css = """
     }
     
     .navbar-link {
-        color: #1a1a1a;
+        color: #ffffff;
         text-decoration: none;
         font-weight: 500;
         font-size: 15px;
         transition: all 0.3s ease;
-        position: relative;
     }
     
     .navbar-link:hover {
-        color: #0066FF;
+        color: #00BFA5;
     }
     
     .navbar-cta {
-        background: linear-gradient(135deg, #0066FF, #0052CC);
-        color: white;
+        background: linear-gradient(135deg, #00BFA5, #00A89C);
+        color: #000000;
         padding: 10px 28px;
         border-radius: 8px;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 700;
         font-size: 14px;
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
+        box-shadow: 0 4px 12px rgba(0, 191, 165, 0.3);
     }
     
     .navbar-cta:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+        box-shadow: 0 6px 20px rgba(0, 191, 165, 0.4);
     }
     
     /* HERO SECTION */
     .hero-section {
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 249, 255, 0.6) 100%);
-        backdrop-filter: blur(10px);
-        padding: 120px 60px;
-        text-align: center;
+        background: linear-gradient(180deg, rgba(15, 15, 15, 0.9) 0%, rgba(0, 191, 165, 0.05) 100%);
+        padding: 100px 60px;
         position: relative;
         overflow: hidden;
-        border-bottom: 1px solid rgba(0, 102, 255, 0.1);
+        border-bottom: 2px dashed #FF4444;
     }
     
     .hero-section::before {
@@ -129,120 +112,51 @@ custom_css = """
         right: -20%;
         width: 600px;
         height: 600px;
-        background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
-        border-radius: 50%;
-    }
-    
-    .hero-section::after {
-        content: '';
-        position: absolute;
-        bottom: -30%;
-        left: -10%;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(0, 102, 255, 0.05) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(0, 191, 165, 0.1) 0%, transparent 70%);
         border-radius: 50%;
     }
     
     .hero-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
         position: relative;
         z-index: 2;
-        max-width: 900px;
+        max-width: 1400px;
         margin: 0 auto;
     }
     
-    .hero-title {
+    .hero-text h1 {
         font-size: 64px;
         font-weight: 900;
         line-height: 1.15;
-        margin-bottom: 24px;
-        color: #1a1a1a;
+        margin-bottom: 20px;
+        color: #ffffff;
         letter-spacing: -1px;
     }
     
-    .hero-title-highlight {
-        color: #0066FF;
+    .hero-text h1 .highlight {
+        color: #00BFA5;
     }
     
-    .hero-subtitle {
-        font-size: 20px;
-        line-height: 1.6;
-        margin-bottom: 50px;
-        color: #666666;
+    .hero-text p {
+        font-size: 18px;
+        line-height: 1.7;
+        margin-bottom: 40px;
+        color: #cccccc;
         font-weight: 400;
     }
     
-    .hero-stats {
-        display: flex;
-        justify-content: center;
-        gap: 80px;
-        margin-top: 60px;
-        padding-top: 60px;
-        border-top: 1px solid #e0e0e0;
-    }
-    
-    .hero-stat {
+    .hero-image {
         text-align: center;
+        font-size: 120px;
     }
     
-    .hero-stat-number {
-        font-size: 36px;
-        font-weight: 900;
-        color: #0066FF;
-        margin-bottom: 8px;
-    }
-    
-    .hero-stat-label {
-        font-size: 14px;
-        color: #666666;
-        font-weight: 500;
-    }
-    
-    /* BADGES */
-    .badges-container {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-bottom: 30px;
-    }
-    
-    .badge {
-        background: #f0f0f0;
-        color: #1a1a1a;
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 13px;
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-    }
-    
-    .badge-icon {
-        font-size: 14px;
-    }
-    
-    .badge-primary {
-        background: #0066FF;
-        color: white;
-    }
-    
-    .badge-success {
-        background: #00AA44;
-        color: white;
-    }
-    
-    .badge-warning {
-        background: #FF6600;
-        color: white;
-    }
-    
-    /* BUTTONS */
-    .cta-button {
+    .hero-cta {
         display: inline-block;
-        background: linear-gradient(135deg, #0066FF, #0052CC);
-        color: white;
+        background: linear-gradient(135deg, #00BFA5, #00A89C);
+        color: #000000;
         padding: 16px 48px;
         border-radius: 8px;
         font-weight: 700;
@@ -251,110 +165,90 @@ custom_css = """
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0, 102, 255, 0.25);
+        box-shadow: 0 4px 12px rgba(0, 191, 165, 0.3);
     }
     
-    .cta-button:hover {
+    .hero-cta:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(0, 102, 255, 0.35);
-    }
-    
-    .cta-button-secondary {
-        background: white;
-        color: #0066FF;
-        border: 2px solid #0066FF;
-        box-shadow: none;
-    }
-    
-    .cta-button-secondary:hover {
-        background: #f0f6ff;
+        box-shadow: 0 8px 24px rgba(0, 191, 165, 0.4);
     }
     
     /* FEATURES SECTION */
     .features-section {
         padding: 100px 60px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(248, 249, 255, 0.5) 100%);
-        backdrop-filter: blur(5px);
+        background: rgba(26, 26, 26, 0.8);
     }
     
-    .section-header {
+    .feature-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        margin-bottom: 100px;
+        padding: 60px;
+        background: rgba(0, 191, 165, 0.05);
+        border-radius: 12px;
+        border: 2px dashed #FF4444;
+    }
+    
+    .feature-item:nth-child(even) {
+        direction: rtl;
+    }
+    
+    .feature-item:nth-child(even) > * {
+        direction: ltr;
+    }
+    
+    .feature-number {
+        font-size: 64px;
+        font-weight: 900;
+        color: #00BFA5;
+        margin-bottom: 20px;
+    }
+    
+    .feature-title {
+        font-size: 40px;
+        font-weight: 900;
+        margin-bottom: 20px;
+        color: #ffffff;
+    }
+    
+    .feature-title .highlight {
+        color: #00BFA5;
+    }
+    
+    .feature-desc {
+        font-size: 16px;
+        color: #cccccc;
+        line-height: 1.8;
+        margin-bottom: 30px;
+    }
+    
+    .feature-icon {
+        font-size: 100px;
         text-align: center;
-        margin-bottom: 80px;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
+    }
+    
+    /* PRODUCTS SECTION */
+    .products-section {
+        padding: 100px 60px;
+        background: linear-gradient(180deg, rgba(15, 15, 15, 0.9) 0%, rgba(0, 191, 165, 0.05) 100%);
     }
     
     .section-title {
         font-size: 48px;
         font-weight: 900;
-        margin-bottom: 20px;
-        color: #1a1a1a;
+        margin-bottom: 60px;
+        color: #ffffff;
+        text-align: center;
         letter-spacing: -0.5px;
     }
     
-    .section-title-highlight {
-        color: #0066FF;
+    .section-title .highlight {
+        color: #00BFA5;
     }
     
-    .section-description {
-        font-size: 18px;
-        color: #666666;
-        line-height: 1.7;
-        font-weight: 400;
-    }
-    
-    .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 40px;
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-    
-    .feature-card {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        padding: 40px;
-        border-radius: 12px;
-        border: 1px solid rgba(0, 102, 255, 0.15);
-        transition: all 0.4s ease;
-        cursor: pointer;
-    }
-    
-    .feature-card:hover {
-        transform: translateY(-8px);
-        border-color: #0066FF;
-        box-shadow: 0 12px 40px rgba(0, 102, 255, 0.12);
-    }
-    
-    .feature-icon {
-        font-size: 48px;
-        margin-bottom: 20px;
-        display: inline-block;
-    }
-    
-    .feature-title {
-        font-size: 20px;
-        font-weight: 800;
-        margin-bottom: 12px;
-        color: #1a1a1a;
-    }
-    
-    .feature-desc {
-        font-size: 15px;
-        color: #666666;
-        line-height: 1.7;
-    }
-    
-    /* SERVICES SECTION */
-    .services-section {
-        padding: 100px 60px;
-        background: linear-gradient(180deg, rgba(248, 249, 255, 0.8) 0%, rgba(240, 244, 255, 0.6) 100%);
-        backdrop-filter: blur(5px);
-    }
-    
-    .services-grid {
+    .products-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 40px;
@@ -362,63 +256,101 @@ custom_css = """
         margin: 0 auto;
     }
     
-    .service-card {
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(10px);
-        padding: 50px 40px;
+    .product-card {
+        background: rgba(26, 26, 26, 0.8);
+        border: 2px solid #00BFA5;
         border-radius: 12px;
-        border: 1px solid rgba(0, 102, 255, 0.15);
+        padding: 40px;
         text-align: center;
         transition: all 0.4s ease;
+        cursor: pointer;
     }
     
-    .service-card:hover {
+    .product-card:hover {
         transform: translateY(-10px);
-        border-color: #0066FF;
-        box-shadow: 0 16px 48px rgba(0, 102, 255, 0.15);
+        box-shadow: 0 20px 40px rgba(0, 191, 165, 0.25);
+        border-color: #FF4444;
     }
     
-    .service-number {
-        font-size: 48px;
-        font-weight: 900;
-        color: #0066FF;
-        margin-bottom: 16px;
+    .product-icon {
+        font-size: 80px;
+        margin-bottom: 20px;
     }
     
-    .service-title {
+    .product-title {
         font-size: 22px;
         font-weight: 800;
-        margin-bottom: 16px;
-        color: #1a1a1a;
+        margin-bottom: 12px;
+        color: #ffffff;
     }
     
-    .service-desc {
+    .product-desc {
         font-size: 15px;
-        color: #666666;
+        color: #cccccc;
         line-height: 1.7;
+        margin-bottom: 20px;
+    }
+    
+    .product-price {
+        font-size: 28px;
+        font-weight: 900;
+        color: #00BFA5;
+    }
+    
+    /* STATS SECTION */
+    .stats-section {
+        padding: 100px 60px;
+        background: rgba(0, 191, 165, 0.1);
+        border-top: 2px dashed #FF4444;
+        border-bottom: 2px dashed #FF4444;
+    }
+    
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .stat-item {
+        padding: 40px;
+    }
+    
+    .stat-number {
+        font-size: 56px;
+        font-weight: 900;
+        color: #00BFA5;
+        margin-bottom: 12px;
+    }
+    
+    .stat-label {
+        font-size: 16px;
+        color: #cccccc;
+        font-weight: 600;
     }
     
     /* TESTIMONIALS SECTION */
     .testimonials-section {
         padding: 100px 60px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(248, 249, 255, 0.5) 100%);
-        backdrop-filter: blur(5px);
+        background: rgba(26, 26, 26, 0.8);
     }
     
     .testimonial-card {
-        background: rgba(248, 249, 255, 0.8);
-        backdrop-filter: blur(10px);
+        background: rgba(0, 191, 165, 0.1);
+        border-left: 4px solid #00BFA5;
         padding: 40px;
-        border-radius: 12px;
-        border-left: 4px solid #0066FF;
         margin-bottom: 30px;
-        border: 1px solid rgba(0, 102, 255, 0.15);
-        border-left: 4px solid #0066FF;
+        border-radius: 8px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .testimonial-text {
         font-size: 16px;
-        color: #1a1a1a;
+        color: #ffffff;
         line-height: 1.8;
         margin-bottom: 20px;
         font-style: italic;
@@ -427,21 +359,22 @@ custom_css = """
     .testimonial-author {
         font-size: 14px;
         font-weight: 700;
-        color: #1a1a1a;
+        color: #00BFA5;
     }
     
     .testimonial-role {
         font-size: 13px;
-        color: #666666;
+        color: #cccccc;
         font-weight: 500;
     }
     
     /* CTA FINAL SECTION */
     .cta-final-section {
-        background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
-        color: white;
+        background: linear-gradient(135deg, #00BFA5 0%, #00A89C 100%);
+        color: #000000;
         padding: 100px 60px;
         text-align: center;
+        border-top: 2px dashed #FF4444;
     }
     
     .cta-final-title {
@@ -454,15 +387,15 @@ custom_css = """
     .cta-final-desc {
         font-size: 18px;
         margin-bottom: 50px;
-        opacity: 0.95;
+        opacity: 0.9;
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
     }
     
     .cta-final-button {
-        background: white;
-        color: #0066FF;
+        background: #000000;
+        color: #00BFA5;
         padding: 16px 48px;
         border-radius: 8px;
         font-weight: 700;
@@ -472,20 +405,21 @@ custom_css = """
         border: none;
         cursor: pointer;
         display: inline-block;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
     
     .cta-final-button:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     }
     
     /* FOOTER */
     .footer {
-        background: #1a1a1a;
+        background: #000000;
         color: rgba(255, 255, 255, 0.7);
         padding: 60px;
         text-align: center;
+        border-top: 2px solid #00BFA5;
     }
     
     .footer-text {
@@ -494,7 +428,7 @@ custom_css = """
     }
     
     .footer-copyright {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid rgba(0, 191, 165, 0.2);
         padding-top: 30px;
         margin-top: 30px;
         font-size: 13px;
@@ -514,21 +448,27 @@ custom_css = """
             width: 100%;
         }
         
-        .hero-section {
-            padding: 60px 20px;
-        }
-        
-        .hero-title {
-            font-size: 36px;
-        }
-        
-        .hero-stats {
-            flex-direction: column;
+        .hero-content {
+            grid-template-columns: 1fr;
             gap: 40px;
         }
         
+        .hero-text h1 {
+            font-size: 36px;
+        }
+        
+        .feature-item {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .feature-item:nth-child(even) {
+            direction: ltr;
+        }
+        
+        .products-section,
         .features-section,
-        .services-section,
+        .stats-section,
         .testimonials-section,
         .cta-final-section {
             padding: 60px 20px;
@@ -549,154 +489,149 @@ custom_css = """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # ==================== NAVBAR ====================
-navbar_html = '<div class="navbar"><a href="#" class="navbar-logo">🚀 Agência Digital</a><div class="navbar-links"><a href="#" class="navbar-link">Serviços</a><a href="#" class="navbar-link">Sobre</a><a href="#" class="navbar-link">Portfólio</a><a href="#" class="navbar-link">Contato</a><a href="#" class="navbar-cta">Começar Agora</a></div></div>'
+navbar_html = '<div class="navbar"><a href="#" class="navbar-logo">📱 TechStore</a><div class="navbar-links"><a href="#" class="navbar-link">Produtos</a><a href="#" class="navbar-link">Sobre</a><a href="#" class="navbar-link">Contato</a><a href="#" class="navbar-cta">Comprar Agora</a></div></div>'
 st.markdown(navbar_html, unsafe_allow_html=True)
 
 # ==================== HERO SECTION ====================
 hero_html = '''<div class="hero-section">
     <div class="hero-content">
-        <div class="badges-container">
-            <div class="badge badge-primary"><span class="badge-icon">⭐</span> Agência Premium</div>
-            <div class="badge"><span class="badge-icon">🏆</span> Prêmio Melhor Agência 2024</div>
-            <div class="badge"><span class="badge-icon">✓</span> +500 Clientes Satisfeitos</div>
+        <div class="hero-text">
+            <h1>Celulares <span class="highlight">Premium</span></h1>
+            <p>Descubra a melhor seleção de celulares de alta performance com os melhores preços do mercado. Tecnologia de ponta ao seu alcance.</p>
+            <button class="hero-cta">Explorar Catálogo</button>
         </div>
-        <div class="hero-title">Transforme seu negócio com <span class="hero-title-highlight">marketing digital estratégico</span></div>
-        <div class="hero-subtitle">Crescimento comprovado através de estratégias personalizadas, criatividade e tecnologia de ponta</div>
-        <button class="cta-button">Agende uma Consultoria Gratuita</button>
-        <div class="hero-stats">
-            <div class="hero-stat">
-                <div class="hero-stat-number">+500%</div>
-                <div class="hero-stat-label">Crescimento Médio em Vendas</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-number">98%</div>
-                <div class="hero-stat-label">Taxa de Satisfação de Clientes</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-number">12+</div>
-                <div class="hero-stat-label">Anos de Experiência</div>
-            </div>
-        </div>
+        <div class="hero-image">📱</div>
     </div>
 </div>'''
 st.markdown(hero_html, unsafe_allow_html=True)
 
 # ==================== FEATURES SECTION ====================
 features_html = '''<div class="features-section">
-    <div class="section-header">
-        <div class="section-title">Por que escolher nossa <span class="section-title-highlight">agência?</span></div>
-        <div class="section-description">Oferecemos soluções completas de marketing digital que transformam visitantes em clientes</div>
+    <div class="feature-item">
+        <div>
+            <div class="feature-number">#1</div>
+            <div class="feature-title">Tecnologia de <span class="highlight">Ponta</span></div>
+            <div class="feature-desc">Processadores de última geração, câmeras revolucionárias e baterias que duram o dia todo. Todos os nossos celulares possuem especificações premium para garantir a melhor experiência.</div>
+        </div>
+        <div class="feature-icon">⚡</div>
     </div>
-    <div class="features-grid">
-        <div class="feature-card">
-            <div class="feature-icon">🎯</div>
-            <div class="feature-title">Estratégia Personalizada</div>
-            <div class="feature-desc">Cada negócio é único. Criamos estratégias sob medida para seus objetivos específicos.</div>
+    
+    <div class="feature-item">
+        <div class="feature-icon">💎</div>
+        <div>
+            <div class="feature-number">#2</div>
+            <div class="feature-title">Design <span class="highlight">Exclusivo</span></div>
+            <div class="feature-desc">Celulares com design premium e acabamento impecável. Cada detalhe foi pensado para oferecer conforto, elegância e durabilidade. Materiais de alta qualidade em todos os modelos.</div>
         </div>
-        <div class="feature-card">
-            <div class="feature-icon">📊</div>
-            <div class="feature-title">Resultados Mensuráveis</div>
-            <div class="feature-desc">Relatórios detalhados e transparentes. Você acompanha cada métrica em tempo real.</div>
+    </div>
+    
+    <div class="feature-item">
+        <div>
+            <div class="feature-number">#3</div>
+            <div class="feature-title">Garantia e <span class="highlight">Suporte</span></div>
+            <div class="feature-desc">Garantia de 2 anos em todos os produtos. Atendimento técnico 24/7 para resolver qualquer dúvida. Trocas e devoluções sem complicações. Sua satisfação é nossa prioridade.</div>
         </div>
-        <div class="feature-card">
-            <div class="feature-icon">🚀</div>
-            <div class="feature-title">Crescimento Acelerado</div>
-            <div class="feature-desc">Técnicas comprovadas para aumentar sua visibilidade e conversões rapidamente.</div>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">💡</div>
-            <div class="feature-title">Inovação Constante</div>
-            <div class="feature-desc">Sempre atualizados com as últimas tendências e tecnologias do mercado.</div>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">👥</div>
-            <div class="feature-title">Equipe Experiente</div>
-            <div class="feature-desc">Profissionais certificados com experiência em diversos segmentos de mercado.</div>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🤝</div>
-            <div class="feature-title">Parceria de Longo Prazo</div>
-            <div class="feature-desc">Não somos apenas fornecedores, somos parceiros no crescimento do seu negócio.</div>
-        </div>
+        <div class="feature-icon">🛡️</div>
     </div>
 </div>'''
 st.markdown(features_html, unsafe_allow_html=True)
 
-# ==================== SERVICES SECTION ====================
-services_html = '''<div class="services-section">
-    <div class="section-header">
-        <div class="section-title">Nossos <span class="section-title-highlight">Serviços</span></div>
-        <div class="section-description">Soluções completas de marketing digital para impulsionar seu negócio</div>
-    </div>
-    <div class="services-grid">
-        <div class="service-card">
-            <div class="service-number">01</div>
-            <div class="service-title">Google Ads</div>
-            <div class="service-desc">Campanhas otimizadas para máximo ROI. Anúncios que convertem visitantes em clientes.</div>
+# ==================== PRODUCTS SECTION ====================
+products_html = '''<div class="products-section">
+    <div class="section-title">Nossos <span class="highlight">Produtos</span></div>
+    <div class="products-grid">
+        <div class="product-card">
+            <div class="product-icon">📱</div>
+            <div class="product-title">iPhone 15 Pro</div>
+            <div class="product-desc">Câmera profissional, processador A17 Pro, design em titânio. O melhor do mercado.</div>
+            <div class="product-price">R$ 7.999</div>
         </div>
-        <div class="service-card">
-            <div class="service-number">02</div>
-            <div class="service-title">Social Media</div>
-            <div class="service-desc">Gestão completa de redes sociais com conteúdo estratégico e engajamento real.</div>
+        <div class="product-card">
+            <div class="product-icon">🔥</div>
+            <div class="product-title">Samsung Galaxy S24</div>
+            <div class="product-desc">Tela AMOLED 120Hz, câmera 200MP, bateria de longa duração. Potência pura.</div>
+            <div class="product-price">R$ 6.499</div>
         </div>
-        <div class="service-card">
-            <div class="service-number">03</div>
-            <div class="service-title">SEO Avançado</div>
-            <div class="service-desc">Posicionamento orgânico no Google para tráfego qualificado e sustentável.</div>
+        <div class="product-card">
+            <div class="product-icon">⚡</div>
+            <div class="product-title">Google Pixel 8</div>
+            <div class="product-desc">IA integrada, câmera computacional, software puro. Inteligência artificial no seu bolso.</div>
+            <div class="product-price">R$ 5.299</div>
         </div>
-        <div class="service-card">
-            <div class="service-number">04</div>
-            <div class="service-title">Criação de Conteúdo</div>
-            <div class="service-desc">Conteúdo de qualidade que atrai, engaja e converte seu público-alvo.</div>
+        <div class="product-card">
+            <div class="product-icon">💫</div>
+            <div class="product-title">OnePlus 12</div>
+            <div class="product-desc">Carregamento ultra-rápido, design elegante, performance excepcional. Velocidade extrema.</div>
+            <div class="product-price">R$ 4.799</div>
         </div>
-        <div class="service-card">
-            <div class="service-number">05</div>
-            <div class="service-title">Email Marketing</div>
-            <div class="service-desc">Campanhas de email segmentadas com alta taxa de abertura e conversão.</div>
+        <div class="product-card">
+            <div class="product-icon">🎮</div>
+            <div class="product-title">POCO F6 Pro</div>
+            <div class="product-desc">Processador flagship, tela 144Hz, preço competitivo. Melhor custo-benefício.</div>
+            <div class="product-price">R$ 3.299</div>
         </div>
-        <div class="service-card">
-            <div class="service-number">06</div>
-            <div class="service-title">Análise e Relatórios</div>
-            <div class="service-desc">Dados precisos e insights acionáveis para otimizar suas estratégias.</div>
+        <div class="product-card">
+            <div class="product-icon">🌟</div>
+            <div class="product-title">Xiaomi 14</div>
+            <div class="product-desc">Câmera Leica, design premium, preço acessível. O melhor da Xiaomi.</div>
+            <div class="product-price">R$ 3.899</div>
         </div>
     </div>
 </div>'''
-st.markdown(services_html, unsafe_allow_html=True)
+st.markdown(products_html, unsafe_allow_html=True)
+
+# ==================== STATS SECTION ====================
+stats_html = '''<div class="stats-section">
+    <div class="stats-grid">
+        <div class="stat-item">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Clientes Satisfeitos</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">200+</div>
+            <div class="stat-label">Modelos Disponíveis</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Taxa de Satisfação</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Atendimento</div>
+        </div>
+    </div>
+</div>'''
+st.markdown(stats_html, unsafe_allow_html=True)
 
 # ==================== TESTIMONIALS SECTION ====================
 testimonials_html = '''<div class="testimonials-section">
-    <div class="section-header">
-        <div class="section-title">O que nossos <span class="section-title-highlight">clientes dizem</span></div>
-        <div class="section-description">Histórias reais de sucesso e transformação digital</div>
+    <div class="section-title">O que nossos <span class="highlight">clientes dizem</span></div>
+    <div class="testimonial-card">
+        <div class="testimonial-text">"Melhor loja de celulares que já comprei! Atendimento impecável, produtos de qualidade garantida e preços muito competitivos. Recomendo para todos!"</div>
+        <div class="testimonial-author">Ana Silva</div>
+        <div class="testimonial-role">Cliente desde 2022</div>
     </div>
-    <div style="max-width: 900px; margin: 0 auto;">
-        <div class="testimonial-card">
-            <div class="testimonial-text">"A agência transformou completamente meu negócio. Em 6 meses, triplicamos nossas vendas. Profissionais incríveis!"</div>
-            <div class="testimonial-author">João Silva</div>
-            <div class="testimonial-role">CEO - E-commerce Fashion</div>
-        </div>
-        <div class="testimonial-card">
-            <div class="testimonial-text">"Melhor investimento que fiz. O retorno foi imediato e os resultados continuam crescendo. Recomendo muito!"</div>
-            <div class="testimonial-author">Maria Santos</div>
-            <div class="testimonial-role">Proprietária - Consultoria Empresarial</div>
-        </div>
-        <div class="testimonial-card">
-            <div class="testimonial-text">"Equipe profissional, dedicada e com resultados comprovados. Não tenho dúvidas em recomendar para qualquer negócio."</div>
-            <div class="testimonial-author">Carlos Oliveira</div>
-            <div class="testimonial-role">Diretor - Agência Imobiliária</div>
-        </div>
+    <div class="testimonial-card">
+        <div class="testimonial-text">"Comprei meu iPhone aqui e foi uma experiência fantástica. Entrega rápida, produto original e ainda ganhei acessórios grátis. Voltarei com certeza!"</div>
+        <div class="testimonial-author">Carlos Mendes</div>
+        <div class="testimonial-role">Cliente Premium</div>
+    </div>
+    <div class="testimonial-card">
+        <div class="testimonial-text">"A TechStore é confiável, rápida e oferece os melhores preços. Já comprei 3 celulares aqui para minha família. Muito satisfeito com tudo!"</div>
+        <div class="testimonial-author">Marina Costa</div>
+        <div class="testimonial-role">Cliente Fiel</div>
     </div>
 </div>'''
 st.markdown(testimonials_html, unsafe_allow_html=True)
 
 # ==================== CTA FINAL SECTION ====================
 cta_final_html = '''<div class="cta-final-section">
-    <div class="cta-final-title">Pronto para crescer?</div>
-    <div class="cta-final-desc">Agende uma consultoria gratuita com nossos especialistas e descubra como podemos transformar seu negócio</div>
-    <button class="cta-final-button">Agende Agora</button>
+    <div class="cta-final-title">Pronto para seu novo celular?</div>
+    <div class="cta-final-desc">Explore nosso catálogo completo e encontre o celular perfeito para você. Frete grátis em compras acima de R$ 2.000!</div>
+    <button class="cta-final-button">Começar Agora</button>
 </div>'''
 st.markdown(cta_final_html, unsafe_allow_html=True)
 
 # ==================== FOOTER ====================
-footer_html = '<div class="footer"><div class="footer-text">📞 (11) 98765-4321 | 📧 contato@agenciadigital.com.br</div><div class="footer-text">📍 São Paulo, SP - Brasil</div><div class="footer-copyright">© 2025 Agência Digital. Todos os direitos reservados. Transformando negócios através do marketing digital.</div></div>'
+footer_html = '<div class="footer"><div class="footer-text">📞 (11) 98765-4321 | 📧 contato@techstore.com.br</div><div class="footer-text">📍 São Paulo, SP - Brasil</div><div class="footer-copyright">© 2025 TechStore. Todos os direitos reservados. Sua loja de celulares premium de confiança.</div></div>'
 st.markdown(footer_html, unsafe_allow_html=True)
