@@ -161,7 +161,7 @@ st.markdown("""
     <p class="hero-sub">A solução ideal para quem precisa de um site rápido, profissional e editável sem depender de agências ou programadores.</p>
     <div style="margin-top: 50px; width: 300px;">
 """, unsafe_allow_html=True)
-st.button("CONHEÇA NOSSOS TEMPLATES →")
+st.button("CONHEÇA NOSSOS TEMPLATES ↓")
 st.markdown("</div></div>", unsafe_allow_html=True)
 
 # --- 3 & 4. SHOWCASE DE TEMPLATES (GRID ASSIMÉTRICO) ---
