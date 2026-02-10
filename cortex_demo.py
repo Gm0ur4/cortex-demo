@@ -1,18 +1,17 @@
 import streamlit as st
-import time
 
 # Configuração da página
 st.set_page_config(
-    page_title="Template Premium - Experiência Absurda",
-    page_icon="✨",
+    page_title="Luxury Resort - Experiência Premium",
+    page_icon="🏨",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# CSS ABSURDO COM CORES DINÂMICAS E INTERATIVIDADE MÁXIMA
+# CSS SOFISTICADO COM ANIMAÇÕES ABSURDAS
 custom_css = """
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
     
     * {
         margin: 0;
@@ -21,8 +20,8 @@ custom_css = """
     }
     
     html, body, [data-testid="stAppViewContainer"] {
-        background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
-        font-family: 'Space Grotesk', sans-serif;
+        background: #0a0a0a;
+        font-family: 'Montserrat', sans-serif;
         color: #ffffff;
         line-height: 1.6;
         overflow-x: hidden;
@@ -37,76 +36,82 @@ custom_css = """
         z-index: 1;
     }
     
-    /* ANIMAÇÕES ABSURDAS */
-    @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-    
-    @keyframes floatUp {
-        0% { transform: translateY(0px); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: translateY(-20px); opacity: 0; }
-    }
-    
-    @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-    }
-    
-    @keyframes slideIn {
+    /* ANIMAÇÕES SOFISTICADAS */
+    @keyframes slideInLeft {
         from { transform: translateX(-100%); opacity: 0; }
         to { transform: translateX(0); opacity: 1; }
     }
     
-    @keyframes glow {
-        0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 150, 0.5); }
-        50% { box-shadow: 0 0 40px rgba(255, 0, 150, 0.8); }
+    @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
     }
     
-    /* NAVBAR ABSURDA */
+    @keyframes fadeInUp {
+        from { transform: translateY(50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes scaleIn {
+        from { transform: scale(0.9); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+    
+    @keyframes shimmer {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+    }
+    
+    @keyframes borderGlow {
+        0%, 100% { border-color: rgba(218, 165, 32, 0.3); box-shadow: 0 0 10px rgba(218, 165, 32, 0.1); }
+        50% { border-color: rgba(218, 165, 32, 0.8); box-shadow: 0 0 20px rgba(218, 165, 32, 0.3); }
+    }
+    
+    @keyframes slideUp {
+        0% { transform: translateY(20px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    /* NAVBAR */
     .navbar {
-        background: rgba(15, 15, 30, 0.95);
-        backdrop-filter: blur(20px);
-        padding: 20px 60px;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(15px);
+        padding: 25px 80px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 2px solid;
-        border-image: linear-gradient(90deg, #FF006E, #00D9FF, #FFD60A, #FF006E) 1;
+        border-bottom: 2px solid rgba(218, 165, 32, 0.3);
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 8px 32px rgba(255, 0, 110, 0.15);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
     
     .navbar-logo {
         font-size: 32px;
-        font-weight: 900;
-        background: linear-gradient(135deg, #FF006E, #00D9FF, #FFD60A);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        letter-spacing: 2px;
-        animation: pulse 2s ease-in-out infinite;
+        font-weight: 700;
+        color: #DAA520;
+        letter-spacing: 3px;
+        font-family: 'Cormorant Garamond', serif;
+        animation: slideInLeft 0.8s ease-out;
     }
     
     .navbar-links {
         display: flex;
-        gap: 50px;
+        gap: 60px;
         align-items: center;
     }
     
     .navbar-link {
-        color: #00D9FF;
+        color: #ffffff;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 13px;
         transition: all 0.3s ease;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
         position: relative;
+        animation: slideInRight 0.8s ease-out;
     }
     
     .navbar-link::after {
@@ -116,7 +121,7 @@ custom_css = """
         left: 0;
         width: 0;
         height: 2px;
-        background: linear-gradient(90deg, #FF006E, #00D9FF);
+        background: #DAA520;
         transition: width 0.3s ease;
     }
     
@@ -125,37 +130,37 @@ custom_css = """
     }
     
     .navbar-link:hover {
-        color: #FFD60A;
+        color: #DAA520;
     }
     
     .navbar-cta {
-        background: linear-gradient(135deg, #FF006E, #FF4D6D);
-        color: white;
-        padding: 12px 32px;
-        border-radius: 50px;
+        background: linear-gradient(135deg, #DAA520, #B8860B);
+        color: #000000;
+        padding: 12px 40px;
+        border-radius: 3px;
         text-decoration: none;
         font-weight: 700;
         font-size: 12px;
         transition: all 0.3s ease;
-        border: 2px solid #FF006E;
+        border: 2px solid #DAA520;
         cursor: pointer;
         text-transform: uppercase;
         letter-spacing: 1px;
-        box-shadow: 0 4px 15px rgba(255, 0, 110, 0.4);
+        box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+        animation: slideInRight 1s ease-out;
     }
     
     .navbar-cta:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(255, 0, 110, 0.6);
-        border-color: #00D9FF;
+        box-shadow: 0 8px 25px rgba(218, 165, 32, 0.5);
     }
     
-    /* HERO SECTION ABSURDA */
+    /* HERO SECTION */
     .hero-section {
-        background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1a1a2e 100%);
-        background-size: 400% 400%;
-        animation: gradientShift 15s ease infinite;
-        min-height: 800px;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+        background-size: cover;
+        background-position: center;
+        min-height: 750px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -166,25 +171,12 @@ custom_css = """
     .hero-section::before {
         content: '';
         position: absolute;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(255, 0, 110, 0.2) 0%, transparent 70%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(218, 165, 32, 0.15) 0%, transparent 70%);
         border-radius: 50%;
         top: -100px;
         right: -100px;
-        animation: pulse 4s ease-in-out infinite;
-    }
-    
-    .hero-section::after {
-        content: '';
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, rgba(0, 217, 255, 0.15) 0%, transparent 70%);
-        border-radius: 50%;
-        bottom: -150px;
-        left: -150px;
-        animation: pulse 5s ease-in-out infinite;
     }
     
     .hero-content {
@@ -192,86 +184,104 @@ custom_css = """
         z-index: 2;
         position: relative;
         max-width: 900px;
+        animation: fadeInUp 1s ease-out;
     }
     
     .hero-title {
-        font-size: 80px;
-        font-weight: 900;
+        font-size: 72px;
+        font-weight: 700;
         margin-bottom: 20px;
-        background: linear-gradient(135deg, #FF006E, #00D9FF, #FFD60A, #FF006E);
-        background-size: 300% 300%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: gradientShift 8s ease infinite;
-        letter-spacing: -2px;
-        line-height: 1.1;
+        color: #DAA520;
+        letter-spacing: 2px;
+        font-family: 'Cormorant Garamond', serif;
+        animation: slideInLeft 1s ease-out;
     }
     
     .hero-subtitle {
-        font-size: 24px;
+        font-size: 22px;
         font-weight: 300;
         margin-bottom: 50px;
-        color: #00D9FF;
-        letter-spacing: 1px;
-        animation: slideIn 1s ease-out;
+        color: #ffffff;
+        letter-spacing: 2px;
+        animation: slideInRight 1.2s ease-out;
     }
     
-    .hero-cta-group {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        animation: slideIn 1.2s ease-out;
-    }
-    
-    .hero-cta-primary {
-        background: linear-gradient(135deg, #FF006E, #FF4D6D);
-        color: white;
-        padding: 18px 50px;
-        border-radius: 50px;
+    .hero-cta {
+        background: linear-gradient(135deg, #DAA520, #B8860B);
+        color: #000000;
+        padding: 16px 50px;
+        border-radius: 3px;
         font-weight: 700;
-        font-size: 14px;
+        font-size: 13px;
         text-decoration: none;
         transition: all 0.3s ease;
-        border: 2px solid #FF006E;
+        border: 2px solid #DAA520;
         cursor: pointer;
+        display: inline-block;
         text-transform: uppercase;
         letter-spacing: 1px;
-        box-shadow: 0 8px 25px rgba(255, 0, 110, 0.4);
+        box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+        animation: fadeInUp 1.4s ease-out;
     }
     
-    .hero-cta-primary:hover {
+    .hero-cta:hover {
         transform: translateY(-5px);
-        box-shadow: 0 12px 35px rgba(255, 0, 110, 0.6);
+        box-shadow: 0 8px 25px rgba(218, 165, 32, 0.5);
     }
     
-    .hero-cta-secondary {
-        background: transparent;
-        color: #00D9FF;
-        padding: 18px 50px;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 14px;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        border: 2px solid #00D9FF;
-        cursor: pointer;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    
-    .hero-cta-secondary:hover {
-        background: #00D9FF;
-        color: #0f0f1e;
-        transform: translateY(-5px);
-        box-shadow: 0 12px 35px rgba(0, 217, 255, 0.4);
-    }
-    
-    /* FEATURES SECTION */
-    .features-section {
-        padding: 120px 60px;
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    /* ABOUT SECTION */
+    .about-section {
+        padding: 120px 80px;
+        background: #0a0a0a;
         position: relative;
+    }
+    
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .about-text h2 {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #DAA520;
+        letter-spacing: 1px;
+        font-family: 'Cormorant Garamond', serif;
+        animation: slideInLeft 0.8s ease-out;
+    }
+    
+    .about-text p {
+        font-size: 16px;
+        color: #cccccc;
+        line-height: 1.9;
+        margin-bottom: 20px;
+        font-weight: 300;
+        animation: fadeInUp 1s ease-out;
+    }
+    
+    .about-image {
+        background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+        height: 450px;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 120px;
+        color: rgba(0, 0, 0, 0.1);
+        animation: scaleIn 1s ease-out;
+        border: 2px solid rgba(218, 165, 32, 0.3);
+        animation: borderGlow 3s ease-in-out infinite;
+    }
+    
+    /* SERVICES SECTION */
+    .services-section {
+        padding: 120px 80px;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
     }
     
     .section-header {
@@ -281,159 +291,183 @@ custom_css = """
     
     .section-title {
         font-size: 56px;
-        font-weight: 900;
+        font-weight: 700;
         margin-bottom: 20px;
-        background: linear-gradient(135deg, #FFD60A, #FF006E, #00D9FF);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        letter-spacing: -1px;
+        color: #DAA520;
+        letter-spacing: 1px;
+        font-family: 'Cormorant Garamond', serif;
+        animation: slideInLeft 0.8s ease-out;
     }
     
     .section-description {
         font-size: 18px;
-        color: #00D9FF;
+        color: #aaaaaa;
         font-weight: 300;
         max-width: 600px;
         margin: 0 auto;
+        animation: fadeInUp 1s ease-out;
     }
     
-    .features-grid {
+    .services-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 40px;
         max-width: 1400px;
         margin: 0 auto;
     }
     
-    .feature-card {
-        background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(0, 217, 255, 0.1));
-        border: 2px solid;
-        border-image: linear-gradient(135deg, #FF006E, #00D9FF) 1;
+    .service-card {
+        background: rgba(218, 165, 32, 0.05);
+        border: 2px solid rgba(218, 165, 32, 0.3);
         padding: 50px 40px;
-        border-radius: 20px;
+        border-radius: 3px;
         transition: all 0.4s ease;
         position: relative;
         overflow: hidden;
+        animation: slideUp 0.8s ease-out;
+        animation-fill-mode: both;
     }
     
-    .feature-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, rgba(255, 0, 110, 0.2), rgba(0, 217, 255, 0.2));
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        z-index: -1;
-    }
+    .service-card:nth-child(1) { animation-delay: 0.1s; }
+    .service-card:nth-child(2) { animation-delay: 0.2s; }
+    .service-card:nth-child(3) { animation-delay: 0.3s; }
+    .service-card:nth-child(4) { animation-delay: 0.4s; }
+    .service-card:nth-child(5) { animation-delay: 0.5s; }
+    .service-card:nth-child(6) { animation-delay: 0.6s; }
     
-    .feature-card:hover {
-        transform: translateY(-15px);
-        border-image: linear-gradient(135deg, #00D9FF, #FFD60A) 1;
-        box-shadow: 0 20px 50px rgba(255, 0, 110, 0.2);
-    }
-    
-    .feature-card:hover::before {
-        opacity: 1;
-    }
-    
-    .feature-icon {
-        font-size: 48px;
-        margin-bottom: 20px;
-        animation: floatUp 3s ease-in-out infinite;
-    }
-    
-    .feature-title {
-        font-size: 24px;
-        font-weight: 800;
-        margin-bottom: 15px;
-        color: #FFD60A;
-        letter-spacing: 1px;
-    }
-    
-    .feature-desc {
-        font-size: 15px;
-        color: #b0b0b0;
-        line-height: 1.8;
-        font-weight: 300;
-    }
-    
-    /* SHOWCASE SECTION */
-    .showcase-section {
-        padding: 120px 60px;
-        background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 50%, #16213e 100%);
-        background-size: 400% 400%;
-        animation: gradientShift 20s ease infinite;
-    }
-    
-    .showcase-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-    
-    .showcase-card {
-        background: linear-gradient(135deg, rgba(255, 0, 110, 0.15), rgba(0, 217, 255, 0.15));
-        border: 2px solid #FF006E;
-        border-radius: 15px;
-        padding: 40px;
-        text-align: center;
-        transition: all 0.4s ease;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .showcase-card::after {
+    .service-card::before {
         content: '';
         position: absolute;
         top: 0;
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.1), transparent);
         transition: left 0.5s ease;
     }
     
-    .showcase-card:hover::after {
+    .service-card:hover::before {
         left: 100%;
     }
     
-    .showcase-card:hover {
-        transform: translateY(-10px) scale(1.05);
-        border-color: #00D9FF;
-        box-shadow: 0 20px 50px rgba(0, 217, 255, 0.3);
+    .service-card:hover {
+        transform: translateY(-15px);
+        border-color: #DAA520;
+        box-shadow: 0 20px 50px rgba(218, 165, 32, 0.2);
     }
     
-    .showcase-number {
-        font-size: 48px;
-        font-weight: 900;
-        background: linear-gradient(135deg, #FF006E, #00D9FF);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 15px;
-    }
-    
-    .showcase-label {
-        font-size: 18px;
+    .service-title {
+        font-size: 22px;
         font-weight: 700;
-        color: #FFD60A;
+        margin-bottom: 15px;
+        color: #DAA520;
+        letter-spacing: 1px;
+        font-family: 'Cormorant Garamond', serif;
+    }
+    
+    .service-desc {
+        font-size: 15px;
+        color: #aaaaaa;
+        line-height: 1.8;
+        font-weight: 300;
+    }
+    
+    /* ROOMS SECTION */
+    .rooms-section {
+        padding: 120px 80px;
+        background: #0a0a0a;
+    }
+    
+    .rooms-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .room-card {
+        background: rgba(218, 165, 32, 0.05);
+        border: 2px solid rgba(218, 165, 32, 0.3);
+        border-radius: 3px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        animation: slideUp 0.8s ease-out;
+        animation-fill-mode: both;
+    }
+    
+    .room-card:nth-child(1) { animation-delay: 0.1s; }
+    .room-card:nth-child(2) { animation-delay: 0.2s; }
+    .room-card:nth-child(3) { animation-delay: 0.3s; }
+    
+    .room-card:hover {
+        transform: translateY(-15px);
+        border-color: #DAA520;
+        box-shadow: 0 20px 50px rgba(218, 165, 32, 0.2);
+    }
+    
+    .room-image {
+        background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+        height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 100px;
+        color: rgba(0, 0, 0, 0.1);
+    }
+    
+    .room-content {
+        padding: 40px;
+    }
+    
+    .room-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #DAA520;
+        font-family: 'Cormorant Garamond', serif;
+    }
+    
+    .room-desc {
+        font-size: 15px;
+        color: #aaaaaa;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        font-weight: 300;
+    }
+    
+    .room-price {
+        font-size: 28px;
+        font-weight: 700;
+        color: #DAA520;
+        margin-bottom: 20px;
+    }
+    
+    .room-cta {
+        background: linear-gradient(135deg, #DAA520, #B8860B);
+        color: #000000;
+        padding: 12px 32px;
+        border: none;
+        border-radius: 3px;
+        font-weight: 700;
+        font-size: 12px;
+        cursor: pointer;
         text-transform: uppercase;
         letter-spacing: 1px;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+    
+    .room-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(218, 165, 32, 0.3);
     }
     
     /* CTA FINAL SECTION */
     .cta-final-section {
-        padding: 150px 60px;
-        background: linear-gradient(135deg, #FF006E 0%, #FF4D6D 25%, #00D9FF 50%, #FFD60A 75%, #FF006E 100%);
-        background-size: 400% 400%;
-        animation: gradientShift 10s ease infinite;
+        background: linear-gradient(135deg, #DAA520 0%, #B8860B 50%, #DAA520 100%);
+        color: #000000;
+        padding: 120px 80px;
         text-align: center;
         position: relative;
         overflow: hidden;
@@ -446,7 +480,7 @@ custom_css = """
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(15, 15, 30, 0.3);
+        background: rgba(0, 0, 0, 0.2);
     }
     
     .cta-final-content {
@@ -456,66 +490,67 @@ custom_css = """
     
     .cta-final-title {
         font-size: 56px;
-        font-weight: 900;
+        font-weight: 700;
         margin-bottom: 20px;
-        color: white;
-        letter-spacing: -1px;
+        letter-spacing: 1px;
+        font-family: 'Cormorant Garamond', serif;
+        animation: slideInLeft 0.8s ease-out;
     }
     
     .cta-final-desc {
         font-size: 20px;
         margin-bottom: 50px;
-        color: rgba(255, 255, 255, 0.95);
         max-width: 700px;
         margin-left: auto;
         margin-right: auto;
         font-weight: 300;
+        animation: fadeInUp 1s ease-out;
     }
     
     .cta-final-button {
-        background: rgba(15, 15, 30, 0.9);
-        color: #FFD60A;
-        padding: 18px 60px;
-        border: 3px solid #FFD60A;
-        border-radius: 50px;
-        font-weight: 800;
-        font-size: 14px;
+        background: #000000;
+        color: #DAA520;
+        padding: 16px 60px;
+        border: 3px solid #DAA520;
+        border-radius: 3px;
+        font-weight: 700;
+        font-size: 13px;
         text-decoration: none;
         transition: all 0.3s ease;
         cursor: pointer;
         display: inline-block;
         text-transform: uppercase;
-        letter-spacing: 2px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        animation: fadeInUp 1.2s ease-out;
     }
     
     .cta-final-button:hover {
         transform: translateY(-5px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-        background: #FFD60A;
-        color: #0f0f1e;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        background: #DAA520;
+        color: #000000;
     }
     
     /* FOOTER */
     .footer {
-        background: #0f0f1e;
+        background: #0a0a0a;
         color: #888888;
-        padding: 60px;
+        padding: 80px;
         text-align: center;
-        border-top: 2px solid;
-        border-image: linear-gradient(90deg, #FF006E, #00D9FF) 1;
+        border-top: 2px solid rgba(218, 165, 32, 0.3);
     }
     
     .footer-text {
         font-size: 14px;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         font-weight: 300;
     }
     
     .footer-copyright {
-        border-top: 1px solid rgba(255, 0, 110, 0.2);
-        padding-top: 30px;
-        margin-top: 30px;
+        border-top: 1px solid rgba(218, 165, 32, 0.2);
+        padding-top: 40px;
+        margin-top: 40px;
         font-size: 12px;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -543,16 +578,14 @@ custom_css = """
             font-size: 42px;
         }
         
-        .hero-subtitle {
-            font-size: 18px;
+        .about-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
         }
         
-        .hero-cta-group {
-            flex-direction: column;
-        }
-        
-        .features-section,
-        .showcase-section,
+        .about-section,
+        .services-section,
+        .rooms-section,
         .cta-final-section {
             padding: 80px 20px;
         }
@@ -572,100 +605,115 @@ custom_css = """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # ==================== NAVBAR ====================
-navbar_html = '<div class="navbar"><div class="navbar-logo">PREMIUM</div><div class="navbar-links"><a href="#" class="navbar-link">Recursos</a><a href="#" class="navbar-link">Galeria</a><a href="#" class="navbar-link">Sobre</a><a href="#" class="navbar-link">Contato</a><a href="#" class="navbar-cta">Começar Agora</a></div></div>'
+navbar_html = '<div class="navbar"><div class="navbar-logo">LUXE</div><div class="navbar-links"><a href="#" class="navbar-link">Acomodações</a><a href="#" class="navbar-link">Serviços</a><a href="#" class="navbar-link">Experiências</a><a href="#" class="navbar-link">Contato</a><a href="#" class="navbar-cta">Reservar</a></div></div>'
 st.markdown(navbar_html, unsafe_allow_html=True)
 
 # ==================== HERO SECTION ====================
 hero_html = '''<div class="hero-section">
     <div class="hero-content">
-        <div class="hero-title">Experiência Absurda</div>
-        <div class="hero-subtitle">Design que transforma, cores que inspiram</div>
-        <div class="hero-cta-group">
-            <button class="hero-cta-primary">Explorar Agora</button>
-            <button class="hero-cta-secondary">Saiba Mais</button>
-        </div>
+        <div class="hero-title">Luxo Incomparável</div>
+        <div class="hero-subtitle">Experiência de hospedagem que transcende</div>
+        <button class="hero-cta">Explorar Agora</button>
     </div>
 </div>'''
 st.markdown(hero_html, unsafe_allow_html=True)
 
-# ==================== FEATURES SECTION ====================
-features_html = '''<div class="features-section">
-    <div class="section-header">
-        <div class="section-title">Recursos Incríveis</div>
-        <div class="section-description">Tudo que você precisa para impressionar seus clientes</div>
-    </div>
-    <div class="features-grid">
-        <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <div class="feature-title">Ultra Rápido</div>
-            <div class="feature-desc">Performance otimizada para a melhor experiência do usuário em qualquer dispositivo.</div>
+# ==================== ABOUT SECTION ====================
+about_html = '''<div class="about-section">
+    <div class="about-grid">
+        <div class="about-text">
+            <h2>Bem-vindo ao Nosso Refúgio</h2>
+            <p>Descubra um mundo de elegância e sofisticação onde cada detalhe foi cuidadosamente pensado para sua comodidade absoluta. Nossas acomodações premium oferecem o melhor em conforto e estilo.</p>
+            <p>Mergulhe em uma experiência única onde o luxo encontra a hospitalidade. Cada momento em nosso resort é uma oportunidade de criar memórias inesquecíveis.</p>
         </div>
-        <div class="feature-card">
-            <div class="feature-icon">🎨</div>
-            <div class="feature-title">Design Moderno</div>
-            <div class="feature-desc">Interface visual impressionante com animações suaves e cores dinâmicas.</div>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🔧</div>
-            <div class="feature-title">Totalmente Customizável</div>
-            <div class="feature-desc">Adapte cores, textos e conteúdo facilmente para seu negócio específico.</div>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">📱</div>
-            <div class="feature-title">Responsivo</div>
-            <div class="feature-desc">Funciona perfeitamente em desktop, tablet e mobile com experiência fluida.</div>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🚀</div>
-            <div class="feature-title">Conversão Máxima</div>
-            <div class="feature-desc">Design estratégico focado em converter visitantes em clientes.</div>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">✨</div>
-            <div class="feature-title">Experiência Premium</div>
-            <div class="feature-desc">Cada detalhe foi pensado para criar uma experiência memorável.</div>
-        </div>
+        <div class="about-image"></div>
     </div>
 </div>'''
-st.markdown(features_html, unsafe_allow_html=True)
+st.markdown(about_html, unsafe_allow_html=True)
 
-# ==================== SHOWCASE SECTION ====================
-showcase_html = '''<div class="showcase-section">
+# ==================== SERVICES SECTION ====================
+services_html = '''<div class="services-section">
     <div class="section-header">
-        <div class="section-title">Números que Falam</div>
-        <div class="section-description">Resultados comprovados de templates premium</div>
+        <div class="section-title">Serviços Exclusivos</div>
+        <div class="section-description">Tudo que você precisa para uma estadia perfeita</div>
     </div>
-    <div class="showcase-grid">
-        <div class="showcase-card">
-            <div class="showcase-number">300%</div>
-            <div class="showcase-label">Mais Conversões</div>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-title">Gastronomia Refinada</div>
+            <div class="service-desc">Restaurantes gourmet com chefs renomados e culinária internacional de alta qualidade.</div>
         </div>
-        <div class="showcase-card">
-            <div class="showcase-number">50K+</div>
-            <div class="showcase-label">Clientes Felizes</div>
+        <div class="service-card">
+            <div class="service-title">Spa de Luxo</div>
+            <div class="service-desc">Tratamentos de bem-estar com produtos premium e terapeutas especializados.</div>
         </div>
-        <div class="showcase-card">
-            <div class="showcase-number">99%</div>
-            <div class="showcase-label">Satisfação</div>
+        <div class="service-card">
+            <div class="service-title">Piscinas Aquecidas</div>
+            <div class="service-desc">Piscinas de água salgada aquecida com vista panorâmica e serviço de bar.</div>
         </div>
-        <div class="showcase-card">
-            <div class="showcase-number">24/7</div>
-            <div class="showcase-label">Suporte</div>
+        <div class="service-card">
+            <div class="service-title">Entretenimento</div>
+            <div class="service-desc">Shows ao vivo, eventos especiais e atividades de lazer para toda a família.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-title">Transporte VIP</div>
+            <div class="service-desc">Serviço de transfer com veículos de luxo e motorista particular.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-title">Concierge 24/7</div>
+            <div class="service-desc">Atendimento personalizado para todas as suas necessidades e desejos.</div>
         </div>
     </div>
 </div>'''
-st.markdown(showcase_html, unsafe_allow_html=True)
+st.markdown(services_html, unsafe_allow_html=True)
+
+# ==================== ROOMS SECTION ====================
+rooms_html = '''<div class="rooms-section">
+    <div class="section-header">
+        <div class="section-title">Acomodações Premium</div>
+        <div class="section-description">Escolha entre nossas suítes e villas exclusivas</div>
+    </div>
+    <div class="rooms-grid">
+        <div class="room-card">
+            <div class="room-image"></div>
+            <div class="room-content">
+                <div class="room-title">Suíte Deluxe</div>
+                <div class="room-desc">Conforto supremo com vista para o jardim. Inclui banheiro de mármol, cama king-size e varanda privada.</div>
+                <div class="room-price">R$ 1.200/noite</div>
+                <button class="room-cta">Reservar</button>
+            </div>
+        </div>
+        <div class="room-card">
+            <div class="room-image"></div>
+            <div class="room-content">
+                <div class="room-title">Suíte Premium</div>
+                <div class="room-desc">Luxo incomparável com vista para o mar. Jacuzzi privado, serviço de butler e acesso VIP.</div>
+                <div class="room-price">R$ 1.800/noite</div>
+                <button class="room-cta">Reservar</button>
+            </div>
+        </div>
+        <div class="room-card">
+            <div class="room-image"></div>
+            <div class="room-content">
+                <div class="room-title">Villa Privativa</div>
+                <div class="room-desc">Isolamento total e privacidade absoluta. Piscina privada, spa pessoal e chef particular.</div>
+                <div class="room-price">R$ 3.500/noite</div>
+                <button class="room-cta">Reservar</button>
+            </div>
+        </div>
+    </div>
+</div>'''
+st.markdown(rooms_html, unsafe_allow_html=True)
 
 # ==================== CTA FINAL SECTION ====================
 cta_final_html = '''<div class="cta-final-section">
     <div class="cta-final-content">
-        <div class="cta-final-title">Pronto para Transformar?</div>
-        <div class="cta-final-desc">Junte-se a milhares de empresas que já estão usando templates premium para crescer exponencialmente.</div>
-        <button class="cta-final-button">Começar Sua Jornada</button>
+        <div class="cta-final-title">Reserve Sua Experiência</div>
+        <div class="cta-final-desc">Viva momentos inesquecíveis em nosso resort de luxo. Acomodações exclusivas, serviços impecáveis e memórias para a vida toda.</div>
+        <button class="cta-final-button">Fazer Reserva Agora</button>
     </div>
 </div>'''
 st.markdown(cta_final_html, unsafe_allow_html=True)
 
 # ==================== FOOTER ====================
-footer_html = '<div class="footer"><div class="footer-text">Email: contato@premium.com.br | Telefone: (11) 98765-4321</div><div class="footer-text">Endereço: Av. Principal, 1000 - São Paulo, SP</div><div class="footer-copyright">© 2025 Premium Templates. Todos os direitos reservados. Transformando negócios com design excepcional.</div></div>'
+footer_html = '<div class="footer"><div class="footer-text">Telefone: +55 (11) 98765-4321 | Email: reservas@luxeresort.com.br</div><div class="footer-text">Endereço: Av. Costeira, 5000 - Praia Paradisíaca, SP</div><div class="footer-copyright">© 2025 Luxe Resort. Todos os direitos reservados. Experiência de luxo absoluto.</div></div>'
 st.markdown(footer_html, unsafe_allow_html=True)
