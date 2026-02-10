@@ -2,188 +2,209 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Hugo Bazin | Digital Designer",
-    page_icon="🕶️",
+    page_title="LITIGUARD | Excellence in Legal Services",
+    page_icon="⚖️",
     layout="wide"
 )
 
-# --- CSS PARA DESIGN DE LUXO (HUGO BAZIN STYLE) ---
+# --- CSS PARA ESTILO JURÍDICO EUROPEU (LITIGUARD) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
 
-    /* Reset de Background */
+    /* Reset e Cores Base */
     .stApp {
-        background-color: #f6f6f6;
+        background-color: #ffffff;
     }
-
+    
     html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
-        color: #1a1a1a;
+        font-family: 'Montserrat', sans-serif;
+        color: #1a2b3c; /* Azul Marinho Profundo */
     }
 
-    /* Header Minimalista */
-    .header-hugo {
+    h1, h2, h3 {
+        font-family: 'Playfair Display', serif;
+    }
+
+    /* Top Bar e Header */
+    .top-bar {
+        background-color: #1a2b3c;
+        color: #c5a059; /* Dourado Litiguard */
+        padding: 10px 8%;
+        font-size: 12px;
         display: flex;
         justify-content: space-between;
-        padding: 40px 5%;
-        font-size: 13px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+        margin: -5rem -5rem 0 -5rem;
+    }
+
+    .nav-litiguard {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 8%;
+        background: white;
+        border-bottom: 1px solid #eee;
+        margin: 0 -5rem 0 -5rem;
     }
 
     /* Hero Section */
-    .hero-container {
-        padding: 100px 5% 150px 5%;
-    }
-    .hero-title {
-        font-size: clamp(40px, 8vw, 120px);
-        line-height: 0.9;
-        font-weight: 400;
-        letter-spacing: -2px;
-        margin-bottom: 40px;
-    }
-    .hero-subtitle {
-        font-family: 'Playfair Display', serif;
-        font-style: italic;
-        font-size: 24px;
-        color: #666;
-    }
-
-    /* Grid de Projetos */
-    .project-row {
-        margin-bottom: 120px;
-        padding: 0 5%;
-    }
-    .project-image {
-        width: 100%;
-        height: auto;
-        border-radius: 4px;
-        transition: opacity 0.4s;
-    }
-    .project-image:hover {
-        opacity: 0.9;
-    }
-    .project-meta {
+    .hero-litiguard {
+        height: 600px;
+        background-image: linear-gradient(rgba(26, 43, 60, 0.7), rgba(26, 43, 60, 0.7)), 
+                          url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80');
+        background-size: cover;
+        background-position: center;
         display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-        border-top: 1px solid #ddd;
-        padding-top: 15px;
-        font-size: 14px;
-        font-weight: 500;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        margin: 0 -5rem 80px -5rem;
     }
 
-    /* Seção de Texto (About) */
-    .about-section {
-        padding: 150px 20%;
-        font-size: 28px;
-        line-height: 1.4;
-        text-align: left;
+    /* Cards de Serviços */
+    .service-card {
+        padding: 40px;
+        border: 1px solid #eee;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    .service-card:hover {
+        background-color: #1a2b3c;
+        color: white;
+        border-color: #1a2b3c;
+    }
+    .service-icon {
+        color: #c5a059;
+        font-size: 40px;
+        margin-bottom: 20px;
     }
 
-    /* Footer */
-    .footer-hugo {
-        padding: 100px 5%;
-        border-top: 1px solid #ddd;
-        display: flex;
-        justify-content: space-between;
-        font-size: 12px;
-        text-transform: uppercase;
-        color: #999;
+    /* Seções de Texto Compridas */
+    .section-box {
+        padding: 100px 15%;
+        border-bottom: 1px solid #eee;
     }
 
-    /* Custom Button (Invisible/Clean) */
+    /* Botões */
     div.stButton > button {
-        background: transparent;
-        border: none;
-        border-bottom: 1px solid #1a1a1a;
-        color: #1a1a1a;
+        background-color: #c5a059;
+        color: white;
         border-radius: 0;
-        padding: 0;
+        border: none;
+        padding: 15px 40px;
         font-weight: 600;
-        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# --- 1. HEADER ---
+# --- 1. TOP BAR & NAV ---
 st.markdown("""
-<div class="header-hugo">
-    <div>Hugo Bazin — Digital Designer</div>
-    <div>Paris, FR — 14:52 PM</div>
+<div class="top-bar">
+    <div>LITIGATION & ADVISORY SERVICES</div>
+    <div>EN | FR | DE</div>
+</div>
+<div class="nav-litiguard">
+    <div style="font-size: 28px; font-weight: 700; letter-spacing: 3px;">LITIGUARD</div>
+    <div style="display: flex; gap: 40px; font-size: 13px; font-weight: 600;">
+        <span>ABOUT</span>
+        <span>SERVICES</span>
+        <span>NETWORK</span>
+        <span>CONTACT</span>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
 # --- 2. HERO SECTION ---
 st.markdown("""
-<div class="hero-container">
-    <div class="hero-title">CREATING DIGITAL<br>EXPERIENCES</div>
-    <div class="hero-subtitle">Independent Designer & Art Director</div>
+<div class="hero-litiguard">
+    <h1 style="font-size: 60px; margin-bottom: 20px;">Protecting Your Interests</h1>
+    <p style="font-size: 20px; max-width: 700px; font-weight: 300;">
+        A global network of legal experts dedicated to complex litigation and strategic advisory.
+    </p>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 3. LISTA DE PROJETOS (COMPRIDA) ---
-
-def render_project(image_url, title, year, category):
-    st.markdown(f"""
-    <div class="project-row">
-        <img src="{image_url}" class="project-image">
-        <div class="project-meta">
-            <div>{title}</div>
-            <div style="color: #999;">{category} — {year}</div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Projeto 1
-render_project(
-    "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1500&q=80",
-    "L'Art de Vivre", "2024", "Visual Identity"
-)
-
-# Projeto 2
-render_project(
-    "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1500&q=80",
-    "Techno Frontier", "2023", "Product Design"
-)
-
-# Projeto 3
-render_project(
-    "https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&fit=crop&w=1500&q=80",
-    "Minimal Workspace", "2023", "CGI & Motion"
-)
-
-# Projeto 4
-render_project(
-    "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1500&q=80",
-    "Essential Watch", "2022", "E-commerce"
-)
-
-# --- 4. ABOUT SECTION ---
-st.markdown("""
-<div class="about-section">
-    Eu ajudo marcas a traduzirem sua essência em produtos digitais que as pessoas amam usar. Focado em simplicidade, estética e performance.
-</div>
-""", unsafe_allow_html=True)
-
-# --- 5. CONTATO / LINKS ---
-st.markdown('<div style="padding: 0 5% 100px 5%;">', unsafe_allow_html=True)
-col1, col2, col3 = st.columns(3)
-with col1:
-    st.button("EMAIL ME")
-with col2:
-    st.button("LINKEDIN")
-with col3:
-    st.button("DRIBBBLE")
+# --- 3. ABOUT (SECTION 1) ---
+st.markdown('<div class="section-box">', unsafe_allow_html=True)
+c_about1, c_about2 = st.columns([1, 1])
+with c_about1:
+    st.markdown("<h2 style='font-size: 40px;'>Strategic Legal<br>Representation</h2>", unsafe_allow_html=True)
+with c_about2:
+    st.write("""
+    Litiguard provides comprehensive support in cross-border disputes. 
+    Our approach combines local expertise with a global perspective to ensure 
+    the best possible outcome for institutional and private clients.
+    """)
+    st.button("Discover Our Vision")
 st.markdown('</div>', unsafe_allow_html=True)
+
+# --- 4. SERVICES (GRID) ---
+st.markdown('<div class="section-box" style="background-color: #fcfcfc;">', unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; margin-bottom: 60px;'>Our Expertise</h2>", unsafe_allow_html=True)
+
+def service_box(col, icon, title, text):
+    with col:
+        st.markdown(f"""
+        <div class="service-card">
+            <div class="service-icon">{icon}</div>
+            <h3 style="margin-bottom: 15px;">{title}</h3>
+            <p style="font-size: 14px; opacity: 0.8;">{text}</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+s1, s2, s3 = st.columns(3)
+service_box(s1, "⚖️", "Commercial Litigation", "Resolving complex business disputes with precision and strategic foresight.")
+service_box(s2, "🌍", "Cross-Border Claims", "Navigating multiple jurisdictions to protect assets and enforce rights worldwide.")
+service_box(s3, "🤝", "Arbitration", "Expert representation in international arbitration proceedings and alternative dispute resolution.")
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+s4, s5, s6 = st.columns(3)
+service_box(s4, "🛡️", "Asset Recovery", "Tracing and recovering assets across global financial centers and tax havens.")
+service_box(s5, "📈", "Investment Disputes", "Protecting investors' rights under bilateral treaties and international law.")
+service_box(s6, "📜", "Corporate Advisory", "Proactive legal strategies to mitigate risk and ensure regulatory compliance.")
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- 5. NETWORK SECTION (BANNER COMPRIDO) ---
+st.markdown("""
+<div style="background-color: #1a2b3c; color: white; padding: 120px 8%; text-align: center; margin: 0 -5rem;">
+    <h2 style="font-size: 45px; margin-bottom: 30px;">A Truly Global Presence</h2>
+    <p style="max-width: 800px; margin: 0 auto 40px auto; font-size: 18px; opacity: 0.8;">
+        Our network spans over 40 countries, providing seamless legal support 
+        whenever and wherever our clients need it most.
+    </p>
+    <div style="display: flex; justify-content: center; gap: 80px; font-weight: 700; color: #c5a059;">
+        <div>LONDON</div>
+        <div>BRUSSELS</div>
+        <div>ZURICH</div>
+        <div>DUBAI</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # --- 6. FOOTER ---
 st.markdown("""
-<div class="footer-hugo">
-    <div>© 2024 Hugo Bazin</div>
-    <div>Design & Development</div>
-    <div>Back to Top ↑</div>
+<div style="background-color: #f4f4f4; padding: 80px 8% 40px 8%; margin: 0 -5rem -5rem -5rem; border-top: 5px solid #c5a059;">
+    <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 100px;">
+        <div>
+            <h3 style="letter-spacing: 2px;">LITIGUARD</h3>
+            <p style="font-size: 13px; margin-top: 20px;">International Litigation & Advisory Support Network.</p>
+        </div>
+        <div>
+            <h4 style="font-size: 14px; color: #1a2b3c;">OFFICES</h4>
+            <p style="font-size: 12px; line-height: 2;">Brussels, Belgium<br>Geneva, Switzerland<br>London, UK</p>
+        </div>
+        <div>
+            <h4 style="font-size: 14px; color: #1a2b3c;">LEGAL</h4>
+            <p style="font-size: 12px; line-height: 2;">Privacy Policy<br>Terms of Service<br>Cookies</p>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 60px; font-size: 11px; color: #999;">
+        © 2026 LITIGUARD. ALL RIGHTS RESERVED.
+    </div>
 </div>
 """, unsafe_allow_html=True)
