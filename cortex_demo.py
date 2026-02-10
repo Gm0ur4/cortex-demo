@@ -1,15 +1,14 @@
 import streamlit as st
-from datetime import datetime
 
 # Configuração da página
 st.set_page_config(
-    page_title="YourApp - A New Way",
+    page_title="Agência Digital - Transforme seu Negócio",
     page_icon="🚀",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# CSS MODERNO E SOFISTICADO - INSPIRADO EM HELPUP
+# CSS ULTRA PROFISSIONAL - INSPIRADO EM GREATPAGES
 custom_css = """
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -22,8 +21,9 @@ custom_css = """
     
     html, body, [data-testid="stAppViewContainer"] {
         background: #ffffff;
-        font-family: 'Inter', sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         color: #1a1a1a;
+        line-height: 1.6;
     }
     
     [data-testid="stDecoration"] { display: none; }
@@ -33,10 +33,10 @@ custom_css = """
         background: #ffffff;
     }
     
-    /* HEADER/NAVBAR */
+    /* NAVBAR */
     .navbar {
         background: #ffffff;
-        padding: 20px 40px;
+        padding: 16px 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -44,19 +44,20 @@ custom_css = """
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
     
     .navbar-logo {
-        font-size: 28px;
+        font-size: 24px;
         font-weight: 900;
-        color: #FF1493;
+        color: #0066FF;
         text-decoration: none;
+        letter-spacing: -0.5px;
     }
     
     .navbar-links {
         display: flex;
-        gap: 40px;
+        gap: 50px;
         align-items: center;
     }
     
@@ -64,68 +65,51 @@ custom_css = """
         color: #1a1a1a;
         text-decoration: none;
         font-weight: 500;
-        font-size: 16px;
+        font-size: 15px;
         transition: all 0.3s ease;
         position: relative;
     }
     
     .navbar-link:hover {
-        color: #FF1493;
-    }
-    
-    .navbar-link::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: #FF1493;
-        transition: width 0.3s ease;
-    }
-    
-    .navbar-link:hover::after {
-        width: 100%;
+        color: #0066FF;
     }
     
     .navbar-cta {
-        background: #FF1493;
+        background: linear-gradient(135deg, #0066FF, #0052CC);
         color: white;
-        padding: 12px 30px;
-        border-radius: 50px;
+        padding: 10px 28px;
+        border-radius: 8px;
         text-decoration: none;
         font-weight: 600;
+        font-size: 14px;
         transition: all 0.3s ease;
-        border: 2px solid #FF1493;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
     }
     
     .navbar-cta:hover {
-        background: white;
-        color: #FF1493;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
     }
     
     /* HERO SECTION */
     .hero-section {
-        background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
-        color: white;
-        padding: 120px 40px;
-        text-align: left;
+        background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
+        padding: 120px 60px;
+        text-align: center;
         position: relative;
         overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 600px;
     }
     
     .hero-section::before {
         content: '';
         position: absolute;
         top: -50%;
-        right: -10%;
-        width: 800px;
-        height: 800px;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+        right: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
         border-radius: 50%;
     }
     
@@ -133,353 +117,359 @@ custom_css = """
         content: '';
         position: absolute;
         bottom: -30%;
-        left: -5%;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+        left: -10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(0, 102, 255, 0.05) 0%, transparent 70%);
         border-radius: 50%;
     }
     
     .hero-content {
         position: relative;
         z-index: 2;
-        flex: 1;
-        max-width: 600px;
+        max-width: 900px;
+        margin: 0 auto;
     }
     
     .hero-title {
-        font-size: 72px;
+        font-size: 64px;
         font-weight: 900;
-        line-height: 1.1;
-        margin-bottom: 20px;
-        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        line-height: 1.15;
+        margin-bottom: 24px;
+        color: #1a1a1a;
+        letter-spacing: -1px;
+    }
+    
+    .hero-title-highlight {
+        color: #0066FF;
     }
     
     .hero-subtitle {
         font-size: 20px;
         line-height: 1.6;
-        margin-bottom: 40px;
-        opacity: 0.95;
+        margin-bottom: 50px;
+        color: #666666;
         font-weight: 400;
     }
     
-    .hero-cta {
+    .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 80px;
+        margin-top: 60px;
+        padding-top: 60px;
+        border-top: 1px solid #e0e0e0;
+    }
+    
+    .hero-stat {
+        text-align: center;
+    }
+    
+    .hero-stat-number {
+        font-size: 36px;
+        font-weight: 900;
+        color: #0066FF;
+        margin-bottom: 8px;
+    }
+    
+    .hero-stat-label {
+        font-size: 14px;
+        color: #666666;
+        font-weight: 500;
+    }
+    
+    /* BADGES */
+    .badges-container {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+    }
+    
+    .badge {
+        background: #f0f0f0;
+        color: #1a1a1a;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    
+    .badge-icon {
+        font-size: 14px;
+    }
+    
+    .badge-primary {
+        background: #0066FF;
+        color: white;
+    }
+    
+    .badge-success {
+        background: #00AA44;
+        color: white;
+    }
+    
+    .badge-warning {
+        background: #FF6600;
+        color: white;
+    }
+    
+    /* BUTTONS */
+    .cta-button {
         display: inline-block;
-        background: white;
-        color: #FF1493;
-        padding: 16px 50px;
-        border-radius: 50px;
+        background: linear-gradient(135deg, #0066FF, #0052CC);
+        color: white;
+        padding: 16px 48px;
+        border-radius: 8px;
         font-weight: 700;
-        font-size: 18px;
+        font-size: 16px;
         text-decoration: none;
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 12px rgba(0, 102, 255, 0.25);
     }
     
-    .hero-cta:hover {
+    .cta-button:hover {
         transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 8px 24px rgba(0, 102, 255, 0.35);
     }
     
-    .hero-mockup {
-        position: relative;
-        z-index: 2;
-        flex: 1;
+    .cta-button-secondary {
+        background: white;
+        color: #0066FF;
+        border: 2px solid #0066FF;
+        box-shadow: none;
+    }
+    
+    .cta-button-secondary:hover {
+        background: #f0f6ff;
+    }
+    
+    /* FEATURES SECTION */
+    .features-section {
+        padding: 100px 60px;
+        background: #ffffff;
+    }
+    
+    .section-header {
         text-align: center;
+        margin-bottom: 80px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
-    .phone-mockup {
-        width: 300px;
-        height: 600px;
-        background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
-        border-radius: 40px;
-        padding: 12px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        position: relative;
-        margin: 0 auto;
-    }
-    
-    .phone-mockup::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 150px;
-        height: 25px;
-        background: #1a1a1a;
-        border-radius: 0 0 20px 20px;
-        z-index: 10;
-    }
-    
-    .phone-screen {
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
-        border-radius: 35px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .section-title {
         font-size: 48px;
-        color: white;
         font-weight: 900;
+        margin-bottom: 20px;
+        color: #1a1a1a;
+        letter-spacing: -0.5px;
     }
     
-    /* SEÇÕES COM BORDAS TRACEJADAS */
-    .feature-section {
-        padding: 100px 40px;
+    .section-title-highlight {
+        color: #0066FF;
+    }
+    
+    .section-description {
+        font-size: 18px;
+        color: #666666;
+        line-height: 1.7;
+        font-weight: 400;
+    }
+    
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 40px;
         max-width: 1400px;
         margin: 0 auto;
-        border: 3px dashed #FF1493;
-        border-radius: 20px;
-        margin: 60px auto;
-        background: linear-gradient(135deg, rgba(255, 20, 147, 0.05) 0%, rgba(255, 105, 180, 0.05) 100%);
-    }
-    
-    .feature-title {
-        font-size: 56px;
-        font-weight: 900;
-        margin-bottom: 30px;
-        color: #FF1493;
-        line-height: 1.2;
-    }
-    
-    .feature-description {
-        font-size: 18px;
-        color: #1a1a1a;
-        line-height: 1.8;
-        max-width: 700px;
-        margin-bottom: 50px;
-    }
-    
-    .feature-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 40px;
-        margin-top: 60px;
     }
     
     .feature-card {
-        background: white;
-        padding: 40px 30px;
-        border-radius: 15px;
-        border: 2px solid #f0f0f0;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 12px;
+        border: 1px solid #e0e0e0;
         transition: all 0.4s ease;
         cursor: pointer;
     }
     
     .feature-card:hover {
-        transform: translateY(-10px);
-        border-color: #FF1493;
-        box-shadow: 0 20px 50px rgba(255, 20, 147, 0.15);
+        transform: translateY(-8px);
+        border-color: #0066FF;
+        box-shadow: 0 12px 40px rgba(0, 102, 255, 0.12);
     }
     
-    .feature-card-icon {
+    .feature-icon {
         font-size: 48px;
         margin-bottom: 20px;
         display: inline-block;
     }
     
-    .feature-card-title {
-        font-size: 22px;
+    .feature-title {
+        font-size: 20px;
         font-weight: 800;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
         color: #1a1a1a;
     }
     
-    .feature-card-desc {
-        font-size: 16px;
+    .feature-desc {
+        font-size: 15px;
         color: #666666;
-        line-height: 1.6;
+        line-height: 1.7;
     }
     
-    /* SEÇÃO DE BENEFÍCIOS */
-    .benefits-section {
-        background: #f8f8f8;
-        padding: 100px 40px;
+    /* SERVICES SECTION */
+    .services-section {
+        padding: 100px 60px;
+        background: #f8f9ff;
     }
     
-    .benefits-container {
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
         max-width: 1400px;
         margin: 0 auto;
     }
     
-    .benefits-title {
-        font-size: 56px;
-        font-weight: 900;
-        margin-bottom: 60px;
-        color: #FF1493;
-        text-align: center;
-    }
-    
-    .benefits-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 40px;
-    }
-    
-    .benefit-item {
+    .service-card {
         background: white;
         padding: 50px 40px;
-        border-radius: 15px;
-        text-align: center;
+        border-radius: 12px;
         border: 1px solid #e0e0e0;
+        text-align: center;
         transition: all 0.4s ease;
     }
     
-    .benefit-item:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-        border-color: #FF1493;
+    .service-card:hover {
+        transform: translateY(-10px);
+        border-color: #0066FF;
+        box-shadow: 0 16px 48px rgba(0, 102, 255, 0.15);
     }
     
-    .benefit-number {
-        font-size: 64px;
+    .service-number {
+        font-size: 48px;
         font-weight: 900;
-        color: #FF1493;
-        margin-bottom: 20px;
+        color: #0066FF;
+        margin-bottom: 16px;
     }
     
-    .benefit-title {
-        font-size: 24px;
+    .service-title {
+        font-size: 22px;
         font-weight: 800;
-        margin-bottom: 15px;
+        margin-bottom: 16px;
         color: #1a1a1a;
     }
     
-    .benefit-desc {
-        font-size: 16px;
+    .service-desc {
+        font-size: 15px;
         color: #666666;
-        line-height: 1.6;
+        line-height: 1.7;
     }
     
-    /* CTA SECTION */
-    .cta-section {
-        background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
-        color: white;
-        padding: 100px 40px;
-        text-align: center;
+    /* TESTIMONIALS SECTION */
+    .testimonials-section {
+        padding: 100px 60px;
+        background: #ffffff;
     }
     
-    .cta-section-title {
-        font-size: 56px;
-        font-weight: 900;
+    .testimonial-card {
+        background: #f8f9ff;
+        padding: 40px;
+        border-radius: 12px;
+        border-left: 4px solid #0066FF;
         margin-bottom: 30px;
     }
     
-    .cta-section-desc {
-        font-size: 20px;
-        margin-bottom: 50px;
-        opacity: 0.95;
+    .testimonial-text {
+        font-size: 16px;
+        color: #1a1a1a;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        font-style: italic;
     }
     
-    .cta-button {
-        display: inline-block;
-        background: white;
-        color: #FF1493;
-        padding: 18px 60px;
-        border-radius: 50px;
+    .testimonial-author {
+        font-size: 14px;
         font-weight: 700;
+        color: #1a1a1a;
+    }
+    
+    .testimonial-role {
+        font-size: 13px;
+        color: #666666;
+        font-weight: 500;
+    }
+    
+    /* CTA FINAL SECTION */
+    .cta-final-section {
+        background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+        color: white;
+        padding: 100px 60px;
+        text-align: center;
+    }
+    
+    .cta-final-title {
+        font-size: 48px;
+        font-weight: 900;
+        margin-bottom: 20px;
+        letter-spacing: -0.5px;
+    }
+    
+    .cta-final-desc {
         font-size: 18px;
+        margin-bottom: 50px;
+        opacity: 0.95;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .cta-final-button {
+        background: white;
+        color: #0066FF;
+        padding: 16px 48px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 16px;
         text-decoration: none;
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        display: inline-block;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
     
-    .cta-button:hover {
+    .cta-final-button:hover {
         transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
     
     /* FOOTER */
     .footer {
         background: #1a1a1a;
-        color: rgba(255, 255, 255, 0.8);
-        padding: 60px 40px;
+        color: rgba(255, 255, 255, 0.7);
+        padding: 60px;
         text-align: center;
     }
     
-    .footer-links {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin-bottom: 30px;
-        flex-wrap: wrap;
-    }
-    
-    .footer-link {
-        color: rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        transition: all 0.3s ease;
-        font-weight: 500;
-    }
-    
-    .footer-link:hover {
-        color: #FF1493;
-    }
-    
-    .footer-contact {
-        margin-bottom: 30px;
-    }
-    
-    .footer-contact-item {
+    .footer-text {
+        font-size: 15px;
         margin-bottom: 10px;
-        font-size: 16px;
     }
     
     .footer-copyright {
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         padding-top: 30px;
         margin-top: 30px;
-        font-size: 14px;
-    }
-    
-    /* STREAMLIT OVERRIDES */
-    .stButton > button {
-        width: 100%;
-        background: linear-gradient(135deg, #FF1493, #FF69B4);
-        color: white;
-        border: none;
-        padding: 16px 24px;
-        border-radius: 15px;
-        font-weight: 700;
-        font-size: 18px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
-    }
-    
-    .stButton > button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(255, 20, 147, 0.5);
-    }
-    
-    .stTextInput > div > div > input,
-    .stTextArea > div > div > textarea,
-    .stSelectbox > div > div > select {
-        border-radius: 10px;
-        border: 2px solid #e0e0e0;
-        padding: 12px;
-        font-size: 16px;
-        background: white;
-        color: #1a1a1a;
-        transition: all 0.3s ease;
-    }
-    
-    .stTextInput > div > div > input::placeholder,
-    .stTextArea > div > div > textarea::placeholder {
-        color: #999999;
-    }
-    
-    .stTextInput > div > div > input:focus,
-    .stTextArea > div > div > textarea:focus,
-    .stSelectbox > div > div > select:focus {
-        border-color: #FF1493;
-        box-shadow: 0 0 0 3px rgba(255, 20, 147, 0.1);
+        font-size: 13px;
     }
     
     /* RESPONSIVIDADE */
@@ -497,51 +487,31 @@ custom_css = """
         }
         
         .hero-section {
-            flex-direction: column;
             padding: 60px 20px;
-            min-height: auto;
         }
         
         .hero-title {
-            font-size: 42px;
-        }
-        
-        .hero-mockup {
-            margin-top: 40px;
-        }
-        
-        .phone-mockup {
-            width: 250px;
-            height: 500px;
-        }
-        
-        .feature-section {
-            padding: 60px 20px;
-            margin: 40px 20px;
-        }
-        
-        .feature-title {
             font-size: 36px;
         }
         
-        .benefits-section {
+        .hero-stats {
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .features-section,
+        .services-section,
+        .testimonials-section,
+        .cta-final-section {
             padding: 60px 20px;
         }
         
-        .benefits-title {
-            font-size: 36px;
+        .section-title {
+            font-size: 32px;
         }
         
-        .cta-section {
-            padding: 60px 20px;
-        }
-        
-        .cta-section-title {
-            font-size: 36px;
-        }
-        
-        .footer-links {
-            gap: 15px;
+        .cta-final-title {
+            font-size: 32px;
         }
     }
 </style>
@@ -551,135 +521,154 @@ custom_css = """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # ==================== NAVBAR ====================
-navbar_html = """
-<div class="navbar">
-    <a href="#" class="navbar-logo">YourApp</a>
-    <div class="navbar-links">
-        <a href="#" class="navbar-link">Features</a>
-        <a href="#" class="navbar-link">About</a>
-        <a href="#" class="navbar-link">Blog</a>
-        <a href="#" class="navbar-link">Contact</a>
-        <a href="#" class="navbar-cta">Get Started</a>
-    </div>
-</div>
-"""
+navbar_html = '<div class="navbar"><a href="#" class="navbar-logo">🚀 Agência Digital</a><div class="navbar-links"><a href="#" class="navbar-link">Serviços</a><a href="#" class="navbar-link">Sobre</a><a href="#" class="navbar-link">Portfólio</a><a href="#" class="navbar-link">Contato</a><a href="#" class="navbar-cta">Começar Agora</a></div></div>'
 st.markdown(navbar_html, unsafe_allow_html=True)
 
 # ==================== HERO SECTION ====================
-hero_html = """
-<div class="hero-section">
+hero_html = '''<div class="hero-section">
     <div class="hero-content">
-        <div class="hero-title">A new way to connect</div>
-        <div class="hero-subtitle">
-            Say hello to a brand new way of doing things. Connect with people who share your passion and make a real impact together.
+        <div class="badges-container">
+            <div class="badge badge-primary"><span class="badge-icon">⭐</span> Agência Premium</div>
+            <div class="badge"><span class="badge-icon">🏆</span> Prêmio Melhor Agência 2024</div>
+            <div class="badge"><span class="badge-icon">✓</span> +500 Clientes Satisfeitos</div>
         </div>
-        <button class="hero-cta">Download Now</button>
-    </div>
-    <div class="hero-mockup">
-        <div class="phone-mockup">
-            <div class="phone-screen">📱</div>
+        <div class="hero-title">Transforme seu negócio com <span class="hero-title-highlight">marketing digital estratégico</span></div>
+        <div class="hero-subtitle">Crescimento comprovado através de estratégias personalizadas, criatividade e tecnologia de ponta</div>
+        <button class="cta-button">Agende uma Consultoria Gratuita</button>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-number">+500%</div>
+                <div class="hero-stat-label">Crescimento Médio em Vendas</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">98%</div>
+                <div class="hero-stat-label">Taxa de Satisfação de Clientes</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">12+</div>
+                <div class="hero-stat-label">Anos de Experiência</div>
+            </div>
         </div>
     </div>
-</div>
-"""
+</div>'''
 st.markdown(hero_html, unsafe_allow_html=True)
 
 # ==================== FEATURES SECTION ====================
-features_html = """
-<div class="feature-section">
-    <div class="feature-title">Discover what makes us different</div>
-    <div class="feature-description">
-        We've built something special. A platform designed with you in mind, combining simplicity with powerful features.
+features_html = '''<div class="features-section">
+    <div class="section-header">
+        <div class="section-title">Por que escolher nossa <span class="section-title-highlight">agência?</span></div>
+        <div class="section-description">Oferecemos soluções completas de marketing digital que transformam visitantes em clientes</div>
     </div>
-    <div class="feature-grid">
+    <div class="features-grid">
         <div class="feature-card">
-            <div class="feature-card-icon">🎯</div>
-            <div class="feature-card-title">Easy to Use</div>
-            <div class="feature-card-desc">Intuitive interface designed for everyone. No complicated steps, just pure simplicity.</div>
+            <div class="feature-icon">🎯</div>
+            <div class="feature-title">Estratégia Personalizada</div>
+            <div class="feature-desc">Cada negócio é único. Criamos estratégias sob medida para seus objetivos específicos.</div>
         </div>
         <div class="feature-card">
-            <div class="feature-card-icon">⚡</div>
-            <div class="feature-card-title">Lightning Fast</div>
-            <div class="feature-card-desc">Experience blazing-fast performance. Everything loads instantly, no waiting around.</div>
+            <div class="feature-icon">📊</div>
+            <div class="feature-title">Resultados Mensuráveis</div>
+            <div class="feature-desc">Relatórios detalhados e transparentes. Você acompanha cada métrica em tempo real.</div>
         </div>
         <div class="feature-card">
-            <div class="feature-card-icon">🔒</div>
-            <div class="feature-card-title">Secure</div>
-            <div class="feature-card-desc">Your data is protected with enterprise-grade security. We take privacy seriously.</div>
+            <div class="feature-icon">🚀</div>
+            <div class="feature-title">Crescimento Acelerado</div>
+            <div class="feature-desc">Técnicas comprovadas para aumentar sua visibilidade e conversões rapidamente.</div>
         </div>
         <div class="feature-card">
-            <div class="feature-card-icon">🌍</div>
-            <div class="feature-card-title">Global Community</div>
-            <div class="feature-card-desc">Join thousands of users worldwide. Connect, collaborate, and grow together.</div>
+            <div class="feature-icon">💡</div>
+            <div class="feature-title">Inovação Constante</div>
+            <div class="feature-desc">Sempre atualizados com as últimas tendências e tecnologias do mercado.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <div class="feature-title">Equipe Experiente</div>
+            <div class="feature-desc">Profissionais certificados com experiência em diversos segmentos de mercado.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🤝</div>
+            <div class="feature-title">Parceria de Longo Prazo</div>
+            <div class="feature-desc">Não somos apenas fornecedores, somos parceiros no crescimento do seu negócio.</div>
         </div>
     </div>
-</div>
-"""
+</div>'''
 st.markdown(features_html, unsafe_allow_html=True)
 
-# ==================== BENEFITS SECTION ====================
-benefits_html = """
-<div class="benefits-section">
-    <div class="benefits-container">
-        <div class="benefits-title">Why choose us?</div>
-        <div class="benefits-grid">
-            <div class="benefit-item">
-                <div class="benefit-number">1M+</div>
-                <div class="benefit-title">Active Users</div>
-                <div class="benefit-desc">Join our thriving community of over 1 million satisfied users worldwide.</div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-number">24/7</div>
-                <div class="benefit-title">Support</div>
-                <div class="benefit-desc">Our dedicated support team is always here to help you succeed.</div>
-            </div>
-            <div class="benefit-item">
-                <div class="benefit-number">99.9%</div>
-                <div class="benefit-title">Uptime</div>
-                <div class="benefit-desc">Reliable service you can count on, guaranteed uptime and performance.</div>
-            </div>
+# ==================== SERVICES SECTION ====================
+services_html = '''<div class="services-section">
+    <div class="section-header">
+        <div class="section-title">Nossos <span class="section-title-highlight">Serviços</span></div>
+        <div class="section-description">Soluções completas de marketing digital para impulsionar seu negócio</div>
+    </div>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-number">01</div>
+            <div class="service-title">Google Ads</div>
+            <div class="service-desc">Campanhas otimizadas para máximo ROI. Anúncios que convertem visitantes em clientes.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-number">02</div>
+            <div class="service-title">Social Media</div>
+            <div class="service-desc">Gestão completa de redes sociais com conteúdo estratégico e engajamento real.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-number">03</div>
+            <div class="service-title">SEO Avançado</div>
+            <div class="service-desc">Posicionamento orgânico no Google para tráfego qualificado e sustentável.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-number">04</div>
+            <div class="service-title">Criação de Conteúdo</div>
+            <div class="service-desc">Conteúdo de qualidade que atrai, engaja e converte seu público-alvo.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-number">05</div>
+            <div class="service-title">Email Marketing</div>
+            <div class="service-desc">Campanhas de email segmentadas com alta taxa de abertura e conversão.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-number">06</div>
+            <div class="service-title">Análise e Relatórios</div>
+            <div class="service-desc">Dados precisos e insights acionáveis para otimizar suas estratégias.</div>
         </div>
     </div>
-</div>
-"""
-st.markdown(benefits_html, unsafe_allow_html=True)
+</div>'''
+st.markdown(services_html, unsafe_allow_html=True)
 
-# ==================== CONTACT SECTION ====================
-st.markdown("""
-<div style="padding: 100px 40px; max-width: 1400px; margin: 0 auto;">
-    <div style="text-align: center; margin-bottom: 60px;">
-        <h2 style="font-size: 56px; font-weight: 900; color: #FF1493; margin-bottom: 20px;">Get in Touch</h2>
-        <p style="font-size: 18px; color: #666666;">Have questions? We'd love to hear from you.</p>
+# ==================== TESTIMONIALS SECTION ====================
+testimonials_html = '''<div class="testimonials-section">
+    <div class="section-header">
+        <div class="section-title">O que nossos <span class="section-title-highlight">clientes dizem</span></div>
+        <div class="section-description">Histórias reais de sucesso e transformação digital</div>
     </div>
-</div>
-""", unsafe_allow_html=True)
+    <div style="max-width: 900px; margin: 0 auto;">
+        <div class="testimonial-card">
+            <div class="testimonial-text">"A agência transformou completamente meu negócio. Em 6 meses, triplicamos nossas vendas. Profissionais incríveis!"</div>
+            <div class="testimonial-author">João Silva</div>
+            <div class="testimonial-role">CEO - E-commerce Fashion</div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-text">"Melhor investimento que fiz. O retorno foi imediato e os resultados continuam crescendo. Recomendo muito!"</div>
+            <div class="testimonial-author">Maria Santos</div>
+            <div class="testimonial-role">Proprietária - Consultoria Empresarial</div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-text">"Equipe profissional, dedicada e com resultados comprovados. Não tenho dúvidas em recomendar para qualquer negócio."</div>
+            <div class="testimonial-author">Carlos Oliveira</div>
+            <div class="testimonial-role">Diretor - Agência Imobiliária</div>
+        </div>
+    </div>
+</div>'''
+st.markdown(testimonials_html, unsafe_allow_html=True)
 
-col1, col2 = st.columns(2)
-with col1:
-    name = st.text_input("Your Name", placeholder="John Doe")
-with col2:
-    email = st.text_input("Your Email", placeholder="john@example.com")
-
-message = st.text_area("Message", placeholder="Tell us what's on your mind...", height=150)
-
-col1, col2, col3 = st.columns([1, 1, 1])
-with col2:
-    if st.button("Send Message", use_container_width=True):
-        if name and email and message:
-            st.success(f"Thank you, {name}! Your message has been sent successfully.")
-        else:
-            st.error("Please fill in all fields!")
-
-# ==================== CTA SECTION ====================
-cta_html = """
-<div class="cta-section">
-    <div class="cta-section-title">Ready to get started?</div>
-    <div class="cta-section-desc">Join thousands of satisfied users today</div>
-    <button class="cta-button">Download the App</button>
-</div>
-"""
-st.markdown(cta_html, unsafe_allow_html=True)
+# ==================== CTA FINAL SECTION ====================
+cta_final_html = '''<div class="cta-final-section">
+    <div class="cta-final-title">Pronto para crescer?</div>
+    <div class="cta-final-desc">Agende uma consultoria gratuita com nossos especialistas e descubra como podemos transformar seu negócio</div>
+    <button class="cta-final-button">Agende Agora</button>
+</div>'''
+st.markdown(cta_final_html, unsafe_allow_html=True)
 
 # ==================== FOOTER ====================
-footer_html = '<div class="footer"><div class="footer-links"><a href="#" class="footer-link">Privacy Policy</a><a href="#" class="footer-link">Terms of Service</a><a href="#" class="footer-link">Contact</a><a href="#" class="footer-link">Blog</a></div><div class="footer-contact"><div class="footer-contact-item">📧 contact@yourapp.com</div><div class="footer-contact-item">📱 +1 (555) 123-4567</div></div><div class="footer-copyright">© 2025 YourApp. All rights reserved. Made with ❤️</div></div>'
+footer_html = '<div class="footer"><div class="footer-text">📞 (11) 98765-4321 | 📧 contato@agenciadigital.com.br</div><div class="footer-text">📍 São Paulo, SP - Brasil</div><div class="footer-copyright">© 2025 Agência Digital. Todos os direitos reservados. Transformando negócios através do marketing digital.</div></div>'
 st.markdown(footer_html, unsafe_allow_html=True)
