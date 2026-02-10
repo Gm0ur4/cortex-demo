@@ -157,7 +157,7 @@ st.markdown("""
 # --- 1 & 2. HERO SECTION ---
 st.markdown("""
 <div class="hero-section">
-    <h1 class="hero-h1">Crie seu site profissional em minutos<br><span class="serif-heavy" style="color:var(--gold)">APENAS EDITANDO TEMPLATES PRONTOS.</span></h1>
+    <h1 class="hero-h1">Crie seu site profissional em minutos<br><span class="serif-heavy" style="color:var(--gold)">Apenas editando templates prontos.</span></h1>
     <p class="hero-sub">Esqueça os sites comuns. Nós entregamos armas digitais de alta conversão. Escolha seu template, domine seu nicho e esqueça que programadores existem.</p>
     <div style="margin-top: 50px; width: 300px;">
 """, unsafe_allow_html=True)
