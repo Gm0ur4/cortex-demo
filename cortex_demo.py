@@ -2,16 +2,16 @@ import streamlit as st
 
 # Configuração da página
 st.set_page_config(
-    page_title="Premium Card - Gestão Completa de Benefícios",
-    page_icon="💳",
+    page_title="Champion Layout - Inovação Absoluta",
+    page_icon="⚡",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# CSS PREMIUM COM DESIGN MEGAVALE
+# CSS ORIGINAL E INOVADOR - CAMPEÃO DE LAYOUT
 custom_css = """
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
     
     * {
         margin: 0;
@@ -20,8 +20,8 @@ custom_css = """
     }
     
     html, body, [data-testid="stAppViewContainer"] {
-        background: #0a0a0a;
-        font-family: 'Montserrat', sans-serif;
+        background: #000000;
+        font-family: 'Poppins', sans-serif;
         color: #ffffff;
         line-height: 1.6;
         overflow-x: hidden;
@@ -36,85 +36,82 @@ custom_css = """
         z-index: 1;
     }
     
-    /* ANIMAÇÕES PREMIUM */
-    @keyframes slideInDown {
-        from { transform: translateY(-50px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
+    /* ANIMAÇÕES ORIGINAIS */
+    @keyframes morphShape {
+        0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
     }
     
-    @keyframes slideInUp {
-        from { transform: translateY(50px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
+    @keyframes liquidSwirl {
+        0% { transform: rotate(0deg) scale(1); }
+        50% { transform: rotate(180deg) scale(1.1); }
+        100% { transform: rotate(360deg) scale(1); }
     }
     
-    @keyframes slideInLeft {
-        from { transform: translateX(-50px); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+    @keyframes textReveal {
+        0% { clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%); }
+        100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
     }
     
-    @keyframes slideInRight {
-        from { transform: translateX(50px); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+    @keyframes floatRotate {
+        0% { transform: translateY(0px) rotateZ(0deg); }
+        33% { transform: translateY(-20px) rotateZ(120deg); }
+        66% { transform: translateY(10px) rotateZ(240deg); }
+        100% { transform: translateY(0px) rotateZ(360deg); }
     }
     
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+    @keyframes neonGlow {
+        0%, 100% { text-shadow: 0 0 10px #00FF88, 0 0 20px #00FF88, 0 0 40px #00FF88; }
+        50% { text-shadow: 0 0 20px #00FF88, 0 0 40px #00FF88, 0 0 80px #00FF88; }
     }
     
-    @keyframes scaleIn {
-        from { transform: scale(0.95); opacity: 0; }
-        to { transform: scale(1); opacity: 1; }
+    @keyframes slideAndFade {
+        0% { transform: translateX(-100px) rotateY(90deg); opacity: 0; }
+        100% { transform: translateX(0) rotateY(0deg); opacity: 1; }
     }
     
-    @keyframes dashAnimation {
-        0% { stroke-dashoffset: 1000; }
-        100% { stroke-dashoffset: 0; }
+    @keyframes pulseRing {
+        0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+        70% { box-shadow: 0 0 0 40px rgba(0, 255, 136, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
     }
     
-    @keyframes borderPulse {
-        0%, 100% { border-color: rgba(0, 208, 132, 0.3); box-shadow: 0 0 15px rgba(0, 208, 132, 0.1); }
-        50% { border-color: rgba(0, 208, 132, 0.8); box-shadow: 0 0 30px rgba(0, 208, 132, 0.3); }
+    @keyframes colorCycle {
+        0% { color: #00FF88; }
+        25% { color: #FF00FF; }
+        50% { color: #00D9FF; }
+        75% { color: #FFD700; }
+        100% { color: #00FF88; }
     }
     
-    @keyframes colorShift {
-        0% { border-color: rgba(0, 180, 216, 0.5); }
-        25% { border-color: rgba(255, 213, 10, 0.5); }
-        50% { border-color: rgba(0, 208, 132, 0.5); }
-        75% { border-color: rgba(255, 107, 74, 0.5); }
-        100% { border-color: rgba(0, 180, 216, 0.5); }
+    @keyframes gridFlow {
+        0% { background-position: 0 0; }
+        100% { background-position: 40px 40px; }
     }
     
-    @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-    }
-    
-    /* NAVBAR PREMIUM */
+    /* NAVBAR FUTURISTA */
     .navbar {
-        background: rgba(10, 10, 10, 0.98);
-        backdrop-filter: blur(20px);
-        padding: 20px 80px;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 20, 40, 0.95) 100%);
+        backdrop-filter: blur(30px);
+        padding: 25px 80px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 2px dashed rgba(0, 208, 132, 0.3);
+        border-bottom: 2px solid #00FF88;
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-        animation: slideInDown 0.6s ease-out;
+        box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
     }
     
     .navbar-logo {
-        font-size: 28px;
+        font-size: 32px;
         font-weight: 900;
-        background: linear-gradient(135deg, #00D084, #FF6B4A, #FFD60A);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        letter-spacing: 2px;
-        animation: float 3s ease-in-out infinite;
+        color: #00FF88;
+        letter-spacing: 3px;
+        font-family: 'Space Mono', monospace;
+        animation: neonGlow 2s ease-in-out infinite;
     }
     
     .navbar-links {
@@ -126,60 +123,75 @@ custom_css = """
     .navbar-link {
         color: #ffffff;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 13px;
         transition: all 0.3s ease;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
         position: relative;
-        animation: slideInDown 0.8s ease-out;
+        font-family: 'Space Mono', monospace;
     }
     
-    .navbar-link::after {
+    .navbar-link::before {
         content: '';
         position: absolute;
         bottom: -5px;
         left: 0;
         width: 0;
         height: 3px;
-        background: linear-gradient(90deg, #00D084, #FF6B4A);
+        background: linear-gradient(90deg, #00FF88, #FF00FF);
         transition: width 0.3s ease;
     }
     
-    .navbar-link:hover::after {
+    .navbar-link:hover::before {
         width: 100%;
     }
     
     .navbar-link:hover {
-        color: #00D084;
+        color: #00FF88;
     }
     
     .navbar-cta {
-        background: linear-gradient(135deg, #FF6B4A, #FF8C73);
-        color: white;
+        background: linear-gradient(135deg, #00FF88, #00D9FF);
+        color: #000000;
         padding: 12px 32px;
-        border-radius: 8px;
+        border-radius: 50px;
         text-decoration: none;
         font-weight: 700;
         font-size: 12px;
         transition: all 0.3s ease;
-        border: 2px solid #FF6B4A;
+        border: 2px solid #00FF88;
         cursor: pointer;
         text-transform: uppercase;
         letter-spacing: 1px;
-        box-shadow: 0 4px 15px rgba(255, 107, 74, 0.3);
-        animation: slideInRight 1s ease-out;
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        font-family: 'Space Mono', monospace;
     }
     
     .navbar-cta:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(255, 107, 74, 0.5);
+        box-shadow: 0 0 40px rgba(0, 255, 136, 0.6);
     }
     
-    /* HERO SECTION */
+    /* HERO SECTION REVOLUCIONÁRIA */
     .hero-section {
-        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
-        min-height: 700px;
+        background: linear-gradient(135deg, #000000 0%, #001a33 50%, #000000 100%);
+        background-image: 
+            repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 136, 0.03) 2px,
+                rgba(0, 255, 136, 0.03) 4px
+            ),
+            repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 136, 0.03) 2px,
+                rgba(0, 255, 136, 0.03) 4px
+            );
+        min-height: 800px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -191,114 +203,118 @@ custom_css = """
     .hero-section::before {
         content: '';
         position: absolute;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, rgba(0, 208, 132, 0.15) 0%, transparent 70%);
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
         border-radius: 50%;
-        top: -100px;
-        right: -100px;
-        animation: float 4s ease-in-out infinite;
+        top: -200px;
+        right: -200px;
+        animation: liquidSwirl 8s ease-in-out infinite;
     }
     
     .hero-section::after {
         content: '';
         position: absolute;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(255, 107, 74, 0.1) 0%, transparent 70%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(255, 0, 255, 0.08) 0%, transparent 70%);
         border-radius: 50%;
-        bottom: -100px;
-        left: -100px;
-        animation: float 5s ease-in-out infinite;
+        bottom: -150px;
+        left: -150px;
+        animation: liquidSwirl 10s ease-in-out infinite reverse;
     }
     
     .hero-content {
         text-align: center;
         z-index: 2;
         position: relative;
-        max-width: 900px;
-        animation: fadeIn 1s ease-out;
+        max-width: 1000px;
     }
     
     .hero-title {
-        font-size: 72px;
+        font-size: 80px;
         font-weight: 900;
         margin-bottom: 20px;
-        background: linear-gradient(135deg, #00D084, #00B4D8, #FFD60A, #FF6B4A);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        letter-spacing: -1px;
+        color: #00FF88;
+        letter-spacing: -2px;
         line-height: 1.1;
-        animation: slideInUp 0.8s ease-out;
+        font-family: 'Space Mono', monospace;
+        animation: neonGlow 2s ease-in-out infinite;
     }
     
     .hero-subtitle {
         font-size: 24px;
         font-weight: 300;
         margin-bottom: 50px;
-        color: #00D084;
-        letter-spacing: 1px;
-        animation: slideInUp 1s ease-out;
+        color: #00D9FF;
+        letter-spacing: 2px;
+        animation: slideAndFade 1s ease-out;
     }
     
-    .hero-cta {
-        background: linear-gradient(135deg, #00D084, #00B4D8);
-        color: white;
+    .hero-cta-group {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .hero-cta-primary {
+        background: linear-gradient(135deg, #00FF88, #00D9FF);
+        color: #000000;
         padding: 18px 50px;
-        border-radius: 8px;
+        border-radius: 50px;
         font-weight: 700;
         font-size: 14px;
         text-decoration: none;
         transition: all 0.3s ease;
-        border: 2px solid #00D084;
+        border: 2px solid #00FF88;
         cursor: pointer;
         display: inline-block;
         text-transform: uppercase;
         letter-spacing: 1px;
-        box-shadow: 0 8px 25px rgba(0, 208, 132, 0.3);
-        animation: slideInUp 1.2s ease-out;
+        box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+        font-family: 'Space Mono', monospace;
+        animation: slideAndFade 1.2s ease-out;
     }
     
-    .hero-cta:hover {
+    .hero-cta-primary:hover {
         transform: translateY(-5px);
-        box-shadow: 0 12px 35px rgba(0, 208, 132, 0.5);
+        box-shadow: 0 0 50px rgba(0, 255, 136, 0.7);
     }
     
-    /* CATEGORIES SECTION */
-    .categories-section {
+    .hero-cta-secondary {
+        background: transparent;
+        color: #00FF88;
+        padding: 18px 50px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 2px solid #00FF88;
+        cursor: pointer;
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        font-family: 'Space Mono', monospace;
+        animation: slideAndFade 1.4s ease-out;
+    }
+    
+    .hero-cta-secondary:hover {
+        background: #00FF88;
+        color: #000000;
+        box-shadow: 0 0 40px rgba(0, 255, 136, 0.6);
+    }
+    
+    /* FEATURES SECTION - LAYOUT INOVADOR */
+    .features-section {
         padding: 120px 80px;
-        background: #0a0a0a;
+        background: #000000;
         position: relative;
     }
     
-    .section-header {
-        text-align: center;
-        margin-bottom: 100px;
-    }
-    
-    .section-title {
-        font-size: 56px;
-        font-weight: 900;
-        margin-bottom: 20px;
-        background: linear-gradient(135deg, #00D084, #FFD60A);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        letter-spacing: -1px;
-        animation: slideInUp 0.8s ease-out;
-    }
-    
-    .section-subtitle {
-        font-size: 18px;
-        color: #aaaaaa;
-        font-weight: 300;
-        max-width: 600px;
-        margin: 0 auto;
-        animation: slideInUp 1s ease-out;
-    }
-    
-    .categories-grid {
+    .features-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 40px;
@@ -306,218 +322,161 @@ custom_css = """
         margin: 0 auto;
     }
     
-    .category-card {
-        background: rgba(10, 10, 10, 0.8);
-        border: 3px dashed;
+    .feature-card {
+        background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 217, 255, 0.05));
+        border: 2px solid #00FF88;
         padding: 50px 40px;
-        border-radius: 12px;
+        border-radius: 20px;
         transition: all 0.4s ease;
         position: relative;
         overflow: hidden;
-        animation: slideInUp 0.8s ease-out;
+        animation: slideAndFade 0.8s ease-out;
         animation-fill-mode: both;
     }
     
-    .category-card:nth-child(1) {
-        border-color: rgba(0, 180, 216, 0.5);
-        animation-delay: 0.1s;
-    }
+    .feature-card:nth-child(1) { animation-delay: 0.1s; }
+    .feature-card:nth-child(2) { animation-delay: 0.2s; }
+    .feature-card:nth-child(3) { animation-delay: 0.3s; }
+    .feature-card:nth-child(4) { animation-delay: 0.4s; }
+    .feature-card:nth-child(5) { animation-delay: 0.5s; }
+    .feature-card:nth-child(6) { animation-delay: 0.6s; }
     
-    .category-card:nth-child(2) {
-        border-color: rgba(255, 213, 10, 0.5);
-        animation-delay: 0.2s;
-    }
-    
-    .category-card:nth-child(3) {
-        border-color: rgba(0, 208, 132, 0.5);
-        animation-delay: 0.3s;
-    }
-    
-    .category-card:nth-child(4) {
-        border-color: rgba(255, 107, 74, 0.5);
-        animation-delay: 0.4s;
-    }
-    
-    .category-card:nth-child(5) {
-        border-color: rgba(0, 180, 216, 0.5);
-        animation-delay: 0.5s;
-    }
-    
-    .category-card::before {
+    .feature-card::before {
         content: '';
         position: absolute;
         top: 0;
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
         transition: left 0.5s ease;
     }
     
-    .category-card:hover::before {
+    .feature-card:hover::before {
         left: 100%;
     }
     
-    .category-card:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 20px 50px rgba(0, 208, 132, 0.2);
+    .feature-card:hover {
+        transform: translateY(-20px) rotateX(5deg);
+        border-color: #00D9FF;
+        box-shadow: 0 30px 60px rgba(0, 255, 136, 0.2);
     }
     
-    .category-card:nth-child(1):hover {
-        border-color: rgba(0, 180, 216, 1);
-        box-shadow: 0 20px 50px rgba(0, 180, 216, 0.2);
-    }
-    
-    .category-card:nth-child(2):hover {
-        border-color: rgba(255, 213, 10, 1);
-        box-shadow: 0 20px 50px rgba(255, 213, 10, 0.2);
-    }
-    
-    .category-card:nth-child(3):hover {
-        border-color: rgba(0, 208, 132, 1);
-        box-shadow: 0 20px 50px rgba(0, 208, 132, 0.2);
-    }
-    
-    .category-card:nth-child(4):hover {
-        border-color: rgba(255, 107, 74, 1);
-        box-shadow: 0 20px 50px rgba(255, 107, 74, 0.2);
-    }
-    
-    .category-card:nth-child(5):hover {
-        border-color: rgba(0, 180, 216, 1);
-        box-shadow: 0 20px 50px rgba(0, 180, 216, 0.2);
-    }
-    
-    .category-icon {
+    .feature-icon {
         font-size: 48px;
         margin-bottom: 20px;
-        animation: float 3s ease-in-out infinite;
+        animation: floatRotate 4s ease-in-out infinite;
     }
     
-    .category-title {
+    .feature-title {
         font-size: 24px;
         font-weight: 800;
         margin-bottom: 15px;
-        color: #ffffff;
-        letter-spacing: 0.5px;
+        background: linear-gradient(135deg, #00FF88, #00D9FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 1px;
+        font-family: 'Space Mono', monospace;
     }
     
-    .category-desc {
+    .feature-desc {
         font-size: 15px;
         color: #aaaaaa;
         line-height: 1.8;
         font-weight: 300;
-        margin-bottom: 20px;
     }
     
-    .category-link {
-        color: #00D084;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 13px;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        display: inline-block;
-    }
-    
-    .category-link:hover {
-        color: #FFD60A;
-    }
-    
-    /* STATS SECTION */
-    .stats-section {
+    /* SHOWCASE SECTION - LAYOUT ÚNICO */
+    .showcase-section {
         padding: 120px 80px;
-        background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%);
+        background: linear-gradient(135deg, #001a33 0%, #000000 100%);
+        position: relative;
     }
     
-    .stats-grid {
+    .showcase-title {
+        font-size: 56px;
+        font-weight: 900;
+        margin-bottom: 100px;
+        text-align: center;
+        color: #00FF88;
+        letter-spacing: -1px;
+        font-family: 'Space Mono', monospace;
+        animation: neonGlow 2s ease-in-out infinite;
+    }
+    
+    .showcase-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 40px;
+        gap: 30px;
         max-width: 1400px;
         margin: 0 auto;
     }
     
-    .stat-card {
-        background: rgba(10, 10, 10, 0.8);
-        border: 3px solid;
-        border-radius: 12px;
-        padding: 50px 40px;
+    .showcase-card {
+        background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(255, 0, 255, 0.05));
+        border: 2px solid #00D9FF;
+        border-radius: 20px;
+        padding: 40px;
         text-align: center;
         transition: all 0.4s ease;
+        cursor: pointer;
         position: relative;
         overflow: hidden;
-        animation: slideInUp 0.8s ease-out;
+        animation: slideAndFade 0.8s ease-out;
         animation-fill-mode: both;
     }
     
-    .stat-card:nth-child(1) {
-        border-color: rgba(0, 180, 216, 0.5);
-        animation-delay: 0.1s;
+    .showcase-card:nth-child(1) { animation-delay: 0.1s; }
+    .showcase-card:nth-child(2) { animation-delay: 0.2s; }
+    .showcase-card:nth-child(3) { animation-delay: 0.3s; }
+    .showcase-card:nth-child(4) { animation-delay: 0.4s; }
+    
+    .showcase-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.15), transparent);
+        transition: left 0.5s ease;
     }
     
-    .stat-card:nth-child(2) {
-        border-color: rgba(255, 213, 10, 0.5);
-        animation-delay: 0.2s;
+    .showcase-card:hover::after {
+        left: 100%;
     }
     
-    .stat-card:nth-child(3) {
-        border-color: rgba(0, 208, 132, 0.5);
-        animation-delay: 0.3s;
+    .showcase-card:hover {
+        transform: translateY(-15px) scale(1.05);
+        border-color: #00FF88;
+        box-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
     }
     
-    .stat-card:nth-child(4) {
-        border-color: rgba(255, 107, 74, 0.5);
-        animation-delay: 0.4s;
-    }
-    
-    .stat-card:hover {
-        transform: translateY(-15px);
-    }
-    
-    .stat-card:nth-child(1):hover {
-        border-color: rgba(0, 180, 216, 1);
-        box-shadow: 0 20px 50px rgba(0, 180, 216, 0.2);
-    }
-    
-    .stat-card:nth-child(2):hover {
-        border-color: rgba(255, 213, 10, 1);
-        box-shadow: 0 20px 50px rgba(255, 213, 10, 0.2);
-    }
-    
-    .stat-card:nth-child(3):hover {
-        border-color: rgba(0, 208, 132, 1);
-        box-shadow: 0 20px 50px rgba(0, 208, 132, 0.2);
-    }
-    
-    .stat-card:nth-child(4):hover {
-        border-color: rgba(255, 107, 74, 1);
-        box-shadow: 0 20px 50px rgba(255, 107, 74, 0.2);
-    }
-    
-    .stat-number {
+    .showcase-number {
         font-size: 48px;
         font-weight: 900;
-        margin-bottom: 15px;
-        background: linear-gradient(135deg, #00D084, #FFD60A);
+        background: linear-gradient(135deg, #00FF88, #FF00FF);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        margin-bottom: 15px;
+        font-family: 'Space Mono', monospace;
     }
     
-    .stat-label {
+    .showcase-label {
         font-size: 18px;
         font-weight: 700;
-        color: #ffffff;
+        color: #00D9FF;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
+        font-family: 'Space Mono', monospace;
     }
     
-    /* CTA FINAL */
+    /* CTA FINAL - IMPACTANTE */
     .cta-final-section {
-        padding: 120px 80px;
-        background: linear-gradient(135deg, #00D084 0%, #00B4D8 25%, #FFD60A 50%, #FF6B4A 75%, #00D084 100%);
+        padding: 150px 80px;
+        background: linear-gradient(135deg, #00FF88 0%, #00D9FF 50%, #FF00FF 100%);
         background-size: 400% 400%;
         text-align: center;
         position: relative;
@@ -531,7 +490,7 @@ custom_css = """
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.3);
     }
     
     .cta-final-content {
@@ -543,28 +502,27 @@ custom_css = """
         font-size: 56px;
         font-weight: 900;
         margin-bottom: 20px;
-        color: white;
+        color: #000000;
         letter-spacing: -1px;
-        animation: slideInUp 0.8s ease-out;
+        font-family: 'Space Mono', monospace;
     }
     
     .cta-final-desc {
         font-size: 20px;
         margin-bottom: 50px;
-        color: rgba(255, 255, 255, 0.95);
+        color: rgba(0, 0, 0, 0.9);
         max-width: 700px;
         margin-left: auto;
         margin-right: auto;
         font-weight: 300;
-        animation: slideInUp 1s ease-out;
     }
     
     .cta-final-button {
-        background: #0a0a0a;
-        color: #00D084;
+        background: #000000;
+        color: #00FF88;
         padding: 18px 60px;
-        border: 3px solid #00D084;
-        border-radius: 8px;
+        border: 3px solid #00FF88;
+        border-radius: 50px;
         font-weight: 700;
         font-size: 14px;
         text-decoration: none;
@@ -573,39 +531,42 @@ custom_css = """
         display: inline-block;
         text-transform: uppercase;
         letter-spacing: 1px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        animation: slideInUp 1.2s ease-out;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+        font-family: 'Space Mono', monospace;
     }
     
     .cta-final-button:hover {
         transform: translateY(-5px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-        background: #00D084;
-        color: #0a0a0a;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+        background: #00FF88;
+        color: #000000;
     }
     
     /* FOOTER */
     .footer {
-        background: #0a0a0a;
+        background: #000000;
         color: #888888;
         padding: 80px;
         text-align: center;
-        border-top: 2px dashed rgba(0, 208, 132, 0.3);
+        border-top: 2px solid #00FF88;
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
     }
     
     .footer-text {
         font-size: 14px;
         margin-bottom: 12px;
         font-weight: 300;
+        font-family: 'Space Mono', monospace;
     }
     
     .footer-copyright {
-        border-top: 1px solid rgba(0, 208, 132, 0.2);
+        border-top: 1px solid rgba(0, 255, 136, 0.2);
         padding-top: 40px;
         margin-top: 40px;
         font-size: 12px;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
+        font-family: 'Space Mono', monospace;
     }
     
     /* RESPONSIVIDADE */
@@ -631,13 +592,13 @@ custom_css = """
             font-size: 42px;
         }
         
-        .categories-section,
-        .stats-section,
+        .features-section,
+        .showcase-section,
         .cta-final-section {
             padding: 80px 20px;
         }
         
-        .section-title {
+        .showcase-title {
             font-size: 36px;
         }
         
@@ -652,97 +613,93 @@ custom_css = """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # ==================== NAVBAR ====================
-navbar_html = '<div class="navbar"><div class="navbar-logo">PREMIUM</div><div class="navbar-links"><a href="#" class="navbar-link">Produtos</a><a href="#" class="navbar-link">Sobre</a><a href="#" class="navbar-link">Blog</a><a href="#" class="navbar-link">Contato</a><a href="#" class="navbar-cta">Acessar Conta</a></div></div>'
+navbar_html = '<div class="navbar"><div class="navbar-logo">CHAMPION</div><div class="navbar-links"><a href="#" class="navbar-link">Recursos</a><a href="#" class="navbar-link">Portfólio</a><a href="#" class="navbar-link">Sobre</a><a href="#" class="navbar-link">Contato</a><a href="#" class="navbar-cta">Começar</a></div></div>'
 st.markdown(navbar_html, unsafe_allow_html=True)
 
 # ==================== HERO SECTION ====================
 hero_html = '''<div class="hero-section">
     <div class="hero-content">
-        <div class="hero-title">Gestão Completa de Benefícios</div>
-        <div class="hero-subtitle">Tudo que você precisa em um único cartão</div>
-        <button class="hero-cta">Começar Agora</button>
+        <div class="hero-title">INOVAÇÃO ABSOLUTA</div>
+        <div class="hero-subtitle">Design que transcende limites</div>
+        <div class="hero-cta-group">
+            <button class="hero-cta-primary">Explorar Agora</button>
+            <button class="hero-cta-secondary">Saiba Mais</button>
+        </div>
     </div>
 </div>'''
 st.markdown(hero_html, unsafe_allow_html=True)
 
-# ==================== CATEGORIES SECTION ====================
-categories_html = '''<div class="categories-section">
-    <div class="section-header">
-        <div class="section-title">Nossas Categorias</div>
-        <div class="section-subtitle">Soluções completas para todas as suas necessidades</div>
-    </div>
-    <div class="categories-grid">
-        <div class="category-card">
-            <div class="category-icon">🍽️</div>
-            <div class="category-title">Alimentação</div>
-            <div class="category-desc">Acesso a milhares de estabelecimentos parceiros com praticidade e segurança.</div>
-            <a href="#" class="category-link">Saiba Mais →</a>
+# ==================== FEATURES SECTION ====================
+features_html = '''<div class="features-section">
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-title">Velocidade</div>
+            <div class="feature-desc">Performance extrema com carregamento instantâneo em qualquer dispositivo.</div>
         </div>
-        <div class="category-card">
-            <div class="category-icon">🚗</div>
-            <div class="category-title">Combustível</div>
-            <div class="category-desc">Rede de postos de gasolina em todo o país para sua comodidade.</div>
-            <a href="#" class="category-link">Saiba Mais →</a>
+        <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <div class="feature-title">Design</div>
+            <div class="feature-desc">Interface visual revolucionária com animações que impressionam.</div>
         </div>
-        <div class="category-card">
-            <div class="category-icon">💰</div>
-            <div class="category-title">Refeição</div>
-            <div class="category-desc">Flexibilidade para refeições em diversos locais e restaurantes.</div>
-            <a href="#" class="category-link">Saiba Mais →</a>
+        <div class="feature-card">
+            <div class="feature-icon">🔧</div>
+            <div class="feature-title">Flexível</div>
+            <div class="feature-desc">Totalmente customizável para qualquer tipo de negócio ou projeto.</div>
         </div>
-        <div class="category-card">
-            <div class="category-icon">🎁</div>
-            <div class="category-title">Multibenefícios</div>
-            <div class="category-desc">Centralização de todos os seus benefícios em um único cartão.</div>
-            <a href="#" class="category-link">Saiba Mais →</a>
+        <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <div class="feature-title">Responsivo</div>
+            <div class="feature-desc">Funciona perfeitamente em todos os dispositivos e tamanhos de tela.</div>
         </div>
-        <div class="category-card">
-            <div class="category-icon">🚙</div>
-            <div class="category-title">Frota</div>
-            <div class="category-desc">Gestão eficiente de veículos corporativos com controle total.</div>
-            <a href="#" class="category-link">Saiba Mais →</a>
+        <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <div class="feature-title">Conversão</div>
+            <div class="feature-desc">Design estratégico focado em maximizar taxas de conversão.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">✨</div>
+            <div class="feature-title">Premium</div>
+            <div class="feature-desc">Experiência de luxo em cada interação e detalhe visual.</div>
         </div>
     </div>
 </div>'''
-st.markdown(categories_html, unsafe_allow_html=True)
+st.markdown(features_html, unsafe_allow_html=True)
 
-# ==================== STATS SECTION ====================
-stats_html = '''<div class="stats-section">
-    <div class="section-header">
-        <div class="section-title">Por Números</div>
-        <div class="section-subtitle">Confiança e qualidade em cada transação</div>
-    </div>
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-number">250K+</div>
-            <div class="stat-label">Estabelecimentos</div>
+# ==================== SHOWCASE SECTION ====================
+showcase_html = '''<div class="showcase-section">
+    <div class="showcase-title">NÚMEROS QUE FALAM</div>
+    <div class="showcase-grid">
+        <div class="showcase-card">
+            <div class="showcase-number">500%</div>
+            <div class="showcase-label">Mais Engajamento</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-number">500K+</div>
-            <div class="stat-label">Cartões Ativos</div>
+        <div class="showcase-card">
+            <div class="showcase-number">100K+</div>
+            <div class="showcase-label">Usuários Ativos</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-number">98%</div>
-            <div class="stat-label">Satisfação</div>
+        <div class="showcase-card">
+            <div class="showcase-number">99.9%</div>
+            <div class="showcase-label">Uptime</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-number">24/7</div>
-            <div class="stat-label">Atendimento</div>
+        <div class="showcase-card">
+            <div class="showcase-number">24/7</div>
+            <div class="showcase-label">Suporte Premium</div>
         </div>
     </div>
 </div>'''
-st.markdown(stats_html, unsafe_allow_html=True)
+st.markdown(showcase_html, unsafe_allow_html=True)
 
 # ==================== CTA FINAL ====================
 cta_final_html = '''<div class="cta-final-section">
     <div class="cta-final-content">
-        <div class="cta-final-title">Pronto para Transformar?</div>
-        <div class="cta-final-desc">Junte-se a centenas de milhares de usuários que já confiam em nós para gerenciar seus benefícios.</div>
-        <button class="cta-final-button">Solicitar Cartão Agora</button>
+        <div class="cta-final-title">Pronto para Revolucionar?</div>
+        <div class="cta-final-desc">Junte-se aos líderes que já transformaram seus negócios com design de campeão.</div>
+        <button class="cta-final-button">Começar Sua Revolução</button>
     </div>
 </div>'''
 st.markdown(cta_final_html, unsafe_allow_html=True)
 
 # ==================== FOOTER ====================
-footer_html = '<div class="footer"><div class="footer-text">Telefone: +55 (11) 98765-4321 | Email: contato@premiumcard.com.br</div><div class="footer-text">Endereço: Av. Paulista, 1000 - São Paulo, SP</div><div class="footer-copyright">© 2025 Premium Card. Todos os direitos reservados. Gestão de benefícios de forma simples e segura.</div></div>'
+footer_html = '<div class="footer"><div class="footer-text">Email: hello@champion.com | Telefone: +55 (11) 98765-4321</div><div class="footer-text">Endereço: Av. Inovação, 1000 - São Paulo, SP</div><div class="footer-copyright">© 2025 Champion Design. Todos os direitos reservados. Design que vence campeonatos.</div></div>'
 st.markdown(footer_html, unsafe_allow_html=True)
