@@ -2,16 +2,16 @@ import streamlit as st
 
 # Configuração da página
 st.set_page_config(
-    page_title="Luxury Resort - Experiência Premium",
-    page_icon="🏨",
+    page_title="Premium Card - Gestão Completa de Benefícios",
+    page_icon="💳",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# CSS SOFISTICADO COM ANIMAÇÕES ABSURDAS
+# CSS PREMIUM COM DESIGN MEGAVALE
 custom_css = """
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
     
     * {
         margin: 0;
@@ -36,82 +36,103 @@ custom_css = """
         z-index: 1;
     }
     
-    /* ANIMAÇÕES SOFISTICADAS */
-    @keyframes slideInLeft {
-        from { transform: translateX(-100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+    /* ANIMAÇÕES PREMIUM */
+    @keyframes slideInDown {
+        from { transform: translateY(-50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
     }
     
-    @keyframes slideInRight {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    
-    @keyframes fadeInUp {
+    @keyframes slideInUp {
         from { transform: translateY(50px); opacity: 0; }
         to { transform: translateY(0); opacity: 1; }
     }
     
+    @keyframes slideInLeft {
+        from { transform: translateX(-50px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideInRight {
+        from { transform: translateX(50px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
     @keyframes scaleIn {
-        from { transform: scale(0.9); opacity: 0; }
+        from { transform: scale(0.95); opacity: 0; }
         to { transform: scale(1); opacity: 1; }
     }
     
-    @keyframes shimmer {
-        0%, 100% { opacity: 0.5; }
-        50% { opacity: 1; }
+    @keyframes dashAnimation {
+        0% { stroke-dashoffset: 1000; }
+        100% { stroke-dashoffset: 0; }
     }
     
-    @keyframes borderGlow {
-        0%, 100% { border-color: rgba(218, 165, 32, 0.3); box-shadow: 0 0 10px rgba(218, 165, 32, 0.1); }
-        50% { border-color: rgba(218, 165, 32, 0.8); box-shadow: 0 0 20px rgba(218, 165, 32, 0.3); }
+    @keyframes borderPulse {
+        0%, 100% { border-color: rgba(0, 208, 132, 0.3); box-shadow: 0 0 15px rgba(0, 208, 132, 0.1); }
+        50% { border-color: rgba(0, 208, 132, 0.8); box-shadow: 0 0 30px rgba(0, 208, 132, 0.3); }
     }
     
-    @keyframes slideUp {
-        0% { transform: translateY(20px); opacity: 0; }
-        100% { transform: translateY(0); opacity: 1; }
+    @keyframes colorShift {
+        0% { border-color: rgba(0, 180, 216, 0.5); }
+        25% { border-color: rgba(255, 213, 10, 0.5); }
+        50% { border-color: rgba(0, 208, 132, 0.5); }
+        75% { border-color: rgba(255, 107, 74, 0.5); }
+        100% { border-color: rgba(0, 180, 216, 0.5); }
     }
     
-    /* NAVBAR */
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    /* NAVBAR PREMIUM */
     .navbar {
         background: rgba(10, 10, 10, 0.98);
-        backdrop-filter: blur(15px);
-        padding: 25px 80px;
+        backdrop-filter: blur(20px);
+        padding: 20px 80px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 2px solid rgba(218, 165, 32, 0.3);
+        border-bottom: 2px dashed rgba(0, 208, 132, 0.3);
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        animation: slideInDown 0.6s ease-out;
     }
     
     .navbar-logo {
-        font-size: 32px;
-        font-weight: 700;
-        color: #DAA520;
-        letter-spacing: 3px;
-        font-family: 'Cormorant Garamond', serif;
-        animation: slideInLeft 0.8s ease-out;
+        font-size: 28px;
+        font-weight: 900;
+        background: linear-gradient(135deg, #00D084, #FF6B4A, #FFD60A);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 2px;
+        animation: float 3s ease-in-out infinite;
     }
     
     .navbar-links {
         display: flex;
-        gap: 60px;
+        gap: 50px;
         align-items: center;
     }
     
     .navbar-link {
         color: #ffffff;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 600;
         font-size: 13px;
         transition: all 0.3s ease;
         text-transform: uppercase;
-        letter-spacing: 1.5px;
+        letter-spacing: 1px;
         position: relative;
-        animation: slideInRight 0.8s ease-out;
+        animation: slideInDown 0.8s ease-out;
     }
     
     .navbar-link::after {
@@ -120,8 +141,8 @@ custom_css = """
         bottom: -5px;
         left: 0;
         width: 0;
-        height: 2px;
-        background: #DAA520;
+        height: 3px;
+        background: linear-gradient(90deg, #00D084, #FF6B4A);
         transition: width 0.3s ease;
     }
     
@@ -130,42 +151,41 @@ custom_css = """
     }
     
     .navbar-link:hover {
-        color: #DAA520;
+        color: #00D084;
     }
     
     .navbar-cta {
-        background: linear-gradient(135deg, #DAA520, #B8860B);
-        color: #000000;
-        padding: 12px 40px;
-        border-radius: 3px;
+        background: linear-gradient(135deg, #FF6B4A, #FF8C73);
+        color: white;
+        padding: 12px 32px;
+        border-radius: 8px;
         text-decoration: none;
         font-weight: 700;
         font-size: 12px;
         transition: all 0.3s ease;
-        border: 2px solid #DAA520;
+        border: 2px solid #FF6B4A;
         cursor: pointer;
         text-transform: uppercase;
         letter-spacing: 1px;
-        box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+        box-shadow: 0 4px 15px rgba(255, 107, 74, 0.3);
         animation: slideInRight 1s ease-out;
     }
     
     .navbar-cta:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(218, 165, 32, 0.5);
+        box-shadow: 0 8px 25px rgba(255, 107, 74, 0.5);
     }
     
     /* HERO SECTION */
     .hero-section {
-        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-        background-size: cover;
-        background-position: center;
-        min-height: 750px;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+        min-height: 700px;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
         overflow: hidden;
+        padding: 80px 60px;
     }
     
     .hero-section::before {
@@ -173,10 +193,23 @@ custom_css = """
         position: absolute;
         width: 600px;
         height: 600px;
-        background: radial-gradient(circle, rgba(218, 165, 32, 0.15) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(0, 208, 132, 0.15) 0%, transparent 70%);
         border-radius: 50%;
         top: -100px;
         right: -100px;
+        animation: float 4s ease-in-out infinite;
+    }
+    
+    .hero-section::after {
+        content: '';
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(255, 107, 74, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        bottom: -100px;
+        left: -100px;
+        animation: float 5s ease-in-out infinite;
     }
     
     .hero-content {
@@ -184,104 +217,59 @@ custom_css = """
         z-index: 2;
         position: relative;
         max-width: 900px;
-        animation: fadeInUp 1s ease-out;
+        animation: fadeIn 1s ease-out;
     }
     
     .hero-title {
         font-size: 72px;
-        font-weight: 700;
+        font-weight: 900;
         margin-bottom: 20px;
-        color: #DAA520;
-        letter-spacing: 2px;
-        font-family: 'Cormorant Garamond', serif;
-        animation: slideInLeft 1s ease-out;
+        background: linear-gradient(135deg, #00D084, #00B4D8, #FFD60A, #FF6B4A);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -1px;
+        line-height: 1.1;
+        animation: slideInUp 0.8s ease-out;
     }
     
     .hero-subtitle {
-        font-size: 22px;
+        font-size: 24px;
         font-weight: 300;
         margin-bottom: 50px;
-        color: #ffffff;
-        letter-spacing: 2px;
-        animation: slideInRight 1.2s ease-out;
+        color: #00D084;
+        letter-spacing: 1px;
+        animation: slideInUp 1s ease-out;
     }
     
     .hero-cta {
-        background: linear-gradient(135deg, #DAA520, #B8860B);
-        color: #000000;
-        padding: 16px 50px;
-        border-radius: 3px;
+        background: linear-gradient(135deg, #00D084, #00B4D8);
+        color: white;
+        padding: 18px 50px;
+        border-radius: 8px;
         font-weight: 700;
-        font-size: 13px;
+        font-size: 14px;
         text-decoration: none;
         transition: all 0.3s ease;
-        border: 2px solid #DAA520;
+        border: 2px solid #00D084;
         cursor: pointer;
         display: inline-block;
         text-transform: uppercase;
         letter-spacing: 1px;
-        box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
-        animation: fadeInUp 1.4s ease-out;
+        box-shadow: 0 8px 25px rgba(0, 208, 132, 0.3);
+        animation: slideInUp 1.2s ease-out;
     }
     
     .hero-cta:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(218, 165, 32, 0.5);
+        box-shadow: 0 12px 35px rgba(0, 208, 132, 0.5);
     }
     
-    /* ABOUT SECTION */
-    .about-section {
+    /* CATEGORIES SECTION */
+    .categories-section {
         padding: 120px 80px;
         background: #0a0a0a;
         position: relative;
-    }
-    
-    .about-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 80px;
-        align-items: center;
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-    
-    .about-text h2 {
-        font-size: 48px;
-        font-weight: 700;
-        margin-bottom: 20px;
-        color: #DAA520;
-        letter-spacing: 1px;
-        font-family: 'Cormorant Garamond', serif;
-        animation: slideInLeft 0.8s ease-out;
-    }
-    
-    .about-text p {
-        font-size: 16px;
-        color: #cccccc;
-        line-height: 1.9;
-        margin-bottom: 20px;
-        font-weight: 300;
-        animation: fadeInUp 1s ease-out;
-    }
-    
-    .about-image {
-        background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
-        height: 450px;
-        border-radius: 3px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 120px;
-        color: rgba(0, 0, 0, 0.1);
-        animation: scaleIn 1s ease-out;
-        border: 2px solid rgba(218, 165, 32, 0.3);
-        animation: borderGlow 3s ease-in-out infinite;
-    }
-    
-    /* SERVICES SECTION */
-    .services-section {
-        padding: 120px 80px;
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
     }
     
     .section-header {
@@ -291,183 +279,246 @@ custom_css = """
     
     .section-title {
         font-size: 56px;
-        font-weight: 700;
+        font-weight: 900;
         margin-bottom: 20px;
-        color: #DAA520;
-        letter-spacing: 1px;
-        font-family: 'Cormorant Garamond', serif;
-        animation: slideInLeft 0.8s ease-out;
+        background: linear-gradient(135deg, #00D084, #FFD60A);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -1px;
+        animation: slideInUp 0.8s ease-out;
     }
     
-    .section-description {
+    .section-subtitle {
         font-size: 18px;
         color: #aaaaaa;
         font-weight: 300;
         max-width: 600px;
         margin: 0 auto;
-        animation: fadeInUp 1s ease-out;
+        animation: slideInUp 1s ease-out;
     }
     
-    .services-grid {
+    .categories-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 40px;
         max-width: 1400px;
         margin: 0 auto;
     }
     
-    .service-card {
-        background: rgba(218, 165, 32, 0.05);
-        border: 2px solid rgba(218, 165, 32, 0.3);
+    .category-card {
+        background: rgba(10, 10, 10, 0.8);
+        border: 3px dashed;
         padding: 50px 40px;
-        border-radius: 3px;
+        border-radius: 12px;
         transition: all 0.4s ease;
         position: relative;
         overflow: hidden;
-        animation: slideUp 0.8s ease-out;
+        animation: slideInUp 0.8s ease-out;
         animation-fill-mode: both;
     }
     
-    .service-card:nth-child(1) { animation-delay: 0.1s; }
-    .service-card:nth-child(2) { animation-delay: 0.2s; }
-    .service-card:nth-child(3) { animation-delay: 0.3s; }
-    .service-card:nth-child(4) { animation-delay: 0.4s; }
-    .service-card:nth-child(5) { animation-delay: 0.5s; }
-    .service-card:nth-child(6) { animation-delay: 0.6s; }
+    .category-card:nth-child(1) {
+        border-color: rgba(0, 180, 216, 0.5);
+        animation-delay: 0.1s;
+    }
     
-    .service-card::before {
+    .category-card:nth-child(2) {
+        border-color: rgba(255, 213, 10, 0.5);
+        animation-delay: 0.2s;
+    }
+    
+    .category-card:nth-child(3) {
+        border-color: rgba(0, 208, 132, 0.5);
+        animation-delay: 0.3s;
+    }
+    
+    .category-card:nth-child(4) {
+        border-color: rgba(255, 107, 74, 0.5);
+        animation-delay: 0.4s;
+    }
+    
+    .category-card:nth-child(5) {
+        border-color: rgba(0, 180, 216, 0.5);
+        animation-delay: 0.5s;
+    }
+    
+    .category-card::before {
         content: '';
         position: absolute;
         top: 0;
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.1), transparent);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
         transition: left 0.5s ease;
     }
     
-    .service-card:hover::before {
+    .category-card:hover::before {
         left: 100%;
     }
     
-    .service-card:hover {
+    .category-card:hover {
         transform: translateY(-15px);
-        border-color: #DAA520;
-        box-shadow: 0 20px 50px rgba(218, 165, 32, 0.2);
+        box-shadow: 0 20px 50px rgba(0, 208, 132, 0.2);
     }
     
-    .service-title {
-        font-size: 22px;
-        font-weight: 700;
+    .category-card:nth-child(1):hover {
+        border-color: rgba(0, 180, 216, 1);
+        box-shadow: 0 20px 50px rgba(0, 180, 216, 0.2);
+    }
+    
+    .category-card:nth-child(2):hover {
+        border-color: rgba(255, 213, 10, 1);
+        box-shadow: 0 20px 50px rgba(255, 213, 10, 0.2);
+    }
+    
+    .category-card:nth-child(3):hover {
+        border-color: rgba(0, 208, 132, 1);
+        box-shadow: 0 20px 50px rgba(0, 208, 132, 0.2);
+    }
+    
+    .category-card:nth-child(4):hover {
+        border-color: rgba(255, 107, 74, 1);
+        box-shadow: 0 20px 50px rgba(255, 107, 74, 0.2);
+    }
+    
+    .category-card:nth-child(5):hover {
+        border-color: rgba(0, 180, 216, 1);
+        box-shadow: 0 20px 50px rgba(0, 180, 216, 0.2);
+    }
+    
+    .category-icon {
+        font-size: 48px;
+        margin-bottom: 20px;
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    .category-title {
+        font-size: 24px;
+        font-weight: 800;
         margin-bottom: 15px;
-        color: #DAA520;
-        letter-spacing: 1px;
-        font-family: 'Cormorant Garamond', serif;
+        color: #ffffff;
+        letter-spacing: 0.5px;
     }
     
-    .service-desc {
+    .category-desc {
         font-size: 15px;
         color: #aaaaaa;
         line-height: 1.8;
         font-weight: 300;
+        margin-bottom: 20px;
     }
     
-    /* ROOMS SECTION */
-    .rooms-section {
+    .category-link {
+        color: #00D084;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 13px;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: inline-block;
+    }
+    
+    .category-link:hover {
+        color: #FFD60A;
+    }
+    
+    /* STATS SECTION */
+    .stats-section {
         padding: 120px 80px;
-        background: #0a0a0a;
+        background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%);
     }
     
-    .rooms-grid {
+    .stats-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 40px;
         max-width: 1400px;
         margin: 0 auto;
     }
     
-    .room-card {
-        background: rgba(218, 165, 32, 0.05);
-        border: 2px solid rgba(218, 165, 32, 0.3);
-        border-radius: 3px;
-        overflow: hidden;
+    .stat-card {
+        background: rgba(10, 10, 10, 0.8);
+        border: 3px solid;
+        border-radius: 12px;
+        padding: 50px 40px;
+        text-align: center;
         transition: all 0.4s ease;
-        animation: slideUp 0.8s ease-out;
+        position: relative;
+        overflow: hidden;
+        animation: slideInUp 0.8s ease-out;
         animation-fill-mode: both;
     }
     
-    .room-card:nth-child(1) { animation-delay: 0.1s; }
-    .room-card:nth-child(2) { animation-delay: 0.2s; }
-    .room-card:nth-child(3) { animation-delay: 0.3s; }
+    .stat-card:nth-child(1) {
+        border-color: rgba(0, 180, 216, 0.5);
+        animation-delay: 0.1s;
+    }
     
-    .room-card:hover {
+    .stat-card:nth-child(2) {
+        border-color: rgba(255, 213, 10, 0.5);
+        animation-delay: 0.2s;
+    }
+    
+    .stat-card:nth-child(3) {
+        border-color: rgba(0, 208, 132, 0.5);
+        animation-delay: 0.3s;
+    }
+    
+    .stat-card:nth-child(4) {
+        border-color: rgba(255, 107, 74, 0.5);
+        animation-delay: 0.4s;
+    }
+    
+    .stat-card:hover {
         transform: translateY(-15px);
-        border-color: #DAA520;
-        box-shadow: 0 20px 50px rgba(218, 165, 32, 0.2);
     }
     
-    .room-image {
-        background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
-        height: 280px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 100px;
-        color: rgba(0, 0, 0, 0.1);
+    .stat-card:nth-child(1):hover {
+        border-color: rgba(0, 180, 216, 1);
+        box-shadow: 0 20px 50px rgba(0, 180, 216, 0.2);
     }
     
-    .room-content {
-        padding: 40px;
+    .stat-card:nth-child(2):hover {
+        border-color: rgba(255, 213, 10, 1);
+        box-shadow: 0 20px 50px rgba(255, 213, 10, 0.2);
     }
     
-    .room-title {
-        font-size: 24px;
+    .stat-card:nth-child(3):hover {
+        border-color: rgba(0, 208, 132, 1);
+        box-shadow: 0 20px 50px rgba(0, 208, 132, 0.2);
+    }
+    
+    .stat-card:nth-child(4):hover {
+        border-color: rgba(255, 107, 74, 1);
+        box-shadow: 0 20px 50px rgba(255, 107, 74, 0.2);
+    }
+    
+    .stat-number {
+        font-size: 48px;
+        font-weight: 900;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #00D084, #FFD60A);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .stat-label {
+        font-size: 18px;
         font-weight: 700;
-        margin-bottom: 12px;
-        color: #DAA520;
-        font-family: 'Cormorant Garamond', serif;
-    }
-    
-    .room-desc {
-        font-size: 15px;
-        color: #aaaaaa;
-        line-height: 1.8;
-        margin-bottom: 20px;
-        font-weight: 300;
-    }
-    
-    .room-price {
-        font-size: 28px;
-        font-weight: 700;
-        color: #DAA520;
-        margin-bottom: 20px;
-    }
-    
-    .room-cta {
-        background: linear-gradient(135deg, #DAA520, #B8860B);
-        color: #000000;
-        padding: 12px 32px;
-        border: none;
-        border-radius: 3px;
-        font-weight: 700;
-        font-size: 12px;
-        cursor: pointer;
+        color: #ffffff;
         text-transform: uppercase;
         letter-spacing: 1px;
-        transition: all 0.3s ease;
-        width: 100%;
     }
     
-    .room-cta:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(218, 165, 32, 0.3);
-    }
-    
-    /* CTA FINAL SECTION */
+    /* CTA FINAL */
     .cta-final-section {
-        background: linear-gradient(135deg, #DAA520 0%, #B8860B 50%, #DAA520 100%);
-        color: #000000;
         padding: 120px 80px;
+        background: linear-gradient(135deg, #00D084 0%, #00B4D8 25%, #FFD60A 50%, #FF6B4A 75%, #00D084 100%);
+        background-size: 400% 400%;
         text-align: center;
         position: relative;
         overflow: hidden;
@@ -490,46 +541,47 @@ custom_css = """
     
     .cta-final-title {
         font-size: 56px;
-        font-weight: 700;
+        font-weight: 900;
         margin-bottom: 20px;
-        letter-spacing: 1px;
-        font-family: 'Cormorant Garamond', serif;
-        animation: slideInLeft 0.8s ease-out;
+        color: white;
+        letter-spacing: -1px;
+        animation: slideInUp 0.8s ease-out;
     }
     
     .cta-final-desc {
         font-size: 20px;
         margin-bottom: 50px;
+        color: rgba(255, 255, 255, 0.95);
         max-width: 700px;
         margin-left: auto;
         margin-right: auto;
         font-weight: 300;
-        animation: fadeInUp 1s ease-out;
+        animation: slideInUp 1s ease-out;
     }
     
     .cta-final-button {
-        background: #000000;
-        color: #DAA520;
-        padding: 16px 60px;
-        border: 3px solid #DAA520;
-        border-radius: 3px;
+        background: #0a0a0a;
+        color: #00D084;
+        padding: 18px 60px;
+        border: 3px solid #00D084;
+        border-radius: 8px;
         font-weight: 700;
-        font-size: 13px;
+        font-size: 14px;
         text-decoration: none;
         transition: all 0.3s ease;
         cursor: pointer;
         display: inline-block;
         text-transform: uppercase;
         letter-spacing: 1px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        animation: fadeInUp 1.2s ease-out;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        animation: slideInUp 1.2s ease-out;
     }
     
     .cta-final-button:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-        background: #DAA520;
-        color: #000000;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+        background: #00D084;
+        color: #0a0a0a;
     }
     
     /* FOOTER */
@@ -538,7 +590,7 @@ custom_css = """
         color: #888888;
         padding: 80px;
         text-align: center;
-        border-top: 2px solid rgba(218, 165, 32, 0.3);
+        border-top: 2px dashed rgba(0, 208, 132, 0.3);
     }
     
     .footer-text {
@@ -548,7 +600,7 @@ custom_css = """
     }
     
     .footer-copyright {
-        border-top: 1px solid rgba(218, 165, 32, 0.2);
+        border-top: 1px solid rgba(0, 208, 132, 0.2);
         padding-top: 40px;
         margin-top: 40px;
         font-size: 12px;
@@ -572,20 +624,15 @@ custom_css = """
         
         .hero-section {
             min-height: 500px;
+            padding: 40px 20px;
         }
         
         .hero-title {
             font-size: 42px;
         }
         
-        .about-grid {
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
-        
-        .about-section,
-        .services-section,
-        .rooms-section,
+        .categories-section,
+        .stats-section,
         .cta-final-section {
             padding: 80px 20px;
         }
@@ -605,115 +652,97 @@ custom_css = """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # ==================== NAVBAR ====================
-navbar_html = '<div class="navbar"><div class="navbar-logo">LUXE</div><div class="navbar-links"><a href="#" class="navbar-link">Acomodações</a><a href="#" class="navbar-link">Serviços</a><a href="#" class="navbar-link">Experiências</a><a href="#" class="navbar-link">Contato</a><a href="#" class="navbar-cta">Reservar</a></div></div>'
+navbar_html = '<div class="navbar"><div class="navbar-logo">PREMIUM</div><div class="navbar-links"><a href="#" class="navbar-link">Produtos</a><a href="#" class="navbar-link">Sobre</a><a href="#" class="navbar-link">Blog</a><a href="#" class="navbar-link">Contato</a><a href="#" class="navbar-cta">Acessar Conta</a></div></div>'
 st.markdown(navbar_html, unsafe_allow_html=True)
 
 # ==================== HERO SECTION ====================
 hero_html = '''<div class="hero-section">
     <div class="hero-content">
-        <div class="hero-title">Luxo Incomparável</div>
-        <div class="hero-subtitle">Experiência de hospedagem que transcende</div>
-        <button class="hero-cta">Explorar Agora</button>
+        <div class="hero-title">Gestão Completa de Benefícios</div>
+        <div class="hero-subtitle">Tudo que você precisa em um único cartão</div>
+        <button class="hero-cta">Começar Agora</button>
     </div>
 </div>'''
 st.markdown(hero_html, unsafe_allow_html=True)
 
-# ==================== ABOUT SECTION ====================
-about_html = '''<div class="about-section">
-    <div class="about-grid">
-        <div class="about-text">
-            <h2>Bem-vindo ao Nosso Refúgio</h2>
-            <p>Descubra um mundo de elegância e sofisticação onde cada detalhe foi cuidadosamente pensado para sua comodidade absoluta. Nossas acomodações premium oferecem o melhor em conforto e estilo.</p>
-            <p>Mergulhe em uma experiência única onde o luxo encontra a hospitalidade. Cada momento em nosso resort é uma oportunidade de criar memórias inesquecíveis.</p>
-        </div>
-        <div class="about-image"></div>
-    </div>
-</div>'''
-st.markdown(about_html, unsafe_allow_html=True)
-
-# ==================== SERVICES SECTION ====================
-services_html = '''<div class="services-section">
+# ==================== CATEGORIES SECTION ====================
+categories_html = '''<div class="categories-section">
     <div class="section-header">
-        <div class="section-title">Serviços Exclusivos</div>
-        <div class="section-description">Tudo que você precisa para uma estadia perfeita</div>
+        <div class="section-title">Nossas Categorias</div>
+        <div class="section-subtitle">Soluções completas para todas as suas necessidades</div>
     </div>
-    <div class="services-grid">
-        <div class="service-card">
-            <div class="service-title">Gastronomia Refinada</div>
-            <div class="service-desc">Restaurantes gourmet com chefs renomados e culinária internacional de alta qualidade.</div>
+    <div class="categories-grid">
+        <div class="category-card">
+            <div class="category-icon">🍽️</div>
+            <div class="category-title">Alimentação</div>
+            <div class="category-desc">Acesso a milhares de estabelecimentos parceiros com praticidade e segurança.</div>
+            <a href="#" class="category-link">Saiba Mais →</a>
         </div>
-        <div class="service-card">
-            <div class="service-title">Spa de Luxo</div>
-            <div class="service-desc">Tratamentos de bem-estar com produtos premium e terapeutas especializados.</div>
+        <div class="category-card">
+            <div class="category-icon">🚗</div>
+            <div class="category-title">Combustível</div>
+            <div class="category-desc">Rede de postos de gasolina em todo o país para sua comodidade.</div>
+            <a href="#" class="category-link">Saiba Mais →</a>
         </div>
-        <div class="service-card">
-            <div class="service-title">Piscinas Aquecidas</div>
-            <div class="service-desc">Piscinas de água salgada aquecida com vista panorâmica e serviço de bar.</div>
+        <div class="category-card">
+            <div class="category-icon">💰</div>
+            <div class="category-title">Refeição</div>
+            <div class="category-desc">Flexibilidade para refeições em diversos locais e restaurantes.</div>
+            <a href="#" class="category-link">Saiba Mais →</a>
         </div>
-        <div class="service-card">
-            <div class="service-title">Entretenimento</div>
-            <div class="service-desc">Shows ao vivo, eventos especiais e atividades de lazer para toda a família.</div>
+        <div class="category-card">
+            <div class="category-icon">🎁</div>
+            <div class="category-title">Multibenefícios</div>
+            <div class="category-desc">Centralização de todos os seus benefícios em um único cartão.</div>
+            <a href="#" class="category-link">Saiba Mais →</a>
         </div>
-        <div class="service-card">
-            <div class="service-title">Transporte VIP</div>
-            <div class="service-desc">Serviço de transfer com veículos de luxo e motorista particular.</div>
-        </div>
-        <div class="service-card">
-            <div class="service-title">Concierge 24/7</div>
-            <div class="service-desc">Atendimento personalizado para todas as suas necessidades e desejos.</div>
+        <div class="category-card">
+            <div class="category-icon">🚙</div>
+            <div class="category-title">Frota</div>
+            <div class="category-desc">Gestão eficiente de veículos corporativos com controle total.</div>
+            <a href="#" class="category-link">Saiba Mais →</a>
         </div>
     </div>
 </div>'''
-st.markdown(services_html, unsafe_allow_html=True)
+st.markdown(categories_html, unsafe_allow_html=True)
 
-# ==================== ROOMS SECTION ====================
-rooms_html = '''<div class="rooms-section">
+# ==================== STATS SECTION ====================
+stats_html = '''<div class="stats-section">
     <div class="section-header">
-        <div class="section-title">Acomodações Premium</div>
-        <div class="section-description">Escolha entre nossas suítes e villas exclusivas</div>
+        <div class="section-title">Por Números</div>
+        <div class="section-subtitle">Confiança e qualidade em cada transação</div>
     </div>
-    <div class="rooms-grid">
-        <div class="room-card">
-            <div class="room-image"></div>
-            <div class="room-content">
-                <div class="room-title">Suíte Deluxe</div>
-                <div class="room-desc">Conforto supremo com vista para o jardim. Inclui banheiro de mármol, cama king-size e varanda privada.</div>
-                <div class="room-price">R$ 1.200/noite</div>
-                <button class="room-cta">Reservar</button>
-            </div>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">250K+</div>
+            <div class="stat-label">Estabelecimentos</div>
         </div>
-        <div class="room-card">
-            <div class="room-image"></div>
-            <div class="room-content">
-                <div class="room-title">Suíte Premium</div>
-                <div class="room-desc">Luxo incomparável com vista para o mar. Jacuzzi privado, serviço de butler e acesso VIP.</div>
-                <div class="room-price">R$ 1.800/noite</div>
-                <button class="room-cta">Reservar</button>
-            </div>
+        <div class="stat-card">
+            <div class="stat-number">500K+</div>
+            <div class="stat-label">Cartões Ativos</div>
         </div>
-        <div class="room-card">
-            <div class="room-image"></div>
-            <div class="room-content">
-                <div class="room-title">Villa Privativa</div>
-                <div class="room-desc">Isolamento total e privacidade absoluta. Piscina privada, spa pessoal e chef particular.</div>
-                <div class="room-price">R$ 3.500/noite</div>
-                <button class="room-cta">Reservar</button>
-            </div>
+        <div class="stat-card">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Satisfação</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Atendimento</div>
         </div>
     </div>
 </div>'''
-st.markdown(rooms_html, unsafe_allow_html=True)
+st.markdown(stats_html, unsafe_allow_html=True)
 
-# ==================== CTA FINAL SECTION ====================
+# ==================== CTA FINAL ====================
 cta_final_html = '''<div class="cta-final-section">
     <div class="cta-final-content">
-        <div class="cta-final-title">Reserve Sua Experiência</div>
-        <div class="cta-final-desc">Viva momentos inesquecíveis em nosso resort de luxo. Acomodações exclusivas, serviços impecáveis e memórias para a vida toda.</div>
-        <button class="cta-final-button">Fazer Reserva Agora</button>
+        <div class="cta-final-title">Pronto para Transformar?</div>
+        <div class="cta-final-desc">Junte-se a centenas de milhares de usuários que já confiam em nós para gerenciar seus benefícios.</div>
+        <button class="cta-final-button">Solicitar Cartão Agora</button>
     </div>
 </div>'''
 st.markdown(cta_final_html, unsafe_allow_html=True)
 
 # ==================== FOOTER ====================
-footer_html = '<div class="footer"><div class="footer-text">Telefone: +55 (11) 98765-4321 | Email: reservas@luxeresort.com.br</div><div class="footer-text">Endereço: Av. Costeira, 5000 - Praia Paradisíaca, SP</div><div class="footer-copyright">© 2025 Luxe Resort. Todos os direitos reservados. Experiência de luxo absoluto.</div></div>'
+footer_html = '<div class="footer"><div class="footer-text">Telefone: +55 (11) 98765-4321 | Email: contato@premiumcard.com.br</div><div class="footer-text">Endereço: Av. Paulista, 1000 - São Paulo, SP</div><div class="footer-copyright">© 2025 Premium Card. Todos os direitos reservados. Gestão de benefícios de forma simples e segura.</div></div>'
 st.markdown(footer_html, unsafe_allow_html=True)
