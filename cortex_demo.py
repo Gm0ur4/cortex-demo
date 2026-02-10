@@ -2,188 +2,208 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Daniel Aristizábal | Studio",
-    page_icon="🎨",
+    page_title="Justine Soulié | Diretora de Arte & Designer",
+    page_icon="✨",
     layout="wide"
 )
 
-# --- CSS DE ALTA FIDELIDADE (ARISTIZÁBAL STYLE) ---
+# --- CSS DE ALTA FIDELIDADE (ESTILO JUSTINE SOULIÉ) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Inter:wght@900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;600&display=swap');
 
-    /* Reset Geral */
+    /* Fundo suave e cores base */
     .stApp {
-        background-color: #000000;
-        color: #ffffff;
+        background-color: #f2efea; /* Creme característico */
+        color: #2c2c2c;
     }
-    .block-container { padding: 0 !important; max-width: 100% !important; }
 
-    /* Tipografia Estúdio */
     html, body, [class*="css"] {
-        font-family: 'JetBrains+Mono', monospace;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 300;
     }
 
-    /* Header Fixo e Minimalista */
-    .header-daniel {
+    h1, h2, h3, .serif-italic {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+    }
+
+    /* Header Minimalista */
+    .nav-justine {
         display: flex;
         justify-content: space-between;
-        padding: 30px 40px;
+        padding: 40px 6%;
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
         position: fixed;
         width: 100%;
         top: 0;
         z-index: 1000;
-        background: rgba(0,0,0,0.8);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid #222;
-        text-transform: uppercase;
-        font-size: 12px;
-        letter-spacing: 2px;
+        background: rgba(242, 239, 234, 0.8);
+        backdrop-filter: blur(5px);
     }
 
     /* Hero Section */
-    .hero-section {
-        padding: 180px 40px 100px 40px;
+    .hero-container {
+        padding: 200px 6% 100px 6%;
         text-align: left;
     }
-    .hero-big-text {
-        font-family: 'Inter', sans-serif;
-        font-size: clamp(40px, 12vw, 160px);
-        font-weight: 900;
-        line-height: 0.85;
-        letter-spacing: -0.05em;
-        margin-bottom: 40px;
+    .hero-title {
+        font-size: clamp(40px, 7vw, 90px);
+        line-height: 1.1;
+        margin-bottom: 20px;
     }
 
-    /* Grade de Projetos (Mosaic Grid) */
-    .grid-wrap {
-        padding: 0 40px;
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 20px;
+    /* Galeria de Projetos (Layout Editorial) */
+    .project-wrapper {
+        padding: 0 6% 150px 6%;
     }
 
-    .project-item {
+    .project-card {
+        margin-bottom: 150px;
         position: relative;
-        overflow: hidden;
-        margin-bottom: 40px;
     }
 
-    .project-img {
+    .project-image {
         width: 100%;
         height: auto;
+        transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         display: block;
-        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        filter: saturate(1.2);
     }
     
-    .project-item:hover .project-img {
-        transform: scale(1.03);
+    .project-card:hover .project-image {
+        transform: scale(1.02);
     }
 
-    .project-info {
-        margin-top: 15px;
-        font-size: 11px;
-        text-transform: uppercase;
-        color: #666;
+    .project-meta {
+        margin-top: 20px;
         display: flex;
         justify-content: space-between;
+        align-items: baseline;
     }
 
-    /* Rodapé */
-    .footer-daniel {
-        padding: 100px 40px;
-        border-top: 1px solid #222;
-        margin-top: 100px;
+    .project-name {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 38px;
+        font-style: italic;
     }
 
-    /* Esconder elementos do Streamlit */
+    .project-tag {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #888;
+    }
+
+    /* Seção de Texto (Sobre) */
+    .about-section {
+        padding: 150px 20%;
+        text-align: center;
+        background-color: #e8e4de; /* Tom um pouco mais escuro */
+    }
+
+    .about-text {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 46px;
+        font-style: italic;
+        line-height: 1.3;
+    }
+
+    /* Footer */
+    .footer-justine {
+        padding: 100px 6% 40px 6%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-top: 1px solid #dcd7cf;
+    }
+
+    /* Custom Hide Streamlit */
     [data-testid="stHeader"] { display: none; }
 </style>
 """, unsafe_allow_html=True)
 
-# --- 1. HEADER ---
+# --- 1. NAVEGAÇÃO ---
 st.markdown("""
-<div class="header-daniel">
-    <div>Daniel Aristizábal</div>
+<div class="nav-justine">
+    <div>Justine Soulié — Designer Independente</div>
     <div style="display: flex; gap: 40px;">
-        <span>Index</span>
-        <span>Studio</span>
-        <span>Archive</span>
-        <span>Shop</span>
+        <span>Projetos</span>
+        <span>Estúdio</span>
+        <span>Contato</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
 # --- 2. HERO ---
 st.markdown("""
-<div class="hero-section">
-    <div class="hero-big-text">
-        DANIEL<br>ARISTI<br>ZÁBAL
-    </div>
-    <p style="max-width: 600px; font-size: 14px; color: #888; line-height: 1.6;">
-        Digital Art Director and Motion Designer. Merging surrealism with CGI to explore new visual languages. 
-        Based in Medellín, working globally.
-    </p>
+<div class="hero-container">
+    <h1 class="hero-title">
+        Direção de Arte & <br>
+        Identidades Digitais 
+        <span class="serif-italic" style="color: #888;">Elegantes.</span>
+    </h1>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 3. PROJETOS (GRID ASSIMÉTRICO) ---
+# --- 3. PROJETOS (LAYOUT FLUIDO) ---
 
-def render_project(col, img_url, title, year, width="100%"):
+def render_project(col, img_url, title, tag, padding_top="0px"):
     with col:
         st.markdown(f"""
-        <div class="project-item">
-            <img src="{img_url}" class="project-img" style="width: {width};">
-            <div class="project-info">
-                <span style="color:#fff;">{title}</span>
-                <span>[{year}]</span>
+        <div class="project-card" style="padding-top: {padding_top};">
+            <img src="{img_url}" class="project-image">
+            <div class="project-meta">
+                <div class="project-name">{title}</div>
+                <div class="project-tag">{tag}</div>
             </div>
         </div>
         """, unsafe_allow_html=True)
 
-# Linha 1: Um grande e um pequeno
-c1, c2 = st.columns([2, 1])
-render_project(c1, "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200", "Digital Surrealism", "2024")
-render_project(c2, "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600", "Chrome Study", "2023")
+# Layout alternado (um maior, um menor com recuo)
+c1, c2 = st.columns([1.5, 1])
+render_project(c1, "https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?w=1000", "L'Art de Vivre", "Identidade Visual")
+render_project(c2, "https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?w=800", "Essência Pura", "Fotografia", padding_top="100px")
 
-# Linha 2: Três imagens menores (estilo mosaico)
-c3, c4, c5 = st.columns(3)
-render_project(c3, "https://images.unsplash.com/photo-1633167606207-d840b5070fc2?w=600", "Organic Forms", "2024")
-render_project(c4, "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=600", "Color Theory", "2023")
-render_project(c5, "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=600", "Texture Flow", "2022")
-
-# Linha 3: Um vertical e um horizontal
-c6, c7 = st.columns([1, 2])
-render_project(c6, "https://images.unsplash.com/photo-1574169208507-84376144848b?w=600", "CGI Sculpture", "2024")
-render_project(c7, "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=1200", "Metaverse Landscapes", "2024")
-
-# --- 4. SEÇÃO SOBRE (COMPRIDA) ---
+# Layout de coluna única para impacto
+st.markdown('<div class="project-wrapper">', unsafe_allow_html=True)
 st.markdown("""
-<div style="padding: 150px 40px; background-color: #080808;">
-    <h2 style="font-family:'Inter'; font-size: 60px; font-weight: 900; letter-spacing: -2px;">THE STUDIO</h2>
-    <p style="font-size: 24px; max-width: 800px; color: #ccc; line-height: 1.2; margin-top: 30px;">
-        Nós operamos na intersecção entre o design clássico e o futurismo digital. 
-        Especializados em CGI, direção de arte e identidades visuais que desafiam a lógica.
-    </p>
+<div class="project-card">
+    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600" class="project-image">
+    <div class="project-meta">
+        <div class="project-name">Coleção Outono</div>
+        <div class="project-tag">Direção de Arte / 2024</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
+# Mais dois projetos lado a lado
+c3, c4 = st.columns([1, 1.2])
+render_project(c3, "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800", "Objeto Mínimo", "Design de Produto", padding_top="50px")
+render_project(c4, "https://images.unsplash.com/photo-1509343256512-d77a5cb3791b?w=1000", "Estúdio de Luz", "Branding")
+
+# --- 4. SOBRE (SOB MEDIDA) ---
+st.markdown("""
+<div class="about-section">
+    <div class="about-text">
+        "Acredito que a beleza reside na simplicidade e no equilíbrio entre o espaço vazio e a tipografia clássica."
+    </div>
+    <p style="margin-top: 40px; text-transform: uppercase; font-size: 11px; letter-spacing: 2px;">Sobre Justine</p>
 </div>
 """, unsafe_allow_html=True)
 
 # --- 5. FOOTER ---
 st.markdown("""
-<div class="footer-daniel">
-    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-        <div>
-            <p style="color: #fff; font-weight: 700;">CONNECT</p>
-            <p style="color: #666; font-size: 14px; margin-top: 10px;">Instagram<br>Behance<br>LinkedIn<br>Vimeo</p>
-        </div>
-        <div style="text-align: right;">
-            <p style="color: #fff; font-weight: 700;">NEW BUSINESS</p>
-            <p style="color: #666; font-size: 14px; margin-top: 10px;">studio@aristizabal.net</p>
-        </div>
-    </div>
-    <div style="margin-top: 80px; font-size: 10px; color: #333; letter-spacing: 2px;">
-        © 2026 DANIEL ARISTIZÁBAL STUDIO — ALL RIGHTS RESERVED
+<div class="footer-justine">
+    <div>Disponível para novos projetos — 2026</div>
+    <div style="text-align: right;">
+        Instagram / Behance / LinkedIn <br>
+        justine@soulie.fr
     </div>
 </div>
 """, unsafe_allow_html=True)
