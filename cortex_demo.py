@@ -2,196 +2,195 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Crehana Clone | Cursos Online",
-    page_icon="🎓",
+    page_title="Fundable | Plataforma de Crowdfunding",
+    page_icon="🚀",
     layout="wide"
 )
 
-# --- CSS PARA ESTILO EDTECH (CREHANA STYLE) ---
+# --- CSS PARA ESTILO FUNDABLE (BUSINESS & FUNDING) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 
     html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
-        color: #1b1c1e;
+        font-family: 'Open Sans', sans-serif;
     }
 
-    /* Header Estilo App */
-    .header-crehana {
+    /* Header com Degradê */
+    .header-fundable {
+        background: linear-gradient(90deg, #1a2a3a 0%, #2c3e50 100%);
+        padding: 20px 5rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px 0px;
-        background-color: white;
-        border-bottom: 1px solid #e0e0e0;
-        margin-bottom: 30px;
-    }
-    .logo {
-        font-size: 24px;
-        font-weight: 800;
-        color: #4b22b4; /* Roxo Crehana */
-    }
-
-    /* Hero Section */
-    .hero-title {
-        font-size: 42px;
-        font-weight: 800;
-        line-height: 1.1;
-        margin-bottom: 20px;
-    }
-    .highlight {
-        color: #4b22b4;
-    }
-
-    /* Botões de Ação */
-    .stButton > button {
-        border-radius: 8px;
-        font-weight: 600;
-        transition: all 0.2s;
-        border: none;
-    }
-    /* Botão Principal (Roxo) */
-    div.stButton > button:first-child {
-        background-color: #4b22b4;
+        margin: -5rem -5rem 2rem -5rem;
         color: white;
     }
     
-    /* Card de Curso */
-    .course-card {
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        border: 1px solid #efefef;
-        transition: transform 0.3s;
-        margin-bottom: 20px;
-    }
-    .course-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    }
-    .category-tag {
-        font-size: 11px;
+    .logo {
+        font-size: 28px;
         font-weight: 700;
-        text-transform: uppercase;
-        color: #888;
-        margin-bottom: 5px;
+        letter-spacing: -1px;
     }
-    .course-title {
-        font-weight: 600;
-        font-size: 16px;
-        margin-bottom: 8px;
-    }
-    .rating {
-        color: #ffb400;
-        font-size: 14px;
-        font-weight: bold;
+    .logo span { color: #00a8ff; }
+
+    /* Hero Section */
+    .hero-container {
+        text-align: center;
+        padding: 60px 0;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+        margin-bottom: 40px;
     }
 
-    /* Barra de busca simulada */
-    .search-bar {
-        background-color: #f4f4f7;
-        padding: 10px 20px;
-        border-radius: 25px;
+    /* Cards de Projetos */
+    .project-card {
+        background: white;
         border: 1px solid #e0e0e0;
-        color: #777;
-        width: 300px;
-        font-size: 14px;
+        border-radius: 4px;
+        padding: 0px;
+        margin-bottom: 20px;
+    }
+    .project-content {
+        padding: 20px;
+    }
+    .project-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #333;
+    }
+    .project-location {
+        font-size: 12px;
+        color: #888;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    /* Barra de Progresso Customizada */
+    .progress-bg {
+        background-color: #eee;
+        height: 8px;
+        border-radius: 4px;
+        margin: 15px 0;
+    }
+    .progress-fill {
+        background-color: #00a8ff;
+        height: 8px;
+        border-radius: 4px;
+    }
+
+    /* Labels de Investimento */
+    .fund-label {
+        font-size: 13px;
+        color: #666;
+    }
+    .fund-value {
+        font-weight: 700;
+        color: #333;
+    }
+
+    /* Botões do Fundable */
+    div.stButton > button {
+        border-radius: 3px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+    .btn-invest > div > button {
+        background-color: #00a8ff !important;
+        color: white !important;
     }
 </style>
 """, unsafe_allow_html=True)
 
 # --- 1. HEADER ---
-col_l, col_m, col_r = st.columns([1, 2, 2])
-with col_l:
-    st.markdown('<div class="logo">crehana</div>', unsafe_allow_html=True)
-with col_m:
-    # Simulando links de categoria
-    st.markdown("""
-    <div style="display: flex; gap: 20px; padding-top: 10px;">
-        <span style="font-weight:600; font-size:14px;">Categorias</span>
-        <span style="font-weight:600; font-size:14px;">Para Empresas</span>
+st.markdown("""
+<div class="header-fundable">
+    <div class="logo">FUND<span>ABLE</span></div>
+    <div style="display: flex; gap: 30px; font-size: 14px; font-weight: 600;">
+        <span>COMO FUNCIONA</span>
+        <span>BROWSE STARTUPS</span>
+        <span>LOGIN</span>
     </div>
-    """, unsafe_allow_html=True)
-with col_r:
-    # Botões de Login
-    c1, c2, c3 = st.columns([2, 1, 1])
-    with c1: st.markdown('<div class="search-bar">O que você quer aprender?</div>', unsafe_allow_html=True)
-    with c2: st.button("Entrar", key="login")
-    with c3: st.button("Criar conta", key="signup")
+</div>
+""", unsafe_allow_html=True)
+
+# --- 2. HERO SECTION ---
+st.markdown("""
+<div class="hero-container">
+    <h1 style="font-size: 48px; color: #1a2a3a;">Levante capital para o seu negócio</h1>
+    <p style="font-size: 20px; color: #555; max-width: 700px; margin: 20px auto;">
+        A maior rede de financiamento para empresas. Conectamos fundadores a investidores para lançar grandes ideias.
+    </p>
+</div>
+""", unsafe_allow_html=True)
+
+col_h1, col_h2 = st.columns(2)
+with col_h1:
+    st.markdown('<div style="text-align: right; padding-right: 20px;">', unsafe_allow_html=True)
+    st.button("QUERO CAPTAR RECURSOS", use_container_width=False)
+    st.markdown('</div>', unsafe_allow_html=True)
+with col_h2:
+    st.markdown('<div class="btn-invest">', unsafe_allow_html=True)
+    st.button("QUERO INVESTIR", use_container_width=False)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 st.write("---")
 
-# --- 2. HERO SECTION ---
-c_hero1, c_hero2 = st.columns([1, 1])
+# --- 3. STARTUPS EM DESTAQUE ---
+st.subheader("Startups em Destaque")
 
-with c_hero1:
-    st.markdown('<p style="color:#4b22b4; font-weight:700;">MAIS DE 1000 CURSOS ONLINE</p>', unsafe_allow_html=True)
-    st.markdown('<h1 class="hero-title">Aumente suas <span class="highlight">oportunidades</span> profissionais</h1>', unsafe_allow_html=True)
-    st.write("Aprenda com especialistas as habilidades mais demandadas no mercado digital. Do zero ao avançado.")
-    st.write("")
-    st.button("🎯 Explorar cursos agora", use_container_width=False)
-
-with c_hero2:
-    # Imagem de uma pessoa estudando (estilo clean)
-    st.image("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80", use_container_width=True)
-
-st.write("### O que você quer estudar hoje?")
-
-# --- 3. CURSOS (GRID) ---
-def course_item(col, img, category, title, rating, students):
+def startup_card(col, img, title, loc, desc, percent, raised):
     with col:
         st.markdown(f"""
-        <div class="course-card">
-            <img src="{img}" style="width:100%; height:150px; object-fit:cover;">
-            <div style="padding: 15px;">
-                <div class="category-tag">{category}</div>
-                <div class="course-title">{title}</div>
-                <div class="rating">★ {rating} <span style="color:#888; font-weight:400; font-size:12px;">({students})</span></div>
+        <div class="project-card">
+            <img src="{img}" style="width:100%; height:200px; object-fit:cover;">
+            <div class="project-content">
+                <div class="project-location">{loc}</div>
+                <div class="project-title">{title}</div>
+                <p style="font-size: 14px; color: #666; height: 60px;">{desc}</p>
+                <div class="progress-bg"><div class="progress-fill" style="width: {percent}%;"></div></div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="fund-label">Arrecadado<br><span class="fund-value">R$ {raised}</span></div>
+                    <div class="fund-label" style="text-align: right;">Meta<br><span class="fund-value">{percent}%</span></div>
+                </div>
             </div>
         </div>
         """, unsafe_allow_html=True)
-        st.button("Ver detalhes", key=title)
+        st.button(f"Ver Projeto: {title}", key=title)
 
-col1, col2, col3, col4 = st.columns(4)
+c1, c2, c3 = st.columns(3)
 
-course_item(col1, 
-            "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=400&q=80",
-            "Marketing Digital", "Facebook Ads: Domine o Gerenciador", "4.8", "12k alunos")
+startup_card(c1, 
+             "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80",
+             "EcoTech Solutions", "SÃO PAULO, SP", 
+             "Tecnologia de reciclagem modular para condomínios residenciais.", 65, "1.2M")
 
-course_item(col2, 
-            "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=400&q=80",
-            "Design", "Adobe Illustrator: Ilustração Vetorial", "4.9", "45k alunos")
+startup_card(c2, 
+             "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=500&q=80",
+             "DataFlow AI", "CURITIBA, PR", 
+             "Análise preditiva para pequenos varejistas usando inteligência artificial.", 40, "450k")
 
-course_item(col3, 
-            "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80",
-            "Tecnologia", "Introdução ao Desenvolvimento Web", "4.7", "30k alunos")
+startup_card(c3, 
+             "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=500&q=80",
+             "HealthTrack Wear", "FLORIANÓPOLIS, SC", 
+             "Dispositivo vestível focado no monitoramento cardíaco de idosos.", 90, "2.8M")
 
-course_item(col4, 
-            "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=400&q=80",
-            "Dados", "Excel para Negócios: Avançado", "4.9", "18k alunos")
-
-# --- 4. SEÇÃO "CREHANA PARA EMPRESAS" ---
+# --- 4. STATS BAR ---
 st.write("")
 st.write("---")
-with st.container():
-    ce1, ce2 = st.columns([1, 1])
-    with ce1:
-        st.image("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80", use_container_width=True)
-    with ce2:
-        st.markdown("## Treine sua equipe com a Crehana")
-        st.write("Soluções de SaaS e conteúdo para fechar a lacuna de habilidades na sua empresa.")
-        st.write("✅ Planos de aprendizado personalizados")
-        st.write("✅ Painel de controle para o RH")
-        st.button("🚀 Solicitar Demo", key="demo")
+st.markdown("""
+<div style="display: flex; justify-content: space-around; text-align: center; padding: 40px 0;">
+    <div><h2 style="margin:0;">R$ 600M+</h2><p style="color:#888;">CAPITAL ARRECADADO</p></div>
+    <div><h2 style="margin:0;">20,000+</h2><p style="color:#888;">INVESTIDORES ATIVOS</p></div>
+    <div><h2 style="margin:0;">1,500+</h2><p style="color:#888;">EMPRESAS FINANCIADAS</p></div>
+</div>
+""", unsafe_allow_html=True)
 
 # --- FOOTER ---
 st.markdown("""
-<div style="background-color: #1b1c1e; color: white; padding: 60px 20px; margin-top: 50px; text-align: center;">
-    <div style="font-size: 24px; font-weight: 800; margin-bottom: 20px;">crehana</div>
-    <div style="color: #888; font-size: 14px;">
-        Transformando o futuro através da educação. <br>
-        © 2024 Crehana Inc. Todos os direitos reservados.
-    </div>
+<div style="background-color: #1a2a3a; color: #ccc; padding: 50px; text-align: center; font-size: 14px;">
+    <div style="font-weight: 700; color: white; margin-bottom: 20px;">FUNDABLE</div>
+    <p>A Fundable faz parte da plataforma Startups.com. <br> © 2024 Fundable LLC. Todos os direitos reservados.</p>
 </div>
 """, unsafe_allow_html=True)
