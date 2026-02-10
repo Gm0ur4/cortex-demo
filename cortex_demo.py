@@ -236,7 +236,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 # --- 7. PASSO A PASSO (INDUSTRIAL) ---
 st.markdown('<div style="padding: 100px 8%; background: #050505;">', unsafe_allow_html=True)
-st.markdown('<h2>PROCESSO <span class="serif-heavy">Sem Falhas.</span></h2><br><br>', unsafe_allow_html=True)
+st.markdown('<h2>PROCESSO <span class="serif-heavy">sem falhas.</span></h2><br><br>', unsafe_allow_html=True)
 
 steps = [
     ("SAQUEIE O CÓDIGO", "Imediatamente após a compra, os templates são seus. Sem esperas."),
