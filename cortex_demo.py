@@ -2,16 +2,16 @@ import streamlit as st
 
 # Configuração da página
 st.set_page_config(
-    page_title="TechStore - Celulares Premium",
-    page_icon="📱",
+    page_title="FitPro Academia - Transforme seu Corpo",
+    page_icon="💪",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# CSS ULTRA PROFISSIONAL - INSPIRADO EM TELEPATI
+# CSS ULTRA PROFISSIONAL - ACADEMIA
 custom_css = """
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
     
     * {
         margin: 0;
@@ -20,10 +20,9 @@ custom_css = """
     }
     
     html, body, [data-testid="stAppViewContainer"] {
-        background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
-        background-attachment: fixed;
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        color: #ffffff;
+        background: #f5f5f5;
+        font-family: 'Montserrat', sans-serif;
+        color: #1a1a1a;
         line-height: 1.6;
     }
     
@@ -38,25 +37,29 @@ custom_css = """
     
     /* NAVBAR */
     .navbar {
-        background: rgba(15, 15, 15, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 16px 60px;
+        background: #ffffff;
+        padding: 18px 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 2px solid #00BFA5;
+        border-bottom: 3px solid #FF6B35;
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 2px 10px rgba(0, 191, 165, 0.15);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
     
     .navbar-logo {
-        font-size: 24px;
+        font-size: 26px;
         font-weight: 900;
-        color: #00BFA5;
+        color: #1a1a1a;
         text-decoration: none;
         letter-spacing: -0.5px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .navbar-logo-highlight {
+        color: #FF6B35;
     }
     
     .navbar-links {
@@ -66,53 +69,55 @@ custom_css = """
     }
     
     .navbar-link {
-        color: #ffffff;
+        color: #1a1a1a;
         text-decoration: none;
-        font-weight: 500;
-        font-size: 15px;
+        font-weight: 600;
+        font-size: 14px;
         transition: all 0.3s ease;
     }
     
     .navbar-link:hover {
-        color: #00BFA5;
+        color: #FF6B35;
     }
     
     .navbar-cta {
-        background: linear-gradient(135deg, #00BFA5, #00A89C);
-        color: #000000;
-        padding: 10px 28px;
-        border-radius: 8px;
+        background: #FF6B35;
+        color: white;
+        padding: 12px 32px;
+        border-radius: 4px;
         text-decoration: none;
         font-weight: 700;
-        font-size: 14px;
+        font-size: 13px;
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0, 191, 165, 0.3);
+        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.25);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
     
     .navbar-cta:hover {
+        background: #E55A25;
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 191, 165, 0.4);
+        box-shadow: 0 6px 16px rgba(255, 107, 53, 0.35);
     }
     
     /* HERO SECTION */
     .hero-section {
-        background: linear-gradient(180deg, rgba(15, 15, 15, 0.9) 0%, rgba(0, 191, 165, 0.05) 100%);
-        padding: 100px 60px;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        padding: 120px 60px;
         position: relative;
         overflow: hidden;
-        border-bottom: 2px dashed #FF4444;
     }
     
     .hero-section::before {
         content: '';
         position: absolute;
         top: -50%;
-        right: -20%;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, rgba(0, 191, 165, 0.1) 0%, transparent 70%);
+        right: -10%;
+        width: 500px;
+        height: 500px;
+        background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
         border-radius: 50%;
     }
     
@@ -128,221 +133,358 @@ custom_css = """
     }
     
     .hero-text h1 {
-        font-size: 64px;
+        font-size: 68px;
         font-weight: 900;
-        line-height: 1.15;
-        margin-bottom: 20px;
+        line-height: 1.1;
+        margin-bottom: 24px;
         color: #ffffff;
-        letter-spacing: -1px;
+        letter-spacing: -1.5px;
+        font-family: 'Poppins', sans-serif;
     }
     
     .hero-text h1 .highlight {
-        color: #00BFA5;
+        color: #FF6B35;
     }
     
     .hero-text p {
         font-size: 18px;
-        line-height: 1.7;
+        line-height: 1.8;
         margin-bottom: 40px;
-        color: #cccccc;
+        color: #e0e0e0;
         font-weight: 400;
     }
     
+    .hero-stats {
+        display: flex;
+        gap: 50px;
+        margin-bottom: 40px;
+    }
+    
+    .hero-stat {
+        border-left: 3px solid #FF6B35;
+        padding-left: 20px;
+    }
+    
+    .hero-stat-number {
+        font-size: 36px;
+        font-weight: 900;
+        color: #FF6B35;
+        margin-bottom: 4px;
+    }
+    
+    .hero-stat-label {
+        font-size: 13px;
+        color: #b0b0b0;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
     .hero-image {
-        text-align: center;
+        background: linear-gradient(135deg, #FF6B35 0%, #FF8555 100%);
+        height: 400px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 120px;
+        color: rgba(255, 255, 255, 0.2);
     }
     
     .hero-cta {
         display: inline-block;
-        background: linear-gradient(135deg, #00BFA5, #00A89C);
-        color: #000000;
+        background: #FF6B35;
+        color: white;
         padding: 16px 48px;
-        border-radius: 8px;
+        border-radius: 4px;
         font-weight: 700;
-        font-size: 16px;
+        font-size: 14px;
         text-decoration: none;
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0, 191, 165, 0.3);
+        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
     
     .hero-cta:hover {
+        background: #E55A25;
         transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(0, 191, 165, 0.4);
+        box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
     }
     
-    /* FEATURES SECTION */
-    .features-section {
+    /* SERVICES SECTION */
+    .services-section {
         padding: 100px 60px;
-        background: rgba(26, 26, 26, 0.8);
+        background: #ffffff;
     }
     
-    .feature-item {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: center;
-        margin-bottom: 100px;
-        padding: 60px;
-        background: rgba(0, 191, 165, 0.05);
-        border-radius: 12px;
-        border: 2px dashed #FF4444;
-    }
-    
-    .feature-item:nth-child(even) {
-        direction: rtl;
-    }
-    
-    .feature-item:nth-child(even) > * {
-        direction: ltr;
-    }
-    
-    .feature-number {
-        font-size: 64px;
-        font-weight: 900;
-        color: #00BFA5;
-        margin-bottom: 20px;
-    }
-    
-    .feature-title {
-        font-size: 40px;
-        font-weight: 900;
-        margin-bottom: 20px;
-        color: #ffffff;
-    }
-    
-    .feature-title .highlight {
-        color: #00BFA5;
-    }
-    
-    .feature-desc {
-        font-size: 16px;
-        color: #cccccc;
-        line-height: 1.8;
-        margin-bottom: 30px;
-    }
-    
-    .feature-icon {
-        font-size: 100px;
+    .section-header {
         text-align: center;
-    }
-    
-    /* PRODUCTS SECTION */
-    .products-section {
-        padding: 100px 60px;
-        background: linear-gradient(180deg, rgba(15, 15, 15, 0.9) 0%, rgba(0, 191, 165, 0.05) 100%);
+        margin-bottom: 80px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .section-title {
         font-size: 48px;
         font-weight: 900;
-        margin-bottom: 60px;
-        color: #ffffff;
-        text-align: center;
+        margin-bottom: 20px;
+        color: #1a1a1a;
         letter-spacing: -0.5px;
+        font-family: 'Poppins', sans-serif;
     }
     
-    .section-title .highlight {
-        color: #00BFA5;
+    .section-title-highlight {
+        color: #FF6B35;
     }
     
-    .products-grid {
+    .section-description {
+        font-size: 16px;
+        color: #666666;
+        line-height: 1.7;
+        font-weight: 400;
+    }
+    
+    .services-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 40px;
+        gap: 30px;
         max-width: 1400px;
         margin: 0 auto;
     }
     
-    .product-card {
-        background: rgba(26, 26, 26, 0.8);
-        border: 2px solid #00BFA5;
-        border-radius: 12px;
-        padding: 40px;
+    .service-card {
+        background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+        padding: 50px 40px;
+        border-radius: 8px;
+        border: 1px solid #e5e5e5;
         text-align: center;
         transition: all 0.4s ease;
         cursor: pointer;
+        position: relative;
     }
     
-    .product-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 191, 165, 0.25);
-        border-color: #FF4444;
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #FF6B35, #FF8555);
+        border-radius: 8px 8px 0 0;
     }
     
-    .product-icon {
-        font-size: 80px;
-        margin-bottom: 20px;
+    .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+        border-color: #FF6B35;
     }
     
-    .product-title {
-        font-size: 22px;
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #FF6B35, #FF8555);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 24px;
+        font-size: 28px;
+    }
+    
+    .service-title {
+        font-size: 20px;
         font-weight: 800;
         margin-bottom: 12px;
-        color: #ffffff;
+        color: #1a1a1a;
+        font-family: 'Poppins', sans-serif;
     }
     
-    .product-desc {
-        font-size: 15px;
-        color: #cccccc;
+    .service-desc {
+        font-size: 14px;
+        color: #666666;
         line-height: 1.7;
-        margin-bottom: 20px;
     }
     
-    .product-price {
-        font-size: 28px;
-        font-weight: 900;
-        color: #00BFA5;
-    }
-    
-    /* STATS SECTION */
-    .stats-section {
+    /* FEATURES SECTION */
+    .features-section {
         padding: 100px 60px;
-        background: rgba(0, 191, 165, 0.1);
-        border-top: 2px dashed #FF4444;
-        border-bottom: 2px dashed #FF4444;
+        background: linear-gradient(180deg, #f5f5f5 0%, #efefef 100%);
     }
     
-    .stats-grid {
+    .features-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 60px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .feature-box {
+        background: white;
+        padding: 40px;
+        border-radius: 8px;
+        border-left: 4px solid #FF6B35;
+        transition: all 0.4s ease;
+    }
+    
+    .feature-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+    
+    .feature-box h3 {
+        font-size: 18px;
+        font-weight: 800;
+        margin-bottom: 12px;
+        color: #1a1a1a;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .feature-box p {
+        font-size: 14px;
+        color: #666666;
+        line-height: 1.7;
+    }
+    
+    /* PRICING SECTION */
+    .pricing-section {
+        padding: 100px 60px;
+        background: #ffffff;
+    }
+    
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
         max-width: 1200px;
         margin: 0 auto;
+    }
+    
+    .pricing-card {
+        background: white;
+        border: 2px solid #e5e5e5;
+        border-radius: 8px;
+        padding: 50px 40px;
         text-align: center;
+        transition: all 0.4s ease;
+        position: relative;
     }
     
-    .stat-item {
-        padding: 40px;
+    .pricing-card.featured {
+        border-color: #FF6B35;
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(255, 107, 53, 0.15);
     }
     
-    .stat-number {
-        font-size: 56px;
+    .pricing-card:hover {
+        border-color: #FF6B35;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .pricing-badge {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #FF6B35;
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .pricing-title {
+        font-size: 22px;
+        font-weight: 800;
+        margin-bottom: 16px;
+        color: #1a1a1a;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .pricing-price {
+        font-size: 48px;
         font-weight: 900;
-        color: #00BFA5;
-        margin-bottom: 12px;
+        color: #FF6B35;
+        margin-bottom: 8px;
     }
     
-    .stat-label {
-        font-size: 16px;
-        color: #cccccc;
-        font-weight: 600;
+    .pricing-period {
+        font-size: 13px;
+        color: #999999;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .pricing-features {
+        text-align: left;
+        margin-bottom: 30px;
+        border-top: 1px solid #e5e5e5;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 30px 0;
+    }
+    
+    .pricing-feature {
+        font-size: 14px;
+        color: #666666;
+        margin-bottom: 12px;
+        padding-left: 24px;
+        position: relative;
+    }
+    
+    .pricing-feature::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #FF6B35;
+        font-weight: 900;
+    }
+    
+    .pricing-cta {
+        background: #FF6B35;
+        color: white;
+        padding: 14px 40px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 13px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .pricing-cta:hover {
+        background: #E55A25;
+        transform: translateY(-2px);
+    }
+    
+    .pricing-card.featured .pricing-cta {
+        background: #FF6B35;
     }
     
     /* TESTIMONIALS SECTION */
     .testimonials-section {
         padding: 100px 60px;
-        background: rgba(26, 26, 26, 0.8);
+        background: linear-gradient(180deg, #f5f5f5 0%, #efefef 100%);
     }
     
     .testimonial-card {
-        background: rgba(0, 191, 165, 0.1);
-        border-left: 4px solid #00BFA5;
+        background: white;
         padding: 40px;
-        margin-bottom: 30px;
         border-radius: 8px;
+        border-left: 4px solid #FF6B35;
+        margin-bottom: 30px;
         max-width: 900px;
         margin-left: auto;
         margin-right: auto;
@@ -350,31 +492,29 @@ custom_css = """
     
     .testimonial-text {
         font-size: 16px;
-        color: #ffffff;
+        color: #1a1a1a;
         line-height: 1.8;
         margin-bottom: 20px;
-        font-style: italic;
     }
     
     .testimonial-author {
         font-size: 14px;
         font-weight: 700;
-        color: #00BFA5;
+        color: #1a1a1a;
     }
     
     .testimonial-role {
         font-size: 13px;
-        color: #cccccc;
+        color: #999999;
         font-weight: 500;
     }
     
     /* CTA FINAL SECTION */
     .cta-final-section {
-        background: linear-gradient(135deg, #00BFA5 0%, #00A89C 100%);
-        color: #000000;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        color: white;
         padding: 100px 60px;
         text-align: center;
-        border-top: 2px dashed #FF4444;
     }
     
     .cta-final-title {
@@ -382,6 +522,11 @@ custom_css = """
         font-weight: 900;
         margin-bottom: 20px;
         letter-spacing: -0.5px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .cta-final-title .highlight {
+        color: #FF6B35;
     }
     
     .cta-final-desc {
@@ -394,23 +539,26 @@ custom_css = """
     }
     
     .cta-final-button {
-        background: #000000;
-        color: #00BFA5;
+        background: #FF6B35;
+        color: white;
         padding: 16px 48px;
-        border-radius: 8px;
+        border-radius: 4px;
         font-weight: 700;
-        font-size: 16px;
+        font-size: 14px;
         text-decoration: none;
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
         display: inline-block;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
     
     .cta-final-button:hover {
+        background: #E55A25;
         transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
     }
     
     /* FOOTER */
@@ -419,19 +567,18 @@ custom_css = """
         color: rgba(255, 255, 255, 0.7);
         padding: 60px;
         text-align: center;
-        border-top: 2px solid #00BFA5;
     }
     
     .footer-text {
-        font-size: 15px;
+        font-size: 14px;
         margin-bottom: 10px;
     }
     
     .footer-copyright {
-        border-top: 1px solid rgba(0, 191, 165, 0.2);
+        border-top: 1px solid rgba(255, 107, 53, 0.2);
         padding-top: 30px;
         margin-top: 30px;
-        font-size: 13px;
+        font-size: 12px;
     }
     
     /* RESPONSIVIDADE */
@@ -457,18 +604,14 @@ custom_css = """
             font-size: 36px;
         }
         
-        .feature-item {
-            grid-template-columns: 1fr;
+        .hero-stats {
+            flex-direction: column;
             gap: 30px;
         }
         
-        .feature-item:nth-child(even) {
-            direction: ltr;
-        }
-        
-        .products-section,
+        .services-section,
         .features-section,
-        .stats-section,
+        .pricing-section,
         .testimonials-section,
         .cta-final-section {
             padding: 60px 20px;
@@ -481,6 +624,10 @@ custom_css = """
         .cta-final-title {
             font-size: 32px;
         }
+        
+        .pricing-card.featured {
+            transform: scale(1);
+        }
     }
 </style>
 """
@@ -489,149 +636,188 @@ custom_css = """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # ==================== NAVBAR ====================
-navbar_html = '<div class="navbar"><a href="#" class="navbar-logo">📱 TechStore</a><div class="navbar-links"><a href="#" class="navbar-link">Produtos</a><a href="#" class="navbar-link">Sobre</a><a href="#" class="navbar-link">Contato</a><a href="#" class="navbar-cta">Comprar Agora</a></div></div>'
+navbar_html = '<div class="navbar"><a href="#" class="navbar-logo">FIT<span class="navbar-logo-highlight">PRO</span></a><div class="navbar-links"><a href="#" class="navbar-link">Serviços</a><a href="#" class="navbar-link">Planos</a><a href="#" class="navbar-link">Sobre</a><a href="#" class="navbar-link">Contato</a><a href="#" class="navbar-cta">Comece Agora</a></div></div>'
 st.markdown(navbar_html, unsafe_allow_html=True)
 
 # ==================== HERO SECTION ====================
 hero_html = '''<div class="hero-section">
     <div class="hero-content">
         <div class="hero-text">
-            <h1>Celulares <span class="highlight">Premium</span></h1>
-            <p>Descubra a melhor seleção de celulares de alta performance com os melhores preços do mercado. Tecnologia de ponta ao seu alcance.</p>
-            <button class="hero-cta">Explorar Catálogo</button>
+            <h1>Transforme seu <span class="highlight">corpo</span> e mente</h1>
+            <p>Programas personalizados, treinadores experientes e ambiente de primeira qualidade. Alcance seus objetivos conosco.</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">5.000+</div>
+                    <div class="hero-stat-label">Alunos Ativos</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">15+</div>
+                    <div class="hero-stat-label">Anos de Experiência</div>
+                </div>
+            </div>
+            <button class="hero-cta">Agende uma Avaliação Gratuita</button>
         </div>
-        <div class="hero-image">📱</div>
+        <div class="hero-image"></div>
     </div>
 </div>'''
 st.markdown(hero_html, unsafe_allow_html=True)
 
+# ==================== SERVICES SECTION ====================
+services_html = '''<div class="services-section">
+    <div class="section-header">
+        <div class="section-title">Nossos <span class="section-title-highlight">Serviços</span></div>
+        <div class="section-description">Oferecemos uma variedade de programas e serviços para atender todos os seus objetivos fitness</div>
+    </div>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">🏋️</div>
+            <div class="service-title">Musculação</div>
+            <div class="service-desc">Programas de treinamento com pesos para ganho de massa e força muscular.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🏃</div>
+            <div class="service-title">Cardio</div>
+            <div class="service-desc">Equipamentos modernos para treinos cardiovasculares de alta performance.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🧘</div>
+            <div class="service-title">Yoga e Pilates</div>
+            <div class="service-desc">Aulas de flexibilidade, equilíbrio e bem-estar mental.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">👨‍🏫</div>
+            <div class="service-title">Personal Training</div>
+            <div class="service-desc">Acompanhamento individual com treinadores certificados.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🥗</div>
+            <div class="service-title">Nutrição</div>
+            <div class="service-desc">Orientação nutricional personalizada para seus objetivos.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">💪</div>
+            <div class="service-title">Grupos Funcionais</div>
+            <div class="service-desc">Treinos em grupo para motivação e diversão.</div>
+        </div>
+    </div>
+</div>'''
+st.markdown(services_html, unsafe_allow_html=True)
+
 # ==================== FEATURES SECTION ====================
 features_html = '''<div class="features-section">
-    <div class="feature-item">
-        <div>
-            <div class="feature-number">#1</div>
-            <div class="feature-title">Tecnologia de <span class="highlight">Ponta</span></div>
-            <div class="feature-desc">Processadores de última geração, câmeras revolucionárias e baterias que duram o dia todo. Todos os nossos celulares possuem especificações premium para garantir a melhor experiência.</div>
-        </div>
-        <div class="feature-icon">⚡</div>
+    <div class="section-header">
+        <div class="section-title">Por que escolher a <span class="section-title-highlight">FitPro</span></div>
+        <div class="section-description">Diferenciais que fazem a diferença na sua jornada fitness</div>
     </div>
-    
-    <div class="feature-item">
-        <div class="feature-icon">💎</div>
-        <div>
-            <div class="feature-number">#2</div>
-            <div class="feature-title">Design <span class="highlight">Exclusivo</span></div>
-            <div class="feature-desc">Celulares com design premium e acabamento impecável. Cada detalhe foi pensado para oferecer conforto, elegância e durabilidade. Materiais de alta qualidade em todos os modelos.</div>
+    <div class="features-grid">
+        <div class="feature-box">
+            <h3>Equipamentos Modernos</h3>
+            <p>Máquinas de última geração importadas, sempre mantidas em perfeito funcionamento.</p>
         </div>
-    </div>
-    
-    <div class="feature-item">
-        <div>
-            <div class="feature-number">#3</div>
-            <div class="feature-title">Garantia e <span class="highlight">Suporte</span></div>
-            <div class="feature-desc">Garantia de 2 anos em todos os produtos. Atendimento técnico 24/7 para resolver qualquer dúvida. Trocas e devoluções sem complicações. Sua satisfação é nossa prioridade.</div>
+        <div class="feature-box">
+            <h3>Treinadores Certificados</h3>
+            <p>Profissionais qualificados e experientes para orientar seu treino.</p>
         </div>
-        <div class="feature-icon">🛡️</div>
+        <div class="feature-box">
+            <h3>Ambiente Acolhedor</h3>
+            <p>Espaço limpo, climatizado e seguro para você treinar com conforto.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Horários Flexíveis</h3>
+            <p>Aberto de segunda a domingo, com horários que se adaptam à sua rotina.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Comunidade Ativa</h3>
+            <p>Faça parte de uma comunidade motivada e comprometida com resultados.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Acompanhamento Contínuo</h3>
+            <p>Avaliações periódicas para acompanhar sua evolução e ajustar treinos.</p>
+        </div>
     </div>
 </div>'''
 st.markdown(features_html, unsafe_allow_html=True)
 
-# ==================== PRODUCTS SECTION ====================
-products_html = '''<div class="products-section">
-    <div class="section-title">Nossos <span class="highlight">Produtos</span></div>
-    <div class="products-grid">
-        <div class="product-card">
-            <div class="product-icon">📱</div>
-            <div class="product-title">iPhone 15 Pro</div>
-            <div class="product-desc">Câmera profissional, processador A17 Pro, design em titânio. O melhor do mercado.</div>
-            <div class="product-price">R$ 7.999</div>
+# ==================== PRICING SECTION ====================
+pricing_html = '''<div class="pricing-section">
+    <div class="section-header">
+        <div class="section-title">Planos e <span class="section-title-highlight">Preços</span></div>
+        <div class="section-description">Escolha o plano que melhor se adequa aos seus objetivos</div>
+    </div>
+    <div class="pricing-grid">
+        <div class="pricing-card">
+            <div class="pricing-title">Básico</div>
+            <div class="pricing-price">R$ 99</div>
+            <div class="pricing-period">Por mês</div>
+            <div class="pricing-features">
+                <div class="pricing-feature">Acesso à academia</div>
+                <div class="pricing-feature">Uso de todos os equipamentos</div>
+                <div class="pricing-feature">Vestiário e chuveiro</div>
+            </div>
+            <button class="pricing-cta">Escolher Plano</button>
         </div>
-        <div class="product-card">
-            <div class="product-icon">🔥</div>
-            <div class="product-title">Samsung Galaxy S24</div>
-            <div class="product-desc">Tela AMOLED 120Hz, câmera 200MP, bateria de longa duração. Potência pura.</div>
-            <div class="product-price">R$ 6.499</div>
+        <div class="pricing-card featured">
+            <div class="pricing-badge">Mais Popular</div>
+            <div class="pricing-title">Premium</div>
+            <div class="pricing-price">R$ 199</div>
+            <div class="pricing-period">Por mês</div>
+            <div class="pricing-features">
+                <div class="pricing-feature">Acesso à academia</div>
+                <div class="pricing-feature">Aulas em grupo ilimitadas</div>
+                <div class="pricing-feature">2 sessões personal/mês</div>
+                <div class="pricing-feature">Avaliação física mensal</div>
+            </div>
+            <button class="pricing-cta">Escolher Plano</button>
         </div>
-        <div class="product-card">
-            <div class="product-icon">⚡</div>
-            <div class="product-title">Google Pixel 8</div>
-            <div class="product-desc">IA integrada, câmera computacional, software puro. Inteligência artificial no seu bolso.</div>
-            <div class="product-price">R$ 5.299</div>
-        </div>
-        <div class="product-card">
-            <div class="product-icon">💫</div>
-            <div class="product-title">OnePlus 12</div>
-            <div class="product-desc">Carregamento ultra-rápido, design elegante, performance excepcional. Velocidade extrema.</div>
-            <div class="product-price">R$ 4.799</div>
-        </div>
-        <div class="product-card">
-            <div class="product-icon">🎮</div>
-            <div class="product-title">POCO F6 Pro</div>
-            <div class="product-desc">Processador flagship, tela 144Hz, preço competitivo. Melhor custo-benefício.</div>
-            <div class="product-price">R$ 3.299</div>
-        </div>
-        <div class="product-card">
-            <div class="product-icon">🌟</div>
-            <div class="product-title">Xiaomi 14</div>
-            <div class="product-desc">Câmera Leica, design premium, preço acessível. O melhor da Xiaomi.</div>
-            <div class="product-price">R$ 3.899</div>
+        <div class="pricing-card">
+            <div class="pricing-title">Elite</div>
+            <div class="pricing-price">R$ 399</div>
+            <div class="pricing-period">Por mês</div>
+            <div class="pricing-features">
+                <div class="pricing-feature">Acesso 24/7</div>
+                <div class="pricing-feature">Personal training ilimitado</div>
+                <div class="pricing-feature">Aulas em grupo ilimitadas</div>
+                <div class="pricing-feature">Orientação nutricional</div>
+                <div class="pricing-feature">Suplementos com desconto</div>
+            </div>
+            <button class="pricing-cta">Escolher Plano</button>
         </div>
     </div>
 </div>'''
-st.markdown(products_html, unsafe_allow_html=True)
-
-# ==================== STATS SECTION ====================
-stats_html = '''<div class="stats-section">
-    <div class="stats-grid">
-        <div class="stat-item">
-            <div class="stat-number">50K+</div>
-            <div class="stat-label">Clientes Satisfeitos</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">200+</div>
-            <div class="stat-label">Modelos Disponíveis</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">98%</div>
-            <div class="stat-label">Taxa de Satisfação</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">24/7</div>
-            <div class="stat-label">Atendimento</div>
-        </div>
-    </div>
-</div>'''
-st.markdown(stats_html, unsafe_allow_html=True)
+st.markdown(pricing_html, unsafe_allow_html=True)
 
 # ==================== TESTIMONIALS SECTION ====================
 testimonials_html = '''<div class="testimonials-section">
-    <div class="section-title">O que nossos <span class="highlight">clientes dizem</span></div>
-    <div class="testimonial-card">
-        <div class="testimonial-text">"Melhor loja de celulares que já comprei! Atendimento impecável, produtos de qualidade garantida e preços muito competitivos. Recomendo para todos!"</div>
-        <div class="testimonial-author">Ana Silva</div>
-        <div class="testimonial-role">Cliente desde 2022</div>
+    <div class="section-header">
+        <div class="section-title">Histórias de <span class="section-title-highlight">Sucesso</span></div>
+        <div class="section-description">Veja como nossos alunos transformaram suas vidas</div>
     </div>
     <div class="testimonial-card">
-        <div class="testimonial-text">"Comprei meu iPhone aqui e foi uma experiência fantástica. Entrega rápida, produto original e ainda ganhei acessórios grátis. Voltarei com certeza!"</div>
-        <div class="testimonial-author">Carlos Mendes</div>
-        <div class="testimonial-role">Cliente Premium</div>
+        <div class="testimonial-text">"Entrei na FitPro sem conhecimento nenhum sobre treino. Os profissionais me orientaram perfeitamente e em 6 meses consegui resultados incríveis. Recomendo muito!"</div>
+        <div class="testimonial-author">Roberto Silva</div>
+        <div class="testimonial-role">Aluno há 2 anos</div>
     </div>
     <div class="testimonial-card">
-        <div class="testimonial-text">"A TechStore é confiável, rápida e oferece os melhores preços. Já comprei 3 celulares aqui para minha família. Muito satisfeito com tudo!"</div>
-        <div class="testimonial-author">Marina Costa</div>
-        <div class="testimonial-role">Cliente Fiel</div>
+        <div class="testimonial-text">"O ambiente é acolhedor, os treinadores são atenciosos e os resultados falam por si. Já perdi 20kg e ganhei muita confiança. Melhor decisão que tomei!"</div>
+        <div class="testimonial-author">Juliana Costa</div>
+        <div class="testimonial-role">Aluna Premium</div>
+    </div>
+    <div class="testimonial-card">
+        <div class="testimonial-text">"A comunidade da FitPro é incrível. Tenho amigos, motivação e profissionais que realmente se importam com meu progresso. Voltaria mil vezes!"</div>
+        <div class="testimonial-author">Marcus Oliveira</div>
+        <div class="testimonial-role">Aluno Elite</div>
     </div>
 </div>'''
 st.markdown(testimonials_html, unsafe_allow_html=True)
 
 # ==================== CTA FINAL SECTION ====================
 cta_final_html = '''<div class="cta-final-section">
-    <div class="cta-final-title">Pronto para seu novo celular?</div>
-    <div class="cta-final-desc">Explore nosso catálogo completo e encontre o celular perfeito para você. Frete grátis em compras acima de R$ 2.000!</div>
-    <button class="cta-final-button">Começar Agora</button>
+    <div class="cta-final-title">Comece sua transformação <span class="highlight">hoje</span></div>
+    <div class="cta-final-desc">Agende uma avaliação gratuita e conheça nossas instalações. Nossos profissionais estão prontos para ajudá-lo!</div>
+    <button class="cta-final-button">Agende Sua Avaliação</button>
 </div>'''
 st.markdown(cta_final_html, unsafe_allow_html=True)
 
 # ==================== FOOTER ====================
-footer_html = '<div class="footer"><div class="footer-text">📞 (11) 98765-4321 | 📧 contato@techstore.com.br</div><div class="footer-text">📍 São Paulo, SP - Brasil</div><div class="footer-copyright">© 2025 TechStore. Todos os direitos reservados. Sua loja de celulares premium de confiança.</div></div>'
+footer_html = '<div class="footer"><div class="footer-text">Telefone: (11) 98765-4321 | Email: contato@fitpro.com.br</div><div class="footer-text">Endereço: Av. Principal, 1234 - São Paulo, SP</div><div class="footer-copyright">© 2025 FitPro Academia. Todos os direitos reservados. Transformando vidas através do fitness.</div></div>'
 st.markdown(footer_html, unsafe_allow_html=True)
