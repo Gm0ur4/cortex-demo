@@ -18,7 +18,7 @@ custom_css = """
     }
     
     html, body, [data-testid="stAppViewContainer"] {
-        background: #ffffff;
+        background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
         font-family: 'Montserrat', sans-serif;
         color: #1a1a1a;
         overflow-x: hidden;
@@ -112,7 +112,7 @@ custom_css = """
         align-items: center;
         justify-content: space-between;
         padding: 100px 80px;
-        background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+        background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
         position: relative;
         overflow: hidden;
     }
@@ -262,7 +262,7 @@ custom_css = """
     
     /* SERVICES SECTION */
     .services-section {
-        background: #ffffff;
+        background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
         padding: 150px 80px;
     }
     
@@ -291,6 +291,7 @@ custom_css = """
         transition: all 0.4s ease;
         animation: fadeInUp 0.8s ease-out;
         animation-fill-mode: both;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     }
     
     .service-card:nth-child(1) { animation-delay: 0.1s; }
@@ -324,7 +325,7 @@ custom_css = """
     
     /* PORTFOLIO SECTION */
     .portfolio-section {
-        background: #f5f5f5;
+        background: linear-gradient(135deg, #f0f2f5 0%, #f8f9fa 100%);
         padding: 150px 80px;
     }
     
@@ -343,6 +344,7 @@ custom_css = """
         transition: all 0.4s ease;
         animation: scaleIn 0.8s ease-out;
         animation-fill-mode: both;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     }
     
     .portfolio-item:nth-child(1) { animation-delay: 0.1s; }
