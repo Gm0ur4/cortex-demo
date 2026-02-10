@@ -2,188 +2,204 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Breakfast | Digital Design Agency",
+    page_title="Breakfast | Digital Design Studio",
     page_icon="🍳",
     layout="wide"
 )
 
-# --- CSS PARA DESIGN BRUTALISTA (BREAKFAST STYLE) ---
+# --- CSS DE ALTA FIDELIDADE (BREAKFAST SYSTEM) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap');
 
-    /* Reset e Fundo */
-    .stApp {
-        background-color: #ffffff;
-    }
-    
+    /* Reset Geral */
+    .stApp { background-color: #ffffff; }
+    [data-testid="stHeader"] { display: none; } /* Esconde o header do Streamlit */
+    .block-container { padding: 0 !important; max-width: 100% !important; }
+
+    /* Tipografia Estilo Breakfast */
     html, body, [class*="css"] {
         font-family: 'Inter', sans-serif;
         color: #000000;
-        line-height: 1.2;
+        -webkit-font-smoothing: antialiased;
     }
 
-    /* Header Estilo Breakfast */
-    .header-bf {
+    /* Linhas de Grade (The Grid) */
+    .grid-line-h { border-bottom: 1px solid #000; width: 100%; }
+    .grid-line-v { border-right: 1px solid #000; height: 100%; }
+
+    /* Header Fixo/Nav */
+    .nav-container {
         display: flex;
         justify-content: space-between;
-        padding: 30px 5%;
+        padding: 25px 40px;
         border-bottom: 1px solid #000;
         font-weight: 700;
-        text-transform: uppercase;
-        font-size: 14px;
-        letter-spacing: 1px;
-    }
-
-    /* Hero Section - Tipografia Massiva */
-    .hero-bf {
-        padding: 100px 5%;
-        border-bottom: 1px solid #000;
-    }
-    .hero-text {
-        font-size: clamp(40px, 10vw, 150px);
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: -4px;
-        line-height: 0.85;
-    }
-
-    /* Grid de Projetos */
-    .project-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        border-bottom: 1px solid #000;
-    }
-    
-    .grid-item {
-        border-right: 1px solid #000;
-        padding: 0;
-        transition: all 0.5s ease;
-    }
-    
-    .grid-item:last-child {
-        border-right: none;
-    }
-
-    .project-info {
-        padding: 20px;
-        font-weight: 700;
-        text-transform: uppercase;
         font-size: 13px;
-        display: flex;
-        justify-content: space-between;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
 
-    /* Seções de Texto (Filosofia) */
-    .text-section {
-        padding: 120px 5%;
-        font-size: 42px;
+    /* Hero Section - A tipografia é o centro */
+    .hero-wrap {
+        padding: 120px 40px;
+        border-bottom: 1px solid #000;
+    }
+    .hero-main-text {
+        font-size: clamp(50px, 14vw, 220px);
+        font-weight: 900;
+        line-height: 0.8;
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
+    }
+
+    /* Project Section */
+    .project-block {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Duas colunas perfeitas */
+        border-bottom: 1px solid #000;
+    }
+    .project-cell {
+        border-right: 1px solid #000;
+        position: relative;
+        overflow: hidden;
+    }
+    .project-cell:last-child { border-right: none; }
+    
+    .project-img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project-img:hover { transform: scale(1.05); }
+
+    .project-label {
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
         font-weight: 700;
+        font-size: 11px;
+        text-transform: uppercase;
+        border-top: 1px solid #000;
+    }
+
+    /* Big Text / Philosophy Section */
+    .philosophy-section {
+        padding: 150px 40px;
+        font-size: clamp(24px, 5vw, 64px);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
         border-bottom: 1px solid #000;
     }
 
-    /* Footer Brutalista */
-    .footer-bf {
-        padding: 100px 5%;
-        background-color: #000;
-        color: #fff;
+    /* Footer */
+    .footer-container {
+        padding: 80px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
     }
-
-    /* Botão Invisível Customizado */
-    div.stButton > button {
-        background: transparent;
-        border: 1px solid #000;
-        color: #000;
-        border-radius: 0;
-        font-weight: 700;
-        text-transform: uppercase;
-        padding: 20px 40px;
-        width: 100%;
-    }
-    div.stButton > button:hover {
-        background: #000;
-        color: #fff;
-    }
+    .footer-logo { font-size: 100px; font-weight: 900; letter-spacing: -5px; }
 </style>
 """, unsafe_allow_html=True)
 
-# --- 1. HEADER ---
+# --- 1. NAVEGAÇÃO ---
 st.markdown("""
-<div class="header-bf">
+<div class="nav-container">
     <div>Breakfast.</div>
-    <div>Design & Technology</div>
-    <div>Menu +</div>
-</div>
-""", unsafe_allow_html=True)
-
-# --- 2. HERO SECTION ---
-st.markdown("""
-<div class="hero-bf">
-    <div class="hero-text">WE DESIGN<br>DIGITAL<br>EXPERIENCES</div>
-</div>
-""", unsafe_allow_html=True)
-
-# --- 3. PROJETOS (GRID COMPRIDA) ---
-
-def breakfast_project(col, img_url, name, client):
-    with col:
-        st.markdown(f"""
-        <div style="border-bottom: 1px solid #000;">
-            <img src="{img_url}" style="width:100%; filter: grayscale(100%) contrast(1.1); display:block;">
-            <div class="project-info">
-                <span>{name}</span>
-                <span style="color: #888;">{client}</span>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-c1, c2 = st.columns(2, gap="small")
-breakfast_project(c1, "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800", "Solar System", "Editorial")
-breakfast_project(c2, "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800", "Neon Future", "Web Design")
-
-c3, c4 = st.columns(2, gap="small")
-breakfast_project(c3, "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800", "Cyber Identity", "Branding")
-breakfast_project(c4, "https://images.unsplash.com/photo-1509343256512-d77a5cb3791b?w=800", "Monochrome Studio", "CGI")
-
-# --- 4. SEÇÃO DE FILOSOFIA (TEXTO COMPRIDO) ---
-st.markdown("""
-<div class="text-section">
-    Independent studio for strategy, design and code. We turn complex ideas into simple, functional and beautiful digital products.
-</div>
-""", unsafe_allow_html=True)
-
-# --- 5. SERVIÇOS EM LISTA ---
-st.markdown('<div style="padding: 80px 5%; border-bottom: 1px solid #000;">', unsafe_allow_html=True)
-col_s1, col_s2, col_s3 = st.columns(3)
-with col_s1:
-    st.markdown("### STRATEGY")
-    st.write("Product Discovery / User Research / Brand Positioning")
-with col_s2:
-    st.markdown("### DESIGN")
-    st.write("UI/UX Design / Visual Identity / Motion Graphics")
-with col_s3:
-    st.markdown("### CODE")
-    st.write("React / Webflow / Headless CMS / E-commerce")
-st.markdown('</div>', unsafe_allow_html=True)
-
-# --- 6. CTA / CONTATO ---
-st.markdown('<div style="padding: 100px 5%;">', unsafe_allow_html=True)
-st.markdown("<h2 style='font-size: 80px; font-weight: 900; margin-bottom: 40px;'>LET'S TALK?</h2>", unsafe_allow_html=True)
-st.button("Start a Project")
-st.markdown('</div>', unsafe_allow_html=True)
-
-# --- 7. FOOTER ---
-st.markdown("""
-<div class="footer-bf">
-    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
-        <div>
-            <h2 style="font-size: 40px; margin-bottom: 20px;">Breakfast.</h2>
-            <p>Rua de Trás, Porto, Portugal<br>hello@wearebreakfast.com</p>
-        </div>
-        <div style="text-align: right; font-size: 12px; opacity: 0.6;">
-            INSTAGRAM / LINKEDIN / TWITTER<br>
-            © 2024 ALL RIGHTS RESERVED
-        </div>
+    <div style="display: flex; gap: 40px;">
+        <span>Work</span>
+        <span>Studio</span>
+        <span>Contact</span>
     </div>
+</div>
+""", unsafe_allow_html=True)
+
+# --- 2. HERO ---
+st.markdown("""
+<div class="hero-wrap">
+    <div class="hero-main-text">
+        DIGITAL<br>CRAFT<br>STUDIO
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# --- 3. PROJETOS (GRID 2x2) ---
+# Projeto 1 e 2
+st.markdown('<div class="project-block">', unsafe_allow_html=True)
+col1, col2 = st.columns(2, gap="small")
+with col1:
+    st.markdown("""
+    <div class="project-cell">
+        <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=800" class="project-img">
+        <div class="project-label"><span>Nova Identity</span><span>2024</span></div>
+    </div>
+    """, unsafe_allow_html=True)
+with col2:
+    st.markdown("""
+    <div class="project-cell" style="border-right:none;">
+        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800" class="project-img">
+        <div class="project-label"><span>Tech Frontier</span><span>Branding</span></div>
+    </div>
+    """, unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
+# Projeto 3 e 4
+st.markdown('<div class="project-block">', unsafe_allow_html=True)
+col3, col4 = st.columns(2, gap="small")
+with col3:
+    st.markdown("""
+    <div class="project-cell">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800" class="project-img">
+        <div class="project-label"><span>Abstract Forms</span><span>CGI</span></div>
+    </div>
+    """, unsafe_allow_html=True)
+with col4:
+    st.markdown("""
+    <div class="project-cell" style="border-right:none;">
+        <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=800" class="project-img">
+        <div class="project-label"><span>L'Aube</span><span>Web Design</span></div>
+    </div>
+    """, unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- 4. PHILOSOPHY SECTION ---
+st.markdown("""
+<div class="philosophy-section">
+    We believe in the power of simple, functional, and unapologetic design. 
+    Creating meaningful connections through digital interfaces that stand out 
+    in a crowded world.
+</div>
+""", unsafe_allow_html=True)
+
+# --- 5. SERVICES (GRID FINO) ---
+st.markdown("""
+<div class="project-block" style="padding: 60px 40px; font-weight: 700; text-transform: uppercase; font-size: 14px;">
+    <div>
+        <p style="color: #888; margin-bottom: 20px;">Capabilites</p>
+        <p>Strategy / UX Design / UI Design / Web Development / Branding / Motion</p>
+    </div>
+    <div style="border-left: 1px solid #000; padding-left: 40px;">
+        <p style="color: #888; margin-bottom: 20px;">Clientele</p>
+        <p>Apple / Nike / Google / Local startups / International Brands</p>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# --- 6. FOOTER ---
+st.markdown("""
+<div class="footer-container">
+    <div class="footer-logo">B.</div>
+    <div style="text-align: right; font-weight: 700; text-transform: uppercase; font-size: 12px; line-height: 2;">
+        Let's work together<br>
+        <span style="text-decoration: underline;">hello@wearebreakfast.com</span><br><br>
+        Instagram / LinkedIn / Twitter
+    </div>
+</div>
+<div style="padding: 20px 40px; border-top: 1px solid #000; font-size: 10px; font-weight: 700; text-transform: uppercase;">
+    © 2026 Breakfast Studio — Crafted with precision.
 </div>
 """, unsafe_allow_html=True)
