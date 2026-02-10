@@ -2,16 +2,16 @@ import streamlit as st
 
 # Configuração da página
 st.set_page_config(
-    page_title="FitPro Academia - Transforme seu Corpo",
-    page_icon="💪",
+    page_title="Luxe Resort - Experiência de Luxo Absoluto",
+    page_icon="🏨",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# CSS ULTRA PROFISSIONAL - ACADEMIA
+# CSS ULTRA LUXUOSO - HOTEL DE LUXO
 custom_css = """
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400;700&display=swap');
     
     * {
         margin: 0;
@@ -20,10 +20,10 @@ custom_css = """
     }
     
     html, body, [data-testid="stAppViewContainer"] {
-        background: #f5f5f5;
-        font-family: 'Montserrat', sans-serif;
-        color: #1a1a1a;
-        line-height: 1.6;
+        background: #f5f3f0;
+        font-family: 'Lato', sans-serif;
+        color: #2c2c2c;
+        line-height: 1.8;
     }
     
     [data-testid="stDecoration"] { display: none; }
@@ -37,12 +37,13 @@ custom_css = """
     
     /* NAVBAR */
     .navbar {
-        background: #ffffff;
-        padding: 18px 60px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 20px 80px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 3px solid #FF6B35;
+        border-bottom: 1px solid rgba(184, 134, 11, 0.2);
         position: sticky;
         top: 0;
         z-index: 100;
@@ -50,174 +51,194 @@ custom_css = """
     }
     
     .navbar-logo {
-        font-size: 26px;
+        font-size: 28px;
         font-weight: 900;
         color: #1a1a1a;
         text-decoration: none;
-        letter-spacing: -0.5px;
-        font-family: 'Poppins', sans-serif;
+        letter-spacing: 2px;
+        font-family: 'Playfair Display', serif;
     }
     
     .navbar-logo-highlight {
-        color: #FF6B35;
+        color: #B8860B;
     }
     
     .navbar-links {
         display: flex;
-        gap: 50px;
+        gap: 60px;
         align-items: center;
     }
     
     .navbar-link {
-        color: #1a1a1a;
+        color: #2c2c2c;
         text-decoration: none;
-        font-weight: 600;
-        font-size: 14px;
+        font-weight: 400;
+        font-size: 13px;
         transition: all 0.3s ease;
+        letter-spacing: 1px;
+        text-transform: uppercase;
     }
     
     .navbar-link:hover {
-        color: #FF6B35;
+        color: #B8860B;
     }
     
     .navbar-cta {
-        background: #FF6B35;
+        background: #B8860B;
         color: white;
-        padding: 12px 32px;
-        border-radius: 4px;
+        padding: 12px 40px;
+        border-radius: 2px;
         text-decoration: none;
         font-weight: 700;
-        font-size: 13px;
+        font-size: 12px;
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.25);
+        box-shadow: 0 4px 12px rgba(184, 134, 11, 0.25);
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
     }
     
     .navbar-cta:hover {
-        background: #E55A25;
+        background: #9a7009;
         transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(255, 107, 53, 0.35);
+        box-shadow: 0 6px 16px rgba(184, 134, 11, 0.35);
     }
     
     /* HERO SECTION */
     .hero-section {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-        padding: 120px 60px;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23d4a574" width="1200" height="600"/></svg>');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        height: 700px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         position: relative;
         overflow: hidden;
     }
     
-    .hero-section::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -10%;
-        width: 500px;
-        height: 500px;
-        background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
-        border-radius: 50%;
-    }
-    
     .hero-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: center;
-        position: relative;
+        text-align: center;
+        color: white;
         z-index: 2;
-        max-width: 1400px;
-        margin: 0 auto;
+        position: relative;
     }
     
-    .hero-text h1 {
-        font-size: 68px;
+    .hero-title {
+        font-size: 72px;
         font-weight: 900;
-        line-height: 1.1;
-        margin-bottom: 24px;
-        color: #ffffff;
-        letter-spacing: -1.5px;
-        font-family: 'Poppins', sans-serif;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+        font-family: 'Playfair Display', serif;
+        line-height: 1.2;
     }
     
-    .hero-text h1 .highlight {
-        color: #FF6B35;
-    }
-    
-    .hero-text p {
-        font-size: 18px;
-        line-height: 1.8;
-        margin-bottom: 40px;
-        color: #e0e0e0;
-        font-weight: 400;
-    }
-    
-    .hero-stats {
-        display: flex;
-        gap: 50px;
-        margin-bottom: 40px;
-    }
-    
-    .hero-stat {
-        border-left: 3px solid #FF6B35;
-        padding-left: 20px;
-    }
-    
-    .hero-stat-number {
-        font-size: 36px;
-        font-weight: 900;
-        color: #FF6B35;
-        margin-bottom: 4px;
-    }
-    
-    .hero-stat-label {
-        font-size: 13px;
-        color: #b0b0b0;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
-    .hero-image {
-        background: linear-gradient(135deg, #FF6B35 0%, #FF8555 100%);
-        height: 400px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 120px;
-        color: rgba(255, 255, 255, 0.2);
+    .hero-subtitle {
+        font-size: 20px;
+        font-weight: 300;
+        margin-bottom: 50px;
+        letter-spacing: 1px;
+        opacity: 0.95;
     }
     
     .hero-cta {
         display: inline-block;
-        background: #FF6B35;
+        background: #B8860B;
         color: white;
-        padding: 16px 48px;
-        border-radius: 4px;
+        padding: 16px 50px;
+        border-radius: 2px;
         font-weight: 700;
-        font-size: 14px;
+        font-size: 13px;
         text-decoration: none;
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        box-shadow: 0 4px 12px rgba(184, 134, 11, 0.3);
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
     }
     
     .hero-cta:hover {
-        background: #E55A25;
+        background: #9a7009;
         transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
+        box-shadow: 0 8px 24px rgba(184, 134, 11, 0.4);
     }
     
-    /* SERVICES SECTION */
-    .services-section {
-        padding: 100px 60px;
-        background: #ffffff;
+    /* BOOKING SECTION */
+    .booking-section {
+        background: white;
+        padding: 60px 80px;
+        margin-top: -80px;
+        position: relative;
+        z-index: 10;
+    }
+    
+    .booking-card {
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 2px;
+        padding: 40px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    
+    .booking-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: #1a1a1a;
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 1px;
+    }
+    
+    .booking-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .booking-input {
+        padding: 12px 16px;
+        border: 1px solid #d0d0d0;
+        border-radius: 2px;
+        font-size: 14px;
+        font-family: 'Lato', sans-serif;
+    }
+    
+    .booking-input:focus {
+        outline: none;
+        border-color: #B8860B;
+        box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.1);
+    }
+    
+    .booking-button {
+        background: #B8860B;
+        color: white;
+        padding: 12px 40px;
+        border: none;
+        border-radius: 2px;
+        font-weight: 700;
+        font-size: 13px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(184, 134, 11, 0.25);
+    }
+    
+    .booking-button:hover {
+        background: #9a7009;
+        transform: translateY(-2px);
+    }
+    
+    /* ABOUT SECTION */
+    .about-section {
+        padding: 100px 80px;
+        background: white;
     }
     
     .section-header {
@@ -233,287 +254,236 @@ custom_css = """
         font-weight: 900;
         margin-bottom: 20px;
         color: #1a1a1a;
-        letter-spacing: -0.5px;
-        font-family: 'Poppins', sans-serif;
+        letter-spacing: 1px;
+        font-family: 'Playfair Display', serif;
     }
     
     .section-title-highlight {
-        color: #FF6B35;
+        color: #B8860B;
     }
     
     .section-description {
         font-size: 16px;
         color: #666666;
+        line-height: 1.8;
+        font-weight: 300;
+    }
+    
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .about-text h3 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #1a1a1a;
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 1px;
+    }
+    
+    .about-text p {
+        font-size: 15px;
+        color: #555555;
+        line-height: 1.9;
+        margin-bottom: 20px;
+        font-weight: 300;
+    }
+    
+    .about-image {
+        background: linear-gradient(135deg, #B8860B 0%, #D4A574 100%);
+        height: 400px;
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 100px;
+        color: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* ROOMS SECTION */
+    .rooms-section {
+        padding: 100px 80px;
+        background: #f5f3f0;
+    }
+    
+    .rooms-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .room-card {
+        background: white;
+        border-radius: 2px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    
+    .room-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    }
+    
+    .room-image {
+        background: linear-gradient(135deg, #D4A574 0%, #B8860B 100%);
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 80px;
+        color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .room-content {
+        padding: 40px;
+    }
+    
+    .room-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #1a1a1a;
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 1px;
+    }
+    
+    .room-desc {
+        font-size: 14px;
+        color: #666666;
         line-height: 1.7;
-        font-weight: 400;
+        margin-bottom: 20px;
+        font-weight: 300;
+    }
+    
+    .room-price {
+        font-size: 24px;
+        font-weight: 700;
+        color: #B8860B;
+        margin-bottom: 20px;
+    }
+    
+    .room-cta {
+        background: #B8860B;
+        color: white;
+        padding: 12px 32px;
+        border: none;
+        border-radius: 2px;
+        font-weight: 700;
+        font-size: 12px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+    
+    .room-cta:hover {
+        background: #9a7009;
+    }
+    
+    /* SERVICES SECTION */
+    .services-section {
+        padding: 100px 80px;
+        background: white;
     }
     
     .services-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
         max-width: 1400px;
         margin: 0 auto;
     }
     
     .service-card {
-        background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
-        padding: 50px 40px;
-        border-radius: 8px;
-        border: 1px solid #e5e5e5;
         text-align: center;
+        padding: 40px;
+        border-radius: 2px;
+        background: #f9f7f4;
         transition: all 0.4s ease;
-        cursor: pointer;
-        position: relative;
-    }
-    
-    .service-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #FF6B35, #FF8555);
-        border-radius: 8px 8px 0 0;
     }
     
     .service-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
-        border-color: #FF6B35;
+        background: white;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
     
     .service-icon {
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, #FF6B35, #FF8555);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 24px;
-        font-size: 28px;
+        font-size: 48px;
+        margin-bottom: 20px;
     }
     
     .service-title {
-        font-size: 20px;
-        font-weight: 800;
+        font-size: 18px;
+        font-weight: 700;
         margin-bottom: 12px;
         color: #1a1a1a;
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 1px;
     }
     
     .service-desc {
         font-size: 14px;
         color: #666666;
         line-height: 1.7;
-    }
-    
-    /* FEATURES SECTION */
-    .features-section {
-        padding: 100px 60px;
-        background: linear-gradient(180deg, #f5f5f5 0%, #efefef 100%);
-    }
-    
-    .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-    
-    .feature-box {
-        background: white;
-        padding: 40px;
-        border-radius: 8px;
-        border-left: 4px solid #FF6B35;
-        transition: all 0.4s ease;
-    }
-    
-    .feature-box:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-    }
-    
-    .feature-box h3 {
-        font-size: 18px;
-        font-weight: 800;
-        margin-bottom: 12px;
-        color: #1a1a1a;
-        font-family: 'Poppins', sans-serif;
-    }
-    
-    .feature-box p {
-        font-size: 14px;
-        color: #666666;
-        line-height: 1.7;
-    }
-    
-    /* PRICING SECTION */
-    .pricing-section {
-        padding: 100px 60px;
-        background: #ffffff;
-    }
-    
-    .pricing-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    
-    .pricing-card {
-        background: white;
-        border: 2px solid #e5e5e5;
-        border-radius: 8px;
-        padding: 50px 40px;
-        text-align: center;
-        transition: all 0.4s ease;
-        position: relative;
-    }
-    
-    .pricing-card.featured {
-        border-color: #FF6B35;
-        transform: scale(1.05);
-        box-shadow: 0 20px 40px rgba(255, 107, 53, 0.15);
-    }
-    
-    .pricing-card:hover {
-        border-color: #FF6B35;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
-    }
-    
-    .pricing-badge {
-        position: absolute;
-        top: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #FF6B35;
-        color: white;
-        padding: 6px 16px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
-    .pricing-title {
-        font-size: 22px;
-        font-weight: 800;
-        margin-bottom: 16px;
-        color: #1a1a1a;
-        font-family: 'Poppins', sans-serif;
-    }
-    
-    .pricing-price {
-        font-size: 48px;
-        font-weight: 900;
-        color: #FF6B35;
-        margin-bottom: 8px;
-    }
-    
-    .pricing-period {
-        font-size: 13px;
-        color: #999999;
-        margin-bottom: 30px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
-    .pricing-features {
-        text-align: left;
-        margin-bottom: 30px;
-        border-top: 1px solid #e5e5e5;
-        border-bottom: 1px solid #e5e5e5;
-        padding: 30px 0;
-    }
-    
-    .pricing-feature {
-        font-size: 14px;
-        color: #666666;
-        margin-bottom: 12px;
-        padding-left: 24px;
-        position: relative;
-    }
-    
-    .pricing-feature::before {
-        content: '✓';
-        position: absolute;
-        left: 0;
-        color: #FF6B35;
-        font-weight: 900;
-    }
-    
-    .pricing-cta {
-        background: #FF6B35;
-        color: white;
-        padding: 14px 40px;
-        border-radius: 4px;
-        font-weight: 700;
-        font-size: 13px;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
-    .pricing-cta:hover {
-        background: #E55A25;
-        transform: translateY(-2px);
-    }
-    
-    .pricing-card.featured .pricing-cta {
-        background: #FF6B35;
+        font-weight: 300;
     }
     
     /* TESTIMONIALS SECTION */
     .testimonials-section {
-        padding: 100px 60px;
-        background: linear-gradient(180deg, #f5f5f5 0%, #efefef 100%);
+        padding: 100px 80px;
+        background: #f5f3f0;
     }
     
     .testimonial-card {
         background: white;
-        padding: 40px;
-        border-radius: 8px;
-        border-left: 4px solid #FF6B35;
+        padding: 50px;
+        border-radius: 2px;
         margin-bottom: 30px;
         max-width: 900px;
         margin-left: auto;
         margin-right: auto;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
     
     .testimonial-text {
         font-size: 16px;
-        color: #1a1a1a;
-        line-height: 1.8;
+        color: #2c2c2c;
+        line-height: 1.9;
         margin-bottom: 20px;
+        font-style: italic;
+        font-weight: 300;
     }
     
     .testimonial-author {
         font-size: 14px;
         font-weight: 700;
         color: #1a1a1a;
+        font-family: 'Playfair Display', serif;
     }
     
     .testimonial-role {
-        font-size: 13px;
-        color: #999999;
-        font-weight: 500;
+        font-size: 12px;
+        color: #B8860B;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
     
     /* CTA FINAL SECTION */
     .cta-final-section {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), linear-gradient(135deg, #8B7355 0%, #A0826D 100%);
         color: white;
-        padding: 100px 60px;
+        padding: 120px 80px;
         text-align: center;
     }
     
@@ -521,64 +491,64 @@ custom_css = """
         font-size: 48px;
         font-weight: 900;
         margin-bottom: 20px;
-        letter-spacing: -0.5px;
-        font-family: 'Poppins', sans-serif;
-    }
-    
-    .cta-final-title .highlight {
-        color: #FF6B35;
+        letter-spacing: 1px;
+        font-family: 'Playfair Display', serif;
     }
     
     .cta-final-desc {
         font-size: 18px;
         margin-bottom: 50px;
-        opacity: 0.9;
+        opacity: 0.95;
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+        font-weight: 300;
     }
     
     .cta-final-button {
-        background: #FF6B35;
+        background: #B8860B;
         color: white;
-        padding: 16px 48px;
-        border-radius: 4px;
+        padding: 16px 50px;
+        border: none;
+        border-radius: 2px;
         font-weight: 700;
-        font-size: 14px;
+        font-size: 13px;
         text-decoration: none;
         transition: all 0.3s ease;
-        border: none;
         cursor: pointer;
         display: inline-block;
-        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        box-shadow: 0 4px 12px rgba(184, 134, 11, 0.3);
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
     }
     
     .cta-final-button:hover {
-        background: #E55A25;
+        background: #9a7009;
         transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
+        box-shadow: 0 8px 24px rgba(184, 134, 11, 0.4);
     }
     
     /* FOOTER */
     .footer {
-        background: #000000;
+        background: #1a1a1a;
         color: rgba(255, 255, 255, 0.7);
-        padding: 60px;
+        padding: 80px;
         text-align: center;
     }
     
     .footer-text {
         font-size: 14px;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
+        font-weight: 300;
     }
     
     .footer-copyright {
-        border-top: 1px solid rgba(255, 107, 53, 0.2);
-        padding-top: 30px;
-        margin-top: 30px;
+        border-top: 1px solid rgba(184, 134, 11, 0.2);
+        padding-top: 40px;
+        margin-top: 40px;
         font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
     }
     
     /* RESPONSIVIDADE */
@@ -595,25 +565,25 @@ custom_css = """
             width: 100%;
         }
         
-        .hero-content {
+        .hero-section {
+            height: 400px;
+        }
+        
+        .hero-title {
+            font-size: 36px;
+        }
+        
+        .about-grid {
             grid-template-columns: 1fr;
             gap: 40px;
         }
         
-        .hero-text h1 {
-            font-size: 36px;
-        }
-        
-        .hero-stats {
-            flex-direction: column;
-            gap: 30px;
-        }
-        
+        .about-section,
+        .rooms-section,
         .services-section,
-        .features-section,
-        .pricing-section,
         .testimonials-section,
-        .cta-final-section {
+        .cta-final-section,
+        .booking-section {
             padding: 60px 20px;
         }
         
@@ -624,10 +594,6 @@ custom_css = """
         .cta-final-title {
             font-size: 32px;
         }
-        
-        .pricing-card.featured {
-            transform: scale(1);
-        }
     }
 </style>
 """
@@ -636,188 +602,166 @@ custom_css = """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # ==================== NAVBAR ====================
-navbar_html = '<div class="navbar"><a href="#" class="navbar-logo">FIT<span class="navbar-logo-highlight">PRO</span></a><div class="navbar-links"><a href="#" class="navbar-link">Serviços</a><a href="#" class="navbar-link">Planos</a><a href="#" class="navbar-link">Sobre</a><a href="#" class="navbar-link">Contato</a><a href="#" class="navbar-cta">Comece Agora</a></div></div>'
+navbar_html = '<div class="navbar"><a href="#" class="navbar-logo">LUXE<span class="navbar-logo-highlight">RESORT</span></a><div class="navbar-links"><a href="#" class="navbar-link">Acomodações</a><a href="#" class="navbar-link">Serviços</a><a href="#" class="navbar-link">Experiências</a><a href="#" class="navbar-link">Contato</a><a href="#" class="navbar-cta">Reservar</a></div></div>'
 st.markdown(navbar_html, unsafe_allow_html=True)
 
 # ==================== HERO SECTION ====================
 hero_html = '''<div class="hero-section">
     <div class="hero-content">
-        <div class="hero-text">
-            <h1>Transforme seu <span class="highlight">corpo</span> e mente</h1>
-            <p>Programas personalizados, treinadores experientes e ambiente de primeira qualidade. Alcance seus objetivos conosco.</p>
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <div class="hero-stat-number">5.000+</div>
-                    <div class="hero-stat-label">Alunos Ativos</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">15+</div>
-                    <div class="hero-stat-label">Anos de Experiência</div>
-                </div>
-            </div>
-            <button class="hero-cta">Agende uma Avaliação Gratuita</button>
-        </div>
-        <div class="hero-image"></div>
+        <div class="hero-title">Luxo Absoluto</div>
+        <div class="hero-subtitle">Uma experiência de hospedagem incomparável</div>
+        <button class="hero-cta">Descobrir Mais</button>
     </div>
 </div>'''
 st.markdown(hero_html, unsafe_allow_html=True)
 
+# ==================== BOOKING SECTION ====================
+booking_html = '''<div class="booking-section">
+    <div class="booking-card">
+        <div class="booking-title">Verificar Disponibilidade</div>
+        <div class="booking-grid">
+            <input type="date" class="booking-input" placeholder="Data de Chegada">
+            <input type="date" class="booking-input" placeholder="Data de Saída">
+            <select class="booking-input">
+                <option>Hóspedes</option>
+                <option>1 Hóspede</option>
+                <option>2 Hóspedes</option>
+                <option>3+ Hóspedes</option>
+            </select>
+            <button class="booking-button">Verificar</button>
+        </div>
+    </div>
+</div>'''
+st.markdown(booking_html, unsafe_allow_html=True)
+
+# ==================== ABOUT SECTION ====================
+about_html = '''<div class="about-section">
+    <div class="section-header">
+        <div class="section-title">Bem-vindo ao <span class="section-title-highlight">LuxeResort</span></div>
+        <div class="section-description">Onde o luxo encontra a elegância em perfeita harmonia</div>
+    </div>
+    <div class="about-grid">
+        <div class="about-text">
+            <h3>Uma Experiência Inesquecível</h3>
+            <p>Nosso resort de luxo oferece o melhor em hospedagem, gastronomia e bem-estar. Cada detalhe foi cuidadosamente pensado para proporcionar conforto absoluto e uma experiência memorável.</p>
+            <p>Com suítes elegantemente decoradas, serviço impecável e amenidades de classe mundial, garantimos que sua estadia seja simplesmente extraordinária.</p>
+        </div>
+        <div class="about-image"></div>
+    </div>
+</div>'''
+st.markdown(about_html, unsafe_allow_html=True)
+
+# ==================== ROOMS SECTION ====================
+rooms_html = '''<div class="rooms-section">
+    <div class="section-header">
+        <div class="section-title">Nossas <span class="section-title-highlight">Acomodações</span></div>
+        <div class="section-description">Suítes e bangalôs de luxo com vista panorâmica</div>
+    </div>
+    <div class="rooms-grid">
+        <div class="room-card">
+            <div class="room-image"></div>
+            <div class="room-content">
+                <div class="room-title">Suíte Deluxe</div>
+                <div class="room-desc">Conforto supremo com vista para o jardim. Inclui banheiro de mármol, cama king-size e varanda privada.</div>
+                <div class="room-price">R$ 1.200/noite</div>
+                <button class="room-cta">Reservar</button>
+            </div>
+        </div>
+        <div class="room-card">
+            <div class="room-image"></div>
+            <div class="room-content">
+                <div class="room-title">Suíte Premium</div>
+                <div class="room-desc">Luxo incomparável com vista para o mar. Jacuzzi privado, serviço de butler e acesso VIP a todos os serviços.</div>
+                <div class="room-price">R$ 1.800/noite</div>
+                <button class="room-cta">Reservar</button>
+            </div>
+        </div>
+        <div class="room-card">
+            <div class="room-image"></div>
+            <div class="room-content">
+                <div class="room-title">Villa Privativa</div>
+                <div class="room-desc">Isolamento total e privacidade absoluta. Piscina privada, spa pessoal e chef particular disponível.</div>
+                <div class="room-price">R$ 3.500/noite</div>
+                <button class="room-cta">Reservar</button>
+            </div>
+        </div>
+    </div>
+</div>'''
+st.markdown(rooms_html, unsafe_allow_html=True)
+
 # ==================== SERVICES SECTION ====================
 services_html = '''<div class="services-section">
     <div class="section-header">
-        <div class="section-title">Nossos <span class="section-title-highlight">Serviços</span></div>
-        <div class="section-description">Oferecemos uma variedade de programas e serviços para atender todos os seus objetivos fitness</div>
+        <div class="section-title">Serviços <span class="section-title-highlight">Exclusivos</span></div>
+        <div class="section-description">Tudo que você precisa para uma estadia perfeita</div>
     </div>
     <div class="services-grid">
         <div class="service-card">
-            <div class="service-icon">🏋️</div>
-            <div class="service-title">Musculação</div>
-            <div class="service-desc">Programas de treinamento com pesos para ganho de massa e força muscular.</div>
+            <div class="service-icon">🍽️</div>
+            <div class="service-title">Gastronomia Refinada</div>
+            <div class="service-desc">Restaurantes gourmet com chefs renomados e culinária internacional de alta qualidade.</div>
         </div>
         <div class="service-card">
-            <div class="service-icon">🏃</div>
-            <div class="service-title">Cardio</div>
-            <div class="service-desc">Equipamentos modernos para treinos cardiovasculares de alta performance.</div>
+            <div class="service-icon">🧖</div>
+            <div class="service-title">Spa de Luxo</div>
+            <div class="service-desc">Tratamentos de bem-estar com produtos premium e terapeutas especializados.</div>
         </div>
         <div class="service-card">
-            <div class="service-icon">🧘</div>
-            <div class="service-title">Yoga e Pilates</div>
-            <div class="service-desc">Aulas de flexibilidade, equilíbrio e bem-estar mental.</div>
+            <div class="service-icon">🏊</div>
+            <div class="service-title">Piscinas Aquecidas</div>
+            <div class="service-desc">Piscinas de água salgada aquecida com vista panorâmica e serviço de bar.</div>
         </div>
         <div class="service-card">
-            <div class="service-icon">👨‍🏫</div>
-            <div class="service-title">Personal Training</div>
-            <div class="service-desc">Acompanhamento individual com treinadores certificados.</div>
+            <div class="service-icon">🎭</div>
+            <div class="service-title">Entretenimento</div>
+            <div class="service-desc">Shows ao vivo, eventos especiais e atividades de lazer para toda a família.</div>
         </div>
         <div class="service-card">
-            <div class="service-icon">🥗</div>
-            <div class="service-title">Nutrição</div>
-            <div class="service-desc">Orientação nutricional personalizada para seus objetivos.</div>
+            <div class="service-icon">🚗</div>
+            <div class="service-title">Transporte VIP</div>
+            <div class="service-desc">Serviço de transfer com veículos de luxo e motorista particular.</div>
         </div>
         <div class="service-card">
-            <div class="service-icon">💪</div>
-            <div class="service-title">Grupos Funcionais</div>
-            <div class="service-desc">Treinos em grupo para motivação e diversão.</div>
+            <div class="service-icon">🎯</div>
+            <div class="service-title">Concierge 24/7</div>
+            <div class="service-desc">Atendimento personalizado para todas as suas necessidades e desejos.</div>
         </div>
     </div>
 </div>'''
 st.markdown(services_html, unsafe_allow_html=True)
 
-# ==================== FEATURES SECTION ====================
-features_html = '''<div class="features-section">
-    <div class="section-header">
-        <div class="section-title">Por que escolher a <span class="section-title-highlight">FitPro</span></div>
-        <div class="section-description">Diferenciais que fazem a diferença na sua jornada fitness</div>
-    </div>
-    <div class="features-grid">
-        <div class="feature-box">
-            <h3>Equipamentos Modernos</h3>
-            <p>Máquinas de última geração importadas, sempre mantidas em perfeito funcionamento.</p>
-        </div>
-        <div class="feature-box">
-            <h3>Treinadores Certificados</h3>
-            <p>Profissionais qualificados e experientes para orientar seu treino.</p>
-        </div>
-        <div class="feature-box">
-            <h3>Ambiente Acolhedor</h3>
-            <p>Espaço limpo, climatizado e seguro para você treinar com conforto.</p>
-        </div>
-        <div class="feature-box">
-            <h3>Horários Flexíveis</h3>
-            <p>Aberto de segunda a domingo, com horários que se adaptam à sua rotina.</p>
-        </div>
-        <div class="feature-box">
-            <h3>Comunidade Ativa</h3>
-            <p>Faça parte de uma comunidade motivada e comprometida com resultados.</p>
-        </div>
-        <div class="feature-box">
-            <h3>Acompanhamento Contínuo</h3>
-            <p>Avaliações periódicas para acompanhar sua evolução e ajustar treinos.</p>
-        </div>
-    </div>
-</div>'''
-st.markdown(features_html, unsafe_allow_html=True)
-
-# ==================== PRICING SECTION ====================
-pricing_html = '''<div class="pricing-section">
-    <div class="section-header">
-        <div class="section-title">Planos e <span class="section-title-highlight">Preços</span></div>
-        <div class="section-description">Escolha o plano que melhor se adequa aos seus objetivos</div>
-    </div>
-    <div class="pricing-grid">
-        <div class="pricing-card">
-            <div class="pricing-title">Básico</div>
-            <div class="pricing-price">R$ 99</div>
-            <div class="pricing-period">Por mês</div>
-            <div class="pricing-features">
-                <div class="pricing-feature">Acesso à academia</div>
-                <div class="pricing-feature">Uso de todos os equipamentos</div>
-                <div class="pricing-feature">Vestiário e chuveiro</div>
-            </div>
-            <button class="pricing-cta">Escolher Plano</button>
-        </div>
-        <div class="pricing-card featured">
-            <div class="pricing-badge">Mais Popular</div>
-            <div class="pricing-title">Premium</div>
-            <div class="pricing-price">R$ 199</div>
-            <div class="pricing-period">Por mês</div>
-            <div class="pricing-features">
-                <div class="pricing-feature">Acesso à academia</div>
-                <div class="pricing-feature">Aulas em grupo ilimitadas</div>
-                <div class="pricing-feature">2 sessões personal/mês</div>
-                <div class="pricing-feature">Avaliação física mensal</div>
-            </div>
-            <button class="pricing-cta">Escolher Plano</button>
-        </div>
-        <div class="pricing-card">
-            <div class="pricing-title">Elite</div>
-            <div class="pricing-price">R$ 399</div>
-            <div class="pricing-period">Por mês</div>
-            <div class="pricing-features">
-                <div class="pricing-feature">Acesso 24/7</div>
-                <div class="pricing-feature">Personal training ilimitado</div>
-                <div class="pricing-feature">Aulas em grupo ilimitadas</div>
-                <div class="pricing-feature">Orientação nutricional</div>
-                <div class="pricing-feature">Suplementos com desconto</div>
-            </div>
-            <button class="pricing-cta">Escolher Plano</button>
-        </div>
-    </div>
-</div>'''
-st.markdown(pricing_html, unsafe_allow_html=True)
-
 # ==================== TESTIMONIALS SECTION ====================
 testimonials_html = '''<div class="testimonials-section">
     <div class="section-header">
-        <div class="section-title">Histórias de <span class="section-title-highlight">Sucesso</span></div>
-        <div class="section-description">Veja como nossos alunos transformaram suas vidas</div>
+        <div class="section-title">Avaliações de <span class="section-title-highlight">Hóspedes</span></div>
+        <div class="section-description">O que nossos clientes dizem sobre sua experiência</div>
     </div>
     <div class="testimonial-card">
-        <div class="testimonial-text">"Entrei na FitPro sem conhecimento nenhum sobre treino. Os profissionais me orientaram perfeitamente e em 6 meses consegui resultados incríveis. Recomendo muito!"</div>
-        <div class="testimonial-author">Roberto Silva</div>
-        <div class="testimonial-role">Aluno há 2 anos</div>
+        <div class="testimonial-text">"Uma experiência absolutamente magnífica. Cada detalhe foi perfeito, desde o atendimento impecável até as acomodações luxuosas. Voltaremos com certeza!"</div>
+        <div class="testimonial-author">Mariana Silva</div>
+        <div class="testimonial-role">Hóspede Premium</div>
     </div>
     <div class="testimonial-card">
-        <div class="testimonial-text">"O ambiente é acolhedor, os treinadores são atenciosos e os resultados falam por si. Já perdi 20kg e ganhei muita confiança. Melhor decisão que tomei!"</div>
+        <div class="testimonial-text">"O melhor resort que já visitei. A gastronomia é de classe mundial, o spa é extraordinário e a equipe é extremamente atenciosa. Recomendo para todos!"</div>
+        <div class="testimonial-author">Carlos Mendes</div>
+        <div class="testimonial-role">Hóspede VIP</div>
+    </div>
+    <div class="testimonial-card">
+        <div class="testimonial-text">"Luxo, elegância e conforto em perfeita harmonia. Cada momento foi especial. A villa privativa superou todas as expectativas. Simplesmente perfeito!"</div>
         <div class="testimonial-author">Juliana Costa</div>
-        <div class="testimonial-role">Aluna Premium</div>
-    </div>
-    <div class="testimonial-card">
-        <div class="testimonial-text">"A comunidade da FitPro é incrível. Tenho amigos, motivação e profissionais que realmente se importam com meu progresso. Voltaria mil vezes!"</div>
-        <div class="testimonial-author">Marcus Oliveira</div>
-        <div class="testimonial-role">Aluno Elite</div>
+        <div class="testimonial-role">Hóspede Elite</div>
     </div>
 </div>'''
 st.markdown(testimonials_html, unsafe_allow_html=True)
 
 # ==================== CTA FINAL SECTION ====================
 cta_final_html = '''<div class="cta-final-section">
-    <div class="cta-final-title">Comece sua transformação <span class="highlight">hoje</span></div>
-    <div class="cta-final-desc">Agende uma avaliação gratuita e conheça nossas instalações. Nossos profissionais estão prontos para ajudá-lo!</div>
-    <button class="cta-final-button">Agende Sua Avaliação</button>
+    <div class="cta-final-title">Reserve Sua Experiência</div>
+    <div class="cta-final-desc">Viva momentos inesquecíveis em nosso resort de luxo. Acomodações exclusivas, serviços impecáveis e memórias para a vida toda.</div>
+    <button class="cta-final-button">Fazer Reserva Agora</button>
 </div>'''
 st.markdown(cta_final_html, unsafe_allow_html=True)
 
 # ==================== FOOTER ====================
-footer_html = '<div class="footer"><div class="footer-text">Telefone: (11) 98765-4321 | Email: contato@fitpro.com.br</div><div class="footer-text">Endereço: Av. Principal, 1234 - São Paulo, SP</div><div class="footer-copyright">© 2025 FitPro Academia. Todos os direitos reservados. Transformando vidas através do fitness.</div></div>'
+footer_html = '<div class="footer"><div class="footer-text">Telefone: +55 (11) 98765-4321 | Email: reservas@luxeresort.com.br</div><div class="footer-text">Endereço: Av. Costeira, 5000 - Praia Paradisíaca, SP</div><div class="footer-copyright">© 2025 LuxeResort. Todos os direitos reservados. Experiência de luxo absoluto.</div></div>'
 st.markdown(footer_html, unsafe_allow_html=True)
