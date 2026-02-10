@@ -2,232 +2,217 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Moooi | A Life Extraordinary",
-    page_icon="✨",
+    page_title="Feastables | O Chocolate do MrBeast",
+    page_icon="🍫",
     layout="wide"
 )
 
-# --- CSS DE ALTA FIDELIDADE (MOOOI LUXURY STYLE) ---
+# --- CSS DE ALTA FIDELIDADE (FEASTABLES VIBE) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@200;300;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@700;900&display=swap');
 
-    /* Reset Geral */
+    /* Cores de Marca */
+    :root {
+        --feast-blue: #0047ff;
+        --feast-pink: #ff00ff;
+        --feast-yellow: #ffff00;
+    }
+
     .stApp {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: var(--feast-blue);
     }
-    .block-container { padding: 0 !important; max-width: 100% !important; }
 
-    /* Tipografia Moooi */
-    html, body, [class*="css"] {
+    /* Tipografia */
+    h1, h2, .font-heavy {
         font-family: 'Inter', sans-serif;
-        font-weight: 300;
-        letter-spacing: 0.5px;
-    }
-
-    h1, h2, h3, .serif-moooi {
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 400;
+        font-weight: 900;
         text-transform: uppercase;
-        letter-spacing: 3px;
-    }
-
-    /* Navigation Bar */
-    .nav-moooi {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 30px 50px;
-        background: white;
-        border-bottom: 1px solid #f2f2f2;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-    
-    .logo-moooi {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 32px;
-        font-weight: 500;
-        letter-spacing: 8px;
-        text-transform: uppercase;
-    }
-
-    /* Hero Section Imersivo */
-    .hero-moooi {
-        position: relative;
-        height: 90vh;
-        background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80');
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         color: white;
+        letter-spacing: -2px;
+    }
+
+    /* Banner Corrediço (Marquee) */
+    .marquee {
+        background: var(--feast-yellow);
+        color: black;
+        padding: 10px 0;
+        font-family: 'Inter', sans-serif;
+        font-weight: 900;
+        white-space: nowrap;
+        overflow: hidden;
+        display: flex;
+        font-size: 20px;
+        border-bottom: 4px solid black;
+    }
+
+    /* Hero Section */
+    .hero-feast {
+        padding: 60px 5%;
         text-align: center;
     }
-    
-    .hero-overlay {
-        background: rgba(0,0,0,0.1);
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+
+    /* Cards de Produto */
+    .product-card {
+        background: white;
+        border: 4px solid black;
+        border-radius: 20px;
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.2s;
+        box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+        margin-bottom: 30px;
+    }
+    .product-card:hover {
+        transform: translate(-4px, -4px);
+        box-shadow: 12px 12px 0px 0px rgba(255, 0, 255, 0.8);
     }
 
-    /* Botões Estilo Ghost */
+    .price-tag {
+        background: var(--feast-pink);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 50px;
+        display: inline-block;
+        font-weight: 900;
+        margin-top: 10px;
+    }
+
+    /* Botão Feastables */
     div.stButton > button {
-        background-color: transparent;
-        color: #000;
-        border: 1px solid #000;
-        border-radius: 0px;
-        padding: 12px 40px;
-        font-size: 12px;
+        background-color: var(--feast-yellow);
+        color: black;
+        border: 4px solid black;
+        border-radius: 12px;
+        font-weight: 900;
+        font-size: 24px;
+        padding: 20px 40px;
+        box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+        transition: 0.1s;
+        width: 100%;
         text-transform: uppercase;
-        letter-spacing: 2px;
-        transition: 0.4s;
     }
     div.stButton > button:hover {
-        background-color: #000;
-        color: #fff;
-        border: 1px solid #000;
+        background-color: var(--feast-pink);
+        color: white;
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
     }
 
-    /* Seções de Grade de Produto */
-    .product-grid-section {
-        padding: 100px 50px;
+    /* Footer */
+    .footer-feast {
+        background: black;
+        color: white;
+        padding: 60px 5%;
+        margin-top: 100px;
     }
-
-    .product-card {
-        text-align: center;
-        margin-bottom: 50px;
-    }
-    .product-img {
-        width: 100%;
-        height: 500px;
-        object-fit: cover;
-        margin-bottom: 20px;
-        transition: transform 0.6s ease;
-    }
-    .product-img:hover {
-        transform: scale(1.02);
-    }
-
-    /* Footer Elegante */
-    .footer-moooi {
-        background-color: #fafafa;
-        padding: 100px 50px;
-        border-top: 1px solid #eee;
-    }
-
+    
     [data-testid="stHeader"] { display: none; }
+</style>
+
+<div class="marquee">
+    <div style="display: flex; animation: marquee 20s linear infinite;">
+        <span style="margin-right: 50px;">MELHOR QUE O SEU CHOCOLATE ATUAL 🔥</span>
+        <span style="margin-right: 50px;">INGREDIENTES REAIS 🔥</span>
+        <span style="margin-right: 50px;">DO MR BEAST 🔥</span>
+        <span style="margin-right: 50px;">PROVE A DIFERENÇA 🔥</span>
+        <span style="margin-right: 50px;">MELHOR QUE O SEU CHOCOLATE ATUAL 🔥</span>
+    </div>
+</div>
+
+<style>
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
 </style>
 """, unsafe_allow_html=True)
 
-# --- 1. HEADER ---
+# --- 1. HEADER / LOGO ---
 st.markdown("""
-<div class="nav-moooi">
-    <div style="display: flex; gap: 30px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">
-        <span>Coleção</span>
-        <span>Estilo de Vida</span>
-        <span>Histórias</span>
-    </div>
-    <div class="logo-moooi">Moooi</div>
-    <div style="display: flex; gap: 30px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">
-        <span>Lojas</span>
-        <span>Pesquisar</span>
-        <span>Login</span>
-    </div>
+<div style="text-align: center; padding: 40px 0;">
+    <h1 style="font-size: 80px; text-shadow: 4px 4px 0px #ff00ff;">FEASTABLES</h1>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 2. HERO SECTION ---
-st.markdown("""
-<div class="hero-moooi">
-    <div class="hero-overlay">
-        <h2 style="font-size: 14px; letter-spacing: 5px; margin-bottom: 20px;">LANÇAMENTO DE COLEÇÃO</h2>
-        <h1 class="serif-moooi" style="font-size: 60px; color: white;">A Life Extraordinary</h1>
-        <div style="margin-top: 30px;">
-             <a href="#" style="color: white; text-decoration: underline; font-size: 12px; letter-spacing: 2px;">DESCUBRA O NOVO</a>
-        </div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-# --- 3. INTRODUÇÃO ---
-st.markdown("""
-<div style="padding: 120px 20%; text-align: center;">
-    <h2 class="serif-moooi" style="font-size: 32px; margin-bottom: 30px;">Inspirando o Mundo desde 2001</h2>
-    <p style="font-size: 16px; line-height: 1.8; color: #555;">
-        A Moooi sempre foi sinônimo de um estilo de vida que é ao mesmo tempo lúdico e refinado. 
-        Nossas criações desafiam a gravidade, a luz e a imaginação, transformando espaços cotidianos 
-        em experiências extraordinárias.
-    </p>
-</div>
-""", unsafe_allow_html=True)
-
-# --- 4. GRID DE PRODUTOS (LAYOUT ASSIMÉTRICO) ---
-st.markdown('<div class="product-grid-section">', unsafe_allow_html=True)
-col1, col2 = st.columns(2, gap="large")
-
-with col1:
+# --- 2. HERO IMAGE & CTA ---
+col_hero_1, col_hero_2 = st.columns([1, 1])
+with col_hero_1:
     st.markdown("""
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800" class="product-img">
-        <h3 class="serif-moooi" style="font-size: 20px;">Luminária Knotted</h3>
-        <p style="font-size: 12px; color: #888; margin-top: 10px;">DESIGN POR MARCEL WANDERS</p>
+    <div style="padding-top: 50px;">
+        <h2 style="font-size: 60px;">O CHOCOLATE<br>QUE DETONA.</h2>
+        <p style="color: white; font-size: 20px; font-weight: 700;">Zero porcaria. Apenas sabor épico.</p>
     </div>
     """, unsafe_allow_html=True)
-    st.button("Ver Detalhes", key="btn1")
+    st.button("COMPRE AGORA")
 
-with col2:
-    st.markdown("""
-    <div class="product-card" style="margin-top: 80px;">
-        <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=800" class="product-img">
-        <h3 class="serif-moooi" style="font-size: 20px;">Sofá Cloud</h3>
-        <p style="font-size: 12px; color: #888; margin-top: 10px;">SENTANDO NAS NUVENS</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.button("Ver Detalhes", key="btn2")
+with col_hero_2:
+    # Imagem simulando a nova embalagem vibrante
+    st.image("https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800", use_container_width=True)
 
-st.markdown('</div>', unsafe_allow_html=True)
+# --- 3. PRODUTOS (LOJA) ---
+st.markdown("<br><br><h2 style='text-align: center; font-size: 45px;'>ESCOLHA SEU TIME</h2>", unsafe_allow_html=True)
 
-# --- 5. SEÇÃO DE BANNER LARGO ---
+p1, p2, p3 = st.columns(3)
+
+def feast_card(col, title, flavor, img_url, price):
+    with col:
+        st.markdown(f"""
+        <div class="product-card">
+            <img src="{img_url}" style="width:100%; border-radius:10px;">
+            <h3 style="color: black; margin-top: 15px; font-weight: 900; font-size: 24px;">{title}</h3>
+            <p style="color: #555; font-weight: 700;">{flavor}</p>
+            <div class="price-tag">R$ {price}</div>
+        </div>
+        """, unsafe_allow_html=True)
+        st.button(f"ADICIONAR {title}", key=title)
+
+feast_card(p1, "MILK CRUNCH", "Com Arroz Crocante", "https://images.unsplash.com/photo-1548907040-4baa42d10919?w=400", "19,90")
+feast_card(p2, "ORIGINAL MILK", "Clássico e Cremoso", "https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=400", "18,90")
+feast_card(p3, "PEANUT BUTTER", "Manteiga de Amendoim", "https://images.unsplash.com/photo-1581798459219-318e76aecc7b?w=400", "22,90")
+
+# --- 4. SEÇÃO "POR QUE NÓS?" (LONG FORM) ---
 st.markdown("""
-<div style="width: 100%; height: 600px; background-image: url('https://images.unsplash.com/photo-1534349762230-e0cadf78f5db?w=1600'); background-size: cover; background-position: center;">
-</div>
-<div style="padding: 80px 50px; text-align: left; background-color: #000; color: #fff;">
-    <h2 class="serif-moooi" style="font-size: 40px; color: #fff;">Paredes que Contam Histórias</h2>
-    <p style="max-width: 600px; margin-top: 20px; font-weight: 200;">Explore nossa coleção exclusiva de papéis de parede inspirados em animais extintos e mundos fantásticos.</p>
+<div style="background-color: #ff00ff; padding: 100px 10%; margin-top: 80px; border-top: 5px solid black; border-bottom: 5px solid black;">
+    <h2 style="color: white; font-size: 50px; text-align: center;">O QUE TEM DENTRO IMPORTA.</h2>
+    <div style="display: flex; justify-content: space-around; margin-top: 50px; text-align: center; flex-wrap: wrap;">
+        <div style="max-width: 250px;">
+            <h1 style="font-size: 60px;">🌾</h1>
+            <h3 style="color: white;">SEM GLÚTEN</h3>
+        </div>
+        <div style="max-width: 250px;">
+            <h1 style="font-size: 60px;">🌱</h1>
+            <h3 style="color: white;">INGREDIENTES SIMPLES</h3>
+        </div>
+        <div style="max-width: 250px;">
+            <h1 style="font-size: 60px;">👅</h1>
+            <h3 style="color: white;">SABOR INCRÍVEL</h3>
+        </div>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 6. FOOTER ---
+# --- 5. FOOTER ---
 st.markdown("""
-<div class="footer-moooi">
-    <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px;">
+<div class="footer-feast">
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
         <div>
-            <h3 class="serif-moooi" style="font-size: 24px; margin-bottom: 20px;">Moooi</h3>
-            <p style="font-size: 12px; line-height: 2;">A Life Extraordinary.<br>Subscreva para receber inspiração semanal.</p>
+            <h2 style="font-size: 32px; text-shadow: 2px 2px 0px #ff00ff;">FEASTABLES</h2>
+            <p style="color: #aaa;">Inspirado pelo MrBeast.</p>
+        </div>
+        <div style="line-height: 2;">
+            <p><strong>RECURSOS</strong></p>
+            <p>Onde Comprar</p>
+            <p>Perguntas Frequentes</p>
+            <p>Termos de Uso</p>
         </div>
         <div>
-            <h4 style="font-size: 11px; font-weight: 700; text-transform: uppercase;">Produtos</h4>
-            <p style="font-size: 12px; line-height: 2; margin-top: 20px;">Iluminação<br>Móveis<br>Acessórios<br>Tapetes</p>
-        </div>
-        <div>
-            <h4 style="font-size: 11px; font-weight: 700; text-transform: uppercase;">Serviços</h4>
-            <p style="font-size: 12px; line-height: 2; margin-top: 20px;">Localizador de Lojas<br>Atendimento<br>Downloads 3D</p>
-        </div>
-        <div>
-            <h4 style="font-size: 11px; font-weight: 700; text-transform: uppercase;">Social</h4>
-            <p style="font-size: 12px; line-height: 2; margin-top: 20px;">Instagram<br>Pinterest<br>LinkedIn</p>
+            <p><strong>NOS SIGA</strong></p>
+            <p>TikTok / Instagram / YouTube</p>
         </div>
     </div>
-    <div style="margin-top: 100px; padding-top: 20px; border-top: 1px solid #eee; font-size: 10px; color: #aaa; text-align: center;">
-        © 2026 MOOOI B.V. TODOS OS DIREITOS RESERVADOS.
+    <div style="margin-top: 50px; border-top: 1px solid #333; padding-top: 20px; font-size: 12px; color: #666; text-align: center;">
+        © 2026 FEASTABLES INC. TODOS OS DIREITOS RESERVADOS.
     </div>
 </div>
 """, unsafe_allow_html=True)
