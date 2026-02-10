@@ -2,195 +2,203 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Fundable | Plataforma de Crowdfunding",
-    page_icon="🚀",
+    page_title="Fundable | Plataforma de Equity Crowdfunding",
+    page_icon="💰",
     layout="wide"
 )
 
-# --- CSS PARA ESTILO FUNDABLE (BUSINESS & FUNDING) ---
+# --- CSS AVANÇADO (FUNDABLE DESIGN SYSTEM) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
     html, body, [class*="css"] {
         font-family: 'Open Sans', sans-serif;
+        color: #333;
     }
 
-    /* Header com Degradê */
-    .header-fundable {
-        background: linear-gradient(90deg, #1a2a3a 0%, #2c3e50 100%);
-        padding: 20px 5rem;
+    /* Header Superior */
+    .main-header {
+        background-color: #1a2b3c;
+        padding: 15px 8%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: -5rem -5rem 2rem -5rem;
-        color: white;
+        margin: -5rem -5rem 0rem -5rem;
     }
-    
-    .logo {
-        font-size: 28px;
-        font-weight: 700;
-        letter-spacing: -1px;
-    }
-    .logo span { color: #00a8ff; }
-
-    /* Hero Section */
-    .hero-container {
-        text-align: center;
-        padding: 60px 0;
-        background-color: #f8f9fa;
-        border-bottom: 1px solid #dee2e6;
-        margin-bottom: 40px;
-    }
-
-    /* Cards de Projetos */
-    .project-card {
-        background: white;
-        border: 1px solid #e0e0e0;
-        border-radius: 4px;
-        padding: 0px;
-        margin-bottom: 20px;
-    }
-    .project-content {
-        padding: 20px;
-    }
-    .project-title {
-        font-size: 18px;
-        font-weight: 700;
-        color: #333;
-    }
-    .project-location {
-        font-size: 12px;
-        color: #888;
-        text-transform: uppercase;
-        margin-bottom: 10px;
-    }
-
-    /* Barra de Progresso Customizada */
-    .progress-bg {
-        background-color: #eee;
-        height: 8px;
-        border-radius: 4px;
-        margin: 15px 0;
-    }
-    .progress-fill {
-        background-color: #00a8ff;
-        height: 8px;
-        border-radius: 4px;
-    }
-
-    /* Labels de Investimento */
-    .fund-label {
+    .nav-links a {
+        color: #99abbd;
+        text-decoration: none;
+        margin-left: 25px;
         font-size: 13px;
-        color: #666;
+        font-weight: 600;
+        text-transform: uppercase;
     }
-    .fund-value {
-        font-weight: 700;
-        color: #333;
+    .nav-links a:hover { color: white; }
+
+    /* Hero Section Gigante */
+    .hero-bg {
+        background: linear-gradient(135deg, #1e3a5f 0%, #2c3e50 100%);
+        padding: 100px 10%;
+        text-align: center;
+        color: white;
+        margin: 0rem -5rem 40px -5rem;
+    }
+    .hero-title { font-size: 52px; font-weight: 800; margin-bottom: 15px; }
+    .hero-subtitle { font-size: 22px; font-weight: 300; opacity: 0.9; margin-bottom: 40px; }
+
+    /* Seção de Logos (Prova Social) */
+    .trust-bar {
+        text-align: center;
+        padding: 20px 0;
+        background-color: #f4f7f9;
+        margin-top: -40px;
+        margin-bottom: 50px;
+        border-bottom: 1px solid #e1e8ed;
     }
 
-    /* Botões do Fundable */
-    div.stButton > button {
-        border-radius: 3px;
-        text-transform: uppercase;
-        font-weight: 700;
-        letter-spacing: 1px;
+    /* Cards de Startups */
+    .st_card {
+        background: white;
+        border: 1px solid #e1e8ed;
+        border-radius: 6px;
+        transition: 0.3s;
+        margin-bottom: 30px;
     }
-    .btn-invest > div > button {
-        background-color: #00a8ff !important;
-        color: white !important;
+    .st_card:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+    .card-img { width: 100%; height: 220px; object-fit: cover; border-radius: 6px 6px 0 0; }
+    .card-body { padding: 25px; }
+    .card-tag { color: #00a8ff; font-weight: 700; font-size: 11px; text-transform: uppercase; }
+    .card-title { font-size: 20px; font-weight: 700; margin: 10px 0; }
+    
+    /* Barra de Progresso */
+    .p-bar-bg { background: #eee; height: 10px; border-radius: 5px; margin: 20px 0 10px 0; }
+    .p-bar-fill { background: #00a8ff; height: 10px; border-radius: 5px; }
+
+    /* Footer Multinível */
+    .footer-container {
+        background-color: #1a2b3c;
+        color: #99abbd;
+        padding: 60px 10% 30px 10%;
+        margin: 50px -5rem -5rem -5rem;
     }
+    .footer-col h4 { color: white; margin-bottom: 20px; font-size: 16px; }
+    .footer-col p { font-size: 13px; line-height: 1.8; }
 </style>
 """, unsafe_allow_html=True)
 
-# --- 1. HEADER ---
+# --- 1. NAV BAR ---
 st.markdown("""
-<div class="header-fundable">
-    <div class="logo">FUND<span>ABLE</span></div>
-    <div style="display: flex; gap: 30px; font-size: 14px; font-weight: 600;">
-        <span>COMO FUNCIONA</span>
-        <span>BROWSE STARTUPS</span>
-        <span>LOGIN</span>
+<div class="main-header">
+    <div style="font-size: 24px; font-weight: 800; color: white;">FUND<span style="color:#00a8ff">ABLE</span></div>
+    <div class="nav-links">
+        <a href="#">Como Funciona</a>
+        <a href="#">Explorar Startups</a>
+        <a href="#">Sucesso</a>
+        <a href="#">Entrar</a>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
 # --- 2. HERO SECTION ---
 st.markdown("""
-<div class="hero-container">
-    <h1 style="font-size: 48px; color: #1a2a3a;">Levante capital para o seu negócio</h1>
-    <p style="font-size: 20px; color: #555; max-width: 700px; margin: 20px auto;">
-        A maior rede de financiamento para empresas. Conectamos fundadores a investidores para lançar grandes ideias.
-    </p>
+<div class="hero-bg">
+    <div class="hero-title">Onde as Startups Arrecadam Capital</div>
+    <div class="hero-subtitle">Junte-se a maior rede de financiamento do mundo para lançar e crescer seu negócio.</div>
 </div>
 """, unsafe_allow_html=True)
 
-col_h1, col_h2 = st.columns(2)
-with col_h1:
-    st.markdown('<div style="text-align: right; padding-right: 20px;">', unsafe_allow_html=True)
-    st.button("QUERO CAPTAR RECURSOS", use_container_width=False)
+# Botões de Chamada (Call to Action)
+c_cta1, c_cta2 = st.columns(2)
+with c_cta1:
+    st.markdown('<div style="text-align:right">', unsafe_allow_html=True)
+    if st.button("QUERO CAPTAR PARA MINHA EMPRESA", key="main_fund"):
+        st.info("Iniciando processo de captação...")
     st.markdown('</div>', unsafe_allow_html=True)
-with col_h2:
-    st.markdown('<div class="btn-invest">', unsafe_allow_html=True)
-    st.button("QUERO INVESTIR", use_container_width=False)
-    st.markdown('</div>', unsafe_allow_html=True)
+
+with c_cta2:
+    st.markdown('<style>div.stButton > button { background-color: #00a8ff !important; color: white !important; border: none; padding: 15px 30px; font-weight: 700; }</style>', unsafe_allow_html=True)
+    if st.button("QUERO INVESTIR EM STARTUPS", key="main_invest"):
+        st.balloons()
+
+# --- 3. PROVA SOCIAL ---
+st.markdown("""
+<div class="trust-bar">
+    <p style="color:#7f8c8d; font-size:12px; font-weight:700; margin-bottom:15px;">VISTO EM</p>
+    <div style="display:flex; justify-content:center; gap:50px; opacity:0.5; font-weight:800; font-size:20px; color:#2c3e50;">
+        <span>Forbes</span> <span>Wired</span> <span>TechCrunch</span> <span>The Wall Street Journal</span>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# --- 4. SEÇÃO "DUAS ESCOLHAS" ---
+st.write("")
+col_a, col_b = st.columns(2, gap="large")
+
+with col_a:
+    st.image("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=600&q=80", caption="Para Empreendedores")
+    st.subheader("Levante Capital")
+    st.write("Criamos perfis de captação que atraem investidores anjos e fundos de VC. Ferramentas completas para gerenciar sua rodada de investimentos.")
+    st.button("Saiba mais sobre Captação", key="info_fund")
+
+with col_b:
+    st.image("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80", caption="Para Investidores")
+    st.subheader("Invista cedo")
+    st.write("Acesse oportunidades exclusivas em startups pré-filtradas. Invista em empresas com alto potencial de crescimento antes de chegarem ao mercado público.")
+    st.button("Ver Oportunidades de Investimento", key="info_invest")
 
 st.write("---")
 
-# --- 3. STARTUPS EM DESTAQUE ---
-st.subheader("Startups em Destaque")
+# --- 5. GRID DE STARTUPS (BROWSE) ---
+st.header("Startups em Captação")
 
-def startup_card(col, img, title, loc, desc, percent, raised):
+def draw_card(col, img, tag, title, desc, progress, goal):
     with col:
         st.markdown(f"""
-        <div class="project-card">
-            <img src="{img}" style="width:100%; height:200px; object-fit:cover;">
-            <div class="project-content">
-                <div class="project-location">{loc}</div>
-                <div class="project-title">{title}</div>
-                <p style="font-size: 14px; color: #666; height: 60px;">{desc}</p>
-                <div class="progress-bg"><div class="progress-fill" style="width: {percent}%;"></div></div>
-                <div style="display: flex; justify-content: space-between;">
-                    <div class="fund-label">Arrecadado<br><span class="fund-value">R$ {raised}</span></div>
-                    <div class="fund-label" style="text-align: right;">Meta<br><span class="fund-value">{percent}%</span></div>
+        <div class="st_card">
+            <img src="{img}" class="card-img">
+            <div class="card-body">
+                <div class="card-tag">{tag}</div>
+                <div class="card-title">{title}</div>
+                <p style="font-size:14px; color:#555;">{desc}</p>
+                <div class="p-bar-bg"><div class="p-bar-fill" style="width:{progress}%"></div></div>
+                <div style="display:flex; justify-content:space-between; font-size:13px;">
+                    <b>{progress}% Arrecadado</b>
+                    <span style="color:#888">Meta: {goal}</span>
                 </div>
             </div>
         </div>
         """, unsafe_allow_html=True)
-        st.button(f"Ver Projeto: {title}", key=title)
+        st.button(f"Analisar {title}", use_container_width=True)
 
 c1, c2, c3 = st.columns(3)
+draw_card(c1, "https://images.unsplash.com/photo-1551288049-bbbda536339a?w=400", "FINTECH", "NeoBank Pro", "A conta digital focada 100% em pequenas empresas e MEI.", 78, "R$ 5M")
+draw_card(c2, "https://images.unsplash.com/photo-1532187878418-9f110f9902de?w=400", "BIOTECH", "GenomeX", "Sequenciamento genético acessível para medicina preventiva.", 45, "R$ 12M")
+draw_card(c3, "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400", "SAAS", "CloudFlow", "Automação de fluxo de trabalho para agências de marketing.", 92, "R$ 1.5M")
 
-startup_card(c1, 
-             "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80",
-             "EcoTech Solutions", "SÃO PAULO, SP", 
-             "Tecnologia de reciclagem modular para condomínios residenciais.", 65, "1.2M")
-
-startup_card(c2, 
-             "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=500&q=80",
-             "DataFlow AI", "CURITIBA, PR", 
-             "Análise preditiva para pequenos varejistas usando inteligência artificial.", 40, "450k")
-
-startup_card(c3, 
-             "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=500&q=80",
-             "HealthTrack Wear", "FLORIANÓPOLIS, SC", 
-             "Dispositivo vestível focado no monitoramento cardíaco de idosos.", 90, "2.8M")
-
-# --- 4. STATS BAR ---
-st.write("")
-st.write("---")
+# --- 6. FOOTER COMPLETO ---
 st.markdown("""
-<div style="display: flex; justify-content: space-around; text-align: center; padding: 40px 0;">
-    <div><h2 style="margin:0;">R$ 600M+</h2><p style="color:#888;">CAPITAL ARRECADADO</p></div>
-    <div><h2 style="margin:0;">20,000+</h2><p style="color:#888;">INVESTIDORES ATIVOS</p></div>
-    <div><h2 style="margin:0;">1,500+</h2><p style="color:#888;">EMPRESAS FINANCIADAS</p></div>
-</div>
-""", unsafe_allow_html=True)
-
-# --- FOOTER ---
-st.markdown("""
-<div style="background-color: #1a2a3a; color: #ccc; padding: 50px; text-align: center; font-size: 14px;">
-    <div style="font-weight: 700; color: white; margin-bottom: 20px;">FUNDABLE</div>
-    <p>A Fundable faz parte da plataforma Startups.com. <br> © 2024 Fundable LLC. Todos os direitos reservados.</p>
+<div class="footer-container">
+    <div style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:40px;">
+        <div class="footer-col">
+            <div style="font-size: 20px; font-weight: 800; color: white; margin-bottom:20px;">FUNDABLE</div>
+            <p>A Fundable é a plataforma líder para startups levantarem capital, conectando fundadores a uma rede global de investidores.</p>
+        </div>
+        <div class="footer-col">
+            <h4>PLATAFORMA</h4>
+            <p>Como Funciona<br>Explorar<br>Educação<br>Equipe</p>
+        </div>
+        <div class="footer-col">
+            <h4>RECURSOS</h4>
+            <p>Blog<br>Ajuda/FAQ<br>Termos de Uso<br>Privacidade</p>
+        </div>
+        <div class="footer-col">
+            <h4>CONTATO</h4>
+            <p>Suporte<br>Imprensa<br>Parcerias</p>
+        </div>
+    </div>
+    <div style="text-align:center; border-top:1px solid #2c3e50; margin-top:40px; padding-top:20px; font-size:12px;">
+        © 2024 Fundable LLC - Uma empresa Startups.com
+    </div>
 </div>
 """, unsafe_allow_html=True)
