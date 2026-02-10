@@ -1,294 +1,616 @@
 import streamlit as st
 
-# --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Icarus Medical | Custom Knee Braces",
-    page_icon="🧬",
+    page_title="GetResponse Style - Email Marketing",
+    page_icon="📧",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# --- CSS PERSONALIZADO (AESTHETIC MEDICAL TECH) ---
-st.markdown("""
+custom_css = """
 <style>
-    /* Importando fonte Roboto para visual mais clean/tech */
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-
-    html, body, [class*="css"] {
-        font-family: 'Roboto', sans-serif;
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap');
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
-
-    /* Remover padding excessivo do topo */
-    .block-container {
-        padding-top: 1rem;
-        padding-bottom: 2rem;
+    
+    html, body, [data-testid="stAppViewContainer"] {
+        background: #ffffff;
+        font-family: 'Montserrat', sans-serif;
+        color: #1a1a1a;
+        overflow-x: hidden;
     }
-
-    /* Header Navigation Bar simulada */
-    .nav-container {
+    
+    [data-testid="stDecoration"] { display: none; }
+    .main { padding: 0 !important; background: transparent; }
+    
+    @keyframes slideInLeft {
+        0% { transform: translateX(-100px); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideInRight {
+        0% { transform: translateX(100px); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+        0% { transform: translateY(40px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    /* NAVBAR */
+    .navbar {
+        background: #ffffff;
+        padding: 20px 80px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 20px;
-        background-color: white;
         border-bottom: 1px solid #e0e0e0;
-        margin-bottom: 20px;
-    }
-    .logo-text {
-        font-size: 24px;
-        font-weight: 700;
-        color: #2c3e50;
-        letter-spacing: 1px;
-    }
-    .nav-links a {
-        text-decoration: none;
-        color: #555;
-        margin-left: 20px;
-        font-weight: 500;
-        font-size: 14px;
-    }
-    .nav-links a:hover {
-        color: #007bff;
-    }
-
-    /* Hero Section Styles */
-    .hero-container {
-        background-color: #f8f9fa;
-        padding: 60px 40px;
-        border-radius: 10px;
-        text-align: center;
-        margin-bottom: 40px;
-    }
-    .hero-title {
-        font-size: 48px;
-        font-weight: 700;
-        color: #1a1a1a;
-        margin-bottom: 10px;
-    }
-    .hero-subtitle {
-        font-size: 20px;
-        color: #666;
-        margin-bottom: 30px;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
+        position: sticky;
+        top: 0;
+        z-index: 100;
     }
     
-    /* Botões customizados estilo "Medical Blue" */
-    .stButton > button {
-        background-color: #0056b3;
-        color: white;
-        border-radius: 4px;
-        padding: 10px 24px;
+    .navbar-logo {
+        font-size: 20px;
+        font-weight: 800;
+        color: #0066FF;
+        letter-spacing: 1px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .navbar-nav {
+        display: flex;
+        gap: 50px;
+    }
+    
+    .nav-link {
+        color: #1a1a1a;
+        text-decoration: none;
+        font-size: 13px;
         font-weight: 600;
+        text-transform: capitalize;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover { color: #0066FF; }
+    
+    .navbar-cta {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .nav-login {
+        color: #1a1a1a;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+    }
+    
+    .nav-btn {
+        background: #0066FF;
+        color: #ffffff;
+        padding: 12px 30px;
         border: none;
-        transition: all 0.3s;
-    }
-    .stButton > button:hover {
-        background-color: #004494;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    /* Cards de Produtos */
-    .product-card {
-        background: white;
-        border: 1px solid #eee;
-        border-radius: 8px;
-        padding: 20px;
-        text-align: center;
-        transition: transform 0.2s;
-        height: 100%;
-    }
-    .product-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        border-color: #0056b3;
-    }
-    .product-name {
-        font-size: 22px;
+        border-radius: 4px;
         font-weight: 700;
-        color: #222;
-        margin-top: 15px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
     }
-    .product-desc {
-        color: #666;
-        font-size: 14px;
-        margin-bottom: 15px;
-        line-height: 1.5;
+    
+    .nav-btn:hover {
+        background: #0052CC;
     }
-
-    /* Stats Section */
-    .stat-box {
-        text-align: center;
-        padding: 20px;
+    
+    /* HERO */
+    .hero {
+        background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+        color: #ffffff;
+        padding: 120px 80px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
     }
-    .stat-number {
-        font-size: 36px;
-        font-weight: bold;
-        color: #0056b3;
+    
+    .hero::before {
+        content: '';
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        top: -200px;
+        right: -200px;
     }
-    .stat-label {
-        font-size: 14px;
-        color: #555;
+    
+    .hero-content {
+        max-width: 700px;
+        position: relative;
+        z-index: 2;
+        animation: slideInLeft 0.8s ease-out;
+    }
+    
+    .hero-label {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.9);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+    
+    .hero-title {
+        font-size: 72px;
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 30px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        letter-spacing: -1px;
+    }
+    
+    .hero-desc {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.95);
+        margin-bottom: 50px;
+        line-height: 1.8;
+        font-weight: 400;
+    }
+    
+    .hero-cta {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .btn-primary {
+        background: #FFD60A;
+        color: #1a1a1a;
+        padding: 16px 50px;
+        border: none;
+        border-radius: 4px;
+        font-weight: 800;
+        font-size: 13px;
         text-transform: uppercase;
         letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
     }
     
-    /* Footer */
-    .footer-section {
-        background-color: #1a1a1a;
-        color: #aaa;
-        padding: 40px;
-        margin-top: 50px;
+    .btn-primary:hover {
+        background: #FFC700;
+        transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+        background: transparent;
+        color: #ffffff;
+        padding: 16px 50px;
+        border: 2px solid #ffffff;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .hero-visual {
+        position: relative;
+        z-index: 2;
+        width: 500px;
+        height: 500px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 100px;
+        animation: slideInRight 0.8s ease-out;
+        backdrop-filter: blur(10px);
+    }
+    
+    /* STATS SECTION */
+    .stats-section {
+        background: #0066FF;
+        color: #ffffff;
+        padding: 100px 80px;
+    }
+    
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 60px;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+    
+    .stat-item {
         text-align: center;
+        animation: fadeInUp 0.8s ease-out;
+        animation-fill-mode: both;
+    }
+    
+    .stat-item:nth-child(1) { animation-delay: 0.1s; }
+    .stat-item:nth-child(2) { animation-delay: 0.2s; }
+    .stat-item:nth-child(3) { animation-delay: 0.3s; }
+    .stat-item:nth-child(4) { animation-delay: 0.4s; }
+    
+    .stat-number {
+        font-size: 56px;
+        font-weight: 900;
+        margin-bottom: 15px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .stat-label {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 600;
+        line-height: 1.6;
+    }
+    
+    /* FEATURES SECTION */
+    .features-section {
+        background: #ffffff;
+        padding: 150px 80px;
+    }
+    
+    .section-title {
+        font-size: 56px;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 100px;
+        color: #1a1a1a;
+        font-family: 'Poppins', sans-serif;
+        letter-spacing: -1px;
+    }
+    
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 50px;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+    
+    .feature-card {
+        padding: 60px 40px;
+        background: #f8f9fa;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        transition: all 0.4s ease;
+        animation: fadeInUp 0.8s ease-out;
+        animation-fill-mode: both;
+    }
+    
+    .feature-card:nth-child(1) { animation-delay: 0.1s; }
+    .feature-card:nth-child(2) { animation-delay: 0.2s; }
+    .feature-card:nth-child(3) { animation-delay: 0.3s; }
+    
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(0, 102, 255, 0.1);
+        border-color: #0066FF;
+    }
+    
+    .feature-icon {
+        font-size: 48px;
+        margin-bottom: 25px;
+    }
+    
+    .feature-title {
+        font-size: 24px;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: #1a1a1a;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .feature-desc {
+        font-size: 14px;
+        color: #666666;
+        line-height: 1.8;
+    }
+    
+    /* TESTIMONIAL SECTION */
+    .testimonial-section {
+        background: #f8f9fa;
+        padding: 100px 80px;
+        text-align: center;
+    }
+    
+    .testimonial-card {
+        background: #ffffff;
+        padding: 60px;
+        border-radius: 8px;
+        max-width: 800px;
+        margin: 0 auto;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .testimonial-text {
+        font-size: 18px;
+        color: #1a1a1a;
+        margin-bottom: 30px;
+        line-height: 1.8;
+        font-weight: 500;
+    }
+    
+    .testimonial-author {
+        font-size: 14px;
+        color: #666666;
+        font-weight: 600;
+    }
+    
+    /* CTA SECTION */
+    .cta-section {
+        background: #ffffff;
+        padding: 100px 80px;
+        text-align: center;
+    }
+    
+    .cta-title {
+        font-size: 48px;
+        font-weight: 800;
+        margin-bottom: 30px;
+        color: #1a1a1a;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .cta-form {
+        max-width: 600px;
+        margin: 0 auto;
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .cta-input {
+        flex: 1;
+        padding: 16px 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        font-size: 14px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    .cta-btn {
+        background: #0066FF;
+        color: #ffffff;
+        padding: 16px 40px;
+        border: none;
+        border-radius: 4px;
+        font-weight: 800;
+        font-size: 13px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .cta-btn:hover {
+        background: #0052CC;
+    }
+    
+    .cta-note {
+        font-size: 12px;
+        color: #999999;
+        margin-top: 15px;
+    }
+    
+    /* FOOTER */
+    .footer {
+        background: #0a0a0a;
+        color: #999999;
+        padding: 80px 80px;
+    }
+    
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 60px;
+        max-width: 1600px;
+        margin: 0 auto 60px;
+    }
+    
+    .footer-col h4 {
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 25px;
+    }
+    
+    .footer-col a {
+        display: block;
+        color: #999999;
+        text-decoration: none;
+        font-size: 13px;
+        margin-bottom: 12px;
+        transition: color 0.3s ease;
+    }
+    
+    .footer-col a:hover { color: #0066FF; }
+    
+    .footer-bottom {
+        text-align: center;
+        padding-top: 40px;
+        border-top: 1px solid #333333;
         font-size: 12px;
     }
+    
+    @media (max-width: 768px) {
+        .navbar { padding: 15px 20px; flex-direction: column; gap: 15px; }
+        .hero { flex-direction: column; padding: 50px 20px; }
+        .hero-title { font-size: 42px; }
+        .hero-visual { width: 100%; margin-top: 40px; }
+        .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        .features-grid { grid-template-columns: 1fr; }
+        .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
 </style>
-""", unsafe_allow_html=True)
+"""
 
-# --- HEADER (HTML Puro para controle total do layout) ---
-st.markdown("""
-<div class="nav-container">
-    <div class="logo-text">ICARUS MEDICAL</div>
-    <div class="nav-links">
-        <a href="#">HOME</a>
-        <a href="#">PRODUCTS</a>
-        <a href="#">PATIENTS</a>
-        <a href="#">PROVIDERS</a>
-        <a href="#">CONTACT</a>
+st.markdown(custom_css, unsafe_allow_html=True)
+
+# NAVBAR
+navbar_html = '''<div class="navbar">
+    <div class="navbar-logo">GetResponse</div>
+    <div class="navbar-nav">
+        <a href="#" class="nav-link">Produto</a>
+        <a href="#" class="nav-link">Recursos</a>
+        <a href="#" class="nav-link">Preços</a>
+        <a href="#" class="nav-link">Sobre</a>
     </div>
-</div>
-""", unsafe_allow_html=True)
-
-# --- HERO SECTION ---
-# O site original tem uma imagem grande de alguém correndo ou o produto em destaque.
-c1, c2 = st.columns([1, 1])
-
-with c1:
-    st.markdown('<div style="padding-top: 40px;">', unsafe_allow_html=True)
-    st.markdown("# Relieve Knee Pain.\n# Restore Mobility.")
-    st.markdown("""
-    <p style="font-size: 18px; color: #555; line-height: 1.6;">
-    Custom 3D-printed knee braces engineered to unload weight and reduce pain. 
-    The most advanced conservative treatment for osteoarthritis.
-    </p>
-    """, unsafe_allow_html=True)
-    
-    col_btn1, col_btn2 = st.columns([1, 2])
-    with col_btn1:
-        st.button("AM I A CANDIDATE?")
-    with col_btn2:
-        st.button("VIEW PRODUCTS", type="secondary") # Secondary style logic not native, but visually distinct via CSS if needed
-    st.markdown('</div>', unsafe_allow_html=True)
-
-with c2:
-    # Imagem simulando o produto "Ascender" (High tech brace)
-    st.image("https://images.unsplash.com/photo-1583947581924-860b8ed4007a?auto=format&fit=crop&w=800&q=80", caption="Engineering movement.", use_container_width=True)
-
-st.write("---")
-
-# --- TECH SPECS (ICARUS DIFFERENCE) ---
-st.markdown("<h2 style='text-align: center; margin-bottom: 40px;'>The Science of Unloading</h2>", unsafe_allow_html=True)
-
-stat1, stat2, stat3, stat4 = st.columns(4)
-with stat1:
-    st.markdown('<div class="stat-box"><div class="stat-number">40 lbs</div><div class="stat-label">Offloading Capacity</div></div>', unsafe_allow_html=True)
-with stat2:
-    st.markdown('<div class="stat-box"><div class="stat-number">3D</div><div class="stat-label">Custom Printed</div></div>', unsafe_allow_html=True)
-with stat3:
-    st.markdown('<div class="stat-box"><div class="stat-number"> < 1lb</div><div class="stat-label">Ultra Lightweight</div></div>', unsafe_allow_html=True)
-with stat4:
-    st.markdown('<div class="stat-box"><div class="stat-number">USA</div><div class="stat-label">Made in America</div></div>', unsafe_allow_html=True)
-
-st.write("---")
-
-# --- PRODUCTS SECTION ---
-st.markdown("<h3 style='text-align: center; margin-bottom: 30px;'>Our Custom Solutions</h3>", unsafe_allow_html=True)
-
-# Função helper para cards
-def product_card(name, subtitle, desc, img_url):
-    st.markdown(f"""
-    <div class="product-card">
-        <img src="{img_url}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;">
-        <div class="product-name">{name}</div>
-        <div style="color: #0056b3; font-weight: bold; font-size: 12px; margin-bottom: 10px;">{subtitle}</div>
-        <div class="product-desc">{desc}</div>
+    <div class="navbar-cta">
+        <a href="#" class="nav-login">Fazer login</a>
+        <button class="nav-btn">Inscreva-se grátis</button>
     </div>
-    """, unsafe_allow_html=True)
-    st.button(f"Learn about {name}", key=name)
+</div>'''
+st.markdown(navbar_html, unsafe_allow_html=True)
 
-p1, p2, p3 = st.columns(3)
+# HERO
+hero_html = '''<div class="hero">
+    <div class="hero-content">
+        <div class="hero-label">Email Marketing & Automação</div>
+        <div class="hero-title">Não é você, é o algoritmo</div>
+        <div class="hero-desc">Plataforma de email marketing, automação e landing pages com IA integrada. Crie, teste e venda mais rápido.</div>
+        <div class="hero-cta">
+            <button class="btn-primary">Comece Grátis</button>
+            <button class="btn-secondary">Saiba Mais</button>
+        </div>
+    </div>
+    <div class="hero-visual">📧</div>
+</div>'''
+st.markdown(hero_html, unsafe_allow_html=True)
 
-with p1:
-    product_card(
-        "Ascender", 
-        "UNLOADER KNEE BRACE",
-        "Our flagship custom brace designed for maximum offloading of the knee joint. Ideal for Osteoarthritis.",
-        "https://images.unsplash.com/photo-1584515933487-98db75f56f24?auto=format&fit=crop&w=400&q=80" # Placeholder mechanical/tech
-    )
+# STATS
+stats_html = '''<div class="stats-section">
+    <div class="stats-grid">
+        <div class="stat-item">
+            <div class="stat-number">99%</div>
+            <div class="stat-label">Taxa de Entregabilidade para 160+ países</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">+150</div>
+            <div class="stat-label">Integrações Disponíveis</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">350K+</div>
+            <div class="stat-label">Clientes ao Redor do Mundo</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Suporte de Sucesso do Cliente</div>
+        </div>
+    </div>
+</div>'''
+st.markdown(stats_html, unsafe_allow_html=True)
 
-with p2:
-    product_card(
-        "Adonis", 
-        "LIGHTWEIGHT SUPPORT",
-        "Low profile design for active users requiring medial or lateral support without the bulk.",
-        "https://images.unsplash.com/photo-1519311965067-36d3e5f33d39?auto=format&fit=crop&w=400&q=80" # Placeholder active
-    )
+# FEATURES
+features_html = '''<div class="features-section">
+    <div class="section-title">Ferramentas Poderosas para Seu Negócio</div>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">📧</div>
+            <div class="feature-title">Email Marketing</div>
+            <div class="feature-desc">Envie newsletters ilimitadas com IA que cria linhas de assunto e personaliza conteúdo para seu público.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <div class="feature-title">Automação com IA</div>
+            <div class="feature-desc">Crie jornadas automáticas que identificam o melhor momento para contatar seus clientes.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🌐</div>
+            <div class="feature-title">Landing Pages</div>
+            <div class="feature-desc">Publique landing pages ilimitadas com IA que escreve o texto e escolhe o layout ideal.</div>
+        </div>
+    </div>
+</div>'''
+st.markdown(features_html, unsafe_allow_html=True)
 
-with p3:
-    product_card(
-        "Kronos", 
-        "POST-OP RECOVERY",
-        "Adjustable ROM control and protection for patients recovering from ligament reconstruction.",
-        "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=400&q=80" # Placeholder medical
-    )
+# TESTIMONIAL
+testimonial_html = '''<div class="testimonial-section">
+    <div class="testimonial-card">
+        <div class="testimonial-text">"Geramos US$ 43.000 em vendas com apenas 10 e-mails usando a GetResponse. A automação e a IA mudaram nosso negócio."</div>
+        <div class="testimonial-author">João Silva - CEO da Tech Company</div>
+    </div>
+</div>'''
+st.markdown(testimonial_html, unsafe_allow_html=True)
 
-st.markdown("<br><br>", unsafe_allow_html=True)
+# CTA
+cta_html = '''<div class="cta-section">
+    <div class="cta-title">Junte-se a 350.000+ Empresas</div>
+    <div class="cta-form">
+        <input type="email" class="cta-input" placeholder="Seu endereço de e-mail">
+        <button class="cta-btn">Começar Grátis</button>
+    </div>
+    <div class="cta-note">Teste gratuito de 14 dias | Não precisa de cartão | Cancele a qualquer momento</div>
+</div>'''
+st.markdown(cta_html, unsafe_allow_html=True)
 
-# --- HOW IT WORKS (STEPS) ---
-st.markdown("<div style='background-color: #f4f6f9; padding: 40px; border-radius: 10px;'>", unsafe_allow_html=True)
-st.subheader("How to get your Icarus Brace")
-
-step1, step2, step3 = st.columns(3)
-with step1:
-    st.info("1. Scan")
-    st.write("Download our app to take a precise 3D scan of your leg using your smartphone.")
-with step2:
-    st.info("2. Design & Print")
-    st.write("Our engineers design a custom fit brace which is then 3D printed in Charlottesville, VA.")
-with step3:
-    st.info("3. Delivery")
-    st.write("Receive your custom brace and get back to the activities you love, pain-free.")
-st.markdown("</div>", unsafe_allow_html=True)
-
-# --- CONTACT FORM SECTION ---
-st.markdown("<br>", unsafe_allow_html=True)
-col_form, col_info = st.columns([2, 1])
-
-with col_form:
-    st.subheader("Get in Touch")
-    with st.form("contact_form"):
-        c_name, c_email = st.columns(2)
-        c_name.text_input("First Name")
-        c_email.text_input("Email Address")
-        st.selectbox("I am a...", ["Patient", "Physician/Provider", "Distributor"])
-        st.text_area("Message / Condition Description")
-        st.form_submit_button("SEND MESSAGE")
-
-with col_info:
-    st.subheader("Contact Info")
-    st.markdown("""
-    **Icarus Medical** Charlottesville, VA  
-    USA
-    
-    📧 support@icarusmedical.com  
-    📞 (555) 123-4567
-    """)
-
-# --- FOOTER ---
-st.markdown("""
-<div class="footer-section">
-    <p>ICARUS MEDICAL © 2024. All Rights Reserved.</p>
-    <p>Privacy Policy | Terms of Use | Returns</p>
-</div>
-""", unsafe_allow_html=True)
+# FOOTER
+footer_html = '''<div class="footer">
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4>Produto</h4>
+            <a href="#">Email Marketing</a>
+            <a href="#">Automação</a>
+            <a href="#">Landing Pages</a>
+            <a href="#">Formulários</a>
+        </div>
+        <div class="footer-col">
+            <h4>Recursos</h4>
+            <a href="#">Blog</a>
+            <a href="#">Webinars</a>
+            <a href="#">Templates</a>
+            <a href="#">Integrações</a>
+        </div>
+        <div class="footer-col">
+            <h4>Empresa</h4>
+            <a href="#">Sobre Nós</a>
+            <a href="#">Carreiras</a>
+            <a href="#">Imprensa</a>
+            <a href="#">Contato</a>
+        </div>
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="#">Privacidade</a>
+            <a href="#">Termos</a>
+            <a href="#">Cookies</a>
+            <a href="#">Suporte</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2025 GetResponse. Todos os direitos reservados.
+    </div>
+</div>'''
+st.markdown(footer_html, unsafe_allow_html=True)
