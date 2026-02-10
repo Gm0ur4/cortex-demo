@@ -2,238 +2,192 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Roeeby | Iluminação & Design de Interiores",
-    page_icon="💡",
+    page_title="Rogue & Rosy | Floral & Design",
+    page_icon="🌹",
     layout="wide"
 )
 
-# --- CSS DE ALTA FIDELIDADE (ESTILO ROEEBY) ---
+# --- CSS DE ALTA FIDELIDADE (ROGUE & ROSY STYLE) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Inter:wght@300;400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Inter:wght@300;400&display=swap');
 
-    /* Cores e Fundo */
+    /* Cores de Base */
+    :root {
+        --rogue-green: #1b2621;
+        --rosy-cream: #f9f5f0;
+        --rogue-accent: #c47d6a;
+    }
+
     .stApp {
-        background-color: #ffffff;
-        color: #1a1a1a;
-    }
-    .block-container { padding: 0 !important; max-width: 100% !important; }
-
-    /* Tipografia Editorial */
-    html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
+        background-color: var(--rosy-cream);
+        color: var(--rogue-green);
     }
 
-    h1, h2, .serif-roeeby {
-        font-family: 'Crimson Pro', serif;
-        font-weight: 300;
-        letter-spacing: -0.5px;
+    /* Tipografia Especial */
+    h1, h2, h3, .serif-heavy {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
     }
 
-    /* Navegação Superior */
-    .nav-roeeby {
+    .script-font {
+        font-family: 'Great Vibes', cursive;
+        text-transform: none;
+        font-size: 1.5em;
+        color: var(--rogue-accent);
+        letter-spacing: 0;
+    }
+
+    /* Navegação Minimalista */
+    .nav-rogue {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        padding: 20px 5%;
-        border-bottom: 1px solid #f2f2f2;
-        background: white;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-    .logo-roeeby {
-        font-family: 'Crimson Pro', serif;
-        font-size: 32px;
-        font-weight: 600;
-        letter-spacing: 2px;
-    }
-
-    /* Banner Promocional */
-    .promo-banner {
-        background-color: #1a1a1a;
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-
-    /* Grid de Produtos */
-    .product-grid {
-        padding: 60px 5%;
-    }
-
-    .product-item {
-        margin-bottom: 40px;
-        position: relative;
-    }
-
-    .product-img {
-        width: 100%;
-        height: auto;
-        display: block;
-        transition: opacity 0.3s ease;
-    }
-
-    .product-item:hover .product-img {
-        opacity: 0.85;
-    }
-
-    .label-new {
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        background: white;
-        color: black;
-        padding: 4px 12px;
-        font-size: 10px;
-        font-weight: 700;
-        text-transform: uppercase;
-        border: 1px solid #eee;
-    }
-
-    .product-info {
-        margin-top: 20px;
-        text-align: center;
-    }
-
-    .product-name {
-        font-size: 16px;
-        font-weight: 400;
-        margin-bottom: 5px;
-    }
-
-    .product-price {
-        font-weight: 600;
-        color: #555;
-    }
-
-    /* Botão Roeeby */
-    div.stButton > button {
-        background-color: white;
-        color: #1a1a1a;
-        border: 1px solid #1a1a1a;
-        border-radius: 0;
-        padding: 10px 30px;
+        padding: 40px 6%;
         font-size: 12px;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        width: 100%;
+        letter-spacing: 3px;
+    }
+
+    /* Hero Section */
+    .hero-rogue {
+        padding: 80px 6% 120px 6%;
+        text-align: center;
+    }
+    .hero-title {
+        font-size: clamp(40px, 8vw, 110px);
+        line-height: 0.9;
+        margin-bottom: 20px;
+    }
+
+    /* Galeria com Molduras */
+    .image-frame {
+        border: 1px solid var(--rogue-green);
+        padding: 15px;
+        background: white;
+        transition: transform 0.4s ease;
+    }
+    .image-frame:hover {
+        transform: rotate(-1deg) scale(1.02);
+    }
+
+    /* Seções de Texto Editorial */
+    .editorial-section {
+        padding: 100px 15%;
+        text-align: center;
+        background-color: var(--rogue-green);
+        color: var(--rosy-cream);
+    }
+
+    /* Botão Customizado */
+    div.stButton > button {
+        background-color: transparent;
+        color: var(--rogue-green);
+        border: 1px solid var(--rogue-green);
+        border-radius: 0;
+        padding: 15px 45px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
         transition: 0.3s;
     }
     div.stButton > button:hover {
-        background-color: #1a1a1a;
-        color: white;
+        background-color: var(--rogue-green);
+        color: var(--rosy-cream);
     }
 
     [data-testid="stHeader"] { display: none; }
 </style>
 """, unsafe_allow_html=True)
 
-# --- 1. BANNER E NAVEGAÇÃO ---
-st.markdown('<div class="promo-banner">Frete Grátis em Pedidos acima de R$ 500 — Compre Agora</div>', unsafe_allow_html=True)
+# --- 1. NAVEGAÇÃO ---
 st.markdown("""
-<div class="nav-roeeby">
-    <div style="display: flex; gap: 30px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">
-        <span>Iluminação</span>
-        <span>Móveis</span>
-        <span>Decoração</span>
-    </div>
-    <div class="logo-roeeby">ROEEBY</div>
-    <div style="display: flex; gap: 30px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">
-        <span>Busca</span>
-        <span>Carrinho (0)</span>
+<div class="nav-rogue">
+    <div>Rogue & Rosy — 2026</div>
+    <div style="display: flex; gap: 40px;">
+        <span>Flores</span>
+        <span>Estúdio</span>
+        <span>Journal</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 2. HERO SECTION ---
-st.markdown("""
-<div style="width: 100%; height: 70vh; background-image: url('https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=1600'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center;">
-    <div style="background: rgba(255,255,255,0.9); padding: 50px 80px; text-align: center; border: 1px solid #eee;">
-        <h2 class="serif-roeeby" style="font-size: 40px; margin-bottom: 10px;">Coleção de Inverno</h2>
-        <p style="font-size: 14px; letter-spacing: 2px; color: #666; text-transform: uppercase; margin-bottom: 25px;">Ilumine sua casa com sofisticação</p>
-        <div style="border-bottom: 2px solid #1a1a1a; display: inline-block; padding-bottom: 5px; font-weight: 600; font-size: 12px; letter-spacing: 1px;">VER COLEÇÃO</div>
-    </div>
+# --- 2. HERO ---
+st.markdown(f"""
+<div class="hero-rogue">
+    <span class="script-font">Bem-vindo à rebeldia</span>
+    <h1 class="hero-title">BELLEZA EM<br>DECOMPOSIÇÃO</h1>
+    <p style="max-width: 600px; margin: 30px auto; font-size: 16px; line-height: 1.8;">
+        Criamos arranjos florais e experiências visuais que celebram o ciclo completo da vida: 
+        do desabrochar selvagem à melancolia elegante da murchidão.
+    </p>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 3. GRID DE PRODUTOS ---
-st.markdown('<div class="product-grid">', unsafe_allow_html=True)
-st.markdown('<h2 class="serif-roeeby" style="font-size: 32px; text-align: center; margin-bottom: 50px;">Produtos em Destaque</h2>', unsafe_allow_html=True)
+# --- 3. SHOWCASE (LAYOUT EDITORIAL) ---
+c1, c2, c3 = st.columns([1, 1.2, 1])
 
-col1, col2, col3, col4 = st.columns(4)
-
-def render_roeeby_item(col, title, price, img_url, label=None):
-    with col:
-        label_html = f'<div class="label-new">{label}</div>' if label else ""
-        st.markdown(f"""
-        <div class="product-item">
-            {label_html}
-            <img src="{img_url}" class="product-img">
-            <div class="product-info">
-                <div class="product-name">{title}</div>
-                <div class="product-price">R$ {price}</div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        st.button(f"Comprar {title.split()[0]}", key=title)
-
-render_roeeby_item(col1, "Luminária de Mesa Aura", "890,00", "https://images.unsplash.com/photo-1534073828943-f801091bb18c?w=600", "New")
-render_roeeby_item(col2, "Pendente Minimalista Black", "1.250,00", "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600")
-render_roeeby_item(col3, "Lustre Nórdico Wood", "2.100,00", "https://images.unsplash.com/photo-1543198126-a8ad8e47fb21?w=600", "Sale")
-render_roeeby_item(col4, "Arandela Industrial Copper", "640,00", "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600")
-
-st.markdown('</div>', unsafe_allow_html=True)
-
-# --- 4. SEÇÃO INSTITUCIONAL ---
-st.markdown("""
-<div style="background-color: #f9f9f9; padding: 100px 5%; display: flex; align-items: center; gap: 80px;">
-    <div style="flex: 1;">
-        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=800" style="width: 100%;">
+with c1:
+    st.markdown('<div style="margin-top: 100px;">', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="image-frame">
+        <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=500" style="width:100%;">
+        <p style="margin-top:15px; font-size:10px; text-align:center; letter-spacing:2px;">O JARDIM SECRETO</p>
     </div>
-    <div style="flex: 1;">
-        <h2 class="serif-roeeby" style="font-size: 48px; margin-bottom: 30px;">Qualidade que brilha.</h2>
-        <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 30px;">
-            Cada peça na Roeeby é selecionada para oferecer não apenas luz, mas uma experiência estética única. 
-            Colaboramos com designers internacionais para trazer o que há de mais moderno em tecnologia LED 
-            e materiais sustentáveis.
-        </p>
-        <div style="border-bottom: 2px solid #1a1a1a; display: inline-block; padding-bottom: 5px; font-weight: 600; font-size: 12px; letter-spacing: 1px;">NOSSA HISTÓRIA</div>
+    """, unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+with c2:
+    st.markdown("""
+    <div class="image-frame">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600" style="width:100%;">
+        <p style="margin-top:15px; font-size:10px; text-align:center; letter-spacing:2px;">ALQUIMIA BOTÂNICA</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with c3:
+    st.markdown('<div style="margin-top: 50px;">', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="image-frame">
+        <img src="https://images.unsplash.com/photo-1550983058-ba68da98383a?w=500" style="width:100%;">
+        <p style="margin-top:15px; font-size:10px; text-align:center; letter-spacing:2px;">ROSAS SELVAGENS</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# --- 4. MANIFESTO (SEÇÃO ESCURA) ---
+st.write("")
+st.write("")
+st.markdown("""
+<div class="editorial-section">
+    <h2 style="font-size: 40px; margin-bottom: 30px;">Poesia na Imperfeição</h2>
+    <p style="font-size: 18px; line-height: 2; opacity: 0.9;">
+        Na Rogue & Rosy, não buscamos o arranjo perfeito de supermercado. 
+        Nós buscamos o galho torto, a pétala caída, o contraste entre a espinha e a seda. 
+        Nossa estética é um tributo às almas livres e aos corações românticos.
+    </p>
+    <div style="margin-top: 50px;">
+        <span class="script-font" style="font-size: 3em; color: white;">Assinado, Rogue</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
 # --- 5. FOOTER ---
 st.markdown("""
-<div style="padding: 80px 5% 40px 5%; border-top: 1px solid #eee;">
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;">
-        <div>
-            <h4 class="serif-roeeby" style="font-size: 24px; margin-bottom: 20px;">ROEEBY</h4>
-            <p style="font-size: 13px; color: #888; line-height: 1.6;">Design de iluminação para lares que respiram arte e conforto.</p>
-        </div>
-        <div>
-            <h5 style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Menu</h5>
-            <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Início</p>
-            <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Coleções</p>
-            <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Outlet</p>
-        </div>
-        <div>
-            <h5 style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Suporte</h5>
-            <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Envio</p>
-            <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Trocas</p>
-            <p style="font-size: 13px; color: #555; margin-bottom: 10px;">FAQ</p>
-        </div>
-        <div>
-            <h5 style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Novidades</h5>
-            <input type="text" placeholder="Seu e-mail" style="width: 100%; padding: 10px; border: 1px solid #eee; margin-bottom: 10px;">
-            <div style="background: black; color: white; text-align: center; padding: 10px; font-size: 12px; letter-spacing: 1px;">ASSINAR</div>
-        </div>
-    </div>
-    <div style="margin-top: 60px; padding-top: 20px; border-top: 1px solid #f2f2f2; text-align: center; font-size: 10px; color: #aaa; letter-spacing: 1px;">
-        © 2026 ROEEBY INTERIORS. TODOS OS DIREITOS RESERVADOS.
-    </div>
+<div style="padding: 100px 6% 40px 6%; text-align: center;">
+    <h3 style="margin-bottom: 40px;">Deseja algo extraordinário?</h3>
+</div>
+""", unsafe_allow_html=True)
+
+col_f, _ = st.columns([1, 1])
+with col_f:
+    st.button("ENCOMENDAR UM ARRANJO")
+
+st.markdown("""
+<div style="margin-top: 100px; padding-top: 40px; border-top: 1px solid rgba(27, 38, 33, 0.1); display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 2px;">
+    <div>© 2026 ROGUE & ROSY</div>
+    <div>INSTAGRAM / PINTEREST / CONTATO</div>
 </div>
 """, unsafe_allow_html=True)
