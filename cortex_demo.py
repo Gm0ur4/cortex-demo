@@ -20,31 +20,49 @@ custom_css = """
     }
     
     html, body, [data-testid="stAppViewContainer"] {
-        background: #ffffff;
+        background: linear-gradient(180deg, #f8f9ff 0%, #f0f4ff 50%, #f8f9ff 100%);
+        background-attachment: fixed;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         color: #1a1a1a;
         line-height: 1.6;
+    }
+    
+    html::before, body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 20% 50%, rgba(0, 102, 255, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(0, 102, 255, 0.05) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
     }
     
     [data-testid="stDecoration"] { display: none; }
     
     .main {
         padding: 0 !important;
-        background: #ffffff;
+        background: transparent;
+        position: relative;
+        z-index: 1;
     }
     
     /* NAVBAR */
     .navbar {
-        background: #ffffff;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
         padding: 16px 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid #f0f0f0;
+        border-bottom: 1px solid rgba(0, 102, 255, 0.1);
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 2px 10px rgba(0, 102, 255, 0.08);
     }
     
     .navbar-logo {
@@ -95,11 +113,13 @@ custom_css = """
     
     /* HERO SECTION */
     .hero-section {
-        background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 249, 255, 0.6) 100%);
+        backdrop-filter: blur(10px);
         padding: 120px 60px;
         text-align: center;
         position: relative;
         overflow: hidden;
+        border-bottom: 1px solid rgba(0, 102, 255, 0.1);
     }
     
     .hero-section::before {
@@ -253,7 +273,8 @@ custom_css = """
     /* FEATURES SECTION */
     .features-section {
         padding: 100px 60px;
-        background: #ffffff;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(248, 249, 255, 0.5) 100%);
+        backdrop-filter: blur(5px);
     }
     
     .section-header {
@@ -292,10 +313,11 @@ custom_css = """
     }
     
     .feature-card {
-        background: #ffffff;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
         padding: 40px;
         border-radius: 12px;
-        border: 1px solid #e0e0e0;
+        border: 1px solid rgba(0, 102, 255, 0.15);
         transition: all 0.4s ease;
         cursor: pointer;
     }
@@ -328,7 +350,8 @@ custom_css = """
     /* SERVICES SECTION */
     .services-section {
         padding: 100px 60px;
-        background: #f8f9ff;
+        background: linear-gradient(180deg, rgba(248, 249, 255, 0.8) 0%, rgba(240, 244, 255, 0.6) 100%);
+        backdrop-filter: blur(5px);
     }
     
     .services-grid {
@@ -340,10 +363,11 @@ custom_css = """
     }
     
     .service-card {
-        background: white;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
         padding: 50px 40px;
         border-radius: 12px;
-        border: 1px solid #e0e0e0;
+        border: 1px solid rgba(0, 102, 255, 0.15);
         text-align: center;
         transition: all 0.4s ease;
     }
@@ -377,15 +401,19 @@ custom_css = """
     /* TESTIMONIALS SECTION */
     .testimonials-section {
         padding: 100px 60px;
-        background: #ffffff;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(248, 249, 255, 0.5) 100%);
+        backdrop-filter: blur(5px);
     }
     
     .testimonial-card {
-        background: #f8f9ff;
+        background: rgba(248, 249, 255, 0.8);
+        backdrop-filter: blur(10px);
         padding: 40px;
         border-radius: 12px;
         border-left: 4px solid #0066FF;
         margin-bottom: 30px;
+        border: 1px solid rgba(0, 102, 255, 0.15);
+        border-left: 4px solid #0066FF;
     }
     
     .testimonial-text {
