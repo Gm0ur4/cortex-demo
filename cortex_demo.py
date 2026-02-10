@@ -2,237 +2,323 @@ import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Site Pro | Templates de Alta Conversão",
-    page_icon="🚀",
+    page_title="Site Pro Elite | Templates Fora de Série",
+    page_icon="💎",
     layout="wide"
 )
 
-# --- CSS MASTER (HÍBRIDO DE TODOS OS ESTILOS) ---
+# --- CSS RADICAL (PLUNDER + DOCKYARD + QUDRIX) ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Playfair+Display:ital,wght@0,900;1,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@400;700;900&family=Oswald:wght@700&display=swap');
 
     :root {
-        --primary: #0066ff; /* Azul Tech de Conversão */
-        --dark: #0a0a0a;
-        --light: #f8f9fa;
+        --accent: #7b2cbf; /* Roxo Profundo */
+        --gold: #d4af37;
+        --dark: #050505;
+        --glass: rgba(255, 255, 255, 0.03);
     }
 
-    .stApp { background-color: white; color: var(--dark); }
-    [data-testid="stHeader"] { display: none; }
-    .block-container { padding: 0 !important; }
-
-    /* Tipografia */
-    html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
-    h1, h2, .impact-text { font-family: 'Inter', sans-serif; font-weight: 800; letter-spacing: -0.04em; }
-
-    /* 1 & 2. HERO SECTION */
-    .hero-container {
-        padding: 120px 8% 80px 8%;
-        text-align: center;
-        background: radial-gradient(circle at top right, #f0f7ff 0%, white 50%);
+    .stApp {
+        background-color: var(--dark);
+        color: #ffffff;
     }
-    .hero-h1 { font-size: clamp(45px, 6vw, 85px); line-height: 1; margin-bottom: 30px; color: var(--dark); }
-    .hero-sub { font-size: clamp(18px, 2vw, 24px); color: #555; max-width: 800px; margin: 0 auto 40px auto; line-height: 1.5; }
-
-    /* 3 & 4. CARROSSEL DE TEMPLATES */
-    .template-card {
-        border-radius: 15px;
-        overflow: hidden;
-        border: 1px solid #eee;
-        transition: 0.4s;
-        margin-bottom: 20px;
-    }
-    .template-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--primary); }
     
-    /* 5. PROVA SOCIAL */
-    .client-avatar {
-        width: 60px; height: 60px; border-radius: 50%; border: 3px solid white; margin-left: -15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    [data-testid="stHeader"] { display: none; }
+    .block-container { padding: 0 !important; max-width: 100% !important; }
+
+    /* Tipografia de Impacto Brutalista */
+    h1, h2 {
+        font-family: 'Inter', sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -3px;
+        line-height: 0.85;
     }
 
-    /* 6. "É PARA VOCÊ QUE" */
-    .for-you-box {
-        background: var(--dark);
-        color: white;
-        padding: 80px 8%;
-        border-radius: 40px;
-        margin: 50px 5%;
+    .serif-heavy {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        text-transform: none;
+        letter-spacing: -1px;
     }
-    .check-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; font-size: 18px; }
 
-    /* 7. PASSO A PASSO (ROEEBY STYLE) */
-    .step-number { font-size: 60px; font-weight: 800; color: rgba(0,102,255,0.1); position: absolute; top: -20px; left: 0; z-index: -1; }
-    .step-container { position: relative; padding-top: 20px; }
-
-    /* 8. PREÇOS (QUDRIX STYLE) */
-    .price-card {
-        padding: 50px 30px; border-radius: 20px; border: 1px solid #eee; text-align: center; transition: 0.3s;
+    /* 1 & 2. HERO RADICAL */
+    .hero-section {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 8%;
+        background: radial-gradient(circle at 80% 20%, #240046 0%, #050505 50%);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    .price-card.featured { background: var(--dark); color: white; border: none; transform: scale(1.05); }
 
-    /* Botão Master */
+    .hero-h1 { font-size: clamp(60px, 15vw, 180px); margin-bottom: 40px; }
+    .hero-sub { 
+        font-size: 24px; 
+        max-width: 600px; 
+        line-height: 1.4; 
+        color: rgba(255,255,255,0.7);
+        border-left: 4px solid var(--accent);
+        padding-left: 20px;
+    }
+
+    /* 3 & 4. TEMPLATES SHOWCASE (ASSIMÉTRICO) */
+    .template-box {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.1);
+        background: var(--glass);
+        transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        cursor: crosshair;
+    }
+    .template-box:hover {
+        background: rgba(255,255,255,0.07);
+        border-color: var(--gold);
+        transform: translateY(-10px);
+    }
+    .template-label {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        font-family: 'Oswald', sans-serif;
+        font-size: 30px;
+    }
+
+    /* 5. CLIENTS (FLOATING AVATARS) */
+    .client-section {
+        padding: 100px 8%;
+        background: #0a0a0a;
+        display: flex;
+        align-items: center;
+        gap: 50px;
+    }
+
+    /* 6. É PARA VOCÊ QUE (CARDS NEO-BRUTALISTAS) */
+    .target-card {
+        padding: 50px;
+        background: white;
+        color: black;
+        border: 5px solid var(--accent);
+        box-shadow: 15px 15px 0px var(--accent);
+        height: 100%;
+    }
+
+    /* 7. PASSO A PASSO (VERTICAL & BOLD) */
+    .step-row {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 60px;
+        align-items: flex-start;
+    }
+    .step-num {
+        font-size: 100px;
+        font-weight: 900;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+        line-height: 0.7;
+    }
+
+    /* 8. PREÇOS (GLASSMORPHISM) */
+    .pricing-glass {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 60px 40px;
+        border-radius: 2px;
+        text-align: center;
+    }
+    .pricing-glass:hover {
+        border-color: var(--accent);
+    }
+
+    /* Botão de Alta Conversão */
     div.stButton > button {
-        background: var(--primary); color: white; border: none; padding: 20px 45px; border-radius: 10px; font-weight: 800; font-size: 18px; width: 100%; transition: 0.3s;
+        background: linear-gradient(90deg, #7b2cbf, #9d4edd);
+        color: white;
+        border: none;
+        padding: 25px 60px;
+        font-weight: 900;
+        font-size: 22px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-radius: 0;
+        clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        transition: 0.4s;
     }
-    div.stButton > button:hover { background: #0052cc; transform: scale(1.02); }
+    div.stButton > button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(123, 44, 191, 0.5);
+    }
 </style>
 """, unsafe_allow_html=True)
 
 # --- 1 & 2. HERO SECTION ---
-st.markdown(f"""
-<div class="hero-container">
-    <p style="color: var(--primary); font-weight: 700; letter-spacing: 2px; margin-bottom: 20px;">LANÇAMENTO 2026</p>
-    <h1 class="hero-h1">Tenha um site de elite.<br>Sem escrever uma linha de código.</h1>
-    <p class="hero-sub">Escolha entre templates validados por designers internacionais. Customize em minutos, economize milhares de reais e coloque seu negócio no mapa hoje.</p>
-</div>
-""", unsafe_allow_html=True)
-
-col_hero_btn, _ = st.columns([1, 2])
-with col_hero_btn:
-    st.button("QUERO MEU SITE AGORA →")
-
-# --- 3 & 4. CARROSSEL DE TEMPLATES ---
 st.markdown("""
-<div style="padding: 100px 8% 50px 8%;">
-    <h2 style="font-size: 42px;">Conheça nossos templates</h2>
-    <p style="color: #666;">Designs de alta performance para cada nicho de mercado.</p>
-</div>
+<div class="hero-section">
+    <h1 class="hero-h1">PLUNDLARS QUE<br><span class="serif-heavy" style="color:var(--gold)">Transformam.</span></h1>
+    <p class="hero-sub">Esqueça os sites comuns. Nós entregamos armas digitais de alta conversão. Escolha seu template, domine seu nicho e esqueça que programadores existem.</p>
+    <div style="margin-top: 50px; width: 300px;">
 """, unsafe_allow_html=True)
+st.button("ESCALE AGORA →")
+st.markdown("</div></div>", unsafe_allow_html=True)
 
-# Simulando o Carrossel com Colunas (Pode ser expansível)
-t_col1, t_col2, t_col3 = st.columns(3)
+# --- 3 & 4. SHOWCASE DE TEMPLATES (GRID ASSIMÉTRICO) ---
+st.markdown('<div style="padding: 120px 8%;">', unsafe_allow_html=True)
+st.markdown('<h2>ESCOLHA SUA <span class="serif-heavy">Arma.</span></h2><br><br>', unsafe_allow_html=True)
 
-def template_item(col, name, category, img_url):
-    with col:
-        st.markdown(f"""
-        <div class="template-card">
-            <img src="{img_url}" style="width:100%; height: 250px; object-fit: cover;">
-            <div style="padding: 20px;">
-                <p style="font-size: 12px; color: var(--primary); font-weight: 700;">{category}</p>
-                <h4 style="margin: 5px 0 15px 0;">{name}</h4>
-                <div style="font-size: 13px; font-weight: 600; border-bottom: 2px solid #eee; display: inline-block;">VER DEMONSTRAÇÃO</div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+col_t1, col_t2 = st.columns([2, 1])
 
-# INSIRA AS URLs DAS IMAGENS DOS SEUS TEMPLATES AQUI
-template_item(t_col1, "The Rogue Botanical", "EDITORIAL / FLORAL", "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=800")
-template_item(t_col2, "Qudrix Tech Suite", "SAAS / SOFTWARE", "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800")
-template_item(t_col3, "Roeeby Luxury", "E-COMMERCE / DESIGN", "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=800")
-
-# --- 5. CONFIE EM QUEM JÁ USA ---
-st.markdown("""
-<div style="padding: 80px 8%; text-align: center; background: #fafafa; border-radius: 50px; margin: 0 5%;">
-    <h3 style="margin-bottom: 30px;">Centenas de clientes já lançaram seus sites</h3>
-    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-        <img src="https://randomuser.me/api/portraits/women/1.jpg" class="client-avatar">
-        <img src="https://randomuser.me/api/portraits/men/2.jpg" class="client-avatar">
-        <img src="https://randomuser.me/api/portraits/women/3.jpg" class="client-avatar">
-        <img src="https://randomuser.me/api/portraits/men/4.jpg" class="client-avatar">
-        <img src="https://randomuser.me/api/portraits/women/5.jpg" class="client-avatar">
+with col_t1:
+    st.markdown("""
+    <div class="template-box" style="height: 600px;">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200" style="width:100%; height:100%; object-fit:cover; opacity: 0.6;">
+        <div class="template-label">01. THE ULTIMATE SAAS <br><span style="font-size: 14px; letter-spacing: 3px; color: var(--gold);">ESTILO QUDRIX</span></div>
     </div>
-    <p style="font-weight: 600; color: #555;">+1.200 projetos publicados com sucesso em todo o Brasil.</p>
+    """, unsafe_allow_html=True)
+
+with col_t2:
+    st.markdown("""
+    <div class="template-box" style="height: 285px; margin-bottom: 30px;">
+        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=600" style="width:100%; height:100%; object-fit:cover; opacity: 0.4;">
+        <div class="template-label" style="font-size: 20px;">02. LUXURY DECOR</div>
+    </div>
+    <div class="template-box" style="height: 285px;">
+        <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=600" style="width:100%; height:100%; object-fit:cover; opacity: 0.4;">
+        <div class="template-label" style="font-size: 20px;">03. MODERN VINTAGE</div>
+    </div>
+    """, unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- 5. PROVA SOCIAL (AVATARES FLOATING) ---
+st.markdown("""
+<div class="client-section">
+    <h2 style="font-size: 30px; letter-spacing: 0px;">CONFIE EM QUEM<br>JÁ DOMINA.</h2>
+    <div style="display: flex;">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" style="width:80px; height:80px; border-radius:50%; border: 2px solid var(--accent); margin-left: -20px;">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" style="width:80px; height:80px; border-radius:50%; border: 2px solid var(--accent); margin-left: -20px;">
+        <img src="https://randomuser.me/api/portraits/men/67.jpg" style="width:80px; height:80px; border-radius:50%; border: 2px solid var(--accent); margin-left: -20px;">
+        <img src="https://randomuser.me/api/portraits/women/12.jpg" style="width:80px; height:80px; border-radius:50%; border: 2px solid var(--accent); margin-left: -20px;">
+        <div style="width:80px; height:80px; border-radius:50%; background: var(--accent); margin-left: -20px; display:flex; align-items:center; justify-content:center; font-weight:900;">+500</div>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
 # --- 6. É PARA VOCÊ QUE ---
-st.markdown("""
-<div class="for-you-box">
-    <h2 style="font-size: 42px; margin-bottom: 50px;">Este é o seu próximo passo se você:</h2>
-    <div class="check-item">✅ Quer um site profissional em minutos pelo menor preço do mercado.</div>
-    <div class="check-item">✅ Deseja lucrar vendendo sites de alta qualidade para seus clientes.</div>
-    <div class="check-item">✅ Precisa aumentar a conversão do seu produto digital ou serviço imediatamente.</div>
-</div>
-""", unsafe_allow_html=True)
+st.markdown('<div style="padding: 120px 8%;">', unsafe_allow_html=True)
+col_u1, col_u2, col_u3 = st.columns(3)
 
-# --- 7. PASSO A PASSO ---
-st.markdown('<div style="padding: 100px 8%;">', unsafe_allow_html=True)
-st.markdown('<h2 style="font-size: 42px; margin-bottom: 80px; text-align: center;">Do zero ao site no ar em 4 passos</h2>', unsafe_allow_html=True)
+with col_u1:
+    st.markdown("""
+    <div class="target-card">
+        <h3>SELF MADE</h3>
+        <p>Você quer o melhor design do mundo no seu site, gastando 90% menos que uma agência comum.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
-s_col1, s_col2, s_col3, s_col4 = st.columns(4)
+with col_u2:
+    st.markdown("""
+    <div class="target-card" style="background: var(--accent); color: white; box-shadow: 15px 15px 0px white;">
+        <h3>VENDEDOR</h3>
+        <p>Trabalhe vendendo esses templates para terceiros por R$ 2.000, R$ 3.000 ou mais por projeto.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
-steps = [
-    ("Acesso Instantâneo", "Após a compra, todos os templates são liberados imediatamente."),
-    ("Escolha & Estilo", "Escolha o design que mais combina com seu negócio e copie o código."),
-    ("Configuração Express", "Te ensinamos a configurar sua URL própria em menos de 5 minutos."),
-    ("Pronto para Lucrar", "Seu site está vivo! Edite o que quiser quando quiser de forma simples.")
-]
-
-for i, (col, (title, desc)) in enumerate(zip([s_col1, s_col2, s_col3, s_col4], steps)):
-    with col:
-        st.markdown(f"""
-        <div class="step-container">
-            <div class="step-number">0{i+1}</div>
-            <h4 style="margin-bottom: 15px;">{title}</h4>
-            <p style="font-size: 14px; color: #666; line-height: 1.6;">{desc}</p>
-        </div>
-        """, unsafe_allow_html=True)
+with col_u3:
+    st.markdown("""
+    <div class="target-card">
+        <h3>INFOPRODUTOR</h3>
+        <p>Aumente drasticamente a conversão do seu checkout e página de vendas com layout de elite.</p>
+    </div>
+    """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- 8. PREÇOS ---
-st.markdown('<div style="padding: 100px 8%; background: #fdfdfd;">', unsafe_allow_html=True)
-p_col1, p_col2, p_col3 = st.columns(3, gap="large")
+# --- 7. PASSO A PASSO (INDUSTRIAL) ---
+st.markdown('<div style="padding: 100px 8%; background: #050505;">', unsafe_allow_html=True)
+st.markdown('<h2>PROCESSO <span class="serif-heavy">Sem Falhas.</span></h2><br><br>', unsafe_allow_html=True)
 
-with p_col1:
-    st.markdown("""
-    <div class="price-card">
-        <h3>Starter</h3>
-        <h2 style="font-size: 45px; margin: 20px 0;">R$ 97</h2>
-        <p style="color: #666; margin-bottom: 30px;">Ideal para iniciantes</p>
-        <p>✓ 1 Template à escolha</p>
-        <p>✓ Tutorial de Instalação</p>
-        <p>✓ Suporte via E-mail</p>
+steps = [
+    ("SAQUEIE O CÓDIGO", "Imediatamente após a compra, os templates são seus. Sem esperas."),
+    ("ESCOLHA SEU ESTILO", "Do minimalismo suíço ao brutalismo urbano. Escolha o que te representa."),
+    ("DOMINE O DOMÍNIO", "Configuramos sua URL personalizada em segundos. Nome próprio, marca própria."),
+    ("LANCE AO MUNDO", "Seu site no ar. Pronto para converter visitantes em clientes reais.")
+]
+
+for i, (title, desc) in enumerate(steps):
+    st.markdown(f"""
+    <div class="step-row">
+        <div class="step-num">0{i+1}</div>
+        <div>
+            <h3 style="color: var(--gold);">{title}</h3>
+            <p style="max-width: 400px; opacity: 0.6;">{desc}</p>
+        </div>
     </div>
     """, unsafe_allow_html=True)
-    st.button("Assinar Starter", key="p1")
+st.markdown('</div>', unsafe_allow_html=True)
 
-with p_col2:
+# --- 8. PREÇOS (ELITE) ---
+st.markdown('<div style="padding: 120px 8%; text-align:center;">', unsafe_allow_html=True)
+st.markdown('<h2>INVISTA NA SUA <span class="serif-heavy">Presença.</span></h2><br><br>', unsafe_allow_html=True)
+
+p1, p2, p3 = st.columns(3)
+
+with p2: # Featured
     st.markdown("""
-    <div class="price-card featured">
-        <p style="color: var(--primary); font-weight: 800; font-size: 12px; margin-bottom: 10px;">MAIS VENDIDO</p>
-        <h3>Pro Bundle</h3>
-        <h2 style="font-size: 45px; margin: 20px 0;">R$ 197</h2>
-        <p style="color: #aaa; margin-bottom: 30px;">Para quem quer escalar</p>
-        <p>✓ Todos os Templates</p>
-        <p>✓ Curso: Venda sites por R$ 2k</p>
-        <p>✓ Suporte VIP WhatsApp</p>
+    <div class="pricing-glass" style="border-top: 5px solid var(--accent);">
+        <p style="color: var(--gold); letter-spacing: 3px; font-weight: 900;">ELITE BUNDLE</p>
+        <h1 style="font-size: 80px; margin: 30px 0;">R$ 297</h1>
+        <p>✓ TODOS os Templates do Catálogo</p>
+        <p>✓ Aulas de Customização Pro</p>
+        <p>✓ Licença Comercial para Revenda</p>
+        <p>✓ Suporte Black via WhatsApp</p>
     </div>
     """, unsafe_allow_html=True)
-    st.button("QUERO O PRO BUNDLE", key="p2")
+    st.button("QUERO O ELITE BUNDLE", key="main_p")
 
-with p_col3:
+with p1:
     st.markdown("""
-    <div class="price-card">
-        <h3>Agency</h3>
-        <h2 style="font-size: 45px; margin: 20px 0;">R$ 497</h2>
-        <p style="color: #666; margin-bottom: 30px;">Domine o mercado</p>
+    <div class="pricing-glass">
+        <p>STARTER</p>
+        <h1 style="font-size: 60px; margin: 30px 0;">R$ 97</h1>
+        <p>✓ 1 Template Customizável</p>
+        <p>✓ Guia de Instalação</p>
+        <p>✓ Suporte E-mail</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.button("INICIAR", key="p1")
+
+with p3:
+    st.markdown("""
+    <div class="pricing-glass">
+        <p>LIFETIME PASS</p>
+        <h1 style="font-size: 60px; margin: 30px 0;">R$ 597</h1>
         <p>✓ Acesso Vitalício</p>
-        <p>✓ Templates Exclusivos Mensais</p>
-        <p>✓ Consultoria de Negócios</p>
+        <p>✓ Updates de Novos Designs</p>
+        <p>✓ Consultoria de Branding 1:1</p>
     </div>
     """, unsafe_allow_html=True)
-    st.button("Assinar Agency", key="p3")
+    st.button("SER VITALÍCIO", key="p3")
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- 9. FAQ ---
-st.markdown('<div style="padding: 100px 20%;">', unsafe_allow_html=True)
-st.markdown('<h2 style="text-align: center; margin-bottom: 50px;">Dúvidas Frequentes</h2>', unsafe_allow_html=True)
+st.markdown('<div style="padding: 100px 20%; background: #080808;">', unsafe_allow_html=True)
+st.markdown('<h2 style="text-align:center; font-size: 40px;">FAQ / <span class="serif-heavy">Respostas.</span></h2><br>', unsafe_allow_html=True)
 
-with st.expander("Preciso saber programar?"):
-    st.write("De jeito nenhum. Nosso método é baseado em copiar e colar o código no lugar certo. Nós te mostramos exatamente onde clicar.")
+faq = {
+    "Como recebo os códigos?": "Imediatamente no seu e-mail e na área de membros após a confirmação do pagamento.",
+    "Preciso de hospedagem paga?": "Não obrigatoriamente. Te ensinamos a usar opções gratuitas de alta performance para hospedar seus templates.",
+    "Posso vender os sites para clientes?": "Com os planos Pro e Lifetime, você tem licença comercial completa para lucrar com nossos designs."
+}
 
-with st.expander("O site é meu para sempre?"):
-    st.write("Sim! Uma vez adquirido o template e configurado no seu repositório, o site é de sua total propriedade.")
-
-with st.expander("Consigo colocar meu próprio domínio (.com.br)?"):
-    st.write("Com certeza. Te ensinamos a configurar seu domínio personalizado em poucos segundos.")
+for q, a in faq.items():
+    with st.expander(q):
+        st.markdown(f"<p style='color: #ccc;'>{a}</p>", unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- FOOTER ---
 st.markdown("""
-<div style="padding: 80px 8% 40px 8%; background: var(--dark); color: white; text-align: center;">
-    <h2 style="margin-bottom: 20px;">SITE PRO</h2>
-    <p style="opacity: 0.5; font-size: 13px;">A revolução do desenvolvimento sem código.</p>
-    <p style="margin-top: 40px; opacity: 0.3; font-size: 11px;">© 2026 Todos os direitos reservados.</p>
+<div style="padding: 60px 8%; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 10px; opacity: 0.4; letter-spacing: 5px;">
+    SITE PRO ELITE // DOMINANDO A WEB EM 2026
 </div>
 """, unsafe_allow_html=True)
