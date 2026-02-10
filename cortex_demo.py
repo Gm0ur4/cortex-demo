@@ -229,7 +229,7 @@ with col_u3:
     st.markdown("""
     <div class="target-card">
         <h3>Freelancer</h3>
-        <p>Venda nossos sites para seus clientes sem precisar programar do zero e fature com isso.</p>
+        <p>Venda nossos sites para seus clientes sem precisar programar do zero e fature com isso, aumentando sua margem de lucro entregando em tempo recorde.</p>
     </div>
     """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
