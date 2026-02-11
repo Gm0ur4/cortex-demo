@@ -86,7 +86,7 @@ st.markdown("""
         font-size: 30px;
     }
 
-    /* CARROSSEL HORIZONTAL */
+    /* CARROSSEL HORIZONTAL - APENAS IMAGENS GRANDES */
     .carousel-section {
         padding: 120px 8%;
         background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
@@ -105,7 +105,7 @@ st.markdown("""
 
     .carousel-container {
         display: flex;
-        gap: 30px;
+        gap: 40px;
         overflow-x: auto;
         padding: 20px 0;
         scroll-behavior: smooth;
@@ -126,81 +126,29 @@ st.markdown("""
         border-radius: 4px;
     }
 
-    .carousel-item {
-        flex: 0 0 calc(33.333% - 20px);
-        min-width: 380px;
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+    .carousel-item-image-only {
+        flex: 0 0 calc(33.333% - 27px);
+        min-width: 500px;
+        height: 600px;
         border-radius: 8px;
         overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
         transition: all 0.4s ease;
+        cursor: pointer;
     }
 
-    .carousel-item:hover {
-        background: rgba(255, 255, 255, 0.05);
+    .carousel-item-image-only:hover {
         border-color: var(--gold);
-        transform: translateY(-10px);
-        box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
+        transform: translateY(-15px);
+        box-shadow: 0 30px 80px rgba(212, 175, 55, 0.3);
     }
 
-    .carousel-item-image {
+    .carousel-item-image-only img {
         width: 100%;
-        height: 280px;
+        height: 100%;
         object-fit: cover;
         display: block;
-    }
-
-    .carousel-item-content {
-        padding: 30px;
-    }
-
-    .carousel-item-number {
-        font-size: 12px;
-        font-weight: 900;
-        color: var(--gold);
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-bottom: 12px;
-        font-family: 'Oswald', sans-serif;
-    }
-
-    .carousel-item-title {
-        font-size: 28px;
-        font-family: 'Inter', sans-serif;
-        color: #ffffff;
-        margin-bottom: 15px;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: -1px;
-    }
-
-    .carousel-item-description {
-        font-size: 14px;
-        color: rgba(255, 255, 255, 0.6);
-        line-height: 1.6;
-        margin-bottom: 20px;
-    }
-
-    .carousel-item-features {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        margin-bottom: 20px;
-    }
-
-    .carousel-item-feature {
-        font-size: 13px;
-        color: rgba(255, 255, 255, 0.5);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .carousel-item-feature::before {
-        content: "✓";
-        color: var(--gold);
-        font-weight: 900;
-        font-size: 16px;
+        border-radius: 8px;
     }
 
     /* 5. CLIENTS (FLOATING AVATARS) */
@@ -308,54 +256,19 @@ with col_t2:
     """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- NOVO: CARROSSEL HORIZONTAL ---
+# --- NOVO: CARROSSEL HORIZONTAL - APENAS IMAGENS GRANDES ---
 st.markdown("""
 <div class="carousel-section">
     <h2 class="carousel-title">Veja Nossos Templates em Ação</h2>
     <div class="carousel-container">
-        <!-- Template 1 -->
-        <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500" class="carousel-item-image" alt="Template 1">
-            <div class="carousel-item-content">
-                <div class="carousel-item-number">Template 01</div>
-                <h3 class="carousel-item-title">The Ultimate SaaS</h3>
-                <p class="carousel-item-description">Design moderno com foco em conversão e experiência do usuário de alto nível.</p>
-                <div class="carousel-item-features">
-                    <div class="carousel-item-feature">Seções otimizadas para conversão</div>
-                    <div class="carousel-item-feature">Responsivo em todos os dispositivos</div>
-                    <div class="carousel-item-feature">Integração com ferramentas de CRM</div>
-                </div>
-            </div>
+        <div class="carousel-item-image-only">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800" alt="Template 1">
         </div>
-
-        <!-- Template 2 -->
-        <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=500" class="carousel-item-image" alt="Template 2">
-            <div class="carousel-item-content">
-                <div class="carousel-item-number">Template 02</div>
-                <h3 class="carousel-item-title">Luxury Decor</h3>
-                <p class="carousel-item-description">Design premium para marcas de luxo e decoração com exclusividade.</p>
-                <div class="carousel-item-features">
-                    <div class="carousel-item-feature">Galeria de produtos em alta resolução</div>
-                    <div class="carousel-item-feature">Efeitos visuais premium</div>
-                    <div class="carousel-item-feature">Carrinho de compras integrado</div>
-                </div>
-            </div>
+        <div class="carousel-item-image-only">
+            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=800" alt="Template 2">
         </div>
-
-        <!-- Template 3 -->
-        <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=500" class="carousel-item-image" alt="Template 3">
-            <div class="carousel-item-content">
-                <div class="carousel-item-number">Template 03</div>
-                <h3 class="carousel-item-title">Modern Vintage</h3>
-                <p class="carousel-item-description">Fusão entre o clássico e o contemporâneo com abordagem inovadora.</p>
-                <div class="carousel-item-features">
-                    <div class="carousel-item-feature">Timeline de histórias e marcos</div>
-                    <div class="carousel-item-feature">Blog integrado com SEO otimizado</div>
-                    <div class="carousel-item-feature">Integração com redes sociais</div>
-                </div>
-            </div>
+        <div class="carousel-item-image-only">
+            <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=800" alt="Template 3">
         </div>
     </div>
 </div>
