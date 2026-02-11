@@ -86,166 +86,6 @@ st.markdown("""
         font-size: 30px;
     }
 
-    /* NOVO: SHOWCASE SIMÉTRICO */
-    .templates-section-symmetric {
-        padding: 120px 8%;
-        background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
-    }
-
-    .templates-title-symmetric {
-        text-align: center;
-        font-size: 48px;
-        font-family: 'Inter', sans-serif;
-        color: #ffffff;
-        margin-bottom: 80px;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: -2px;
-    }
-
-    .templates-container-symmetric {
-        display: flex;
-        flex-direction: column;
-        gap: 120px;
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-
-    .template-row-symmetric {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 80px;
-        align-items: center;
-        animation: fadeInUp 0.8s ease-out;
-    }
-
-    .template-row-symmetric:nth-child(even) {
-        direction: rtl;
-    }
-    .template-row-symmetric:nth-child(even) > * {
-        direction: ltr;
-    }
-
-    .template-image-symmetric {
-        width: 100%;
-        border-radius: 8px;
-        box-shadow: 0 30px 80px rgba(123, 44, 191, 0.3);
-        transition: transform 0.5s ease, box-shadow 0.5s ease;
-        overflow: hidden;
-        border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .template-image-symmetric:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 40px 100px rgba(212, 175, 55, 0.4);
-    }
-
-    .template-image-symmetric img {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 8px;
-    }
-
-    .template-content-symmetric {
-        padding: 20px;
-    }
-
-    .template-number-symmetric {
-        font-size: 14px;
-        font-weight: 900;
-        color: var(--gold);
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-bottom: 15px;
-        font-family: 'Oswald', sans-serif;
-    }
-
-    .template-name-symmetric {
-        font-size: 42px;
-        font-family: 'Inter', sans-serif;
-        color: #ffffff;
-        margin-bottom: 20px;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: -2px;
-    }
-
-    .template-description-symmetric {
-        font-size: 18px;
-        color: rgba(255,255,255,0.7);
-        line-height: 1.8;
-        margin-bottom: 30px;
-    }
-
-    .template-features-symmetric {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin-bottom: 30px;
-    }
-
-    .template-feature-symmetric {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 16px;
-        color: rgba(255,255,255,0.6);
-    }
-
-    .template-feature-symmetric::before {
-        content: "✓";
-        color: var(--gold);
-        font-weight: 900;
-        font-size: 20px;
-    }
-
-    .template-btn-symmetric {
-        display: inline-block;
-        background: linear-gradient(90deg, #7b2cbf, #9d4edd);
-        color: white;
-        padding: 18px 50px;
-        border-radius: 0;
-        text-decoration: none;
-        font-weight: 900;
-        transition: 0.3s;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
-    }
-
-    .template-btn-symmetric:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 30px rgba(123, 44, 191, 0.6);
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(40px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @media (max-width: 1024px) {
-        .template-row-symmetric {
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
-        .template-row-symmetric:nth-child(even) {
-            direction: ltr;
-        }
-        .template-name-symmetric {
-            font-size: 32px;
-        }
-    }
-
     /* 5. CLIENTS (FLOATING AVATARS) */
     .client-section {
         padding: 100px 8%;
@@ -351,68 +191,74 @@ with col_t2:
     """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --- NOVO: SHOWCASE SIMÉTRICO COM SCROLL ---
-st.markdown("""
-<div class="templates-section-symmetric">
-    <h2 class="templates-title-symmetric">Veja Nossos Templates em Ação</h2>
+# --- NOVO: SHOWCASE SIMÉTRICO COM SCROLL (USANDO STREAMLIT COMPONENTS) ---
+st.markdown('<div style="padding: 120px 8%; background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);"><h2 style="text-align: center; font-size: 48px; font-family: \'Inter\', sans-serif; color: #ffffff; margin-bottom: 80px; font-weight: 900; text-transform: uppercase; letter-spacing: -2px;">Veja Nossos Templates em Ação</h2>', unsafe_allow_html=True)
+
+# Template 1
+col1_img, col1_text = st.columns([1.2, 1], gap="large")
+
+with col1_img:
+    st.image("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800", use_container_width=True)
+
+with col1_text:
+    st.markdown('<p style="color: #d4af37; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; font-size: 14px;">Template 01</p>', unsafe_allow_html=True)
+    st.markdown('<h3 style="font-size: 42px; font-family: \'Inter\', sans-serif; color: #ffffff; margin: 15px 0; font-weight: 900; text-transform: uppercase; letter-spacing: -2px;">The Ultimate SaaS</h3>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size: 18px; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 30px;">Uma visualização elegante e poderosa para apresentar sua solução SaaS. Design moderno com foco em conversão e experiência do usuário de alto nível.</p>', unsafe_allow_html=True)
     
-    <div class="templates-container-symmetric">
-        <!-- Template 1 -->
-        <div class="template-row-symmetric">
-            <div>
-                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800" class="template-image-symmetric" alt="Template 1">
-            </div>
-            <div class="template-content-symmetric">
-                <div class="template-number-symmetric">Template 01</div>
-                <h3 class="template-name-symmetric">The Ultimate SaaS</h3>
-                <p class="template-description-symmetric">Uma visualização elegante e poderosa para apresentar sua solução SaaS. Design moderno com foco em conversão e experiência do usuário de alto nível.</p>
-                <div class="template-features-symmetric">
-                    <div class="template-feature-symmetric">Seções otimizadas para conversão</div>
-                    <div class="template-feature-symmetric">Responsivo em todos os dispositivos</div>
-                    <div class="template-feature-symmetric">Integração com ferramentas de CRM</div>
-                    <div class="template-feature-symmetric">Análise de performance incluída</div>
-                </div>
-            </div>
-        </div>
+    st.markdown('<div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px;">', unsafe_allow_html=True)
+    st.markdown('<p style="color: rgba(255,255,255,0.6); font-size: 16px;"><span style="color: #d4af37; font-weight: 900; font-size: 20px;">✓</span> Seções otimizadas para conversão</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color: rgba(255,255,255,0.6); font-size: 16px;"><span style="color: #d4af37; font-weight: 900; font-size: 20px;">✓</span> Responsivo em todos os dispositivos</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color: rgba(255,255,255,0.6); font-size: 16px;"><span style="color: #d4af37; font-weight: 900; font-size: 20px;">✓</span> Integração com ferramentas de CRM</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color: rgba(255,255,255,0.6); font-size: 16px;"><span style="color: #d4af37; font-weight: 900; font-size: 20px;">✓</span> Análise de performance incluída</p>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    st.button("Explorar Template", key="btn_template_1", use_container_width=False)
 
-        <!-- Template 2 -->
-        <div class="template-row-symmetric">
-            <div>
-                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=800" class="template-image-symmetric" alt="Template 2">
-            </div>
-            <div class="template-content-symmetric">
-                <div class="template-number-symmetric">Template 02</div>
-                <h3 class="template-name-symmetric">Luxury Decor</h3>
-                <p class="template-description-symmetric">Design premium para marcas de luxo e decoração. Elegância, sofisticação e um toque de exclusividade em cada detalhe visual.</p>
-                <div class="template-features-symmetric">
-                    <div class="template-feature-symmetric">Galeria de produtos em alta resolução</div>
-                    <div class="template-feature-symmetric">Efeitos visuais premium</div>
-                    <div class="template-feature-symmetric">Carrinho de compras integrado</div>
-                    <div class="template-feature-symmetric">Sistema de avaliações e reviews</div>
-                </div>
-            </div>
-        </div>
+st.markdown('<div style="margin: 80px 0;"></div>', unsafe_allow_html=True)
 
-        <!-- Template 3 -->
-        <div class="template-row-symmetric">
-            <div>
-                <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=800" class="template-image-symmetric" alt="Template 3">
-            </div>
-            <div class="template-content-symmetric">
-                <div class="template-number-symmetric">Template 03</div>
-                <h3 class="template-name-symmetric">Modern Vintage</h3>
-                <p class="template-description-symmetric">Fusão perfeita entre o clássico e o contemporâneo. Ideal para negócios que buscam transmitir tradição com uma abordagem moderna e inovadora.</p>
-                <div class="template-features-symmetric">
-                    <div class="template-feature-symmetric">Timeline de histórias e marcos</div>
-                    <div class="template-feature-symmetric">Blog integrado com SEO otimizado</div>
-                    <div class="template-feature-symmetric">Formulários de contato avançados</div>
-                    <div class="template-feature-symmetric">Integração com redes sociais</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+# Template 2
+col2_text, col2_img = st.columns([1, 1.2], gap="large")
+
+with col2_text:
+    st.markdown('<p style="color: #d4af37; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; font-size: 14px;">Template 02</p>', unsafe_allow_html=True)
+    st.markdown('<h3 style="font-size: 42px; font-family: \'Inter\', sans-serif; color: #ffffff; margin: 15px 0; font-weight: 900; text-transform: uppercase; letter-spacing: -2px;">Luxury Decor</h3>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size: 18px; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 30px;">Design premium para marcas de luxo e decoração. Elegância, sofisticação e um toque de exclusividade em cada detalhe visual.</p>', unsafe_allow_html=True)
+    
+    st.markdown('<div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px;">', unsafe_allow_html=True)
+    st.markdown('<p style="color: rgba(255,255,255,0.6); font-size: 16px;"><span style="color: #d4af37; font-weight: 900; font-size: 20px;">✓</span> Galeria de produtos em alta resolução</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color: rgba(255,255,255,0.6); font-size: 16px;"><span style="color: #d4af37; font-weight: 900; font-size: 20px;">✓</span> Efeitos visuais premium</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color: rgba(255,255,255,0.6); font-size: 16px;"><span style="color: #d4af37; font-weight: 900; font-size: 20px;">✓</span> Carrinho de compras integrado</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color: rgba(255,255,255,0.6); font-size: 16px;"><span style="color: #d4af37; font-weight: 900; font-size: 20px;">✓</span> Sistema de avaliações e reviews</p>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    st.button("Explorar Template", key="btn_template_2", use_container_width=False)
+
+with col2_img:
+    st.image("https://images.unsplash.com/photo-1558655146-d09347e92766?w=800", use_container_width=True)
+
+st.markdown('<div style="margin: 80px 0;"></div>', unsafe_allow_html=True)
+
+# Template 3
+col3_img, col3_text = st.columns([1.2, 1], gap="large")
+
+with col3_img:
+    st.image("https://images.unsplash.com/photo-1549490349-8643362247b5?w=800", use_container_width=True)
+
+with col3_text:
+    st.markdown('<p style="color: #d4af37; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; font-size: 14px;">Template 03</p>', unsafe_allow_html=True)
+    st.markdown('<h3 style="font-size: 42px; font-family: \'Inter\', sans-serif; color: #ffffff; margin: 15px 0; font-weight: 900; text-transform: uppercase; letter-spacing: -2px;">Modern Vintage</h3>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size: 18px; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 30px;">Fusão perfeita entre o clássico e o contemporâneo. Ideal para negócios que buscam transmitir tradição com uma abordagem moderna e inovadora.</p>', unsafe_allow_html=True)
+    
+    st.markdown('<div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px;">', unsafe_allow_html=True)
+    st.markdown('<p style="color: rgba(255,255,255,0.6); font-size: 16px;"><span style="color: #d4af37; font-weight: 900; font-size: 20px;">✓</span> Timeline de histórias e marcos</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color: rgba(255,255,255,0.6); font-size: 16px;"><span style="color: #d4af37; font-weight: 900; font-size: 20px;">✓</span> Blog integrado com SEO otimizado</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color: rgba(255,255,255,0.6); font-size: 16px;"><span style="color: #d4af37; font-weight: 900; font-size: 20px;">✓</span> Formulários de contato avançados</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color: rgba(255,255,255,0.6); font-size: 16px;"><span style="color: #d4af37; font-weight: 900; font-size: 20px;">✓</span> Integração com redes sociais</p>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    st.button("Explorar Template", key="btn_template_3", use_container_width=False)
+
+st.markdown('</div>', unsafe_allow_html=True)
 
 # --- 5. PROVA SOCIAL (AVATARES FLOATING) ---
 st.markdown("""
