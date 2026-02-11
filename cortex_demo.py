@@ -239,7 +239,7 @@ st.markdown("""
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/gif1.gif" alt="Template 1">
         </div>
         <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/gif2.gif" alt="Template 2">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/gif3.gif" alt="Template 2">
         </div>
         <div class="carousel-item-image-only">
             <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=800" alt="Template 3">
