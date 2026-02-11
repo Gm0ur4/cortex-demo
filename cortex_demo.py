@@ -226,12 +226,13 @@ st.markdown("""
     <p class="hero-sub">A solução ideal para quem precisa de um site rápido, profissional e editável sem depender de agências ou programadores.</p>
     <div style="margin-top: 50px; width: 300px;">
 """, unsafe_allow_html=True)
-st.button("CONHEÇA NOSSOS TEMPLATES ↓")
-st.markdown("</div></div>", unsafe_allow_html=True)
+st.markdown("""
+<a href="#templates" style="display: inline-block; background: linear-gradient(90deg, #7b2cbf, #9d4edd); color: white; border: none; padding: 25px 60px; font-weight: 900; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; border-radius: 0; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); text-decoration: none; transition: 0.4s; cursor: pointer;">CONHEÇA NOSSOS TEMPLATES ↓</a>
+""", unsafe_allow_html=True)
 
 # --- 3 & 4. SHOWCASE DE TEMPLATES (GRID ASSIMÉTRICO) ---
-st.markdown('<div style="padding: 120px 8%;">', unsafe_allow_html=True)
-st.markdown('<h2>ENCONTRE O DESIGN QUE MELHOR DEFINE <span class="serif-heavy">seu negócio.</span></h2><br><br>', unsafe_allow_html=True)
+st.markdown('<div id="templates" style="padding: 120px 8%;">', unsafe_allow_html=True)
+st.markdown('<h2>ESCOLHA O TEMPLATE QUE MELHOR DEFINE <span class="serif-heavy">seu negócio:</span></h2><br><br>', unsafe_allow_html=True)
 st.markdown("""
 <div class="carousel-section">
     <div class="carousel-container">
