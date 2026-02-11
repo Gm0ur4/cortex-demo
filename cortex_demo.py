@@ -298,7 +298,7 @@ with p3:
     st.markdown("""
     <div class="pricing-glass">
         <p>BUSINESS</p>
-        <h1 style="font-size: 60px; margin: 30px 0;">R$ 118</h1>
+        <h1 style="font-size: 60px; margin: 30px 0;">R$ 117</h1>
         <p>✓ Acesso vitalício aos templates atuais</p>
         <p>✓ Pagamento mensal</p>
         <p>✓ Licença comercial para revenda ilimitada</p>
