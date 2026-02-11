@@ -267,7 +267,7 @@ with p2: # Featured
     st.markdown("""
     <div class="pricing-glass" style="border-top: 5px solid var(--accent);">
         <p style="color: var(--gold); letter-spacing: 3px; font-weight: 900;">PROFESSIONAL</p>
-        <h1 style="font-size: 80px; margin: 30px 0;">R$ 167</h1>
+        <h1 style="font-size: 80px; margin: 30px 0;">R$ 197</h1>
         <p>✓ Acesso vitalício aos templates atuais</p>
         <p>✓ 02 consultorias mensais para customização</p>
         <p>✓ Pagamento mensal</p>
