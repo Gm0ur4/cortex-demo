@@ -318,11 +318,11 @@ st.markdown('<h2 style="text-align:center; font-size: 40px;">FAQ / <span class="
 
 faq = {
     "Preciso saber programação para usar os templates?": "Não é preciso. O código é entregue pronto e você segue o nosso guia detalhado para personalizar os textos, cores, imagens e o que precisar.",
-    "É seguro realizar a compra?": "Sim. Toda a compra é processada pela Eduzz, uma das plataformas de pagamentos e educação mais seguras e reconhecidas do Brasil. Nenhum dado sensível passa por nós, tudo ocorre diretamente no ambiente da Eduzz, com criptografia, certificados de segurança e antifraude.",
-    "Existe algum tipo de suporte?": "Com os planos Pro e Lifetime, você tem licença comercial completa para lucrar com nossos designs.",
-    "Como recebo os códigos?": "Imediatamente no seu e-mail e na área de membros após a confirmação do pagamento.",
-    "Preciso de hospedagem paga?": "Não obrigatoriamente. Te ensinamos a usar opções gratuitas de alta performance para hospedar seus templates.",
-    "Posso vender os sites para clientes?": "Com os planos Pro e Lifetime, você tem licença comercial completa para lucrar com nossos designs."
+    "É seguro realizar a compra?": "Sim! Toda a compra é processada pela Eduzz, uma das plataformas de pagamentos e educação mais seguras e reconhecidas do Brasil. Nenhum dado sensível passa por nós, tudo ocorre diretamente no ambiente da Eduzz, com criptografia, certificados de segurança e antifraude.",
+    "Existe algum tipo de suporte?": "Com certeza. Todos os planos incluem suporte humano ágil via e-mail e com o plano professional você tem direito a 2 consultorias mensais para customização.",
+    "Por onde acesso os templates?": "O acesso é 100% digital e imediato. Após a confirmação do pagamento, você receberá um e-mail da Eduzz com seus dados de acesso à área de membros. Lá, você encontrará os arquivos de todos os templates, além dos guias de setup e explicações organizados por módulos.",
+    "A hospedagem é mesmo gratuita?": "Sim. Nosso método utiliza infraestruturas globais de alta performance que permitem manter sites profissionais online sem mensalidades de hospedagem. No passo a passo, ensinamos como configurar essa estrutura gratuita de forma segura, garantindo que você tenha um site rápido e estável sem custos fixos recorrentes.",
+    "Posso vender os sites para clientes?": "Com o plano Business, você tem licença comercial completa para lucrar com nossos designs."
 }
 
 for q, a in faq.items():
