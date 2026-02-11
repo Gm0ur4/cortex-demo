@@ -270,6 +270,14 @@ st.markdown("""
         <div class="carousel-item-image-only">
             <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=800" alt="Template 3">
         </div>
+                <div class="carousel-item-image-only">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800" alt="Template 4">
+        </div>
+        <div class="carousel-item-image-only">
+            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=800" alt="Template 5">
+        </div>
+        <div class="carousel-item-image-only">
+            <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=800" alt="Template 6">
     </div>
 </div>
 """, unsafe_allow_html=True)
