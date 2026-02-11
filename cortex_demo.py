@@ -266,7 +266,7 @@ p1, p2, p3 = st.columns(3)
 with p2: # Featured
     st.markdown("""
     <div class="pricing-glass" style="border-top: 5px solid var(--accent);">
-        <p style="color: var(--gold); letter-spacing: 3px; font-weight: 900;">ELITE BUNDLE</p>
+        <p style="color: var(--gold); letter-spacing: 3px; font-weight: 900;">PROFESSIONAL</p>
         <h1 style="font-size: 80px; margin: 30px 0;">R$ 297</h1>
         <p>✓ TODOS os Templates do Catálogo</p>
         <p>✓ Aulas de Customização Pro</p>
