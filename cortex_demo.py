@@ -233,30 +233,6 @@ st.markdown("</div></div>", unsafe_allow_html=True)
 st.markdown('<div style="padding: 120px 8%;">', unsafe_allow_html=True)
 st.markdown('<h2>ENCONTRE O DESIGN QUE MELHOR DEFINE <span class="serif-heavy">seu negócio.</span></h2><br><br>', unsafe_allow_html=True)
 
-col_t1, col_t2 = st.columns([2, 1])
-
-with col_t1:
-    st.markdown("""
-    <div class="template-box" style="height: 600px;">
-        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200" style="width:100%; height:100%; object-fit:cover; opacity: 0.6;">
-        <div class="template-label">01. THE ULTIMATE SAAS <br><span style="font-size: 14px; letter-spacing: 3px; color: var(--gold);">ESTILO QUDRIX</span></div>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col_t2:
-    st.markdown("""
-    <div class="template-box" style="height: 285px; margin-bottom: 30px;">
-        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=600" style="width:100%; height:100%; object-fit:cover; opacity: 0.4;">
-        <div class="template-label" style="font-size: 20px;">02. LUXURY DECOR</div>
-    </div>
-    <div class="template-box" style="height: 285px;">
-        <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=600" style="width:100%; height:100%; object-fit:cover; opacity: 0.4;">
-        <div class="template-label" style="font-size: 20px;">03. MODERN VINTAGE</div>
-    </div>
-    """, unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
-
-# --- NOVO: CARROSSEL HORIZONTAL - APENAS IMAGENS GRANDES ---
 st.markdown("""
 <div class="carousel-section">
     <h2 class="carousel-title">Veja Nossos Templates em Ação</h2>
