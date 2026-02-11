@@ -280,10 +280,13 @@ with p1:
     st.markdown("""
     <div class="pricing-glass">
         <p>STARTER</p>
-        <h1 style="font-size: 60px; margin: 30px 0;">R$ 97</h1>
-        <p>✓ 1 Template Customizável</p>
-        <p>✓ Guia de Instalação</p>
-        <p>✓ Suporte E-mail</p>
+        <h1 style="font-size: 60px; margin: 30px 0;">R$ 67</h1>
+        <p>✓ Acesso vitalício aos templates atuais</p>
+        <p>✓ Pagamento único</p>
+        <p>✓ Manual completo de customização e setup</p>
+        <p>✓ Suporte técnico ágil via e-mail</p>
+        <p>✓ Acesso imediato</p>
+        <p>✓ Atualizações de novos templates inclusas</p>
     </div>
     """, unsafe_allow_html=True)
     st.button("INICIAR", key="p1")
@@ -306,6 +309,9 @@ st.markdown('<div style="padding: 100px 20%; background: #080808;">', unsafe_all
 st.markdown('<h2 style="text-align:center; font-size: 40px;">FAQ / <span class="serif-heavy">Respostas.</span></h2><br>', unsafe_allow_html=True)
 
 faq = {
+    "Preciso saber programação para usar os templates?": "Não é preciso. O código é entregue pronto e você segue o nosso guia detalhado para personalizar os textos, cores, imagens e o que precisar.",
+    "É seguro realizar a compra?": "Sim. Toda a compra é processada pela Eduzz, uma das plataformas de pagamentos e educação mais seguras e reconhecidas do Brasil. Nenhum dado sensível passa por nós, tudo ocorre diretamente no ambiente da Eduzz, com criptografia, certificados de segurança e antifraude.",
+    "Existe algum tipo de suporte?": "Com os planos Pro e Lifetime, você tem licença comercial completa para lucrar com nossos designs.",
     "Como recebo os códigos?": "Imediatamente no seu e-mail e na área de membros após a confirmação do pagamento.",
     "Preciso de hospedagem paga?": "Não obrigatoriamente. Te ensinamos a usar opções gratuitas de alta performance para hospedar seus templates.",
     "Posso vender os sites para clientes?": "Com os planos Pro e Lifetime, você tem licença comercial completa para lucrar com nossos designs."
