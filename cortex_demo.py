@@ -297,11 +297,16 @@ with p1:
 with p3:
     st.markdown("""
     <div class="pricing-glass">
-        <p>LIFETIME PASS</p>
-        <h1 style="font-size: 60px; margin: 30px 0;">R$ 597</h1>
-        <p>✓ Acesso Vitalício</p>
-        <p>✓ Updates de Novos Designs</p>
-        <p>✓ Consultoria de Branding 1:1</p>
+        <p>BUSINESS</p>
+        <h1 style="font-size: 60px; margin: 30px 0;">R$ 118</h1>
+        <p>✓ Acesso vitalício aos templates atuais</p>
+        <p>✓ Pagamento mensal</p>
+        <p>✓ Licença comercial para revenda ilimitada</p>
+        <p>✓ Selo de parceiro desenvolvedor</p>
+        <p>✓ Manual completo de customização e setup</p>
+        <p>✓ Suporte técnico ágil via e-mail</p>
+        <p>✓ Acesso imediato</p>
+        <p>✓ Atualizações de novos templates inclusas</p>
     </div>
     """, unsafe_allow_html=True)
     st.button("SER VITALÍCIO", key="p3")
