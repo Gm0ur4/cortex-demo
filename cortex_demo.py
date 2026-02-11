@@ -232,10 +232,8 @@ st.markdown("</div></div>", unsafe_allow_html=True)
 # --- 3 & 4. SHOWCASE DE TEMPLATES (GRID ASSIMÉTRICO) ---
 st.markdown('<div style="padding: 120px 8%;">', unsafe_allow_html=True)
 st.markdown('<h2>ENCONTRE O DESIGN QUE MELHOR DEFINE <span class="serif-heavy">seu negócio.</span></h2><br><br>', unsafe_allow_html=True)
-
 st.markdown("""
 <div class="carousel-section">
-    <h2 class="carousel-title">Veja Nossos Templates em Ação</h2>
     <div class="carousel-container">
         <div class="carousel-item-image-only">
             <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800" alt="Template 1">
