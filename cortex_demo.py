@@ -86,6 +86,166 @@ st.markdown("""
         font-size: 30px;
     }
 
+    /* NOVO: SHOWCASE SIMÉTRICO */
+    .templates-section-symmetric {
+        padding: 120px 8%;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+    }
+
+    .templates-title-symmetric {
+        text-align: center;
+        font-size: 48px;
+        font-family: 'Inter', sans-serif;
+        color: #ffffff;
+        margin-bottom: 80px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -2px;
+    }
+
+    .templates-container-symmetric {
+        display: flex;
+        flex-direction: column;
+        gap: 120px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .template-row-symmetric {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .template-row-symmetric:nth-child(even) {
+        direction: rtl;
+    }
+    .template-row-symmetric:nth-child(even) > * {
+        direction: ltr;
+    }
+
+    .template-image-symmetric {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 30px 80px rgba(123, 44, 191, 0.3);
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .template-image-symmetric:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 40px 100px rgba(212, 175, 55, 0.4);
+    }
+
+    .template-image-symmetric img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+    }
+
+    .template-content-symmetric {
+        padding: 20px;
+    }
+
+    .template-number-symmetric {
+        font-size: 14px;
+        font-weight: 900;
+        color: var(--gold);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 15px;
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .template-name-symmetric {
+        font-size: 42px;
+        font-family: 'Inter', sans-serif;
+        color: #ffffff;
+        margin-bottom: 20px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -2px;
+    }
+
+    .template-description-symmetric {
+        font-size: 18px;
+        color: rgba(255,255,255,0.7);
+        line-height: 1.8;
+        margin-bottom: 30px;
+    }
+
+    .template-features-symmetric {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+
+    .template-feature-symmetric {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 16px;
+        color: rgba(255,255,255,0.6);
+    }
+
+    .template-feature-symmetric::before {
+        content: "✓";
+        color: var(--gold);
+        font-weight: 900;
+        font-size: 20px;
+    }
+
+    .template-btn-symmetric {
+        display: inline-block;
+        background: linear-gradient(90deg, #7b2cbf, #9d4edd);
+        color: white;
+        padding: 18px 50px;
+        border-radius: 0;
+        text-decoration: none;
+        font-weight: 900;
+        transition: 0.3s;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+    }
+
+    .template-btn-symmetric:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(123, 44, 191, 0.6);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .template-row-symmetric {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .template-row-symmetric:nth-child(even) {
+            direction: ltr;
+        }
+        .template-name-symmetric {
+            font-size: 32px;
+        }
+    }
+
     /* 5. CLIENTS (FLOATING AVATARS) */
     .client-section {
         padding: 100px 8%;
@@ -190,6 +350,69 @@ with col_t2:
     </div>
     """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
+
+# --- NOVO: SHOWCASE SIMÉTRICO COM SCROLL ---
+st.markdown("""
+<div class="templates-section-symmetric">
+    <h2 class="templates-title-symmetric">Veja Nossos Templates em Ação</h2>
+    
+    <div class="templates-container-symmetric">
+        <!-- Template 1 -->
+        <div class="template-row-symmetric">
+            <div>
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800" class="template-image-symmetric" alt="Template 1">
+            </div>
+            <div class="template-content-symmetric">
+                <div class="template-number-symmetric">Template 01</div>
+                <h3 class="template-name-symmetric">The Ultimate SaaS</h3>
+                <p class="template-description-symmetric">Uma visualização elegante e poderosa para apresentar sua solução SaaS. Design moderno com foco em conversão e experiência do usuário de alto nível.</p>
+                <div class="template-features-symmetric">
+                    <div class="template-feature-symmetric">Seções otimizadas para conversão</div>
+                    <div class="template-feature-symmetric">Responsivo em todos os dispositivos</div>
+                    <div class="template-feature-symmetric">Integração com ferramentas de CRM</div>
+                    <div class="template-feature-symmetric">Análise de performance incluída</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Template 2 -->
+        <div class="template-row-symmetric">
+            <div>
+                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=800" class="template-image-symmetric" alt="Template 2">
+            </div>
+            <div class="template-content-symmetric">
+                <div class="template-number-symmetric">Template 02</div>
+                <h3 class="template-name-symmetric">Luxury Decor</h3>
+                <p class="template-description-symmetric">Design premium para marcas de luxo e decoração. Elegância, sofisticação e um toque de exclusividade em cada detalhe visual.</p>
+                <div class="template-features-symmetric">
+                    <div class="template-feature-symmetric">Galeria de produtos em alta resolução</div>
+                    <div class="template-feature-symmetric">Efeitos visuais premium</div>
+                    <div class="template-feature-symmetric">Carrinho de compras integrado</div>
+                    <div class="template-feature-symmetric">Sistema de avaliações e reviews</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Template 3 -->
+        <div class="template-row-symmetric">
+            <div>
+                <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=800" class="template-image-symmetric" alt="Template 3">
+            </div>
+            <div class="template-content-symmetric">
+                <div class="template-number-symmetric">Template 03</div>
+                <h3 class="template-name-symmetric">Modern Vintage</h3>
+                <p class="template-description-symmetric">Fusão perfeita entre o clássico e o contemporâneo. Ideal para negócios que buscam transmitir tradição com uma abordagem moderna e inovadora.</p>
+                <div class="template-features-symmetric">
+                    <div class="template-feature-symmetric">Timeline de histórias e marcos</div>
+                    <div class="template-feature-symmetric">Blog integrado com SEO otimizado</div>
+                    <div class="template-feature-symmetric">Formulários de contato avançados</div>
+                    <div class="template-feature-symmetric">Integração com redes sociais</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # --- 5. PROVA SOCIAL (AVATARES FLOATING) ---
 st.markdown("""
@@ -298,7 +521,7 @@ with p3:
     st.markdown("""
     <div class="pricing-glass">
         <p>BUSINESS</p>
-        <h1 style="font-size: 60px; margin: 30px 0;">R$ 117</h1>
+        <h1 style="font-size: 60px; margin: 30px 0;">R$ 297</h1>
         <p>✓ Acesso vitalício aos templates atuais</p>
         <p>✓ Pagamento mensal</p>
         <p>✓ Licença comercial para revenda ilimitada</p>
