@@ -267,11 +267,14 @@ with p2: # Featured
     st.markdown("""
     <div class="pricing-glass" style="border-top: 5px solid var(--accent);">
         <p style="color: var(--gold); letter-spacing: 3px; font-weight: 900;">PROFESSIONAL</p>
-        <h1 style="font-size: 80px; margin: 30px 0;">R$ 297</h1>
-        <p>✓ TODOS os Templates do Catálogo</p>
-        <p>✓ Aulas de Customização Pro</p>
-        <p>✓ Licença Comercial para Revenda</p>
-        <p>✓ Suporte Black via WhatsApp</p>
+        <h1 style="font-size: 80px; margin: 30px 0;">R$ 167</h1>
+        <p>✓ Acesso vitalício aos templates atuais</p>
+        <p>✓ 02 consultorias mensais para customização</p>
+        <p>✓ Pagamento mensal</p>
+        <p>✓ Manual completo de customização e setup</p>
+        <p>✓ Suporte técnico ágil via e-mail</p>
+        <p>✓ Acesso imediato</p>
+        <p>✓ Atualizações de novos templates inclusas</p>
     </div>
     """, unsafe_allow_html=True)
     st.button("QUERO O ELITE BUNDLE", key="main_p")
