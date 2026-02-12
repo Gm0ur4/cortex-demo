@@ -300,6 +300,42 @@ st.markdown("""
         transform: scale(1.05);
         box-shadow: 0 0 30px rgba(123, 44, 191, 0.5);
     }
+
+    /* ❌ NÃO ALTERE: FAQ Destacado - Política de Reembolso */
+    .faq-highlighted {
+        background: linear-gradient(135deg, rgba(123, 44, 191, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%);
+        border: 2px solid var(--gold);
+        border-radius: 8px;
+        padding: 40px;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 50px rgba(212, 175, 55, 0.2);
+    }
+
+    /* ❌ NÃO ALTERE: Título do FAQ Destacado */
+    .faq-highlighted-title {
+        color: var(--gold);
+        font-size: 24px;
+        font-weight: 900;
+        font-family: 'Inter', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+
+    /* ❌ NÃO ALTERE: Conteúdo do FAQ Destacado */
+    .faq-highlighted-content {
+        color: #ffffff;
+        font-size: 14px;
+        line-height: 1.8;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* ❌ NÃO ALTERE: Ícone de atenção */
+    .faq-highlight-icon {
+        font-size: 28px;
+        margin-right: 10px;
+        color: var(--gold);
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -550,6 +586,26 @@ st.markdown('</div>', unsafe_allow_html=True)
 # --- 9. FAQ ---
 st.markdown('<div id="faq" style="padding: 100px 20%; background: #080808;">', unsafe_allow_html=True)
 st.markdown('<h2 style="text-align:center; font-size: 40px;">FAQ / <span class="serif-heavy">Respostas.</span></h2><br>', unsafe_allow_html=True)
+
+# ❌ NÃO ALTERE: FAQ Destacado - Política de Reembolso
+st.markdown("""
+<div class="faq-highlighted">
+    <div style="display: flex; align-items: flex-start;">
+        <span class="faq-highlight-icon">⚠️</span>
+        <div>
+            <div class="faq-highlighted-title">Política de Reembolso</div>
+            <div class="faq-highlighted-content">
+                <p><strong>Garantia de 7 dias:</strong> Você tem 7 dias corridos após a compra para solicitar reembolso integral, sem questionamentos.</p>
+                <p style="margin-top: 15px;"><strong>Após 7 dias:</strong> Não há reembolso. Os templates são produtos digitais entregues imediatamente e não podem ser devolvidos.</p>
+                <p style="margin-top: 15px;"><strong>Condições:</strong> O reembolso é válido apenas se você não tiver baixado ou utilizado os arquivos. Caso tenha acessado os templates, o reembolso não será processado.</p>
+                <p style="margin-top: 15px;"><strong>Como solicitar:</strong> Entre em contato conosco via e-mail com seu número de pedido da Eduzz. O reembolso será processado em até 5 dias úteis após a aprovação.</p>
+            </div>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown('<br>', unsafe_allow_html=True)
 
 faq = {
     "Preciso saber programação para usar os templates?": "Não é preciso. O código é entregue pronto e você segue o nosso guia detalhado para personalizar os textos, cores, imagens e o que precisar.",
