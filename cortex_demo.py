@@ -243,7 +243,7 @@ st.markdown("""
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/17.png" alt="Template 2">
         </div>
         <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/22.png" alt="Template 3">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/24.png" alt="Template 3">
         </div>
                 <div class="carousel-item-image-only">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/11.png" alt="Template 4">
@@ -252,7 +252,7 @@ st.markdown("""
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/13.png" alt="Template 5">
         </div>
                 <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/24.png" alt="Template 6">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/22.png" alt="Template 6">
         </div>
         <div class="carousel-item-image-only">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/1.png" alt="Template 7">
