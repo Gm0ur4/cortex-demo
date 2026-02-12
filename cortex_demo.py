@@ -590,7 +590,34 @@ st.markdown('<h2 style="text-align:center; font-size: 40px;">FAQ / <span class="
 faq = {
     "Preciso saber programação para usar os templates?": "Não é preciso. O código é entregue pronto e você segue o nosso guia detalhado para personalizar os textos, cores, imagens e o que precisar.",
     "É seguro realizar a compra?": "Sim! Toda a compra é processada pela Eduzz, uma das plataformas de pagamentos e educação mais seguras e reconhecidas do Brasil. Nenhum dado sensível passa por nós, tudo ocorre diretamente no ambiente da Eduzz, com criptografia, certificados de segurança e antifraude.",
-    "⚠️ POLÍTICA DE REEMBOLSO (LEIA COM ATENÇÃO)": "<strong style='color: var(--gold); font-size: 16px;'>Garantia de 7 dias:</strong> Você tem 7 dias corridos após a compra para solicitar reembolso integral, sem questionamentos.<br><br><strong style='color: var(--gold); font-size: 16px;'>Após 7 dias:</strong> Não há reembolso. Os templates são produtos digitais entregues imediatamente e não podem ser devolvidos.<br><br><strong style='color: var(--gold); font-size: 16px;'>Condições:</strong> O reembolso é válido apenas se você não tiver baixado ou utilizado os arquivos. Caso tenha acessado os templates, o reembolso não será processado.<br><br><strong style='color: var(--gold); font-size: 16px;'>Como solicitar:</strong> Entre em contato conosco via e-mail com seu número de pedido da Eduzz. O reembolso será processado em até 5 dias úteis após a aprovação.",
+    "⚠️ POLÍTICA DE REEMBOLSO (LEIA COM ATENÇÃO)": "<strong style='color: var(--gold); font-size: 16px;'>Nos termos do Art. 49 do Código de Defesa do Consumidor, compras realizadas online possuem prazo de até 7 dias corridos para solicitação de reembolso por arrependimento.
+
+Respeitamos integralmente esse direito.
+
+Porém, é importante esclarecer:
+
+Nossos templates são produtos digitais protegidos pela Lei 9.610/98 (Lei de Direitos Autorais). O código-fonte constitui obra intelectual protegida por lei.
+
+A solicitação de reembolso implica na interrupção imediata do uso do material adquirido, incluindo:
+
+Remoção do código do GitHub ou qualquer repositório
+
+Remoção do deploy no Streamlit ou qualquer outro servidor
+
+Interrupção da utilização comercial ou pessoal
+
+A permanência do uso após reembolso configura:
+
+Violação de direito autoral (Art. 184 do Código Penal)
+
+Uso indevido de propriedade intelectual
+
+Enriquecimento ilícito
+
+Reservamo-nos o direito de registrar evidências técnicas de utilização indevida.
+
+Clientes legítimos são sempre respeitados.
+Todas a tentativas de golpes ou má-fé (utilizar toda nossa estrutura de código/ hospedagem, pedir reembolso e depois continuar usando) foram expressamente rastreadas e tratadas dentro da lei.</strong>    
     "Existe algum tipo de suporte?": "Com certeza. Todos os planos incluem suporte humano ágil via e-mail e com o plano professional você tem direito a 2 consultorias mensais para customização.",
     "Por onde acesso os templates?": "O acesso é 100% digital e imediato. Após a confirmação do pagamento, você receberá um e-mail da Eduzz com seus dados de acesso à área de membros. Lá, você encontrará os arquivos de todos os templates, além dos guias de setup e explicações organizados por módulos.",
     "A hospedagem é mesmo gratuita?": "Sim. Nosso método utiliza infraestruturas globais de alta performance que permitem manter sites profissionais online sem mensalidades de hospedagem. No passo a passo, ensinamos como configurar essa estrutura gratuita de forma segura, garantindo que você tenha um site rápido e estável sem custos fixos recorrentes.",
