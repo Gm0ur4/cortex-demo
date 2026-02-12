@@ -587,27 +587,8 @@ st.markdown('</div>', unsafe_allow_html=True)
 st.markdown('<div id="faq" style="padding: 100px 20%; background: #080808;">', unsafe_allow_html=True)
 st.markdown('<h2 style="text-align:center; font-size: 40px;">FAQ / <span class="serif-heavy">Respostas.</span></h2><br>', unsafe_allow_html=True)
 
-# ❌ NÃO ALTERE: FAQ Destacado - Política de Reembolso
-st.markdown("""
-<div class="faq-highlighted">
-    <div style="display: flex; align-items: flex-start;">
-        <span class="faq-highlight-icon">⚠️</span>
-        <div>
-            <div class="faq-highlighted-title">Política de Reembolso</div>
-            <div class="faq-highlighted-content">
-                <p><strong>Garantia de 7 dias:</strong> Você tem 7 dias corridos após a compra para solicitar reembolso integral, sem questionamentos.</p>
-                <p style="margin-top: 15px;"><strong>Após 7 dias:</strong> Não há reembolso. Os templates são produtos digitais entregues imediatamente e não podem ser devolvidos.</p>
-                <p style="margin-top: 15px;"><strong>Condições:</strong> O reembolso é válido apenas se você não tiver baixado ou utilizado os arquivos. Caso tenha acessado os templates, o reembolso não será processado.</p>
-                <p style="margin-top: 15px;"><strong>Como solicitar:</strong> Entre em contato conosco via e-mail com seu número de pedido da Eduzz. O reembolso será processado em até 5 dias úteis após a aprovação.</p>
-            </div>
-        </div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-st.markdown('<br>', unsafe_allow_html=True)
-
 faq = {
+    "⚠️ POLÍTICA DE REEMBOLSO (LÉIA COM ATENÇÃO)": "<strong style='color: var(--gold); font-size: 16px;'>Garantia de 7 dias:</strong> Você tem 7 dias corridos após a compra para solicitar reembolso integral, sem questionamentos.<br><br><strong style='color: var(--gold); font-size: 16px;'>Após 7 dias:</strong> Não há reembolso. Os templates são produtos digitais entregues imediatamente e não podem ser devolvidos.<br><br><strong style='color: var(--gold); font-size: 16px;'>Condições:</strong> O reembolso é válido apenas se você não tiver baixado ou utilizado os arquivos. Caso tenha acessado os templates, o reembolso não será processado.<br><br><strong style='color: var(--gold); font-size: 16px;'>Como solicitar:</strong> Entre em contato conosco via e-mail com seu número de pedido da Eduzz. O reembolso será processado em até 5 dias úteis após a aprovação.",
     "Preciso saber programação para usar os templates?": "Não é preciso. O código é entregue pronto e você segue o nosso guia detalhado para personalizar os textos, cores, imagens e o que precisar.",
     "É seguro realizar a compra?": "Sim! Toda a compra é processada pela Eduzz, uma das plataformas de pagamentos e educação mais seguras e reconhecidas do Brasil. Nenhum dado sensível passa por nós, tudo ocorre diretamente no ambiente da Eduzz, com criptografia, certificados de segurança e antifraude.",
     "Existe algum tipo de suporte?": "Com certeza. Todos os planos incluem suporte humano ágil via e-mail e com o plano professional você tem direito a 2 consultorias mensais para customização.",
@@ -616,9 +597,13 @@ faq = {
     "Posso vender os sites para clientes?": "Com o plano Business, você tem licença comercial completa para lucrar com nossos designs."
 }
 
-for q, a in faq.items():
-    with st.expander(q):
-        st.markdown(f"<p style='color: #ccc;'>{a}</p>", unsafe_allow_html=True)
+for i, (q, a) in enumerate(faq.items()):
+    if i == 0:  # Primeiro item (Política de Reembolso) com destaque
+        with st.expander(q):
+            st.markdown(f"<p style='color: var(--gold); font-size: 15px; font-weight: 600;'>{a}</p>", unsafe_allow_html=True)
+    else:  # Demais itens normais
+        with st.expander(q):
+            st.markdown(f"<p style='color: #ccc;'>{a}</p>", unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- FOOTER ---
