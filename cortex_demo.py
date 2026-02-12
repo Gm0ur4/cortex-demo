@@ -180,6 +180,27 @@ st.markdown("""
         border-radius: 4px;
     }
 
+    /* ❌ NÃO ALTERE: Link do item do carrossel */
+    .carousel-item-link {
+        display: block;
+        flex: 0 0 calc(33.333% - 27px);
+        min-width: 705px;
+        height: 315px;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s ease;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    /* ❌ NÃO ALTERE: Efeito hover no link do carrossel */
+    .carousel-item-link:hover {
+        border-color: var(--gold);
+        transform: translateY(-15px);
+        box-shadow: 0 30px 80px rgba(212, 175, 55, 0.3);
+    }
+
     .carousel-item-image-only {
         flex: 0 0 calc(33.333% - 27px);
         min-width: 705px;
@@ -198,6 +219,15 @@ st.markdown("""
     }
 
     .carousel-item-image-only img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 8px;
+    }
+
+    /* ❌ NÃO ALTERE: Imagem dentro do link */
+    .carousel-item-link img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -372,89 +402,90 @@ st.markdown('<h2>Clique e escolha o template que mais combina com <span class="s
 st.markdown("""
 <div class="carousel-section">
     <div class="carousel-container">
-        <div class="carousel-item-image-only">
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/20.png" alt="Template 1">
-        </div>
-        <div class="carousel-item-image-only">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/17.png" alt="Template 2">
-        </div>
-        <div class="carousel-item-image-only">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/24.png" alt="Template 3">
-        </div>
-                <div class="carousel-item-image-only">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/11.png" alt="Template 4">
-        </div>
-        <div class="carousel-item-image-only">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/22.png" alt="Template 5">
-        </div>
-                <div class="carousel-item-image-only">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/13.png" alt="Template 6">
-        </div>
-        <div class="carousel-item-image-only">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/1.png" alt="Template 7">
-        </div>
-        <div class="carousel-item-image-only">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/21.png" alt="Template 8">
-        </div>
-            <div class="carousel-item-image-only">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/26.png" alt="Template 9">
-        </div>
-        <div class="carousel-item-image-only">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/18.png" alt="Template 10">
-        </div>
-        <div class="carousel-item-image-only">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/14.png" alt="Template 11">
-            </div>
-        <div class="carousel-item-image-only">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/16.png" alt="Template 12">
-            </div>
-          <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/10.png" alt="Template 1">
-            </div>
-        <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/8.png" alt="Template 2">
-            </div>
-        <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/15.png" alt="Template 3">
-            </div>
-                <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/3.png" alt="Template 4">
-            </div>
-            <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/27.png" alt="Template 5">
-            </div>
-        <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/2.png" alt="Template 5">
-            </div>
-                <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/19.png" alt="Template 6">
-            </div>
-        <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/28.png" alt="Template 7">
-            </div>
-        <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/23.png" alt="Template 8">
-            </div>
-            <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/25.png" alt="Template 9">
-            </div>
-        <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/6.png" alt="Template 10">
-            </div>
-        <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/12.png" alt="Template 11">
-            </div>
-        <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/9.png" alt="Template 11">
-            </div>
-        <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/5.png" alt="Template 11">
-            </div>
-        <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/7.png" alt="Template 11">
-            </div>
-        <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/4.png" alt="Template 12">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/10.png" alt="Template 13">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/8.png" alt="Template 14">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/15.png" alt="Template 15">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/3.png" alt="Template 16">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/27.png" alt="Template 17">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/2.png" alt="Template 18">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/19.png" alt="Template 19">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/28.png" alt="Template 20">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/23.png" alt="Template 21">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/25.png" alt="Template 22">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/6.png" alt="Template 23">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/12.png" alt="Template 24">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/9.png" alt="Template 25">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/5.png" alt="Template 26">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/7.png" alt="Template 27">
+        </a>
+        <a href="https://www.google.com/" target="_blank" class="carousel-item-link">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/4.png" alt="Template 28">
+        </a>
     </div>
 </div>
 """, unsafe_allow_html=True)
