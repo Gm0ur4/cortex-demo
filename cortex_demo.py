@@ -595,8 +595,8 @@ faq = {
 <strong style='color: var(--gold); font-size: 16px;'>Proteção Legal do Produto:</strong> Nossos templates são produtos digitais protegidos pela Lei 9.610/98 (Lei de Direitos Autorais). O código-fonte constitui obra intelectual protegida por lei.<br><br>
 
 <strong style='color: var(--gold); font-size: 16px;'>Condição para Reembolso:</strong> A solicitação de reembolso implica na interrupção imediata do uso do material adquirido, incluindo:<br>
-- Remoção do código do GitHub ou qualquer repositório<br>
-- Remoção do deploy no Streamlit ou qualquer outro servidor<br>
+- Remoção do código de qualquer repositório<br>
+- Remoção do deploy em qualquer servidor na internet (site)<br>
 - Interrupção total da utilização comercial ou pessoal<br><br>
 
 <strong style='color: var(--gold); font-size: 16px;'>Uso Indevido Após Reembolso:</strong> A permanência do uso do código após o reembolso configura violação de direito autoral (Art. 184 do Código Penal), uso indevido de propriedade intelectual e possível enriquecimento ilícito.<br><br>
