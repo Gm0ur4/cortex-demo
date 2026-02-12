@@ -43,6 +43,60 @@ st.markdown("""
         letter-spacing: -1px;
     }
 
+    /* ❌ NÃO ALTERE: NAVBAR ESTILO YOLU ADAPTADO PARA SITE PRO ELITE */
+    .navbar-elite {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 8%;
+        background: rgba(5, 5, 5, 0.5);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* ❌ NÃO ALTERE: Logo da navbar */
+    .logo-elite {
+        font-size: 22px;
+        font-weight: 900;
+        letter-spacing: 2px;
+        font-family: 'Inter', sans-serif;
+        color: var(--gold);
+        text-transform: uppercase;
+    }
+
+    /* ❌ NÃO ALTERE: Container de links de navegação */
+    .nav-links-container {
+        display: flex;
+        gap: 45px;
+        align-items: center;
+    }
+
+    /* ❌ NÃO ALTERE: Links de navegação */
+    .nav-link-elite {
+        color: #ffffff !important;
+        text-decoration: none !important;
+        font-size: 12px;
+        letter-spacing: 1px;
+        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+
+    /* ❌ NÃO ALTERE: Efeito hover nos links */
+    .nav-link-elite:hover {
+        color: var(--gold) !important;
+        text-decoration: none !important;
+    }
+
+    .nav-link-elite:visited {
+        color: #ffffff !important;
+        text-decoration: none !important;
+    }
+
     /* 1 & 2. HERO RADICAL */
     .hero-section {
         height: 100vh;
@@ -219,6 +273,21 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# --- NAVBAR ELITE ---
+st.markdown("""
+<div class="navbar-elite">
+    <div class="logo-elite">Site Pro Elite</div>
+    <div class="nav-links-container">
+        <a href="#clientes" class="nav-link-elite">Clientes</a>
+        <a href="#quem-atendemos" class="nav-link-elite">Quem Atendemos</a>
+        <a href="#como-funciona" class="nav-link-elite">Como Funciona</a>
+        <a href="#templates" class="nav-link-elite">Templates</a>
+        <a href="#precos" class="nav-link-elite">Preços</a>
+        <a href="#faq" class="nav-link-elite">FAQ</a>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
 # --- 1 & 2. HERO SECTION ---
 st.markdown("""
 <div class="hero-section">
@@ -232,7 +301,7 @@ st.markdown("""
 
 # --- 5. PROVA SOCIAL (AVATARES FLOATING) ---
 st.markdown("""
-<div class="client-section">
+<div id="clientes" class="client-section">
     <h2 style="font-size: 30px; letter-spacing: 0px;">CONFIE EM QUEM<br>JÁ DOMINA.</h2>
     <div style="display: flex;">
         <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-checkout/main/7.jpg" style="width:80px; height:80px; border-radius:50%; border: 2px solid var(--accent); margin-left: -20px;">
@@ -245,7 +314,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- 6. É PARA VOCÊ QUE ---
-st.markdown('<div style="padding: 120px 8%;">', unsafe_allow_html=True)
+st.markdown('<div id="quem-atendemos" style="padding: 120px 8%;">', unsafe_allow_html=True)
 col_u1, col_u2, col_u3 = st.columns(3)
 
 with col_u1:
@@ -274,7 +343,7 @@ with col_u3:
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- 7. PASSO A PASSO (INDUSTRIAL) ---
-st.markdown('<div style="padding: 100px 8%; background: #050505;">', unsafe_allow_html=True)
+st.markdown('<div id="como-funciona" style="padding: 100px 8%; background: #050505;">', unsafe_allow_html=True)
 st.markdown('<h2>PROCESSO <span class="serif-heavy">sem falhas.</span></h2><br><br>', unsafe_allow_html=True)
 
 steps = [
@@ -393,7 +462,7 @@ st.markdown("""
 
 
 # --- 8. PREÇOS (ELITE) ---
-st.markdown('<div style="padding: 120px 8%; text-align:center;">', unsafe_allow_html=True)
+st.markdown('<div id="precos" style="padding: 120px 8%; text-align:center;">', unsafe_allow_html=True)
 st.markdown('<h2>INVISTA NA SUA <span class="serif-heavy">Presença.</span></h2><br><br>', unsafe_allow_html=True)
 
 p1, p2, p3 = st.columns(3)
@@ -448,7 +517,7 @@ with p3:
 st.markdown('</div>', unsafe_allow_html=True)
 
 # --- 9. FAQ ---
-st.markdown('<div style="padding: 100px 20%; background: #080808;">', unsafe_allow_html=True)
+st.markdown('<div id="faq" style="padding: 100px 20%; background: #080808;">', unsafe_allow_html=True)
 st.markdown('<h2 style="text-align:center; font-size: 40px;">FAQ / <span class="serif-heavy">Respostas.</span></h2><br>', unsafe_allow_html=True)
 
 faq = {
