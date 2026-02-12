@@ -232,7 +232,7 @@ st.markdown("""
 
 # --- 3 & 4. SHOWCASE DE TEMPLATES (GRID ASSIMÉTRICO) ---
 st.markdown('<div id="templates" style="padding: 120px 8%;">', unsafe_allow_html=True)
-st.markdown('<h2>CLIQUE EM UM DOS NOSSOS TEMPLATES ABAIXO E ESCOLHA O QUE MELHOR DEFINE <span class="serif-heavy">o seu negócio:</span></h2><br><br>', unsafe_allow_html=True)
+st.markdown('<h2>Clique e escolha o template que mais combina com <span class="serif-heavy"> seu negócio:</span></h2><br><br>', unsafe_allow_html=True)
 st.markdown("""
 <div class="carousel-section">
     <div class="carousel-container">
