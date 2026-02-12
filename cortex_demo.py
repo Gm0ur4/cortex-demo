@@ -219,6 +219,72 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# --- 5. PROVA SOCIAL (AVATARES FLOATING) ---
+st.markdown("""
+<div class="client-section">
+    <h2 style="font-size: 30px; letter-spacing: 0px;">CONFIE EM QUEM<br>JÁ DOMINA.</h2>
+    <div style="display: flex;">
+        <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-checkout/main/7.jpg" style="width:80px; height:80px; border-radius:50%; border: 2px solid var(--accent); margin-left: -20px;">
+        <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-checkout/main/8.jpg" style="width:80px; height:80px; border-radius:50%; border: 2px solid var(--accent); margin-left: -20px;">
+        <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-checkout/main/6.jpg" style="width:80px; height:80px; border-radius:50%; border: 2px solid var(--accent); margin-left: -20px;">
+        <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-checkout/main/17.png" style="width:80px; height:80px; border-radius:50%; border: 2px solid var(--accent); margin-left: -20px;">
+        <div style="width:80px; height:80px; border-radius:50%; background: var(--accent); margin-left: -20px; display:flex; align-items:center; justify-content:center; font-weight:900;">+500</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# --- 6. É PARA VOCÊ QUE ---
+st.markdown('<div style="padding: 120px 8%;">', unsafe_allow_html=True)
+col_u1, col_u2, col_u3 = st.columns(3)
+
+with col_u1:
+    st.markdown("""
+    <div class="target-card">
+        <h3>Proprietários de negócios</h3>
+        <p>Que busca colocar sua empresa na internet com o menor custo do mercado, garantindo sua presença digital em minutos.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col_u2:
+    st.markdown("""
+    <div class="target-card" style="background: var(--accent); color: white; box-shadow: 15px 15px 0px white;">
+        <h3>Infoprodutores/ prestadores de serviço</h3>
+        <p>Temos estruturas otimizadas para converter visitantes em compradores reais. Destaque seus serviços com um design que transmite autoridade e confiança.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col_u3:
+    st.markdown("""
+    <div class="target-card">
+        <h3>Freelancer</h3>
+        <p>Venda nossos sites para seus clientes sem precisar programar do zero e fature com isso, aumentando sua margem de lucro entregando em tempo recorde.</p>
+    </div>
+    """, unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --- 7. PASSO A PASSO (INDUSTRIAL) ---
+st.markdown('<div style="padding: 100px 8%; background: #050505;">', unsafe_allow_html=True)
+st.markdown('<h2>PROCESSO <span class="serif-heavy">sem falhas.</span></h2><br><br>', unsafe_allow_html=True)
+
+steps = [
+    ("SELECIONE O MODELO IDEAL", "Escolha entre mais de 30 modelos validados o que mais combina com a identidade do seu negócio."),
+    ("CUSTOMIZAÇÃO RÁPIDA", "Utilize nosso passo a passo detalhado para implementar o código e personalizar cada detalhe sem complicações."),
+    ("SETUP TÉCNICO GRATUITO", "Te ensinamos onde hospedar seu site em segundos, como aplicar técnicas de SEO e configurar seu domínio personalizado sem custo adicional e de forma rápida."),
+    ("LANÇAMENTO IMEDIATO", "Site no ar, otimizado e pronto para escalar seu negócio com uma estrutura de alta performance.")
+]
+
+for i, (title, desc) in enumerate(steps):
+    st.markdown(f"""
+    <div class="step-row">
+        <div class="step-num">0{i+1}</div>
+        <div>
+            <h3 style="color: var(--gold);">{title}</h3>
+            <p style="max-width: 400px; opacity: 0.6;">{desc}</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
 # --- 1 & 2. HERO SECTION ---
 st.markdown("""
 <div class="hero-section">
@@ -323,71 +389,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# --- 5. PROVA SOCIAL (AVATARES FLOATING) ---
-st.markdown("""
-<div class="client-section">
-    <h2 style="font-size: 30px; letter-spacing: 0px;">CONFIE EM QUEM<br>JÁ DOMINA.</h2>
-    <div style="display: flex;">
-        <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-checkout/main/7.jpg" style="width:80px; height:80px; border-radius:50%; border: 2px solid var(--accent); margin-left: -20px;">
-        <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-checkout/main/8.jpg" style="width:80px; height:80px; border-radius:50%; border: 2px solid var(--accent); margin-left: -20px;">
-        <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-checkout/main/6.jpg" style="width:80px; height:80px; border-radius:50%; border: 2px solid var(--accent); margin-left: -20px;">
-        <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-checkout/main/17.png" style="width:80px; height:80px; border-radius:50%; border: 2px solid var(--accent); margin-left: -20px;">
-        <div style="width:80px; height:80px; border-radius:50%; background: var(--accent); margin-left: -20px; display:flex; align-items:center; justify-content:center; font-weight:900;">+500</div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-# --- 6. É PARA VOCÊ QUE ---
-st.markdown('<div style="padding: 120px 8%;">', unsafe_allow_html=True)
-col_u1, col_u2, col_u3 = st.columns(3)
-
-with col_u1:
-    st.markdown("""
-    <div class="target-card">
-        <h3>Proprietários de negócios</h3>
-        <p>Que busca colocar sua empresa na internet com o menor custo do mercado, garantindo sua presença digital em minutos.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col_u2:
-    st.markdown("""
-    <div class="target-card" style="background: var(--accent); color: white; box-shadow: 15px 15px 0px white;">
-        <h3>Infoprodutores/ prestadores de serviço</h3>
-        <p>Temos estruturas otimizadas para converter visitantes em compradores reais. Destaque seus serviços com um design que transmite autoridade e confiança.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col_u3:
-    st.markdown("""
-    <div class="target-card">
-        <h3>Freelancer</h3>
-        <p>Venda nossos sites para seus clientes sem precisar programar do zero e fature com isso, aumentando sua margem de lucro entregando em tempo recorde.</p>
-    </div>
-    """, unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
-
-# --- 7. PASSO A PASSO (INDUSTRIAL) ---
-st.markdown('<div style="padding: 100px 8%; background: #050505;">', unsafe_allow_html=True)
-st.markdown('<h2>PROCESSO <span class="serif-heavy">sem falhas.</span></h2><br><br>', unsafe_allow_html=True)
-
-steps = [
-    ("SELECIONE O MODELO IDEAL", "Escolha entre mais de 30 modelos validados o que mais combina com a identidade do seu negócio."),
-    ("CUSTOMIZAÇÃO RÁPIDA", "Utilize nosso passo a passo detalhado para implementar o código e personalizar cada detalhe sem complicações."),
-    ("SETUP TÉCNICO GRATUITO", "Te ensinamos onde hospedar seu site em segundos, como aplicar técnicas de SEO e configurar seu domínio personalizado sem custo adicional e de forma rápida."),
-    ("LANÇAMENTO IMEDIATO", "Site no ar, otimizado e pronto para escalar seu negócio com uma estrutura de alta performance.")
-]
-
-for i, (title, desc) in enumerate(steps):
-    st.markdown(f"""
-    <div class="step-row">
-        <div class="step-num">0{i+1}</div>
-        <div>
-            <h3 style="color: var(--gold);">{title}</h3>
-            <p style="max-width: 400px; opacity: 0.6;">{desc}</p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
 
 # --- 8. PREÇOS (ELITE) ---
 st.markdown('<div style="padding: 120px 8%; text-align:center;">', unsafe_allow_html=True)
