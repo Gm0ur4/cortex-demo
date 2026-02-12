@@ -542,6 +542,7 @@ with p2: # Featured
         <p>✓ Acesso vitalício aos templates atuais</p>
         <p>✓ 02 consultorias mensais para customização</p>
         <p>✓ Pagamento mensal</p>
+        <p>✓ Integração do seu site ao seu WhatsApp</p>
         <p>✓ Manual completo de customização e setup</p>
         <p>✓ Suporte técnico ágil via e-mail</p>
         <p>✓ Acesso imediato</p>
