@@ -284,6 +284,9 @@ st.markdown("""
                 <div class="carousel-item-image-only">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/3.png" alt="Template 4">
             </div>
+            <div class="carousel-item-image-only">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/27.png" alt="Template 5">
+            </div>
         <div class="carousel-item-image-only">
             <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/2.png" alt="Template 5">
             </div>
