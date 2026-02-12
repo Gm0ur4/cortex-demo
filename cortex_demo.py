@@ -592,7 +592,7 @@ faq = {
     "É seguro realizar a compra?": "Sim! Toda a compra é processada pela Eduzz, uma das plataformas de pagamentos e educação mais seguras e reconhecidas do Brasil. Nenhum dado sensível passa por nós, tudo ocorre diretamente no ambiente da Eduzz, com criptografia, certificados de segurança e antifraude.",
     "⚠️ POLÍTICA DE REEMBOLSO (LEIA COM ATENÇÃO)": """<strong style='color: var(--gold); font-size: 16px;'>Prazo Legal – 7 dias:</strong> Nos termos do Art. 49 do Código de Defesa do Consumidor, você pode solicitar reembolso em até 7 dias corridos após a compra realizada online. Respeitamos integralmente esse direito.<br><br>
 
-<strong style='color: var(--gold); font-size: 16px;'>Proteção Legal do Produto:</strong> Nossos templates são produtos digitais protegidos pela Lei 9.610/98 (Lei de Direitos Autorais). O código-fonte constitui obra intelectual protegida por lei.<br><br>
+<strong style='color: var(--gold); font-size: 16px;'>Proteção Legal do Produto:</strong> Nossos templates são produtos digitais protegidos pela Lei 9.610/98 (Lei de Direitos Autorais). O código-fonte possui rastreio ofuscado e constitui obra intelectual protegida por lei.<br><br>
 
 <strong style='color: var(--gold); font-size: 16px;'>Condição para Reembolso:</strong> A solicitação de reembolso implica na interrupção imediata do uso do material adquirido, incluindo:<br>
 - Remoção do código de qualquer repositório<br>
