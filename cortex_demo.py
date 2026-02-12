@@ -237,22 +237,40 @@ st.markdown("""
 <div class="carousel-section">
     <div class="carousel-container">
         <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/18.png" alt="Template 1">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/20.png" alt="Template 1">
         </div>
         <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/15.png" alt="Template 2">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/17.png" alt="Template 2">
         </div>
         <div class="carousel-item-image-only">
-            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/gif24.gif" alt="Template 3">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/13.png" alt="Template 3">
         </div>
                 <div class="carousel-item-image-only">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800" alt="Template 4">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/11.png" alt="Template 4">
         </div>
         <div class="carousel-item-image-only">
-            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=800" alt="Template 5">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/22.png" alt="Template 5">
+        </div>
+                <div class="carousel-item-image-only">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/24.png" alt="Template 6">
         </div>
         <div class="carousel-item-image-only">
-            <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=800" alt="Template 6">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/1.png" alt="Template 7">
+        </div>
+        <div class="carousel-item-image-only">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/21.png" alt="Template 8">
+        </div>
+            <div class="carousel-item-image-only">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/26.png" alt="Template 9">
+        </div>
+        <div class="carousel-item-image-only">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/18.png" alt="Template 10">
+        </div>
+        <div class="carousel-item-image-only">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/14.png" alt="Template 11">
+            </div>
+        <div class="carousel-item-image-only">
+            <img src="https://raw.githubusercontent.com/Gm0ur4/cortex-demo/main/16.png" alt="Template 12">
     </div>
 </div>
 """, unsafe_allow_html=True)
