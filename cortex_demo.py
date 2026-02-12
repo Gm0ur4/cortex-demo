@@ -128,7 +128,7 @@ st.markdown("""
 
     .carousel-item-image-only {
         flex: 0 0 calc(33.333% - 27px);
-        min-width: 810px;
+        min-width: 790px;
         height: 440px;
         border-radius: 8px;
         overflow: hidden;
